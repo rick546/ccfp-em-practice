@@ -1,0 +1,3124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCFP-EM Practice Exam Generator</title>
+<style>
+  :root {
+    --primary: #1a365d;
+    --primary-light: #2b6cb0;
+    --accent: #e53e3e;
+    --accent-light: #fc8181;
+    --success: #38a169;
+    --warning: #d69e2e;
+    --bg: #f7fafc;
+    --card: #ffffff;
+    --text: #1a202c;
+    --text-light: #718096;
+    --border: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header h1 { font-size: 1.4rem; font-weight: 700; }
+  .header-sub { font-size: 0.85rem; opacity: 0.85; }
+  .timer-display {
+    background: rgba(255,255,255,0.15);
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    min-width: 120px;
+    text-align: center;
+  }
+  .timer-display.warning { background: rgba(214,158,46,0.4); }
+  .timer-display.danger { background: rgba(229,62,62,0.5); animation: pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
+
+  /* Main layout */
+  .container { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .card h2 { color: var(--primary); margin-bottom: 1rem; font-size: 1.2rem; }
+  .card h3 { color: var(--primary-light); margin: 1rem 0 0.5rem; font-size: 1.05rem; }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+  .btn:active { transform: translateY(0); }
+  .btn-primary { background: var(--primary); color: white; }
+  .btn-primary:hover { background: var(--primary-light); }
+  .btn-accent { background: var(--accent); color: white; }
+  .btn-accent:hover { background: #c53030; }
+  .btn-success { background: var(--success); color: white; }
+  .btn-success:hover { background: #2f855a; }
+  .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+  }
+  .btn-outline:hover { background: var(--primary); color: white; }
+  .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* Forms */
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-weight: 600; margin-bottom: 0.3rem; color: var(--text); }
+  .form-group select, .form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .form-group select:focus, .form-group input:focus, .form-group textarea:focus {
+    border-color: var(--primary-light);
+    outline: none;
+  }
+
+  /* Topic chips */
+  .topic-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  .topic-chip {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 2px solid var(--border);
+    background: white;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .topic-chip:hover { border-color: var(--primary-light); }
+  .topic-chip.selected { background: var(--primary); color: white; border-color: var(--primary); }
+
+  /* Question display */
+  .question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .question-badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .badge-samp { background: #ebf4ff; color: #2b6cb0; }
+  .badge-soo { background: #fef3c7; color: #92400e; }
+  .badge-topic { background: #f0fff4; color: #276749; }
+
+  .clinical-scenario {
+    background: #f7fafc;
+    border-left: 4px solid var(--primary-light);
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .sub-question {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.75rem 0;
+  }
+  .sub-question-label {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+  .sub-question textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.6rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    resize: vertical;
+  }
+  .sub-question textarea:focus { border-color: var(--primary-light); outline: none; }
+
+  /* Answer reveal */
+  .answer-box {
+    background: #f0fff4;
+    border: 2px solid #c6f6d5;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    display: none;
+  }
+  .answer-box.visible { display: block; }
+  .answer-box h4 { color: var(--success); margin-bottom: 0.5rem; }
+  .answer-box ul { margin-left: 1.2rem; }
+  .answer-box li { margin-bottom: 0.3rem; }
+
+  /* SOO specific */
+  .soo-examiner-prompt {
+    background: #fef3c7;
+    border-left: 4px solid var(--warning);
+    padding: 1rem 1.2rem;
+    margin: 0.75rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .soo-examiner-prompt strong { color: #92400e; }
+  .soo-expected {
+    background: #ebf8ff;
+    border: 1px solid #bee3f8;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  /* Scoring */
+  .score-section {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  .score-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+  }
+  .score-btn:hover { border-color: var(--primary-light); }
+  .score-btn.selected { background: var(--primary); color: white; border-color: var(--primary); }
+
+  /* Progress bar */
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
+
+  /* Navigation */
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--border);
+  }
+
+  /* Results */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .result-card {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .result-card .score-big {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .result-card .label { color: var(--text-light); font-size: 0.85rem; }
+
+  /* Settings panel */
+  .settings-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .settings-row .form-group { flex: 1; min-width: 200px; }
+
+  /* API config */
+  .api-config {
+    background: #fffbeb;
+    border: 2px solid #fef3c7;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .container { padding: 1rem; }
+    .settings-row { flex-direction: column; }
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .tab {
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    color: var(--text-light);
+    transition: all 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 0.95rem;
+  }
+  .tab:hover { color: var(--primary); }
+  .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+  /* Stats dashboard */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .stat-box {
+    text-align: center;
+    padding: 1rem;
+    background: #f7fafc;
+    border-radius: 8px;
+  }
+  .stat-box .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+  .stat-box .stat-label { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .hidden { display: none !important; }
+
+  /* MCQ styles for 2026 format */
+  .mcq-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .mcq-option:hover { border-color: var(--primary-light); background: #f7fafc; }
+  .mcq-option.selected { border-color: var(--primary); background: #ebf4ff; }
+  .mcq-option.correct { border-color: var(--success); background: #f0fff4; }
+  .mcq-option.incorrect { border-color: var(--accent); background: #fff5f5; }
+  .mcq-letter {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    background: var(--border);
+    color: var(--text);
+    flex-shrink: 0;
+  }
+  .mcq-option.selected .mcq-letter { background: var(--primary); color: white; }
+  .mcq-option.correct .mcq-letter { background: var(--success); color: white; }
+  .mcq-option.incorrect .mcq-letter { background: var(--accent); color: white; }
+
+  /* Short-menu (checkbox-style) questions for 2026 format */
+  .short-menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  .short-menu-header {
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .short-menu-counter {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+  .short-menu-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    margin: 0.25rem 0;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+  }
+  .short-menu-option:hover { border-color: var(--primary-light); background: #f7fafc; }
+  .short-menu-option.selected { border-color: var(--primary); background: #ebf4ff; }
+  .short-menu-option.correct { border-color: var(--success); background: #f0fff4; }
+  .short-menu-option.incorrect { border-color: var(--accent); background: #fff5f5; }
+  .short-menu-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    background: white;
+    color: var(--text);
+    flex-shrink: 0;
+    font-size: 0.75rem;
+  }
+  .short-menu-option.selected .short-menu-checkbox { background: var(--primary); color: white; border-color: var(--primary); }
+  .short-menu-option.correct .short-menu-checkbox { background: var(--success); color: white; border-color: var(--success); }
+  .short-menu-option.incorrect .short-menu-checkbox { background: var(--accent); color: white; border-color: var(--accent); }
+
+  /* Free-text list display */
+  .free-text-answer-list {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  .free-text-answer-list li {
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<div class="header">
+  <div>
+    <h1>CCFP-EM Practice Exam</h1>
+    <div class="header-sub">Emergency Medicine Certification — Exam Generator</div>
+  </div>
+  <div id="timerContainer" class="hidden">
+    <div id="timer" class="timer-display">00:00:00</div>
+  </div>
+  <div>
+    <button class="btn btn-sm btn-outline" style="color:white;border-color:rgba(255,255,255,0.5)" onclick="showView('home')">Home</button>
+    <button class="btn btn-sm btn-outline" style="color:white;border-color:rgba(255,255,255,0.5)" onclick="showView('keyfeatures')">Key Features</button>
+    <button class="btn btn-sm btn-outline" style="color:white;border-color:rgba(255,255,255,0.5)" onclick="showView('settings')">Settings</button>
+  </div>
+</div>
+
+<!-- ==================== HOME VIEW ==================== -->
+<div id="view-home" class="container">
+  <div class="card">
+    <h2>Welcome to the CCFP-EM Practice Exam Generator</h2>
+    <p>Prepare for the College of Family Physicians of Canada — Examination of Added Competence in Emergency Medicine. This tool generates realistic practice exams in both <strong>SAMP</strong> and <strong>SOO</strong> formats covering all 35 priority topics.</p>
+
+    <div class="stats-row" style="margin-top:1.5rem">
+      <div class="stat-box">
+        <div class="stat-num" id="stat-bank">0</div>
+        <div class="stat-label">Questions in Bank</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="stat-completed">0</div>
+        <div class="stat-label">Exams Completed</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="stat-avg">—</div>
+        <div class="stat-label">Avg Score</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">35</div>
+        <div class="stat-label">EM Priority Topics</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Start a Practice Exam</h2>
+    <div class="tabs">
+      <button class="tab active" onclick="selectMode('samp', this)">SAMPs (Written)</button>
+      <button class="tab" onclick="selectMode('soo', this)">SOOs (Oral)</button>
+      <button class="tab" onclick="selectMode('mixed', this)">Mixed Exam</button>
+    </div>
+
+    <div id="mode-description">
+      <p><strong>Short Answer Management Problems (SAMPs)</strong> — The written component of the CCFP-EM exam. You'll be presented with clinical scenarios and asked structured questions requiring short written answers. Reflects the 2026 format with a mix of free-text, MCQ, and short-menu questions.</p>
+    </div>
+
+    <div class="settings-row" style="margin-top:1rem">
+      <div class="form-group">
+        <label>Number of Cases</label>
+        <select id="numCases">
+          <option value="1">1 case (Quick practice)</option>
+          <option value="3">3 cases (Half exam)</option>
+          <option value="5" selected>5 cases (Full exam length)</option>
+          <option value="8">8 cases (Extended practice)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Question Source</label>
+        <select id="questionSource">
+          <option value="bank">Question Bank (Static)</option>
+          <option value="ai">AI-Generated (Claude API)</option>
+          <option value="mixed">Mixed (Bank + AI)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Timed Mode</label>
+        <select id="timedMode">
+          <option value="real">Real exam timing</option>
+          <option value="relaxed">Relaxed (1.5x time)</option>
+          <option value="untimed">Untimed</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Select Topics (leave empty for random selection across all topics)</label>
+      <div class="topic-grid" id="topicGrid"></div>
+      <div style="margin-top:0.5rem">
+        <button class="btn btn-sm btn-outline" onclick="selectAllTopics()">Select All</button>
+        <button class="btn btn-sm btn-outline" onclick="clearAllTopics()">Clear All</button>
+      </div>
+    </div>
+
+    <div class="form-group" id="difficultyGroup">
+      <label>Difficulty</label>
+      <select id="difficulty">
+        <option value="mixed" selected>Mixed (Exam-realistic)</option>
+        <option value="easy">Straightforward cases</option>
+        <option value="hard">Complex / atypical presentations</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary" onclick="startExam()" style="margin-top:0.5rem; padding: 0.8rem 2rem; font-size: 1.05rem;">
+      Start Practice Exam →
+    </button>
+  </div>
+
+  <!-- Recent results -->
+  <div class="card" id="recentResults" style="display:none">
+    <h2>Recent Results</h2>
+    <div id="resultsList"></div>
+  </div>
+</div>
+
+<!-- ==================== EXAM VIEW ==================== -->
+<div id="view-exam" class="container hidden">
+  <div class="card">
+    <div class="question-header">
+      <div>
+        <span id="examBadge" class="question-badge badge-samp">SAMP</span>
+        <span id="topicBadge" class="question-badge badge-topic" style="margin-left:0.5rem"></span>
+      </div>
+      <div style="color:var(--text-light); font-size:0.9rem;">
+        Case <span id="currentCase">1</span> of <span id="totalCases">5</span>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+
+    <div id="questionContent"></div>
+
+    <div class="nav-buttons">
+      <button class="btn btn-outline" id="prevBtn" onclick="prevQuestion()">← Previous</button>
+      <div>
+        <button class="btn btn-success" id="revealBtn" onclick="revealAnswers()">Reveal Answers</button>
+        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== RESULTS VIEW ==================== -->
+<div id="view-results" class="container hidden">
+  <div class="card">
+    <h2>Exam Complete!</h2>
+    <div class="results-grid" id="resultsGrid"></div>
+    <div id="resultsDetail" style="margin-top:1.5rem"></div>
+    <div style="margin-top:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="showView('home')">New Exam</button>
+      <button class="btn btn-outline" onclick="reviewExam()">Review Answers</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SETTINGS VIEW ==================== -->
+<div id="view-settings" class="container hidden">
+  <div class="card">
+    <h2>Settings</h2>
+
+    <div class="api-config">
+      <h3 style="margin-top:0">Claude API Configuration</h3>
+      <p style="font-size:0.9rem; color:var(--text-light); margin-bottom:1rem;">Enter your Anthropic API key to enable AI-generated questions. Your key is stored locally in your browser only.</p>
+      <div class="form-group">
+        <label>API Key</label>
+        <input type="password" id="apiKey" placeholder="sk-ant-..." value="">
+      </div>
+      <div class="form-group">
+        <label>Model</label>
+        <select id="apiModel">
+          <option value="claude-sonnet-4-6">Claude Sonnet 4.6 (Recommended)</option>
+          <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5 (Faster)</option>
+          <option value="claude-opus-4-6">Claude Opus 4.6 (Highest quality)</option>
+        </select>
+      </div>
+      <button class="btn btn-sm btn-primary" onclick="testApiKey()">Test Connection</button>
+      <span id="apiStatus" style="margin-left:0.5rem; font-size:0.85rem;"></span>
+    </div>
+
+    <div class="form-group" style="margin-top:1.5rem">
+      <label>Default Timer Duration per SAMP Case (minutes)</label>
+      <input type="number" id="sampTime" value="48" min="10" max="120">
+      <small style="color:var(--text-light)">Real exam: ~48 min per case (4 hrs / 5 cases)</small>
+    </div>
+    <div class="form-group">
+      <label>Default Timer Duration per SOO Station (minutes)</label>
+      <input type="number" id="sooTime" value="12" min="5" max="30">
+      <small style="color:var(--text-light)">Real exam: 12 minutes per station</small>
+    </div>
+
+    <button class="btn btn-primary" onclick="saveSettings()" style="margin-top:0.5rem">Save Settings</button>
+  </div>
+</div>
+
+<!-- ==================== KEY FEATURES VIEW ==================== -->
+<div id="view-keyfeatures" class="container hidden">
+  <div class="card">
+    <h2>CCFP-EM Priority Topics & Key Features</h2>
+    <p style="color:var(--text-light); margin-bottom:1.5rem;">Reference guide for the 35 priority topics tested on the CCFP-EM exam. Click to expand each topic to view its key clinical competencies.</p>
+    <div id="keyFeaturesContainer"></div>
+  </div>
+</div>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+// ============================================================
+// PRIORITY TOPICS — All 35 CCFP-EM Priority Topics
+// ============================================================
+// Official CFPC Priority Topics in Emergency Medicine (EM_KF-2017)
+const PRIORITY_TOPICS = [
+  "Abdominal Pain",
+  "Abuse (Domestic)",
+  "Airway Management",
+  "Analgesia / Sedation",
+  "Anaphylaxis",
+  "Arrhythmia",
+  "Asthma / COPD",
+  "Burns",
+  "Cerebrovascular Accident (CVA)",
+  "Chest Pain",
+  "Common Fractures / MSK",
+  "Continuous Quality Improvement (CQI)",
+  "Critical Appraisal",
+  "Decreased Level of Consciousness",
+  "Deep Venous Thrombosis (DVT) / Pulmonary Embolus (PE)",
+  "Delirium / Agitation",
+  "Emergency Medical Services (EMS)",
+  "Environmental",
+  "Eye: Red Eye / Loss of Vision",
+  "First-Trimester Bleeding",
+  "Gastrointestinal (GI) Bleed",
+  "Headache",
+  "Infectious Diseases",
+  "Ischemic Heart Disease",
+  "Lacerations",
+  "Multiple Patients",
+  "Multiple Trauma",
+  "Pediatric Fever",
+  "Pre-Eclampsia",
+  "Pulmonary Edema",
+  "Seizures",
+  "Shock / Dehydration",
+  "Shortness of Breath",
+  "Suicide Risk",
+  "Toxicology"
+];
+
+// ============================================================
+// CFPC KEY FEATURES — Official competencies tested per topic
+// ============================================================
+const KEY_FEATURES = {
+  "Abdominal Pain": [
+    "Develop appropriate differential diagnosis considering age, gender, location/migration of pain, life-threatening causes, and atypical presentations (e.g., AAA, ectopic pregnancy, testicular torsion)",
+    "When pain is out of proportion to physical findings, rule out serious pathology (e.g., pancreatitis, ischemic bowel)",
+    "Rule out extra-abdominal causes (e.g., ACS, pneumonia, DKA, migraine/URI in children)",
+    "Do not delay surgical intervention for unnecessary investigation when symptoms/signs suggest it",
+    "Select most appropriate imaging for the presumed diagnosis (FAST, CXR for free air, US for biliary/GYN, CT for bowel/retroperitoneal)",
+    "Do not rule out significant disease based on a low-sensitivity test (e.g., do not rule out appendicitis in absence of fever or elevated WBC)",
+    "Consider radiation exposure and cancer risk in imaging decisions",
+    "Do not over-diagnose UTI as the cause, especially in females"
+  ],
+  "Abuse (Domestic)": [
+    "In high-risk populations (elderly, same-sex, pregnant, substance users, frequent ED presenters), look for discrete indicators of possible abuse",
+    "Recognize presentations suggestive of undeclared abuse (atypical injury patterns, late presentations, recurrent presenters)",
+    "Use appropriate means to find and confirm all injuries (old files, skeletal survey, fundoscopy)",
+    "Provide a confidential, non-judgmental, supportive environment to facilitate disclosure",
+    "Use a multidisciplinary approach (sexual assault team, domestic abuse counsellors, crisis/social workers)",
+    "Ensure informed consent, reports to authorities as appropriate, and disposition ensuring safety of patient and vulnerable parties (children, elders)"
+  ],
+  "Airway Management": [
+    "When initial attempts to control the airway have failed, use alternative techniques",
+    "Anticipate the need for pre-emptive airway control in patients who do not obviously need it on initial survey (burns, trauma, edema/mass effect, coma, morbid obesity)",
+    "Assess the likelihood of a difficult airway (3-3-2, Mallampati, LEMON) and prepare accordingly",
+    "Tailor management to particular circumstances (trauma, pediatrics, comorbidity)",
+    "In a patient requiring RSI but with contraindications or special indications, select and use medications appropriately",
+    "In an intubated patient, identify failed airway placement in situations where it is not clinically obvious (oxymetry, ETCO2, blood gases)"
+  ],
+  "Analgesia / Sedation": [
+    "Assess analgesic needs in a structured fashion using pain scales and objective signs, noting patient preferences and previous responses",
+    "Select appropriate techniques and agents using the most effective/least dangerous combinations available",
+    "Provide adequate analgesia tailored to the cause using appropriate/multiple agents by appropriate routes, titrated to pain relief",
+    "In a painful condition requiring sedation, ensure adequate analgesia is provided simultaneously",
+    "Before procedural sedation, assess formally for risks of complications (airway, hemodynamics)",
+    "Monitor for desired effects and complications during sedation, titrating for effect and safety, then ensure post-procedure monitoring with safe discharge instructions"
+  ],
+  "Anaphylaxis": [
+    "In any patient presenting with shock, consider anaphylaxis as a possible diagnosis",
+    "Recognize and diagnose anaphylaxis even when the presentation is incomplete (may exhibit only some of rash/hypotension/vomiting/wheezing/altered LOC)",
+    "Treat rapidly and aggressively: epinephrine appropriately, manage airway early, timely IV access, appropriate fluid resuscitation",
+    "On discharge: prescribe emergency self-rescue medication (epinephrine), educate (MedicAlert, rebound symptoms, precipitant avoidance), arrange follow-up (allergy testing/desensitization)"
+  ],
+  "Arrhythmia": [
+    "In a patient with non-specific hypoperfusion symptoms (dizziness, vertigo, syncope, presyncope), rule out arrhythmia",
+    "Identify subtle ECG signs of serious arrhythmia (prolonged QT in toxicology, peaked T waves in hyperkalemia, delta waves in palpitations)",
+    "Use a systematic approach to ECG/rhythm strip interpretation (differential of narrow/wide complex tachycardia, AV blocks)",
+    "Distinguish stable and unstable presentations and select appropriate treatments (electrical and/or pharmacological) based on stability",
+    "Establish a differential diagnosis of likely precipitating causes",
+    "Adjust management for specific arrhythmias with special circumstances (WPW, toxicology, hypothermia, prolonged QT)",
+    "In a reperfusion arrhythmia, manage supportively with clearly indicated pharmacotherapy",
+    "After ROSC following cardiac arrest, initiate therapeutic hypothermia as indicated"
+  ],
+  "Asthma / COPD": [
+    "With a first episode of wheezing, consider a wide differential (foreign body, croup/bronchiolitis, airway obstruction, CHF, PE, pneumonia, anaphylaxis)",
+    "Look for high-risk history (previous ICU stays/intubations, recent steroid use, multiple ER visits)",
+    "Use objective measures to establish severity (FEV1/peak flows, rising pCO2, fatigue, mental status)",
+    "Identify and treat comorbid conditions in a timely fashion (CHF, CAD, pneumonia, pneumothorax)",
+    "Initiate treatment to stabilize prior to definitive diagnosis (early beta agonists, steroids, oxygen, anticholinergics)",
+    "Use steroids (systemic and/or inhaled) when indicated",
+    "Recognize impending respiratory failure (fatigue, confusion, hypoxia, hypercarbia) and initiate early aggressive non-invasive airway support (BiPAP, CPAP, Heliox)",
+    "Prior to discharge: ensure resolution (road test, objective measurements), review disease management (proper MDI technique, prescriptions, follow-up)"
+  ],
+  "Burns": [
+    "Assess for associated injuries (trauma, smoke inhalation, toxic exposure [cyanide, CO]) and complications (compartment syndrome, rhabdomyolysis, acidosis, electrolyte abnormalities)",
+    "In inhalational injury, seek signs of potential airway injury and intervene early",
+    "Treat pain early and effectively (IV analgesia)",
+    "Administer fluid replacement appropriately (calculate from time of injury, not arrival) and monitor response",
+    "Determine appropriate disposition based on all key factors (location, severity, age, comorbidity, social conditions)",
+    "In patients with severe unexplained hand/finger pain, inquire about chemical exposure (hydrofluoric acid)"
+  ],
+  "Cerebrovascular Accident (CVA)": [
+    "Consider diagnoses other than CVA (migraine, hypoglycemia, Todd's paralysis, tumour)",
+    "Recognize CVA in subtle presentations secondary to non-MCA distributions (posterior circulation deficits, confusion)",
+    "Determine the pertinence of urgent reperfusion: identify anatomic territory, look for precipitating causes, select appropriate imaging, assess eligibility for thrombolysis",
+    "In a transient neurological deficit, stratify recurrence risk (ABCD2) and arrange ancillary evaluation (carotid Doppler, Holter, ECG) in a timely fashion"
+  ],
+  "Chest Pain": [
+    "Assess for life-threatening diagnoses first (ACS, PE, pneumothorax, aortic dissection)",
+    "Initiate rapid treatment even though history may be incomplete (early ASA, early ECG)",
+    "Perform detailed history of pain characteristics and associated symptoms to distinguish serious from benign",
+    "Identify risk factors affecting pre-test probability of ACS or PE",
+    "Do not rule out important diagnoses based on unreliable clinical features or early test results (chest wall tenderness, response to 'pink lady,' normal ECG, normal cardiac enzymes, negative D-dimer)"
+  ],
+  "Common Fractures / MSK": [
+    "Look for commonly associated injuries (calcaneus/L-spine, proximal fibula with ankle, C-spine with concomitant spinal #, neurovascular injury with fracture/dislocation)",
+    "Suspect appropriate causative etiology (posterior shoulder dislocation and seizures; nightstick fracture = look for assault)",
+    "Consider referred etiology (hip lesion as knee pain, cervical disc as upper limb pain)",
+    "Consider occult fractures when initial X-ray is negative (scaphoid, hip, elbow)",
+    "Assess neurovascular status before and after all manipulations, reduce before imaging when indicated",
+    "Look for and identify open fractures carefully (puncture wounds, those covered with bandages, adjacent lacerations, closed fist injuries)",
+    "Refer promptly for urgent operative treatment when needed (compartment syndrome, open fractures)",
+    "Arrange appropriate disposition (splint, pain control, timely follow-up)"
+  ],
+  "Continuous Quality Improvement (CQI)": [
+    "Given an adverse event or close call, identify causative contributing factors and implement corrective action",
+    "Disclose adverse events to patient and/or family regardless of outcome",
+    "Plan and implement proactive quality of care analysis using patient outcome measures",
+    "Design a simple QI project to improve quality of care, including re-measurement",
+    "Review and identify patient safety issues (two patient identifiers, hand hygiene, infection control, SBAR, safe medication practices, medication reconciliation)",
+    "Include regular quality improvement activities in daily emergency medicine practice"
+  ],
+  "Critical Appraisal": [
+    "Identify study design type and its inherent strengths and limitations",
+    "Derive basic biostatistics (sensitivity, specificity, likelihood ratio, NNT/NNH) and interpret their meaning",
+    "Apply biostatistics to justify directions for specific clinical situations",
+    "Determine pertinence for clinical practice: clinical vs. statistical significance, patient-oriented vs. disease-oriented end points, applicability, correlation with author conclusions",
+    "Incorporate evidence-based information in clinical decision making and management"
+  ],
+  "Decreased Level of Consciousness": [
+    "Develop an appropriately broad differential (metabolic, infectious, structural, medications, recreational drugs, post-ictal) while promptly ruling out serious causes (ICH, meningitis/encephalitis, toxins)",
+    "Treat reversible causes promptly (hypoglycemia, hypoxia, opioid intoxication, hypotension/hypovolemia)",
+    "Actively seek collateral/pre-hospital history and confirm the nature of the change from baseline",
+    "Do not accept a minor diagnosis (e.g., alcohol intoxication) without eliminating serious causes (e.g., head trauma)",
+    "Use both qualitative and quantitative descriptors to document and monitor LOC over time (e.g., GCS)"
+  ],
+  "Deep Venous Thrombosis (DVT) / Pulmonary Embolus (PE)": [
+    "Include specific history elements to accurately assess baseline risk",
+    "Examine specifically for presence or absence of signs consistent with DVT/PE and competing diagnoses",
+    "Use available clinical decision rules to determine pre-test probability",
+    "Investigate using ancillary tests appropriate to pre-test probability (do not order D-dimer in high-risk patients)",
+    "Adapt testing to underlying history or comorbid conditions (US legs first in pregnant women, CT instead of VQ in underlying respiratory disease)",
+    "Initiate appropriate treatment adapted to comorbid conditions (no warfarin in pregnancy, no LMWH in renal failure)",
+    "Use objective findings (respiratory rate, O2 sat, biomarkers) to determine safety of outpatient treatment"
+  ],
+  "Delirium / Agitation": [
+    "Distinguish between delirium, dementia, and psychosis",
+    "Consider a broad differential (intracranial lesion, intoxication/withdrawal, metabolic) while promptly treating reversible causes",
+    "When managing agitation, ensure safety of all involved (patient, staff, families, other patients)",
+    "In a patient requiring physical restraint, first use appropriate chemical agents to sedate, then ensure proper monitoring and surveillance",
+    "Assess capacity for medical decisions and decide on the need for substitute decision-maker or involuntary treatment"
+  ],
+  "Emergency Medical Services (EMS)": [
+    "Given an EMS call: elicit focused history, provide direction for field triage/treatment, prepare department for arrival",
+    "On EMS arrival, obtain focused history from EMS personnel (scene details, treatment en route, changes in status)",
+    "Prepare patient for safe transfer to mitigate potential risks (airway control, IV access, decompress prior to air transport)",
+    "In a major out-of-hospital emergency (mass casualty, environmental disaster), advise and direct EMS management prior to ED arrival"
+  ],
+  "Environmental": [
+    "Suspect heat stroke in a patient with altered mental status and fever in heat stress, and act immediately",
+    "In severe hyperthermia, cool promptly and aggressively using multiple modalities before confirmed diagnosis, while considering other etiologies (NMS, OD, endocrine, infections)",
+    "In a hypothermic patient, use effective rewarming modalities, monitor accurately, and continue resuscitation until core temperature recovered",
+    "Recognise that unexplained symptoms after diving could be dysbarism; refer for hyperbaric therapy when appropriate",
+    "In electrical injury, look for internal injuries (including myocardial) and associated trauma not apparent externally"
+  ],
+  "Eye: Red Eye / Loss of Vision": [
+    "Do not diagnose conjunctivitis without first ruling out serious possibilities (glaucoma, iritis, keratitis, foreign body)",
+    "Obtain detailed history of ocular symptoms and pertinent systemic illness (temporal arteritis, ankylosing spondylitis)",
+    "Measure and document visual acuity, then perform detailed physical exam including slit lamp",
+    "In viral ocular infections, avoid routine prescription of topical steroids",
+    "In subconjunctival hemorrhage following trauma, rule out hyphema including those diagnosed only on slit lamp"
+  ],
+  "First-Trimester Bleeding": [
+    "Look for and recognize early signs of shock (vital signs, orthostatic changes)",
+    "Consider pregnancy in the differential and investigate to rule out ectopic location when pregnancy identified",
+    "Perform appropriate pelvic exam (both speculum and bi-manual)",
+    "Recognize limitations of quantitative beta-hCG and ultrasound testing in ruling out ectopic pregnancy",
+    "Determine maternal Rh status to offer prophylaxis for Rh sensitization",
+    "Ensure appropriate arrangements for counselling, support, and follow-up for non-viable pregnancy"
+  ],
+  "Gastrointestinal (GI) Bleed": [
+    "Look for key risk factors suggesting likely etiology (medications, substances, constitutional symptoms, stigmata of liver disease, coagulopathy)",
+    "In an apparent lower GI bleed, do not assume it does not originate from an upper GI source",
+    "Consider occult GI bleeding in patients with hypoperfusion symptoms but without overt GI complaints",
+    "Conduct careful ENT and pulmonary exam to exclude extra-intestinal sources",
+    "Resuscitate optimally (early type and screen/cross-match, O-negative vs. type-specific vs. cross-matched, aggressive crystalloid)",
+    "Expedite specific therapeutic interventions when indicated (octreotide, IV PPI, endoscopy vs. surgical intervention) while continuing resuscitation"
+  ],
+  "Headache": [
+    "Obtain detailed headache description (onset, evolution, severity, quality, previous episodes, associated symptoms) for appropriate differential",
+    "Consider life-threatening diagnoses (intracranial bleed, meningitis, space-occupying lesions, pre-eclampsia) and rule them out",
+    "Search specifically for physical signs of serious diagnoses (altered mental status, focal neuro findings, papilledema, meningismus, rash)",
+    "In a headache not clearly intracranial, consider extra-cranial causes (temporal arteritis, glaucoma/iritis, zoster/neuralgia, sinusitis)",
+    "Diagnose and treat migraine appropriately when no serious pathology found",
+    "Investigate promptly for serious pathology (CT, lumbar puncture) and treat empirically before investigation when indicated (antibiotics/steroids for suspected meningitis)"
+  ],
+  "Infectious Diseases": [
+    "Use empiric antibiotics early in suspected severe infection, before completing investigations",
+    "Recognize septic shock and treat aggressively with structured goal-directed therapy plus antibiotics",
+    "Identify risk factors for serious/complicated infections (immunocompromised, age, comorbidity, travel, alcohol, substance use)",
+    "In apparent minor infection, look for complications or more serious diagnoses (pharyngitis vs. peritonsillar abscess, cellulitis vs. necrotizing fasciitis, vaginitis vs. STI/PID)",
+    "In non-specific presentations (altered mental status, fatigue, weight loss), consider less common infections (malaria, TB, endocarditis, Lyme disease)",
+    "Assess commonly neglected areas for infection source (neck stiffness, skin signs in elderly, vaginal/pelvic exam, foreign bodies, wounds)",
+    "Adapt investigation to age and clinical context; do not over- or under-investigate",
+    "Prescribe appropriate antibiotics based on probable pathogens for age and context before culture results",
+    "Do not use antibiotics for presentations most likely non-bacterial (viral URI)",
+    "Assess need for post-exposure prophylaxis when appropriate (needle sticks, communicable diseases, rabies, tetanus)"
+  ],
+  "Ischemic Heart Disease": [
+    "Initiate diagnostic testing without delay (early and serial ECG, early biomarker testing, chest pain protocols)",
+    "Accurately interpret ECGs, especially subtle changes and important rule-outs (pericarditis)",
+    "Stratify risk for both typical and atypical presentations to direct management",
+    "Do not rule out ACS based on a single negative test or findings of limited usefulness (response to 'pink lady,' chest wall tenderness, resolution of pain)",
+    "Consider ACS in atypical presentations (fatigue, dizziness, dyspnea, atypical pain) especially in high-risk groups (elderly, females, diabetics, cocaine users)",
+    "In STEMI, arrange urgent reperfusion by optimal available means (PCI, thrombolysis)",
+    "Assess risks and benefits of specific interventions (thrombolytics, pacing, PCI, beta blockers) prior to initiating",
+    "For low-risk stratified ACS, ensure appropriate follow-up and investigation (provocative testing) until diagnosis confirmed or eliminated"
+  ],
+  "Lacerations": [
+    "Clarify mechanism to identify higher risk (infection, foreign bodies, deep structure injury) needing more than simple suturing",
+    "Look for specific associated injuries to adjacent structures (tendons, joints, nerves, vessels)",
+    "In high-risk lacerations, do not suture before adequate exploration/irrigation/imaging and considering non-closure or delayed closure",
+    "Prescribe antibiotics for infection-risk lacerations to cover likely organisms with close follow-up, but avoid antibiotics for low-risk wounds"
+  ],
+  "Multiple Patients": [
+    "Risk-stratify and triage based on presenting complaint, vital signs, and ABCs",
+    "Prioritize investigation and simultaneous management, first stabilizing those requiring resuscitation then performing timely reassessments",
+    "Ensure leadership and delegate tasks clearly; mobilize other resources/services early",
+    "In situations exceeding usual capacity, activate disaster plan, work with EMS, and facilitate implementation within the ED"
+  ],
+  "Multiple Trauma": [
+    "Perform required critical interventions at appropriate stages of primary survey (immobilize C-spine, decompress pneumothorax, control bleeding, bind pelvis)",
+    "Ensure most life-threatening injuries are managed first by effectively determining priority as conditions are identified",
+    "Use secondary survey to assess for important and easily missed pathology and iatrogenic complications (vascular compromise, back injury, scalp lacerations, iatrogenic hypothermia, unstable fractures)",
+    "Ascertain other relevant conditions (pregnancy, hemophilia, medications, patient preferences/advance directives)",
+    "Look for subtle changes indicating developing complications (narrowed pulse pressure, agitation)",
+    "Administer fluid and blood products using defined clinical end points (MAP, massive transfusion protocol)",
+    "Provide leadership to care team and delegate tasks effectively",
+    "Prepare trauma patient for safe transport to reduce treating new complications during transport"
+  ],
+  "Pediatric Fever": [
+    "Stratify risk of sepsis based on age and other factors to determine appropriate septic work-up",
+    "Look for and recognize subtle or non-specific signs/symptoms of sepsis (lethargy, poor feeding, abnormal vital signs)",
+    "In suspected sepsis, provide early broad-spectrum antibiotic coverage",
+    "In fever with rash, distinguish significant rashes (measles, meningococcemia) from non-specific viral exanthems",
+    "In prolonged/persistent fever without evident focus, look for less common causes (malaria, Kawasaki, inflammatory disorders, malignancy)",
+    "In acute fever without obvious infectious focus, consider non-infectious exogenous causes (toxic exposure, heat-related)",
+    "In likely non-bacterial infection (otitis media, viral URTI), do not prescribe antibiotics",
+    "When providing antipyretics, use dosing based on weight, not age"
+  ],
+  "Pre-Eclampsia": [
+    "In a pregnant patient with unexplained symptoms (abdominal pain, altered sensorium, headache), consider pre-eclampsia even if BP is normal",
+    "Assess in a structured fashion (risk factors, symptoms, signs, change in BP from baseline, blood tests) to expeditiously rule in or out",
+    "In a pregnant patient with nausea/vomiting or abdominal pain, rule out HELLP syndrome before diagnosing any other cause",
+    "Start initial management (BP management, seizure precautions), monitor mother and fetus for complications, and ensure urgent evaluation for timing/manner of delivery"
+  ],
+  "Pulmonary Edema": [
+    "Treat early and aggressively based on clinical presentation (BiPAP) prior to determining underlying etiology",
+    "While treating symptomatically, look for and identify the primary etiology (MI, fluid overload, anemia)",
+    "Treat the primary etiology to avoid further decompensation (PCI/thrombolysis, diuretics, transfusion)",
+    "Examine for and recognize impending respiratory failure and provide appropriate interventions (respiratory support, vasoactive agents)",
+    "In an apparent respiratory problem (SOB on exertion, wheezing), consider and rule out subtle presentations of pulmonary edema",
+    "Assess conditions for safe discharge once clinically indicated (road test, living situation, follow-up)"
+  ],
+  "Seizures": [
+    "Consider seizure in atypical presentations without witnessed seizure movements (confusion, altered LOC, fall/injury, tics in children)",
+    "Investigate for rapidly reversible causes (hypoglycemia, toxicology, arrhythmias) and treat promptly",
+    "In ongoing repeated seizures or persistent altered mental status between seizures, make the diagnosis of status epilepticus and treat promptly",
+    "In actively seizing patient: assess airway/ventilation, identify conditions requiring non-standard anticonvulsant therapy (pre-eclampsia, toxidromes), use anticonvulsants progressively to terminate seizures ASAP",
+    "In a first seizure, counsel regarding high-risk activities and reporting to authorities (driving/sports/occupation)",
+    "In a first seizure, investigate for underlying etiology in a timely fashion (CT, LP, EEG, metabolic, toxicologic)",
+    "In a known epileptic with seizure, investigate appropriately but do not over-investigate (verify compliance, check anticonvulsant levels, consider contributing causes)",
+    "In a child with typical febrile seizure with complete recovery, diagnose based on history and physical alone and do not over-investigate"
+  ],
+  "Shock / Dehydration": [
+    "Recognize subtle signs of shock in populations with atypical presentations (pediatric, pregnant, elderly)",
+    "In dehydration, accurately quantify the degree of fluid deficit taking into account patient age",
+    "Resuscitate with the appropriate fluid for the condition (blood, crystalloid, colloid)",
+    "In septic shock, treat aggressively using clinical information to guide ongoing management (fluid resuscitation, evidence-based antibiotic choices, clinical reassessment)",
+    "Actively seek diagnoses beyond hypovolemia (cardiogenic, spinal, toxicological, anaphylactic)",
+    "Use ancillary tests to aid in narrowing differential (ultrasound, CXR, ECG)",
+    "Select the most appropriate vasopressor based on etiology and clinical presentation",
+    "Administer non-fluid management where appropriate (steroids in Addison's, antidotes in toxicology)"
+  ],
+  "Shortness of Breath": [
+    "Differentiate upper from lower airway pathology, as emergent management may be very different",
+    "Maintain a broad differential: look for coexisting etiologies (pneumonia precipitating CHF), unrelated acute cause in chronic illness (PE in COPD), non-respiratory causes (metabolic acidosis, anemia, toxicology, CNS)",
+    "In severe shortness of breath, initiate emergent management prior to confirmation of diagnosis, including appropriate determination of invasive vs. non-invasive respiratory support",
+    "Accurately estimate severity using both subjective and objective measures (altered LOC, peak flow, ABG) to avoid delayed detection of respiratory failure",
+    "In a patient at risk for PE, select ancillary evaluations recognizing the impact of pre-test probability (D-dimer in 'no-risk' and 'high-risk' PE, rule out PE based on normal CXR)"
+  ],
+  "Suicide Risk": [
+    "Inquire specifically about risk criteria (SAD PERSONS scale, hopelessness, lack of supports, impulsivity)",
+    "In high-risk populations (geriatrics, post-partum, substance use), recognize subtle or hidden presentations of suicidality ('accidental' medication errors, self-neglect, unexplained accidents/injury)",
+    "In a patient who does not wish to stay for voluntary evaluation, assess and document criteria for involuntary admission, consider patient rights and medico-legal consequences",
+    "In a patient assessed as low risk, negotiate a suitable outpatient plan and discharge at appropriate time",
+    "In outpatient plan: include confirmed follow-up plans, contingency plans for extra support and rapid-contact information (crisis line), initial pharmacologic management with full discussion of effects and side-effects"
+  ],
+  "Toxicology": [
+    "Gather available collateral history (EMS, empty pill bottles, recent prescriptions) to better identify likely toxins",
+    "Identify specific toxidromes based on clinical findings; use antidotes judiciously based on toxidrome, indications, and contraindications",
+    "Maintain high level of suspicion for multidrug ingestion, especially with mixed toxidromes or unexpected abnormal lab values (abnormal osmolar gap)",
+    "Select specific treatments based on combined clinical toxidrome and presumed ingestion (avoid beta blockers in sympathomimetic OD, sodium bicarbonate in TCA with wide QRS)",
+    "Anticipate and identify complications secondary to the ingestion (respiratory depression, dysrhythmia)",
+    "Use decontamination or elimination techniques when appropriate based on time of exposure and pharmacokinetics",
+    "Judiciously select ancillary investigations that provide information affecting management (ECG, ABG, anion/osmolar gap, specific serum levels vs. urine/gastric screens)",
+    "In a patient in withdrawal (alcohol, opioids), assess using objective signs to determine degree of withdrawal and management priorities"
+  ]
+};
+
+// ============================================================
+// STATIC QUESTION BANK
+// ============================================================
+const QUESTION_BANK = {
+  samp: [
+    // --- CARDIAC ARREST ---
+    {
+      topic: "Cardiac Arrest",
+      difficulty: "hard",
+      scenario: `A 58-year-old male collapses in the waiting room of your emergency department. He was brought in by his wife for evaluation of intermittent chest discomfort over the past 2 hours. A nurse witnesses the collapse and calls for help. On arrival, the patient is unresponsive, pulseless, and apneic. The cardiac monitor shows ventricular fibrillation.
+
+His wife reports he has a history of hypertension, type 2 diabetes, and had a coronary artery stent placed 3 years ago. Current medications include ASA 81 mg, metformin 1000 mg BID, and ramipril 10 mg daily.`,
+      questions: [
+        {
+          text: "Outline your immediate management of this patient in the first 2 minutes.",
+          type: "free-text",
+          marks: 5,
+          answer: [
+            "Begin high-quality CPR immediately (rate 100-120/min, depth 5-6 cm, full recoil)",
+            "Attach defibrillator pads and deliver first shock at 200J biphasic",
+            "Resume CPR immediately for 2 minutes after shock",
+            "Establish IV/IO access",
+            "Prepare epinephrine 1 mg IV and amiodarone 300 mg IV",
+            "Assign team roles: compressor, airway, medications, timekeeper, recorder",
+            "Ensure bag-valve-mask ventilation with high-flow O2 (30:2 ratio until advanced airway)"
+          ]
+        },
+        {
+          text: "After 3 cycles of CPR and defibrillation, the patient remains in refractory ventricular fibrillation. What additional interventions should you consider?",
+          type: "free-text",
+          marks: 5,
+          answer: [
+            "Administer amiodarone 150 mg IV (second dose) if not already given",
+            "Consider switching defibrillator pad position (anterior-posterior)",
+            "Consider double sequential defibrillation",
+            "Ensure high-quality CPR — change compressors every 2 minutes",
+            "Treat reversible causes (H's and T's): Hypovolemia, Hypoxia, Hydrogen ion (acidosis), Hypo/Hyperkalemia, Hypothermia, Tension pneumothorax, Tamponade, Toxins, Thrombosis (coronary/pulmonary)",
+            "Consider advanced airway (endotracheal intubation or supraglottic device) if not already placed",
+            "Consider IV magnesium 2g if suspect Torsades or hypomagnesemia",
+            "Consider IV lidocaine 1-1.5 mg/kg as alternative antiarrhythmic"
+          ]
+        },
+        {
+          text: "The patient achieves ROSC after 18 minutes of resuscitation. His BP is 85/52, HR 110 (sinus tachycardia), and he remains unconscious with a GCS of 3T. What are your post-ROSC management priorities?",
+          type: "free-text",
+          marks: 5,
+          answer: [
+            "Targeted temperature management (TTM) — goal 32-36°C for at least 24 hours",
+            "12-lead ECG to assess for STEMI — arrange emergent PCI if indicated",
+            "Hemodynamic support — IV fluids, vasopressors (norepinephrine) targeting MAP ≥65 mmHg",
+            "Mechanical ventilation — target SpO2 94-98%, avoid hyperoxia, PaCO2 35-45 mmHg",
+            "Avoid and treat hypotension, hypoglycemia, seizures",
+            "Bloodwork: lactate, troponin, electrolytes, VBG/ABG, CBC, glucose, renal function",
+            "Continuous monitoring: arterial line, continuous EtCO2",
+            "Arrange ICU admission",
+            "Communicate with family"
+          ]
+        },
+        {
+          text: "Which of the following is the recommended target temperature range for post-cardiac arrest targeted temperature management?",
+          type: "mcq",
+          marks: 1,
+          options: ["30-32°C", "32-36°C", "36-38°C", "34-36°C"],
+          correctIndex: 1,
+          explanation: "Current guidelines (AHA/ILCOR) recommend targeted temperature management at 32-36°C maintained for at least 24 hours following ROSC in comatose survivors of cardiac arrest."
+        }
+      ]
+    },
+
+    // --- SEPSIS ---
+    {
+      topic: "Sepsis",
+      difficulty: "hard",
+      scenario: `A 72-year-old female is brought by EMS from a nursing home with altered mental status and fever. Staff report she has been increasingly confused for 24 hours with decreased oral intake. Her past medical history includes dementia (moderate), hypertension, atrial fibrillation, and recurrent UTIs.
+
+Vitals: T 39.2°C, HR 118 (irregular), BP 82/48, RR 26, SpO2 93% on room air, GCS 12 (E3V4M5).
+
+On examination, she appears ill, with dry mucous membranes, mottled skin to the knees bilaterally, and suprapubic tenderness. A Foley catheter is in situ draining cloudy, foul-smelling urine.`,
+      questions: [
+        {
+          text: "Based on the presentation, identify the likely diagnosis and the criteria that support it.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Diagnosis: Septic shock secondary to urinary tract infection (urosepsis)",
+            "Sepsis criteria met: suspected infection + acute organ dysfunction (qSOFA ≥2: altered mental status, SBP ≤100, RR ≥22)",
+            "Shock criteria: hypotension (BP 82/48) despite likely volume depletion, with signs of end-organ hypoperfusion (mottled skin, altered mental status)",
+            "Source: cloudy foul-smelling urine with suprapubic tenderness in patient with indwelling catheter"
+          ]
+        },
+        {
+          text: "Describe your initial resuscitation within the first hour (the 'Hour-1 Bundle').",
+          type: "free-text",
+          marks: 6,
+          answer: [
+            "Measure serum lactate — repeat if initial lactate >2 mmol/L",
+            "Obtain blood cultures (2 sets, peripheral) BEFORE antibiotics",
+            "Administer broad-spectrum IV antibiotics within 1 hour (e.g., piperacillin-tazobactam 4.5g IV or meropenem if concern for ESBL)",
+            "Begin rapid IV crystalloid bolus: 30 mL/kg within first 3 hours for hypotension or lactate ≥4",
+            "Apply vasopressors (norepinephrine first-line) if MAP <65 after initial fluid resuscitation",
+            "Place on continuous monitoring, supplemental O2 targeting SpO2 ≥94%",
+            "Obtain UA, urine culture, CBC, electrolytes, creatinine, coagulation studies, VBG",
+            "Consider changing Foley catheter given likely catheter-associated UTI"
+          ]
+        },
+        {
+          text: "Which of the following is the first-line vasopressor in septic shock?",
+          type: "mcq",
+          marks: 1,
+          options: ["Dopamine", "Norepinephrine", "Phenylephrine", "Vasopressin"],
+          correctIndex: 1,
+          explanation: "Norepinephrine is the first-line vasopressor in septic shock per Surviving Sepsis Campaign guidelines. Vasopressin may be added as a second agent to reduce norepinephrine dose. Dopamine is associated with more arrhythmias."
+        },
+        {
+          text: "After 3 liters of crystalloid and a norepinephrine infusion, MAP is 60 mmHg and lactate has risen from 4.2 to 5.8 mmol/L. What are your next steps?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Add vasopressin 0.03 units/min as second vasopressor",
+            "Assess fluid responsiveness (passive leg raise, pulse pressure variation, IVC ultrasound) before further boluses",
+            "Obtain a cortisol level or administer stress-dose hydrocortisone 50 mg IV q6h empirically for refractory shock",
+            "Perform point-of-care ultrasound (cardiac function, IVC, lung) to guide further management",
+            "Consider source control — evaluate for obstruction or abscess requiring drainage",
+            "Reassess antibiotic coverage — consider broadening or ID consultation",
+            "Trending lactate q2h as marker of resuscitation adequacy",
+            "Consider central venous access for CVP monitoring and ScvO2"
+          ]
+        }
+      ]
+    },
+
+    // --- HEAD INJURY ---
+    {
+      topic: "Head Injury",
+      difficulty: "mixed",
+      scenario: `A 34-year-old male cyclist is brought in by paramedics after being struck by a motor vehicle. He was not wearing a helmet. Bystanders report a brief loss of consciousness at the scene (~2 minutes). He is now alert but confused and repeatedly asking the same questions. There is a 4 cm laceration over the left temporal area with active bleeding.
+
+Vitals: HR 88, BP 138/82, RR 16, SpO2 99%, T 36.8°C, GCS 14 (E4V4M6).
+
+On examination: left periorbital ecchymosis, clear otorrhea from the left ear, pupils 3mm bilaterally and reactive. No midline cervical tenderness. No focal neurological deficits.`,
+      questions: [
+        {
+          text: "What clinical features in this presentation are concerning for a basilar skull fracture?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Left periorbital ecchymosis (raccoon eye) — suggests anterior fossa fracture",
+            "Clear otorrhea from left ear (CSF leak) — suggests temporal bone / middle fossa fracture",
+            "Mechanism: unprotected head striking the ground at speed is high-energy",
+            "Other signs to look for (not present here): Battle sign (mastoid ecchymosis), hemotympanum, cranial nerve palsies (especially CN VII, VIII)"
+          ]
+        },
+        {
+          text: "Does this patient meet the Canadian CT Head Rule criteria for imaging? Explain.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Yes — this patient requires CT head. The Canadian CT Head Rule applies to patients with GCS 13-15 and witnessed LOC, amnesia, or confusion.",
+            "HIGH-RISK criteria met (need CT): GCS <15 at 2 hours post-injury (currently GCS 14), suspected open or depressed skull fracture, signs of basilar skull fracture (otorrhea, raccoon eye)",
+            "MEDIUM-RISK criteria also met: amnesia before impact >30 min (unclear), dangerous mechanism (pedestrian/cyclist struck by vehicle)",
+            "CT should be performed urgently — the signs of basilar skull fracture alone mandate imaging"
+          ]
+        },
+        {
+          text: "CT head reveals a left temporal epidural hematoma measuring 12 mm in maximal thickness with 4 mm of midline shift. What is your management?",
+          type: "free-text",
+          marks: 5,
+          answer: [
+            "Emergent neurosurgical consultation for surgical evacuation (craniotomy)",
+            "Surgical indications met: EDH >10 mm thickness, midline shift >5 mm is relative indication, but any symptomatic EDH with neurological findings warrants surgery",
+            "Meanwhile: elevate head of bed 30°, keep neck midline to optimize venous drainage",
+            "Maintain normotension (avoid hypotension — SBP >100), normoxia, normothermia",
+            "Serial GCS monitoring q15 minutes — low threshold for intubation if GCS deteriorates",
+            "Prepare for RSI if needed (avoid ketamine in discussions, use propofol/fentanyl + rocuronium/succinylcholine)",
+            "Address the scalp laceration — suture repair after imaging and surgical planning",
+            "Cervical spine clearance — CT c-spine if not already done given mechanism",
+            "Seizure prophylaxis: levetiracetam or phenytoin for 7 days per guidelines"
+          ]
+        },
+        {
+          text: "What is the most common source of bleeding in an epidural hematoma?",
+          type: "mcq",
+          marks: 1,
+          options: ["Bridging veins", "Middle meningeal artery", "Anterior cerebral artery", "Superior sagittal sinus"],
+          correctIndex: 1,
+          explanation: "Epidural hematomas are most commonly caused by rupture of the middle meningeal artery, typically associated with temporal bone fractures. Bridging veins are the source in subdural hematomas."
+        }
+      ]
+    },
+
+    // --- OVERDOSE / POISONING ---
+    {
+      topic: "Overdose / Poisoning",
+      difficulty: "hard",
+      scenario: `A 22-year-old female is brought to the ED by friends who found her unresponsive in her apartment. An empty bottle of acetaminophen (500 mg tablets, 100 count, purchased yesterday) and a suicide note were found at the scene. Friends estimate she was last seen well approximately 8 hours ago.
+
+On arrival: GCS 14 (E3V5M6), vitals: HR 102, BP 108/68, RR 20, SpO2 98% RA, T 36.5°C. She is drowsy but arousable, mildly nauseous, and has vague RUQ discomfort. No jaundice.`,
+      questions: [
+        {
+          text: "What is the maximum potential ingestion and the expected clinical course based on the timeline?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Maximum potential ingestion: 100 tablets × 500 mg = 50,000 mg (50 g) — this is a massive, potentially lethal ingestion (toxic dose >150 mg/kg, or ~10g in adults)",
+            "At 8 hours post-ingestion, patient is in late Stage 1 / early Stage 2 of acetaminophen toxicity:",
+            "Stage 1 (0-24h): nonspecific — nausea, vomiting, malaise, diaphoresis",
+            "Stage 2 (24-72h): clinical improvement may occur but hepatotoxicity develops — rising AST/ALT, RUQ pain, rising INR",
+            "Stage 3 (72-96h): peak hepatotoxicity — fulminant hepatic failure, coagulopathy, encephalopathy, renal failure, possible death",
+            "Stage 4 (4d-2wk): recovery phase in survivors",
+            "Current symptoms (RUQ discomfort, nausea) at 8h are concerning for early hepatotoxicity"
+          ]
+        },
+        {
+          text: "Outline your emergency management priorities.",
+          type: "free-text",
+          marks: 6,
+          answer: [
+            "Stat serum acetaminophen level and plot on Rumack-Matthew nomogram (level at 8 hours post-ingestion)",
+            "Start N-acetylcysteine (NAC) IMMEDIATELY — do not wait for levels given massive reported ingestion and time elapsed",
+            "IV NAC protocol: 150 mg/kg over 1 hour, then 50 mg/kg over 4 hours, then 100 mg/kg over 16 hours (21-hour protocol)",
+            "Activated charcoal is unlikely to be helpful at 8 hours post-ingestion (most beneficial within 1-2 hours), but could consider if massive ingestion and potential for bezoar",
+            "Bloodwork: AST, ALT, INR/PT, creatinine, electrolytes, lipase, VBG (lactate, pH), serum acetaminophen level, salicylate level, ethanol level",
+            "Check co-ingestants — additional toxicology screen given intentional overdose",
+            "Psychiatric assessment once medically stable — 1:1 safety observation",
+            "IV fluids for hydration and antiemetics (ondansetron) for nausea",
+            "Contact Poison Control for guidance",
+            "Serial bloodwork q6-12h: AST, ALT, INR, creatinine, acetaminophen level"
+          ]
+        },
+        {
+          text: "At what time post-ingestion is the Rumack-Matthew nomogram valid for interpreting acetaminophen levels?",
+          type: "mcq",
+          marks: 1,
+          options: ["0-4 hours", "4-24 hours", "2-12 hours", "8-36 hours"],
+          correctIndex: 1,
+          explanation: "The Rumack-Matthew nomogram is valid for acute single ingestions with levels drawn between 4 and 24 hours post-ingestion. Levels drawn before 4 hours may not reflect peak absorption and cannot be reliably plotted."
+        },
+        {
+          text: "At 24 hours, the patient's AST is 8,400 U/L, ALT is 7,200 U/L, INR is 3.8, creatinine is 180 μmol/L, and she is becoming increasingly confused. What are the criteria for liver transplant referral and your ongoing management?",
+          type: "free-text",
+          marks: 5,
+          answer: [
+            "King's College Criteria for acetaminophen-induced acute liver failure — transplant referral if ANY of:",
+            "• Arterial pH <7.3 after resuscitation, OR",
+            "• All three: INR >6.5 (PT >100s) AND creatinine >300 μmol/L AND Grade III/IV hepatic encephalopathy",
+            "This patient has rising INR (3.8), rising creatinine (180), and worsening encephalopathy — trajectory is concerning, consider early transfer to transplant centre",
+            "Continue IV NAC — shown to benefit even in established hepatotoxicity",
+            "Manage coagulopathy: Vitamin K 10 mg IV, FFP/PCC only if active bleeding (INR is a prognostic marker — do not correct routinely)",
+            "Manage hepatic encephalopathy: lactulose, avoid sedating medications",
+            "Monitor and correct hypoglycemia (hepatic glycogen depletion)",
+            "ICU admission for close monitoring",
+            "Contact regional liver transplant program for early consultation"
+          ]
+        }
+      ]
+    },
+
+    // --- DYSPNEA / RESPIRATORY DISTRESS ---
+    {
+      topic: "Dyspnea / Respiratory Distress",
+      difficulty: "mixed",
+      scenario: `A 68-year-old male presents to the ED with acute onset severe dyspnea that woke him from sleep 2 hours ago. He reports progressive exertional dyspnea over the past week and now requires 3 pillows to sleep. He has a history of ischemic cardiomyopathy (EF 30% on last echo 6 months ago), atrial fibrillation, hypertension, and CKD stage 3.
+
+Medications: bisoprolol 5 mg, ramipril 10 mg, furosemide 40 mg daily, apixaban 5 mg BID, atorvastatin 40 mg.
+
+Vitals: HR 132 (irregular), BP 178/98, RR 32, SpO2 86% on room air, T 37.1°C.
+
+Examination reveals an anxious, diaphoretic male in tripod position. JVP 8 cm above sternal angle. Bilateral diffuse crackles to the apices. S3 gallop. 2+ bilateral pitting edema to the knees.`,
+      questions: [
+        {
+          text: "What is the most likely diagnosis and what are the key findings supporting it?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Acute decompensated heart failure (ADHF) with acute pulmonary edema",
+            "Supporting findings: known ischemic cardiomyopathy with EF 30%, orthopnea (3 pillows), paroxysmal nocturnal dyspnea (woke from sleep), elevated JVP, bilateral crackles to apices, S3 gallop, bilateral pitting edema",
+            "Hypertensive component — BP 178/98 contributing to afterload mismatch",
+            "Need to determine precipitant: medication non-compliance, dietary indiscretion, new arrhythmia (rapid AF), ACS, infection, renal deterioration"
+          ]
+        },
+        {
+          text: "Describe your initial management approach.",
+          type: "free-text",
+          marks: 6,
+          answer: [
+            "Position: sit upright",
+            "Oxygen: high-flow O2 via non-rebreather, early application of BiPAP/CPAP (start CPAP 10 cmH2O or BiPAP 10/5) — strong evidence for reducing intubation in acute pulmonary edema",
+            "IV nitroglycerin infusion: start at 10-20 mcg/min, titrate to BP response (target SBP ~140) — reduces preload AND afterload; consider high-dose bolus NTG 400-800 mcg if severely hypertensive",
+            "IV furosemide: give 40-80 mg IV (at least equivalent to home oral dose) — higher dose given CKD",
+            "12-lead ECG: assess for STEMI/ischemia, confirm atrial fibrillation with RVR",
+            "Rate control for rapid AF: IV diltiazem or digoxin (avoid beta-blockers in acute decompensation with this severity)",
+            "Bloodwork: troponin, BNP/NT-proBNP, electrolytes, creatinine, CBC, VBG (assess pH, lactate, pCO2)",
+            "Chest X-ray: confirm pulmonary edema, rule out pneumonia/pneumothorax",
+            "Point-of-care ultrasound: B-lines (pulmonary edema), cardiac function, IVC",
+            "Avoid morphine — associated with worse outcomes in acute heart failure"
+          ]
+        },
+        {
+          text: "Which non-invasive ventilation mode has the strongest evidence for reducing intubation rates in acute cardiogenic pulmonary edema?",
+          type: "mcq",
+          marks: 1,
+          options: ["High-flow nasal cannula", "CPAP", "BiPAP", "CPAP and BiPAP have equivalent evidence"],
+          correctIndex: 3,
+          explanation: "Both CPAP and BiPAP have strong evidence for reducing intubation and mortality in acute cardiogenic pulmonary edema. The 3CPO trial showed no significant difference between CPAP and BiPAP. Both are recommended as first-line respiratory support."
+        }
+      ]
+    },
+
+    // --- TRAUMA (MULTI-SYSTEM) ---
+    {
+      topic: "Trauma (Multi-system)",
+      difficulty: "hard",
+      scenario: `A 28-year-old female unrestrained driver is brought in as a trauma code after a high-speed MVC (estimated 90 km/h) with rollover. She was extricated by fire services over 20 minutes. GCS at scene was 10 (E2V3M5). She is immobilized on a backboard with a cervical collar.
+
+On arrival: GCS 9 (E2V2M5), HR 128, BP 88/52, RR 28 (shallow), SpO2 91% on NRB at 15L. Temperature 35.8°C.
+
+Primary survey: Airway — blood in oropharynx, gurgling; Breathing — diminished breath sounds on left, splinting; Circulation — weak radial pulses, distended abdomen, unstable pelvis on AP compression; Disability — GCS 9, left pupil 4mm, right 3mm, both reactive.`,
+      questions: [
+        {
+          text: "Walk through your primary survey interventions for each identified problem.",
+          type: "free-text",
+          marks: 6,
+          answer: [
+            "A — Airway: Blood in oropharynx and GCS 9 → requires definitive airway. RSI with in-line cervical stabilization. Suction oropharynx. Use video laryngoscopy. Have surgical airway equipment ready.",
+            "B — Breathing: Diminished left breath sounds in trauma → suspect hemothorax or pneumothorax. Perform left finger thoracostomy or chest tube (28-32Fr) immediately. Reassess ventilation after.",
+            "C — Circulation: Hypotension + tachycardia + distended abdomen + unstable pelvis = hemorrhagic shock. Apply pelvic binder immediately. Establish 2 large-bore IV access (14-16G). Initiate massive transfusion protocol (MTP): 1:1:1 ratio pRBC:FFP:platelets. Tranexamic acid 1g IV over 10 min (if within 3 hours of injury). Type and crossmatch. FAST exam to identify free fluid.",
+            "D — Disability: GCS 9 with pupil asymmetry → concern for traumatic brain injury ± rising ICP. Will need CT head urgently. Neuroprotective measures: avoid hypotension (SBP >100), avoid hypoxia, avoid hyperthermia.",
+            "Adjuncts: Foley catheter (if no urethral injury signs), OG tube (not NG given facial trauma risk), log-roll and remove from backboard, active warming for hypothermia prevention (35.8°C is concerning in trauma — lethal triad)."
+          ]
+        },
+        {
+          text: "The FAST exam shows free fluid in Morrison's pouch and the pelvis. The pelvic X-ray shows an open-book fracture. The patient's BP is now 78/44 despite 2 units of pRBC. What is your approach?",
+          type: "free-text",
+          marks: 5,
+          answer: [
+            "Continue massive transfusion protocol — target 1:1:1 ratio, consider calling for emergency release O-negative blood if crossmatched not ready",
+            "Permissive hypotension: target SBP 80-90 mmHg (lower target given concurrent TBI is controversial — may need SBP >100 for TBI; balance is challenging)",
+            "Pelvic binder should already be applied — confirm correct placement at level of greater trochanters",
+            "Decision point for hemorrhage control: this patient has non-compressible torso hemorrhage from two sources (abdomen + pelvis)",
+            "Options: (1) IR for pelvic angioembolization if available and patient can tolerate transfer, (2) Emergent laparotomy for abdominal hemorrhage + preperitoneal pelvic packing, (3) REBOA as a bridge if available (Zone 1 or Zone 3 depending on source)",
+            "Most likely: emergent OR for damage-control laparotomy + pelvic packing given hemodynamic instability",
+            "Correct the lethal triad: hypothermia (active warming), acidosis (transfusion, hemorrhage control), coagulopathy (blood products, TXA, calcium replacement, fibrinogen)",
+            "Send TEG/ROTEM if available to guide blood product administration"
+          ]
+        },
+        {
+          text: "In the setting of massive transfusion, which electrolyte abnormality is most important to monitor and correct to maintain cardiac function and coagulation?",
+          type: "mcq",
+          marks: 1,
+          options: ["Sodium", "Potassium", "Calcium", "Magnesium"],
+          correctIndex: 2,
+          explanation: "Ionized calcium must be closely monitored during massive transfusion. Citrate in stored blood products chelates calcium, leading to hypocalcemia which impairs cardiac contractility and coagulation factor function. Empiric calcium chloride (1g IV) should be given after every 4 units of blood products."
+        }
+      ]
+    },
+
+    // --- SEIZURES ---
+    {
+      topic: "Seizures",
+      difficulty: "mixed",
+      scenario: `EMS brings in a 30-year-old male who has been having continuous generalized tonic-clonic seizure activity for approximately 15 minutes. Paramedics administered midazolam 10 mg IM en route with no effect. He has a known history of epilepsy and takes levetiracetam 1000 mg BID but his partner reports he has missed several doses this week.
+
+Vitals: HR 138, BP 168/94, RR 8 (intermittent apnea during seizure), SpO2 88%, T 38.4°C, glucose 6.2 mmol/L.`,
+      questions: [
+        {
+          text: "Define this patient's condition and outline the first-line and second-line treatment approach.",
+          type: "free-text",
+          marks: 5,
+          answer: [
+            "This is status epilepticus — continuous seizure activity lasting >5 minutes or recurrent seizures without return to baseline",
+            "First-line (benzodiazepines) — already given midazolam 10mg IM without effect:",
+            "• Give IV lorazepam 4 mg IV, may repeat once in 5-10 minutes (preferred IV benzodiazepine)",
+            "• Or IV diazepam 10 mg if lorazepam unavailable",
+            "Second-line (if seizures continue after adequate benzodiazepine dosing):",
+            "• IV phenytoin/fosphenytoin 20 mg PE/kg IV at max 150 mg/min (with cardiac monitoring) OR",
+            "• IV levetiracetam 60 mg/kg (max 4500 mg) IV over 15 min OR",
+            "• IV valproic acid 40 mg/kg IV over 10 min",
+            "• Given this patient is on levetiracetam and missed doses, could reload levetiracetam or choose an alternative second-line agent"
+          ]
+        },
+        {
+          text: "Despite lorazepam 4 mg IV ×2 and a loading dose of phenytoin, the patient continues to seize. What defines this stage and what are your next steps?",
+          type: "free-text",
+          marks: 5,
+          answer: [
+            "This is now refractory status epilepticus — seizures persisting despite adequate doses of first-line and second-line agents",
+            "Requires RSI and intubation for airway protection and to administer IV anesthetic agents",
+            "Third-line options (continuous infusions with EEG monitoring):",
+            "• Midazolam infusion: 0.2 mg/kg bolus then 0.05-2 mg/kg/hr",
+            "• Propofol infusion: 1-2 mg/kg bolus then 20-65 mcg/kg/min (monitor for propofol infusion syndrome)",
+            "• Ketamine infusion: 1-2 mg/kg bolus then 1-5 mg/kg/hr",
+            "• Pentobarbital/thiopental: 5 mg/kg bolus then 1-5 mg/kg/hr (last resort — significant hypotension)",
+            "Continuous EEG monitoring is essential to confirm seizure cessation and guide titration",
+            "ICU admission mandatory",
+            "Continue to treat underlying cause — correct any electrolyte abnormalities, check for structural lesion (CT head when safe), toxicology screen"
+          ]
+        },
+        {
+          text: "What is the recommended duration of seizure activity that defines status epilepticus?",
+          type: "mcq",
+          marks: 1,
+          options: ["Greater than 2 minutes", "Greater than 5 minutes", "Greater than 10 minutes", "Greater than 30 minutes"],
+          correctIndex: 1,
+          explanation: "Status epilepticus is defined as continuous seizure activity lasting greater than 5 minutes, or two or more seizures without return to baseline between them. The older definition of 30 minutes has been replaced, as treatment should be initiated much earlier to prevent neuronal injury."
+        }
+      ]
+    },
+
+    // --- ALLERGIC REACTION / ANAPHYLAXIS ---
+    {
+      topic: "Allergic Reaction / Anaphylaxis",
+      difficulty: "mixed",
+      scenario: `A 14-year-old boy is brought to the ED by his parents 20 minutes after eating a cookie at a birthday party that unknowingly contained peanuts. He has a known peanut allergy. His parents administered his EpiPen (0.3 mg) at home prior to arriving.
+
+On arrival: anxious, voice is hoarse, diffuse urticaria over trunk and extremities, bilateral wheeze on auscultation, reports throat tightness and abdominal cramping.
+
+Vitals: HR 134, BP 86/50, RR 28, SpO2 93% on room air, T 37.0°C.`,
+      questions: [
+        {
+          text: "Does this patient meet criteria for anaphylaxis? Explain using diagnostic criteria.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Yes — this meets anaphylaxis criteria. Anaphylaxis is highly likely when ANY ONE of the following 3 criteria is met:",
+            "Criterion 1: Acute onset (minutes to hours) with skin/mucosal involvement (urticaria) AND at least one of: respiratory compromise (wheeze, hoarse voice, SpO2 93%) or cardiovascular compromise (hypotension — BP 86/50, tachycardia)",
+            "This patient meets Criterion 1 with: diffuse urticaria + wheeze + hoarse voice + hypotension",
+            "Also meets Criterion 2: exposure to a KNOWN allergen (peanuts) with involvement of 2+ organ systems (skin: urticaria; respiratory: wheeze/hoarse voice; cardiovascular: hypotension; GI: abdominal cramping)"
+          ]
+        },
+        {
+          text: "The patient received one EpiPen dose but is still symptomatic and hypotensive. What is your management?",
+          type: "free-text",
+          marks: 6,
+          answer: [
+            "Repeat IM epinephrine 0.3-0.5 mg (1:1000) into lateral thigh — can repeat every 5-15 minutes. This is the single most important intervention.",
+            "Position: supine with legs elevated (Trendelenburg) — avoid sitting/standing (can precipitate cardiac arrest in anaphylaxis)",
+            "IV access × 2 large bore — aggressive IV normal saline bolus 20 mL/kg for hypotension",
+            "Nebulized salbutamol 5 mg for bronchospasm/wheeze",
+            "Supplemental O2 — high flow via NRB targeting SpO2 >94%",
+            "If persistent hypotension after 2-3 IM doses: start IV epinephrine infusion (1-10 mcg/min, titrate to effect)",
+            "Adjunctive medications (these do NOT treat anaphylaxis but help prevent biphasic reaction):",
+            "• Diphenhydramine 50 mg IV (or weight-based in children: 1 mg/kg)",
+            "• Ranitidine 50 mg IV (H2 blocker) or famotidine 20 mg IV",
+            "• Methylprednisolone 125 mg IV or dexamethasone 0.6 mg/kg",
+            "Prepare for intubation if airway edema worsens — have difficult airway equipment and surgical airway kit available",
+            "Monitor for biphasic reaction — observe minimum 6-8 hours (some guidelines suggest up to 24h for severe reactions)"
+          ]
+        },
+        {
+          text: "What is the recommended observation period after treatment for anaphylaxis before safe discharge?",
+          type: "mcq",
+          marks: 1,
+          options: ["1-2 hours", "4-6 hours", "6-8 hours minimum", "Mandatory 24-hour admission"],
+          correctIndex: 2,
+          explanation: "Patients with anaphylaxis should be observed for a minimum of 6-8 hours after symptom resolution due to the risk of biphasic reaction (occurs in up to 20% of cases). Patients with severe reactions, respiratory compromise, or hypotension may require longer observation or admission."
+        },
+        {
+          text: "List the essential elements of a discharge plan for this patient.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Prescribe and educate on 2 epinephrine auto-injectors (EpiPen) — demonstrate proper use to patient and family",
+            "Provide a written anaphylaxis action plan",
+            "Prescribe a short course of oral antihistamines and consider short oral prednisone course (controversial but commonly done)",
+            "Referral to an allergist for formal allergy testing and consideration of desensitization",
+            "Medical alert bracelet recommendation",
+            "Educate on allergen avoidance, reading food labels, and informing school/restaurants",
+            "Clear return-to-ED instructions: return immediately if ANY recurrence of symptoms",
+            "Follow-up with family physician within 1-2 weeks"
+          ]
+        }
+      ]
+    },
+
+    // --- STROKE / TIA ---
+    {
+      topic: "Stroke / TIA",
+      difficulty: "mixed",
+      scenario: `A 62-year-old right-handed female presents to the ED with sudden-onset right-sided weakness and speech difficulty noticed by her husband 45 minutes ago when she got up to use the bathroom. She was reportedly well when they went to bed at 11 PM. It is now 3:15 AM.
+
+PMH: hypertension, dyslipidemia, type 2 diabetes, 30-pack-year smoking history (quit 2 years ago).
+
+Vitals: HR 88 (irregular), BP 192/108, RR 16, SpO2 97% RA, T 36.9°C, glucose 8.2 mmol/L.
+
+Examination: alert, global aphasia (unable to name, repeat, or follow commands), right facial droop (UMN pattern), right hemiplegia (0/5 arm, 1/5 leg), right homonymous hemianopia, eyes deviate to the left. NIHSS = 21.`,
+      questions: [
+        {
+          text: "Localize the lesion based on the clinical findings.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Large left middle cerebral artery (MCA) territory stroke",
+            "Supporting findings: right hemiplegia (contralateral motor), global aphasia (dominant hemisphere — left in right-handed patient), right homonymous hemianopia (optic radiation), conjugate eye deviation to the left (toward the lesion — frontal eye field involvement), right UMN facial droop",
+            "The severity (NIHSS 21) and combined motor/language/visual findings suggest a proximal left MCA occlusion (M1 segment) or left ICA terminus occlusion"
+          ]
+        },
+        {
+          text: "Outline the time-critical steps in your assessment and management.",
+          type: "free-text",
+          marks: 6,
+          answer: [
+            "Activate stroke protocol immediately — door-to-needle target <60 minutes",
+            "STAT non-contrast CT head — rule out hemorrhage (target door-to-CT <25 min)",
+            "If CT shows no hemorrhage → IV alteplase (tPA) 0.9 mg/kg (max 90 mg): 10% bolus over 1 minute, remainder over 60 minutes",
+            "Time window: last known well at 11 PM, now 3:15 AM = 4 hours 15 minutes. Within the 4.5-hour IV tPA window.",
+            "CT angiography (head and neck) to identify large vessel occlusion — given NIHSS 21, this is very likely an LVO",
+            "If LVO confirmed → emergent mechanical thrombectomy consultation (effective up to 24 hours in select patients with salvageable tissue on perfusion imaging)",
+            "Blood pressure management: for tPA candidates, reduce BP to <185/110 before tPA, then maintain <180/105 for 24 hours. Use IV labetalol 10-20 mg or clevidipine infusion.",
+            "Bloodwork: CBC, electrolytes, creatinine, INR/PTT, troponin, glucose (do not delay tPA for results except glucose and INR if on anticoagulants)",
+            "Note: patient is on apixaban — need to check when last dose was taken. If within 48 hours and renal function impaired, tPA may be contraindicated; consider idarucizumab if on dabigatran, or andexanet alfa for factor Xa inhibitors if available",
+            "Monitor for hemorrhagic conversion — repeat CT at 24h or sooner if clinical deterioration"
+          ]
+        },
+        {
+          text: "What is the maximum time window for IV alteplase (tPA) administration in acute ischemic stroke?",
+          type: "mcq",
+          marks: 1,
+          options: ["3 hours", "4.5 hours", "6 hours", "12 hours"],
+          correctIndex: 1,
+          explanation: "IV alteplase can be administered up to 4.5 hours from symptom onset (or last known well time) in eligible patients. The 3-hour window applies with fewer exclusion criteria; the 3-4.5 hour extended window has additional exclusions (age >80, NIHSS >25, combination of prior stroke AND diabetes, oral anticoagulant use)."
+        }
+      ]
+    },
+
+    // --- FEVER IN THE CHILD ---
+    {
+      topic: "Fever in the Child",
+      difficulty: "mixed",
+      scenario: `An 8-week-old male infant is brought to the ED by his parents with a rectal temperature of 38.6°C measured at home 1 hour ago. Parents report he has been fussier than usual for 12 hours, with decreased feeding (only taking 50% of his usual breast milk). No cough, rhinorrhea, vomiting, diarrhea, or rash. Born at 39 weeks via uncomplicated vaginal delivery, no NICU stay. Vaccinations are up to date.
+
+Vitals: HR 172, RR 44, T 38.4°C (rectal), SpO2 99% RA. Weight 4.2 kg.
+
+Examination: Alert but irritable, anterior fontanelle flat and soft, no bulging. Mild tachycardia. No rash. Capillary refill 2 seconds centrally. Ears, throat, lungs, and abdomen are unremarkable. No focal neurological deficits.`,
+      questions: [
+        {
+          text: "Why does this infant's age make this presentation a medical emergency?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Infants <90 days (particularly <60 days) with fever ≥38.0°C are at high risk for serious bacterial infection (SBI)",
+            "SBI prevalence in febrile neonates is 7-12%, including: UTI (most common), bacteremia, meningitis",
+            "Neonates have an immature immune system — may not mount typical inflammatory response, can deteriorate rapidly",
+            "Clinical appearance is unreliable in this age group — well-appearing neonates can have meningitis or bacteremia",
+            "At 8 weeks (56 days), this infant falls in the high-risk age category requiring a full septic workup"
+          ]
+        },
+        {
+          text: "Outline the recommended workup for this infant.",
+          type: "free-text",
+          marks: 5,
+          answer: [
+            "Full septic workup is indicated:",
+            "• CBC with differential",
+            "• Blood culture",
+            "• Urinalysis AND urine culture (catheter specimen — bag specimens are unreliable)",
+            "• Lumbar puncture: CSF cell count, protein, glucose, Gram stain, culture, and consider HSV PCR",
+            "• Consider CSF enterovirus PCR depending on season",
+            "CRP and/or procalcitonin — useful for risk stratification (step-by-step approaches like the Rochester, Philadelphia, or more recent PECARN febrile infant rule)",
+            "Chest X-ray — only if respiratory symptoms or signs present (not routine in well-appearing infant)",
+            "Consider viral panel / respiratory pathogen PCR — a positive viral etiology reduces but does NOT eliminate SBI risk in this age group",
+            "Stool culture if diarrhea present (not in this case)"
+          ]
+        },
+        {
+          text: "What empiric antibiotics would you start and why?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Start empiric IV antibiotics AFTER cultures obtained — do NOT delay if LP is difficult",
+            "Recommended regimen for infants <60 days:",
+            "• Ampicillin 50 mg/kg IV q6h (covers Listeria monocytogenes and Enterococcus — organisms not covered by cephalosporins alone)",
+            "• PLUS Cefotaxime 50 mg/kg IV q8h (covers E. coli, GBS, and other Gram-negatives; preferred over gentamicin for CNS penetration if meningitis suspected)",
+            "• OR Ampicillin + Gentamicin 5 mg/kg IV q24h (if cefotaxime unavailable)",
+            "Add IV acyclovir 20 mg/kg q8h if any concern for HSV: vesicular rash, seizures, elevated LFTs, CSF pleocytosis, maternal HSV history, or ill-appearing infant",
+            "Antibiotics should be started before culture results and continued for minimum 36-48 hours until cultures are finalized"
+          ]
+        },
+        {
+          text: "Which pathogen requires ampicillin specifically in the empiric regimen for febrile neonates, as it is not covered by cephalosporins?",
+          type: "mcq",
+          marks: 1,
+          options: ["E. coli", "Group B Streptococcus", "Listeria monocytogenes", "Staphylococcus aureus"],
+          correctIndex: 2,
+          explanation: "Listeria monocytogenes is inherently resistant to cephalosporins. Ampicillin is included in the empiric regimen for febrile neonates specifically to cover Listeria, which can cause meningitis and sepsis in young infants. GBS and E. coli are covered by cephalosporins."
+        }
+      ]
+    },
+
+    // --- CHEST PAIN ---
+    {
+      topic: "Chest Pain",
+      difficulty: "mixed",
+      scenario: `A 48-year-old male presents with crushing substernal chest pain radiating to his left jaw and arm that began 90 minutes ago while shovelling snow. He rates the pain 9/10. He took 2 ASA 81 mg from home. He has a history of hypertension and smokes 1 pack/day for 25 years. Family history: father had MI at age 52.
+
+Vitals: HR 94, BP 152/88, RR 20, SpO2 97% RA, T 36.7°C.
+
+ECG shows: 3 mm ST elevation in leads II, III, aVF with reciprocal ST depression in I and aVL. There is also ST elevation in V5-V6.`,
+      questions: [
+        {
+          text: "Interpret the ECG and identify the type and likely location of the infarction.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "STEMI — ST-elevation myocardial infarction",
+            "Inferior STEMI: ST elevation in II, III, aVF with reciprocal changes in I, aVL",
+            "Lateral extension: ST elevation in V5-V6 indicates inferolateral STEMI",
+            "Most likely culprit vessel: dominant right coronary artery (RCA) or left circumflex (LCx) artery",
+            "Should obtain right-sided leads (V4R) to assess for right ventricular involvement — important for management (avoid nitrates and volume-deplete if RV infarct)"
+          ]
+        },
+        {
+          text: "Outline your immediate management priorities.",
+          type: "free-text",
+          marks: 5,
+          answer: [
+            "Activate cardiac catheterization lab IMMEDIATELY — door-to-balloon target <90 minutes for primary PCI",
+            "If PCI not available within 120 min of first medical contact → fibrinolysis within 30 min",
+            "Dual antiplatelet therapy: ASA 325 mg (already took 162 mg — give additional) + P2Y12 inhibitor (ticagrelor 180 mg PO or clopidogrel 600 mg if ticagrelor contraindicated)",
+            "Anticoagulation: unfractionated heparin 60 units/kg IV bolus (max 4000 units) + infusion if going for PCI",
+            "Nitroglycerin 0.4 mg SL q5min ×3 for pain — but obtain right-sided ECG first to rule out RV infarct (NTG contraindicated in RV infarct due to preload dependence)",
+            "Morphine for pain if NTG insufficient (use cautiously — associated with some concern for outcomes)",
+            "High-flow O2 only if SpO2 <94% (supplemental O2 in normoxic patients may be harmful)",
+            "Continuous cardiac monitoring — watch for reperfusion arrhythmias",
+            "Serial troponin (though diagnosis is clinical + ECG — do not wait for troponin)",
+            "Avoid beta-blockers acutely if signs of heart failure or hemodynamic instability"
+          ]
+        },
+        {
+          text: "In the context of an inferior STEMI, why is it important to obtain a right-sided ECG (V4R) before administering nitroglycerin?",
+          type: "mcq",
+          marks: 1,
+          options: [
+            "To rule out concurrent anterior wall involvement",
+            "To detect right ventricular infarction, which is preload-dependent and may cause severe hypotension with nitrates",
+            "To calculate the total ischemic burden score",
+            "To confirm the diagnosis before calling cardiology"
+          ],
+          correctIndex: 1,
+          explanation: "Approximately 30-50% of inferior STEMIs have RV involvement. The right ventricle in RV infarction becomes preload-dependent. Nitroglycerin reduces preload, which can precipitate profound hypotension and cardiogenic shock in RV infarction. V4R with ≥1mm ST elevation is the most sensitive and specific finding."
+        }
+      ]
+    },
+
+    // --- SEIZURES (FEBRILE) ---
+    {
+      topic: "Seizures",
+      difficulty: "mixed",
+      scenario: `A 4-year-old girl is brought to the ED after a seizure at home. Her mother reports left facial twitching for 30 seconds followed by a 2-minute tonic-clonic seizure. The child was confused for 15 minutes afterward but has now returned to baseline. She woke this morning with fever, runny nose, and cough. Her older sibling is currently ill with similar symptoms from daycare. No previous seizures, no medications, fully immunized, born at term.
+
+Vitals: T 40.6°C rectal, HR 128, RR 24, BP 90/55, O2 sat 99% RA, Weight 20 kg.
+Exam: Alert, interactive, well hydrated, ears normal, neck supple, cardiorespiratory normal, no focal neurological deficits.`,
+      questions: [
+        {
+          text: "Based on this presentation, what is the diagnosis?",
+          type: "mcq",
+          marks: 1,
+          options: ["Simple febrile seizure", "Complex febrile seizure", "Status epilepticus", "Meningitis with seizure", "First unprovoked seizure"],
+          correctIndex: 1,
+          explanation: "This is a complex febrile seizure. Features of complex febrile seizures include: focal onset (left facial twitching), prolonged duration (2 minutes), and/or multiple seizures within 24 hours. Simple febrile seizures are generalized, brief (<15 min), and occur only once within 24 hours."
+        },
+        {
+          text: "Which of the following is the most appropriate acute management?",
+          type: "mcq",
+          marks: 1,
+          options: [
+            "Acetaminophen 300mg PO for fever",
+            "Levetiracetam 1200mg IV for seizure prevention",
+            "Lorazepam 2mg IV",
+            "Lumbar puncture to rule out meningitis",
+            "Await a second seizure before treating"
+          ],
+          correctIndex: 0,
+          explanation: "The seizure has stopped. The child is alert and interactive. The priority is treating the fever with antipyretics, not anticonvulsants. There are no clinical signs suggesting meningitis (neck supple, well appearance), so LP is not indicated."
+        },
+        {
+          text: "What investigations are most appropriate in this well-appearing child with a clear viral source?",
+          type: "short-menu",
+          marks: 3,
+          selectCount: 2,
+          options: [
+            "Blood culture",
+            "Chest X-ray",
+            "Lumbar puncture",
+            "Urine culture",
+            "None routine investigations needed",
+            "CBC and metabolic panel",
+            "EEG"
+          ],
+          correctIndices: [4],
+          explanation: "In a well-appearing child >6 months with a complex febrile seizure and clear viral source who has returned to baseline, routine investigations are not needed if the child has recovered completely."
+        },
+        {
+          text: "What is the approximate recurrence risk of febrile seizures within 2 years for this child?",
+          type: "mcq",
+          marks: 1,
+          options: ["<10%", "15-20%", "30-35%", "50-60%", ">70%"],
+          correctIndex: 2,
+          explanation: "The recurrence risk of febrile seizures is approximately 30-35% within 2 years. Risk factors for recurrence in this child include: age ≥4 years (negative factor here), family history of epilepsy, and seizure within 24 hours of fever onset."
+        },
+        {
+          text: "What is the best approach to prevent recurrent febrile seizures?",
+          type: "free-text",
+          marks: 3,
+          listCount: 3,
+          answer: [
+            "Parental reassurance and education about febrile seizures",
+            "Explanation that antipyretics do NOT prevent recurrence",
+            "Discussion of seizure safety (recovery position, airway protection, not restraining)",
+            "Advise to treat fever symptomatically for comfort, not to prevent seizures",
+            "Discuss when to seek emergency care (seizure >5 min, repeated seizures, unusual features)"
+          ]
+        }
+      ]
+    },
+
+    // --- COMMON FRACTURES / MSK (CAUDA EQUINA) ---
+    {
+      topic: "Common Fractures / MSK",
+      difficulty: "hard",
+      scenario: `A 48-year-old man presents to the ED with non-traumatic low back pain of 2 days duration. The pain is severe (9/10) and radiates down both legs with electrical quality to the outer feet and heels. He reports decreased sensation in his perineum and delayed urge to void despite having a distended bladder. No prior back pain. No IV drug use or fever.
+
+Vitals: HR 82, BP 140/88, RR 16, O2 sat 98% RA, T 37.0°C.
+Exam: Alert, oriented, lower extremity motor 4/5 bilaterally in ankle dorsiflexion and plantarflexion, diminished rectal tone, saddle anesthesia in perineum.`,
+      questions: [
+        {
+          text: "What is the most likely diagnosis based on this presentation?",
+          type: "mcq",
+          marks: 1,
+          options: ["Herniated disc with radiculopathy", "Cauda equina syndrome", "Spinal cord compression", "Piriformis syndrome", "Post-herpetic neuralgia"],
+          correctIndex: 1,
+          explanation: "Classic features of cauda equina syndrome: bilateral leg pain/radiculopathy, saddle anesthesia (perineum/buttocks/inner thighs/genital area), urinary retention/decreased urge, fecal incontinence/decreased rectal tone, lower extremity weakness."
+        },
+        {
+          text: "Which of the following examination findings are most important to document right now?",
+          type: "short-menu",
+          marks: 3,
+          selectCount: 3,
+          options: [
+            "Abdominal examination for masses",
+            "Babinski reflex assessment",
+            "Digital rectal examination for tone and sensation",
+            "Detailed motor strength in hip, knee, ankle",
+            "Biceps and triceps reflexes",
+            "Detailed sensory examination of perineum and lower extremities",
+            "Gait assessment",
+            "Palpation of spinous processes",
+            "Post-void residual measurement by bladder scan or catheterization",
+            "Sacroiliac joint stress maneuvers",
+            "Straight leg raise test"
+          ],
+          correctIndices: [2, 3, 8],
+          explanation: "Digital rectal exam assesses perianal tone, detailed motor exam documents baseline deficits, and PVR measurement is critical to assess for retention/overflow incontinence as evidence of cauda equina syndrome."
+        },
+        {
+          text: "List the immediate investigations and interventions needed.",
+          type: "free-text",
+          marks: 4,
+          listCount: 4,
+          answer: [
+            "STAT MRI lumbar spine (or CT if MRI contraindicated)",
+            "Urology or neurosurgery consultation — this is a surgical emergency",
+            "Do NOT wait for imaging results or investigations to be complete before alerting consultants",
+            "NPO status in preparation for potential emergency decompression",
+            "Consider catheterization to measure PVR if unable to void",
+            "Notify operating room of potential emergency case"
+          ]
+        },
+        {
+          text: "If the MRI confirms cauda equina syndrome from a central disc herniation at L4-L5, what is the window for optimal surgical decompression?",
+          type: "mcq",
+          marks: 1,
+          options: ["Within 6 hours", "Within 12 hours", "Within 24 hours", "Within 48 hours", "No time-sensitive benefit after 2 hours"],
+          correctIndex: 1,
+          explanation: "Evidence suggests better neurological outcomes if decompression occurs within 12 hours of symptom onset, with most benefit if within 6-12 hours. This is a surgical emergency."
+        }
+      ]
+    },
+
+    // --- ABDOMINAL PAIN (APPENDICITIS) ---
+    {
+      topic: "Abdominal Pain",
+      difficulty: "mixed",
+      scenario: `An 8-year-old male presents with 4 days of abdominal pain. Initially periumbilical but now localized to the right lower quadrant. He has been vomiting for the past 8 hours and has not eaten since yesterday.
+
+Vitals: T 38.5°C oral, HR 88, RR 15, BP 90/66, O2 sat 99% RA.
+Exam: Alert, appears uncomfortable. Abdomen: mild RLQ tenderness, positive Rovsing's sign, pain with indirect inguinal hernia exam but hernia not appreciated. No rebound or guarding. Tanner stage I. No testicular masses palpated.
+IV started, normal saline infusion initiated at 20 mL/kg/hr.`,
+      questions: [
+        {
+          text: "List FOUR other conditions that should be considered in the differential diagnosis besides appendicitis.",
+          type: "free-text",
+          marks: 4,
+          listCount: 4,
+          answer: [
+            "Urinary tract infection / pyelonephritis",
+            "Testicular torsion (must rule out even if pain primarily abdominal)",
+            "Mesenteric adenitis",
+            "Inguinal hernia (incarcerated)",
+            "Meckel's diverticulum with inflammation"
+          ]
+        },
+        {
+          text: "What investigations should you order to differentiate appendicitis from other causes?",
+          type: "short-menu",
+          marks: 2,
+          selectCount: 2,
+          options: [
+            "Abdominal X-ray (flat and upright)",
+            "Urine dipstick and urinalysis",
+            "Formal ultrasound of abdomen and pelvis",
+            "CT abdomen/pelvis with contrast",
+            "Point-of-care ultrasound (POCUS)",
+            "Doppler ultrasound of testes",
+            "Laboratory: CBC, electrolytes, creatinine"
+          ],
+          correctIndices: [1, 2],
+          explanation: "Urine analysis is essential to rule out UTI/pyelonephritis. Formal ultrasound is first-line imaging for appendicitis in children (sensitivity ~90% when technically adequate) and can also assess testes and hernia. CT would be second-line if ultrasound is inconclusive."
+        },
+        {
+          text: "Other than antibiotics, list THREE different medication classes that should be considered for analgesia and symptom management.",
+          type: "free-text",
+          marks: 3,
+          listCount: 3,
+          answer: [
+            "Acetaminophen 250-500mg rectally (avoid PO given vomiting)",
+            "Ondansetron 4-8mg IV or dimenhydrinate 12.5-25mg IV for nausea/vomiting",
+            "Ketorolac 0.5mg/kg IV (max 15-30mg) for NSAIDs OR Ibuprofen if can tolerate PO",
+            "Hydromorphone or morphine IV for severe pain control",
+            "Metoclopramide 0.1-0.2mg/kg IV for gastric emptying"
+          ]
+        },
+        {
+          text: "If surgery confirms acute appendicitis with perforation and localized peritonitis, what empiric antibiotic coverage would you initiate?",
+          type: "mcq",
+          marks: 1,
+          options: [
+            "Ampicillin alone",
+            "Ceftriaxone alone",
+            "Combination covering gram-negative rods, gram-positive, and anaerobes (e.g., piperacillin-tazobactam or cefoxitin)",
+            "Metronidazole alone",
+            "Vancomycin and cefepime"
+          ],
+          correctIndex: 2,
+          explanation: "Perforated appendicitis requires broad spectrum coverage including anaerobes given the enteric flora involved. Piperacillin-tazobactam or cefoxitin are appropriate choices. Continue post-operatively based on culture results."
+        }
+      ]
+    },
+
+    // --- DVT/PE IN PREGNANCY ---
+    {
+      topic: "Deep Venous Thrombosis (DVT) / Pulmonary Embolus (PE)",
+      difficulty: "hard",
+      scenario: `A 36-year-old G1T0 who is 11 weeks pregnant presents with 4 days of progressive exertional dyspnea. Today she had a syncopal episode while walking up stairs. She denies cough, fever, or PV bleeding. History: appendectomy 2 years ago. Medications: prenatal vitamins. No smoking, no prior VTE.
+
+Vitals: T 37.6°C oral, HR 112, RR 19, BP 130/84, O2 sat 92% RA, Weight 60 kg.
+ECG: Normal sinus tachycardia.
+Exam: Anxious, no lower extremity edema or asymmetry, lungs clear to auscultation bilaterally.`,
+      questions: [
+        {
+          text: "List THREE other diagnoses in the differential besides PE.",
+          type: "free-text",
+          marks: 3,
+          listCount: 3,
+          answer: [
+            "Pneumonia or viral respiratory infection",
+            "Exercise-induced asthma / reactive airway disease",
+            "Peripartum cardiomyopathy / heart failure",
+            "Anemia (physiologic in pregnancy)",
+            "Anxiety disorder"
+          ]
+        },
+        {
+          text: "List THREE familial thrombophilia conditions that increase VTE risk in pregnancy.",
+          type: "free-text",
+          marks: 3,
+          listCount: 3,
+          answer: [
+            "Protein C deficiency",
+            "Protein S deficiency",
+            "Factor V Leiden mutation",
+            "Antithrombin III deficiency",
+            "Prothrombin gene mutation (Factor II G20210A)"
+          ]
+        },
+        {
+          text: "Can a negative D-dimer reliably rule out venous thromboembolism in this pregnant patient?",
+          type: "mcq",
+          marks: 1,
+          options: ["Yes, D-dimer is reliable in pregnancy", "No, D-dimer is elevated in pregnancy and cannot rule out VTE"],
+          correctIndex: 1,
+          explanation: "D-dimer is physiologically elevated throughout pregnancy due to the prothrombotic state. A negative D-dimer does NOT rule out VTE in pregnancy. Clinical assessment and imaging should proceed regardless of D-dimer result."
+        },
+        {
+          text: "How should venous thromboembolism be treated in the first trimester of pregnancy? Include drug and dose.",
+          type: "free-text",
+          marks: 4,
+          listCount: 1,
+          answer: [
+            "LMWH (low-molecular-weight heparin) is first-line — does not cross placenta",
+            "Dalteparin 12,000 units daily (or 6,000 units BID) — dosing 200 units/kg/day or 100 units/kg BID",
+            "OR Enoxaparin 60mg BID (1mg/kg BID)",
+            "OR Tinzaparin 10,500 units daily (175 units/kg/day)",
+            "OR Unfractionated heparin if renal clearance <30 (80 units/kg IV bolus, then infusion)",
+            "AVOID warfarin in first trimester (teratogenic — fetal warfarin syndrome)",
+            "AVOID direct-acting anticoagulants (DOACs) in pregnancy"
+          ]
+        }
+      ]
+    },
+
+    // --- STATUS EPILEPTICUS ---
+    {
+      topic: "Seizures",
+      difficulty: "hard",
+      scenario: `You are working in a community hospital ED. A 45-year-old male is brought by EMS actively seizing despite having received a total of 20mg midazolam IV en route. He is restrained supine on the ambulance stretcher, foaming at the mouth. Nursing staff place him on continuous monitoring. His wife is at bedside.
+
+Vitals: HR 138, RR 32 (labored), SpO2 88% on 15L NRB, BP 168/94, T 38.2°C.
+History: Recently diagnosed tuberculosis (started on isoniazid, rifampin, ethambutol, pyrazinamide 2 weeks ago). Takes atorvastatin 40mg, bisoprolol 5mg. No prior seizures or epilepsy. Wife denies ethanol or drug use.`,
+      questions: [
+        {
+          text: "What immediate positioning instruction should you give your team?",
+          type: "free-text",
+          marks: 2,
+          listCount: 1,
+          answer: [
+            "Position patient in left lateral decubitus (recovery position) to optimize airway drainage and prevent aspiration",
+            "Ensure head is midline and neck is not hyperextended",
+            "Place seizure pads or padding at bedside to prevent head/limb trauma"
+          ]
+        },
+        {
+          text: "What should be your first specific investigation?",
+          type: "mcq",
+          marks: 1,
+          options: ["12-lead ECG", "Capillary glucose", "CT head", "Blood cultures", "Urine drug screen"],
+          correctIndex: 1,
+          explanation: "In any altered mental status or seizure, immediately check capillary glucose to rule out hypoglycemia as a reversible cause. This takes seconds and could be life-saving."
+        },
+        {
+          text: "You note his wife mentioned he was recently started on TB medications. List THREE medications commonly used as second-line agents to terminate the ongoing seizure activity.",
+          type: "free-text",
+          marks: 3,
+          listCount: 3,
+          answer: [
+            "Phenytoin 15-20 mg/kg IV loading or Fosphenytoin 15-20 PE/kg IV",
+            "Levetiracetam (Keppra) 20-60 mg/kg IV (or 500-1500mg in adults)",
+            "Valproic acid 15-30 mg/kg IV",
+            "Phenobarbital 10-15 mg/kg IV",
+            "Lacosamide 200-400mg IV"
+          ]
+        },
+        {
+          text: "Considering his recent TB medications, what specific vitamin supplementation should you provide immediately?",
+          type: "mcq",
+          marks: 1,
+          options: ["Folic acid 1mg", "Pyridoxine (Vitamin B6)", "Niacin (B3)", "Cobalamin (B12)", "Thiamine (B1)"],
+          correctIndex: 1,
+          explanation: "Isoniazid can cause pyridoxine (B6) deficiency and pyridoxine-deficiency seizures. Given his recent TB medication start and now status epilepticus, pyridoxine 100-200mg IV should be given empirically."
+        },
+        {
+          text: "If seizures continue despite initial second-line agents, what medications would you use for intubation and third-line seizure management?",
+          type: "short-menu",
+          marks: 2,
+          selectCount: 2,
+          options: [
+            "Propofol infusion",
+            "Ketamine infusion",
+            "Midazolam (benzodiazepine)",
+            "Thiopental",
+            "Rocuronium",
+            "Succinylcholine",
+            "Lorazepam"
+          ],
+          correctIndices: [0, 1],
+          explanation: "Propofol and ketamine are both excellent agents for refractory status epilepticus requiring intubation and ICU admission. Both provide seizure suppression and sedation. Rocuronium would be a neuromuscular blocker to facilitate intubation, not for seizure management."
+        }
+      ]
+    }
+  ],
+
+  soo: [
+    // --- SOO: AIRWAY MANAGEMENT ---
+    {
+      topic: "Airway Management",
+      difficulty: "hard",
+      scenario: `You are called to the resuscitation bay. A 45-year-old male has been brought in by paramedics after a house fire. He has extensive facial burns, singed nasal hairs, carbonaceous sputum, and a hoarse voice. He is alert (GCS 15) but increasingly stridorous. SpO2 is 94% on 15L NRB.`,
+      examinerPrompts: [
+        {
+          prompt: "The patient is becoming more stridorous and his voice is now barely audible. SpO2 has dropped to 90%. How do you proceed?",
+          expectedResponse: [
+            "This is an impending airway emergency from inhalation injury — early intubation is critical before complete obstruction occurs",
+            "Prepare for a potentially difficult airway: call for most experienced operator, prepare equipment for RSI AND surgical airway",
+            "Pre-oxygenate with BVM at 100% FiO2",
+            "RSI with: ketamine 1-2 mg/kg IV (maintains spontaneous respirations longer, good in burns) + succinylcholine 1.5 mg/kg (or rocuronium 1.2 mg/kg if burns >24h old due to hyperkalemia risk)",
+            "Use the largest ETT that will pass (anticipate edema will worsen — a smaller tube may be needed)",
+            "Video laryngoscopy as primary approach given anticipated airway edema",
+            "Have surgical airway equipment open and ready (bougie, scalpel, 6.0 cuffed ETT for cricothyrotomy)",
+            "Avoid nasal intubation in facial burns"
+          ]
+        },
+        {
+          prompt: "You attempt intubation and find the supraglottic structures are severely edematous. You cannot visualize the vocal cords on your first attempt with video laryngoscopy. What do you do?",
+          expectedResponse: [
+            "Ventilate with BVM between attempts — maintain oxygenation",
+            "Second attempt: use bougie (gum elastic) blind or semi-blind technique — pass bougie anterior, feel for tracheal clicks, railroad ETT over bougie",
+            "If second attempt fails: consider supraglottic device (LMA) as a bridge for ventilation",
+            "If cannot intubate, cannot oxygenate (CICO) situation → immediate front-of-neck access (surgical cricothyrotomy)",
+            "Scalpel-bougie-tube technique: vertical skin incision, horizontal stab through cricothyroid membrane, insert bougie, railroad 6.0 cuffed ETT",
+            "Maximum 2 intubation attempts before moving to surgical airway in a 'cannot wait' scenario",
+            "Call for help — anesthesia, ENT if available"
+          ]
+        },
+        {
+          prompt: "You successfully intubate the patient. What are your priorities for ongoing management of this burn/inhalation injury patient?",
+          expectedResponse: [
+            "Confirm ETT placement: EtCO2 (most reliable), bilateral chest auscultation, CXR",
+            "Secure ETT well — facial edema will worsen over 24-48 hours, accidental extubation could be fatal",
+            "Assess for carbon monoxide poisoning: send carboxyhemoglobin level, apply 100% FiO2 (t½ of CO is 60-90 min on 100% O2 vs 4-5h on RA)",
+            "Assess for cyanide poisoning (house fires with synthetic materials): if lactate >8, altered mental status → empiric hydroxocobalamin 5g IV",
+            "Burn assessment: estimate TBSA using Rule of 9s, assess depth",
+            "Fluid resuscitation: Parkland formula — 4 mL × kg × %TBSA over 24 hours (first half in 8 hours from time of burn)",
+            "Pain management, tetanus prophylaxis, escharotomy if circumferential burns with compartment concerns",
+            "Transfer to burn centre once stabilized"
+          ]
+        }
+      ]
+    },
+
+    // --- SOO: MENTAL HEALTH EMERGENCIES ---
+    {
+      topic: "Mental Health Emergencies",
+      difficulty: "mixed",
+      scenario: `A 35-year-old female is brought to the ED by police after her roommate called 911 reporting that the patient was standing on the balcony railing of their 12th-floor apartment. She has been crying and states she "doesn't want to be here anymore." She has a history of borderline personality disorder and major depressive disorder. She was recently discharged from a psychiatric inpatient unit 2 weeks ago.`,
+      examinerPrompts: [
+        {
+          prompt: "How do you approach this patient? Describe your initial interaction and safety assessment.",
+          expectedResponse: [
+            "Ensure safe environment: private room, no access to sharps/ligature points, 1:1 constant observation, remove personal belongings that could be used for self-harm",
+            "Approach with empathy, calm demeanor, and non-judgmental language",
+            "Therapeutic alliance: introduce myself, sit at eye level, acknowledge her distress — 'I can see you're going through a really difficult time. I'm here to help.'",
+            "Assess immediate safety and suicide risk using a structured approach:",
+            "• Direct questioning about suicidal ideation: 'Are you having thoughts of ending your life?'",
+            "• Plan: Does she have a specific plan? Access to means?",
+            "• Intent: Does she intend to act on these thoughts?",
+            "• Timeline: Is this imminent?",
+            "• Protective factors: reasons for living, social supports, children, religious beliefs",
+            "If she does not have capacity or is at imminent risk — can invoke provincial mental health legislation to hold for assessment (Form 1 in Ontario, equivalent in other provinces)"
+          ]
+        },
+        {
+          prompt: "She tells you she planned to jump from the balcony and that she has been stockpiling her medications (quetiapine and sertraline). She says nobody would miss her. How do you risk-stratify this patient?",
+          expectedResponse: [
+            "This is HIGH RISK for suicide based on:",
+            "Risk factors present: recent psychiatric discharge (highest risk period is 1-4 weeks post-discharge), active plan with lethal means (jumping, medication stockpiling), stated intent, hopelessness ('nobody would miss her'), female sex with high-lethality method (jumping)",
+            "Diagnosis-related risk: BPD and MDD are both independent risk factors; comorbidity increases risk further",
+            "Additional assessment needed: prior suicide attempts (strongest predictor), substance use, recent losses or stressors, command auditory hallucinations",
+            "Protective factors to explore: therapeutic relationships, future orientation, ambivalence about dying",
+            "This patient requires involuntary psychiatric hold if she does not agree to voluntary admission",
+            "Medical clearance: given medication stockpiling — ask specifically if she has taken any of the stockpiled medications today, check vitals, ECG (QTc for quetiapine/sertraline), toxicology screen"
+          ]
+        },
+        {
+          prompt: "She becomes agitated and starts yelling that she wants to leave. She tries to get off the stretcher. How do you manage this?",
+          expectedResponse: [
+            "De-escalation first: verbal calming, empathic statements, offer choices ('Would you prefer to sit up? Can I get you water?'), maintain safe distance, non-threatening posture",
+            "Ensure safety: call security if not already present, keep exit route clear for staff",
+            "If de-escalation fails and patient is at risk of harm to self or others:",
+            "• Legal authority: complete involuntary hold form (Form 1 or provincial equivalent) — patient meets criteria: risk of serious bodily harm to self",
+            "• Chemical restraint if needed: offer PO first (olanzapine 5-10 mg ODT or lorazepam 1-2 mg PO)",
+            "• If refuses PO: IM haloperidol 5 mg + lorazepam 2 mg + diphenhydramine 50 mg (to prevent EPS)",
+            "• Or IM olanzapine 10 mg (do NOT combine with IM benzodiazepines — risk of respiratory depression)",
+            "• Physical restraints as last resort only — document indications, use least restrictive means, monitor q15 min",
+            "Document thoroughly: reasons for hold, clinical findings supporting imminent risk, interventions attempted"
+          ]
+        },
+        {
+          prompt: "What is your disposition plan for this patient?",
+          expectedResponse: [
+            "This patient requires psychiatric admission — voluntary if she agrees, involuntary if not",
+            "Before disposition: complete medical clearance (bloodwork, ECG, physical exam, tox screen to rule out ingestion)",
+            "Ensure medications she stockpiled are confiscated/accounted for — safety of home environment",
+            "Psychiatry consultation for formal assessment and admission",
+            "If psychiatry is not available on-site: arrange safe transfer to facility with inpatient psychiatry",
+            "Continuous 1:1 observation until transfer/admission",
+            "Contact her outpatient psychiatric team to communicate the presentation",
+            "Safety planning for if she is eventually discharged: lethal means counseling (secure medications with a trusted person), crisis line numbers, follow-up within 48-72 hours",
+            "Communicate with roommate who called 911 — they may also need support and are an important collateral contact"
+          ]
+        }
+      ]
+    },
+
+    // --- SOO: FRACTURES AND DISLOCATIONS ---
+    {
+      topic: "Fractures and Dislocations",
+      difficulty: "mixed",
+      scenario: `A 55-year-old male presents after a fall on an outstretched hand (FOOSH) while playing recreational hockey 2 hours ago. He reports severe left wrist pain and deformity. On examination, there is a obvious dorsal angulation deformity ('dinner fork') of the left distal forearm/wrist. He has intact radial pulse, sensation in median/ulnar/radial nerve distributions, and finger movement. X-ray reveals a dorsally displaced, comminuted distal radius fracture (Colles fracture) with 25 degrees of dorsal angulation and 6 mm of radial shortening.`,
+      examinerPrompts: [
+        {
+          prompt: "Describe your approach to managing this fracture in the ED.",
+          expectedResponse: [
+            "Pain management is the first priority: offer a hematoma block (inject 5-10 mL 1% lidocaine directly into the fracture site under sterile technique) or IV/IM analgesia",
+            "This fracture requires reduction given: >10 degrees dorsal angulation (25°), >5mm radial shortening (6mm), and visible clinical deformity",
+            "Procedural sedation for closed reduction: propofol, ketamine, or fentanyl + midazolam — ensure proper monitoring (continuous SpO2, EtCO2, BP), resuscitation equipment available, and appropriate personnel",
+            "Reduction technique: finger traps with countertraction (or manual technique), apply longitudinal traction, correct dorsal angulation by volarly directed pressure over the distal fragment, restore radial length and inclination",
+            "Post-reduction: apply well-padded sugar-tong splint in slight flexion and ulnar deviation",
+            "Post-reduction X-rays to confirm acceptable alignment",
+            "Repeat neurovascular exam after reduction"
+          ]
+        },
+        {
+          prompt: "After reduction and splinting, the post-reduction X-ray shows improved alignment (8° dorsal angulation, 2 mm shortening). The patient asks if he needs surgery. How do you counsel him?",
+          expectedResponse: [
+            "The reduction looks acceptable for initial ED management",
+            "However, given this is a comminuted fracture with significant initial displacement, there is risk of re-displacement in the splint, especially in the first 1-2 weeks",
+            "Orthopedic surgery referral within 5-7 days is essential for re-assessment",
+            "Factors favoring surgical fixation (ORIF with volar locking plate): comminution, initial degree of displacement, patient activity level, age (though at 55, both operative and non-operative can work)",
+            "Discharge instructions: keep splint dry and elevated above heart level, finger ROM exercises to prevent stiffness, return immediately for increasing numbness/tingling (especially median nerve → carpal tunnel from swelling), increasing pain uncontrolled by analgesia, or fingers becoming white/blue/cold",
+            "Prescribe appropriate analgesia: acetaminophen scheduled + short course of opioid PRN (e.g., hydromorphone 1-2 mg PO q4-6h PRN × 3 days)",
+            "Follow-up with orthopedics within 1 week — they will make the final decision about operative vs non-operative management"
+          ]
+        },
+        {
+          prompt: "The patient returns to the ED 6 hours later with severe worsening pain in his forearm despite elevation and analgesia. The pain is worst with passive extension of his fingers. What is your concern and management?",
+          expectedResponse: [
+            "Acute compartment syndrome of the forearm — this is an orthopedic emergency",
+            "Clinical features (5 P's, but pain out of proportion and pain with passive stretch are the EARLIEST and most reliable signs):",
+            "• Pain out of proportion to injury",
+            "• Pain with passive stretch of the involved compartment muscles (passive finger extension stretches the volar compartment)",
+            "• Paresthesias (late sign)",
+            "• Pallor, pulselessness (very late — do NOT wait for these)",
+            "Immediate management:",
+            "• Remove all circumferential dressings/splints immediately — cut down to skin",
+            "• Rest forearm at level of the heart (not elevated above)",
+            "• If clinical diagnosis is clear → emergent orthopedic consultation for fasciotomy",
+            "• Compartment pressure measurement if diagnosis uncertain (>30 mmHg or delta pressure <30 mmHg from diastolic BP = abnormal)",
+            "• Do NOT delay consultation for compartment pressure measurement if clinical picture is clear",
+            "• Time-sensitive: irreversible muscle damage begins at 6 hours of ischemia"
+          ]
+        }
+      ]
+    },
+
+    // --- SOO: DIABETES EMERGENCIES ---
+    {
+      topic: "Diabetes Emergencies",
+      difficulty: "mixed",
+      scenario: `A 19-year-old female with type 1 diabetes is brought in by her boyfriend. She has had 2 days of vomiting and abdominal pain. She ran out of insulin 3 days ago and hasn't been able to afford a refill. She appears lethargic, with Kussmaul respirations. A fruity odor is noted.
+
+Vitals: HR 122, BP 98/58, RR 32 (deep), SpO2 99%, T 37.2°C. POC glucose: 32 mmol/L (576 mg/dL). VBG: pH 7.08, pCO2 15, HCO3 5, lactate 2.1.`,
+      examinerPrompts: [
+        {
+          prompt: "What is your diagnosis and what are the diagnostic criteria that are met?",
+          expectedResponse: [
+            "Diagnosis: Diabetic Ketoacidosis (DKA) — severe",
+            "DKA diagnostic criteria (all three present):",
+            "• Hyperglycemia: glucose 32 mmol/L (>14 mmol/L / 250 mg/dL)",
+            "• Metabolic acidosis: pH 7.08 (<7.3), HCO3 5 (<18 mmol/L)",
+            "• Ketonemia/ketonuria (implied by fruity odor; need to confirm with serum beta-hydroxybutyrate >3 mmol/L)",
+            "Severity classification — this is SEVERE DKA: pH <7.0-7.1, HCO3 <5-10, altered mental status (lethargic)",
+            "Precipitant: insulin non-compliance (ran out 3 days ago) — most common precipitant of DKA",
+            "Anion gap: Na not given but expected to be markedly elevated anion gap metabolic acidosis"
+          ]
+        },
+        {
+          prompt: "Walk me through your management in the first 1-2 hours.",
+          expectedResponse: [
+            "1. FLUIDS (most important initial step): Normal saline 1-2 L bolus over first hour (15-20 mL/kg/hr), then reassess — patient is volume depleted (typical deficit 5-8L in DKA)",
+            "2. POTASSIUM — check BEFORE starting insulin:",
+            "• If K <3.3: hold insulin, replace K aggressively (40 mEq/hr) until K >3.3",
+            "• If K 3.3-5.3: add 20-40 mEq KCl per liter of IV fluids, then start insulin",
+            "• If K >5.3: do not add K, recheck in 2 hours, start insulin",
+            "3. INSULIN: Regular insulin 0.1-0.14 units/kg/hr IV infusion (NO bolus per newer protocols). Do NOT start until K >3.3",
+            "4. Monitoring: hourly POC glucose, q2h electrolytes (K, Na, Cl, HCO3), VBG q2-4h, serum beta-hydroxybutyrate q2-4h",
+            "5. When glucose reaches 14 mmol/L (250 mg/dL): reduce insulin infusion to 0.02-0.05 units/kg/hr AND add D5W to IV fluids — do NOT stop insulin until anion gap is closed",
+            "6. Bicarbonate: consider only if pH <6.9 (100 mmol NaHCO3 in 400 mL water + 20 mEq KCl over 2 hours)",
+            "7. Identify and treat precipitants: ensure no underlying infection, ACS, etc.",
+            "8. Foley catheter for accurate I/O if unable to void; NGT if vomiting and altered LOC (aspiration risk)"
+          ]
+        },
+        {
+          prompt: "Two hours into treatment, the nurse calls you because the patient is suddenly confused and has a new headache. Glucose is 22 mmol/L, pH improved to 7.18. What is your concern?",
+          expectedResponse: [
+            "Major concern: cerebral edema — though more common in pediatric DKA, it can occur in young adults",
+            "Other differential: rapid osmolality shifts causing cerebral edema, hypoglycemia (check glucose — 22 is fine), hyponatremia, stroke/intracerebral event",
+            "If cerebral edema suspected:",
+            "• Reduce IV fluid rate by one-third",
+            "• Administer hypertonic saline (3% NaCl) 5 mL/kg over 15 minutes OR mannitol 0.5-1 g/kg IV",
+            "• Elevate head of bed 30 degrees",
+            "• Stat CT head to rule out other causes",
+            "• May need intubation if GCS deteriorates — RSI, avoid hypotension and hyperventilation (maintain normocarbia or slight hypocarbia)",
+            "• Neurosurgical consultation if herniation signs",
+            "Prevention: ensure fluids are not being administered too rapidly, glucose should drop no faster than 3-5 mmol/L per hour, correct sodium gradually",
+            "Check corrected sodium: as glucose falls, sodium should rise — if corrected sodium is falling, cerebral edema risk is higher"
+          ]
+        }
+      ]
+    },
+
+    // --- SOO: DVT / PE ---
+    {
+      topic: "Deep Vein Thrombosis / Pulmonary Embolism",
+      difficulty: "hard",
+      scenario: `A 32-year-old female presents with acute onset pleuritic chest pain and dyspnea that began 3 hours ago. She returned from a 14-hour flight from Australia 5 days ago. She takes an oral contraceptive pill. Her mother had a "blood clot" in her leg at age 45.
+
+Vitals: HR 118, BP 92/58, RR 26, SpO2 89% on room air, T 37.3°C. She appears anxious and diaphoretic.`,
+      examinerPrompts: [
+        {
+          prompt: "What is your clinical suspicion and how do you risk-stratify this patient?",
+          expectedResponse: [
+            "High clinical suspicion for massive (high-risk) pulmonary embolism",
+            "Risk factors: prolonged travel (immobilization >6h), OCP use, family history of VTE, young female",
+            "Wells Score for PE: clinical signs of DVT (+3), PE most likely diagnosis (+3), tachycardia >100 (+1.5), immobilization/surgery (+1.5) = at least 9 points → HIGH probability",
+            "However — this patient is hemodynamically unstable (BP 92/58, HR 118, SpO2 89%) → risk stratification tools are less relevant; this is presumed massive PE until proven otherwise",
+            "Massive PE definition: acute PE with sustained hypotension (SBP <90), obstructive shock, or cardiac arrest",
+            "This patient does NOT need a D-dimer — she needs definitive imaging or empiric treatment"
+          ]
+        },
+        {
+          prompt: "CT is not immediately available. How do you assess and manage this patient right now?",
+          expectedResponse: [
+            "Bedside assessment — point-of-care ultrasound (POCUS) is critical:",
+            "• Cardiac: RV dilation (RV:LV ratio >1), RV free wall hypokinesis, D-sign (septal bowing into LV), McConnell sign, tricuspid regurgitation",
+            "• IVC: plethoric non-collapsing IVC suggests right heart failure/elevated CVP",
+            "• Lung: look for pleural effusion, wedge-shaped peripheral consolidation",
+            "• Bilateral lower extremity compression ultrasound: if DVT found → supports diagnosis",
+            "Immediate management:",
+            "• Supplemental O2 — high-flow or NRB targeting SpO2 >94%",
+            "• IV access × 2 large bore",
+            "• IV crystalloid bolus 250-500 mL cautiously (RV is preload-sensitive but also volume-intolerant in massive PE — do not over-fluid)",
+            "• Start anticoagulation with unfractionated heparin 80 units/kg bolus + 18 units/kg/hr infusion",
+            "• If hemodynamically unstable with strong clinical suspicion → systemic thrombolysis is indicated even without CT confirmation: alteplase 100 mg IV over 2 hours (or 50 mg bolus if in arrest)",
+            "• Vasopressors (norepinephrine) for shock — avoid pure vasoconstrictors; dobutamine may be added for RV support",
+            "• Prepare for intubation if needed — but be cautious: positive pressure ventilation and induction agents can worsen hemodynamics in massive PE"
+          ]
+        },
+        {
+          prompt: "The patient deteriorates and goes into PEA arrest. How do you manage this?",
+          expectedResponse: [
+            "Start CPR per ACLS — high-quality compressions",
+            "In cardiac arrest with presumed massive PE → give systemic thrombolysis during CPR:",
+            "• Alteplase 50 mg IV bolus (can repeat 50 mg after 15 min if no ROSC)",
+            "• Continue CPR for at least 60-90 minutes after thrombolytic administration (prolonged resuscitation is justified given the reversible cause)",
+            "• Continue IV heparin",
+            "If available: consider catheter-directed therapy or surgical embolectomy (requires cardiac surgery and CPB — less likely in most EDs)",
+            "ECMO/ECPR if available at your centre — ideal salvage therapy for massive PE in arrest",
+            "Address other H's and T's: tension pneumothorax, tamponade, hypovolemia",
+            "Epinephrine 1 mg IV q3-5 min per ACLS",
+            "Do NOT stop resuscitation early — PE-related arrests have better outcomes than other causes when the thrombus is treated; patients have survived after >60 min of CPR post-thrombolysis"
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+// ============================================================
+// APPLICATION STATE
+// ============================================================
+let state = {
+  mode: 'samp',
+  currentExam: [],
+  currentIndex: 0,
+  answers: {},
+  scores: {},
+  timerInterval: null,
+  timerSeconds: 0,
+  examHistory: JSON.parse(localStorage.getItem('ccfpem_history') || '[]'),
+  settings: JSON.parse(localStorage.getItem('ccfpem_settings') || '{}')
+};
+
+// ============================================================
+// INITIALIZATION
+// ============================================================
+function init() {
+  renderTopicGrid();
+  updateStats();
+  loadSettings();
+  showRecentResults();
+}
+
+function renderTopicGrid() {
+  const grid = document.getElementById('topicGrid');
+  grid.innerHTML = PRIORITY_TOPICS.map(t =>
+    `<span class="topic-chip" onclick="toggleTopic(this)" data-topic="${t}">${t}</span>`
+  ).join('');
+}
+
+function toggleTopic(el) {
+  el.classList.toggle('selected');
+}
+
+function selectAllTopics() {
+  document.querySelectorAll('.topic-chip').forEach(c => c.classList.add('selected'));
+}
+
+function clearAllTopics() {
+  document.querySelectorAll('.topic-chip').forEach(c => c.classList.remove('selected'));
+}
+
+function getSelectedTopics() {
+  return [...document.querySelectorAll('.topic-chip.selected')].map(c => c.dataset.topic);
+}
+
+// ============================================================
+// VIEW MANAGEMENT
+// ============================================================
+function showView(view) {
+  ['home', 'exam', 'results', 'settings', 'keyfeatures'].forEach(v => {
+    document.getElementById(`view-${v}`).classList.toggle('hidden', v !== view);
+  });
+  document.getElementById('timerContainer').classList.toggle('hidden', view !== 'exam');
+  if (view === 'home') {
+    stopTimer();
+    updateStats();
+    showRecentResults();
+  }
+  if (view === 'keyfeatures') {
+    renderKeyFeatures();
+  }
+}
+
+// ============================================================
+// MODE SELECTION
+// ============================================================
+function selectMode(mode, tabEl) {
+  state.mode = mode;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  tabEl.classList.add('active');
+
+  const desc = document.getElementById('mode-description');
+  if (mode === 'samp') {
+    desc.innerHTML = `<p><strong>Short Answer Management Problems (SAMPs)</strong> — The written component of the CCFP-EM exam. You'll be presented with clinical scenarios and asked structured questions requiring short written answers. Reflects the 2026 format with a mix of free-text, MCQ, and short-menu questions.</p>`;
+  } else if (mode === 'soo') {
+    desc.innerHTML = `<p><strong>Simulated Office Orals (SOOs)</strong> — The oral component of the CCFP-EM exam. Four 12-minute stations with clinical scenarios. An examiner presents prompts and you provide verbal responses. Practice speaking your answers aloud and use the expected responses to self-evaluate.</p>`;
+  } else {
+    desc.innerHTML = `<p><strong>Mixed Exam</strong> — A combination of SAMPs and SOOs to simulate the full exam experience. Includes both written and oral components randomly selected across all priority topics.</p>`;
+  }
+}
+
+// ============================================================
+// START EXAM
+// ============================================================
+async function startExam() {
+  const numCases = parseInt(document.getElementById('numCases').value);
+  const source = document.getElementById('questionSource').value;
+  const selectedTopics = getSelectedTopics();
+
+  let questions = [];
+
+  if (source === 'bank' || source === 'mixed') {
+    questions = selectFromBank(numCases, selectedTopics);
+  }
+
+  if ((source === 'ai' || source === 'mixed') && questions.length < numCases) {
+    const needed = numCases - questions.length;
+    const aiQuestions = await generateAIQuestions(needed, selectedTopics);
+    questions = questions.concat(aiQuestions);
+  }
+
+  if (questions.length === 0) {
+    alert('No questions available for the selected topics. Try selecting different topics or using AI generation.');
+    return;
+  }
+
+  state.currentExam = questions;
+  state.currentIndex = 0;
+  state.answers = {};
+  state.scores = {};
+
+  showView('exam');
+  renderQuestion();
+  startTimer();
+}
+
+function selectFromBank(numCases, selectedTopics) {
+  let pool = [];
+
+  if (state.mode === 'samp' || state.mode === 'mixed') {
+    pool = pool.concat(QUESTION_BANK.samp.map(q => ({...q, format: 'samp'})));
+  }
+  if (state.mode === 'soo' || state.mode === 'mixed') {
+    pool = pool.concat(QUESTION_BANK.soo.map(q => ({...q, format: 'soo'})));
+  }
+
+  if (selectedTopics.length > 0) {
+    pool = pool.filter(q => selectedTopics.some(t => q.topic.includes(t.split(' / ')[0]) || t.includes(q.topic.split(' / ')[0])));
+  }
+
+  // Shuffle
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+
+  return pool.slice(0, numCases);
+}
+
+// ============================================================
+// RENDER QUESTIONS
+// ============================================================
+function renderQuestion() {
+  const q = state.currentExam[state.currentIndex];
+  const content = document.getElementById('questionContent');
+  const badge = document.getElementById('examBadge');
+  const topicBadge = document.getElementById('topicBadge');
+
+  badge.textContent = q.format === 'samp' ? 'SAMP' : 'SOO';
+  badge.className = `question-badge ${q.format === 'samp' ? 'badge-samp' : 'badge-soo'}`;
+  topicBadge.textContent = q.topic;
+
+  document.getElementById('currentCase').textContent = state.currentIndex + 1;
+  document.getElementById('totalCases').textContent = state.currentExam.length;
+
+  const progress = ((state.currentIndex + 1) / state.currentExam.length) * 100;
+  document.getElementById('progressFill').style.width = `${progress}%`;
+
+  document.getElementById('prevBtn').disabled = state.currentIndex === 0;
+  document.getElementById('nextBtn').textContent = state.currentIndex === state.currentExam.length - 1 ? 'Finish Exam' : 'Next →';
+
+  if (q.format === 'samp') {
+    renderSAMP(q, content);
+  } else {
+    renderSOO(q, content);
+  }
+}
+
+function renderSAMP(q, container) {
+  let html = `<div class="clinical-scenario"><strong>Clinical Scenario:</strong><br><br>${q.scenario.replace(/\n/g, '<br>')}</div>`;
+
+  q.questions.forEach((sq, i) => {
+    const key = `${state.currentIndex}-${i}`;
+    const savedAnswer = state.answers[key] || '';
+
+    html += `<div class="sub-question">`;
+    html += `<div class="sub-question-label">Question ${i + 1} of ${q.questions.length} <span style="color:var(--text-light); font-weight:400;">(${sq.marks} mark${sq.marks > 1 ? 's' : ''})</span></div>`;
+    html += `<p style="margin-bottom:0.75rem;">${sq.text}</p>`;
+
+    if (sq.type === 'mcq') {
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      sq.options.forEach((opt, oi) => {
+        const selected = savedAnswer === String(oi) ? 'selected' : '';
+        html += `<div class="mcq-option ${selected}" onclick="selectMCQ(this, '${key}', ${oi})">
+          <div class="mcq-letter">${letters[oi]}</div>
+          <div>${opt}</div>
+        </div>`;
+      });
+    } else if (sq.type === 'short-menu') {
+      const selectedIndices = savedAnswer ? savedAnswer.split(',').map(Number) : [];
+      html += `<div class="short-menu-container">`;
+      html += `<div class="short-menu-header">Select ${sq.selectCount}</div>`;
+      html += `<div class="short-menu-counter">${selectedIndices.length} of ${sq.selectCount} selected</div>`;
+      sq.options.forEach((opt, oi) => {
+        const isSelected = selectedIndices.includes(oi);
+        const selectedClass = isSelected ? 'selected' : '';
+        html += `<div class="short-menu-option ${selectedClass}" onclick="toggleShortMenu(this, '${key}', ${oi}, ${sq.selectCount})">
+          <div class="short-menu-checkbox">${isSelected ? '✓' : ''}</div>
+          <div>${opt}</div>
+        </div>`;
+      });
+      html += `</div>`;
+    } else {
+      html += `<textarea placeholder="Type your answer here..." oninput="saveAnswer('${key}', this.value)">${savedAnswer}</textarea>`;
+    }
+
+    // Answer box
+    html += `<div class="answer-box" id="answer-${key}">`;
+    html += `<h4>Expected Answer:</h4>`;
+    if (sq.type === 'mcq') {
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      html += `<p><strong>Correct: ${letters[sq.correctIndex]}. ${sq.options[sq.correctIndex]}</strong></p>`;
+      html += `<p style="margin-top:0.5rem;">${sq.explanation}</p>`;
+    } else if (sq.type === 'short-menu') {
+      html += `<p><strong>Correct selections (${sq.selectCount}):</strong></p>`;
+      html += `<ul class="free-text-answer-list">`;
+      sq.correctIndices.forEach(idx => {
+        html += `<li>${sq.options[idx]}</li>`;
+      });
+      html += `</ul>`;
+      if (sq.explanation) {
+        html += `<p style="margin-top:0.75rem;">${sq.explanation}</p>`;
+      }
+    } else {
+      html += `<ul class="free-text-answer-list">${sq.answer.map(a => `<li>${a}</li>`).join('')}</ul>`;
+    }
+    html += `<div style="margin-top:0.75rem;"><strong>Self-Score:</strong></div>`;
+    html += `<div class="score-section">`;
+    for (let s = 0; s <= sq.marks; s++) {
+      const sel = state.scores[key] === s ? 'selected' : '';
+      html += `<button class="score-btn ${sel}" onclick="setScore('${key}', ${s}, ${sq.marks})">${s}</button>`;
+    }
+    html += `<span style="color:var(--text-light); font-size:0.85rem;"> / ${sq.marks}</span>`;
+    html += `</div></div></div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+function renderSOO(q, container) {
+  let html = `<div class="clinical-scenario"><strong>Clinical Scenario (Read aloud as if the examiner is presenting this to you):</strong><br><br>${q.scenario.replace(/\n/g, '<br>')}</div>`;
+
+  html += `<p style="margin:1rem 0; color:var(--text-light); font-style:italic;">Practice tip: Read each examiner prompt, then speak your answer aloud before revealing the expected response. Time yourself — aim for 3 minutes per prompt.</p>`;
+
+  q.examinerPrompts.forEach((ep, i) => {
+    const key = `${state.currentIndex}-soo-${i}`;
+    const savedAnswer = state.answers[key] || '';
+
+    html += `<div class="soo-examiner-prompt">`;
+    html += `<strong>Examiner Prompt ${i + 1}:</strong><br>${ep.prompt}`;
+    html += `</div>`;
+
+    html += `<div class="sub-question">`;
+    html += `<div class="sub-question-label">Your Response (optional — jot notes or type your full answer)</div>`;
+    html += `<textarea placeholder="Type your response notes here..." oninput="saveAnswer('${key}', this.value)">${savedAnswer}</textarea>`;
+
+    html += `<div class="answer-box" id="answer-${key}">`;
+    html += `<h4>Expected Response:</h4>`;
+    html += `<ul>${ep.expectedResponse.map(r => `<li>${r}</li>`).join('')}</ul>`;
+
+    html += `<div style="margin-top:0.75rem;"><strong>Self-Score (How well did you cover the key points?):</strong></div>`;
+    html += `<div class="score-section">`;
+    for (let s = 0; s <= 5; s++) {
+      const sel = state.scores[key] === s ? 'selected' : '';
+      html += `<button class="score-btn ${sel}" onclick="setScore('${key}', ${s}, 5)">${s}</button>`;
+    }
+    html += `<span style="color:var(--text-light); font-size:0.85rem;"> / 5</span>`;
+    html += `</div></div></div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+// ============================================================
+// ANSWER / SCORE MANAGEMENT
+// ============================================================
+function saveAnswer(key, value) {
+  state.answers[key] = value;
+}
+
+function selectMCQ(el, key, index) {
+  const parent = el.closest('.sub-question');
+  parent.querySelectorAll('.mcq-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  state.answers[key] = String(index);
+}
+
+function toggleShortMenu(el, key, index, maxSelect) {
+  const parent = el.closest('.short-menu-container');
+  const currentAnswer = state.answers[key] || '';
+  const selectedIndices = currentAnswer ? currentAnswer.split(',').map(Number) : [];
+  const isCurrentlySelected = selectedIndices.includes(index);
+
+  if (isCurrentlySelected) {
+    // Deselect
+    const newIndices = selectedIndices.filter(i => i !== index);
+    state.answers[key] = newIndices.length > 0 ? newIndices.join(',') : '';
+  } else {
+    // Select (only if we haven't reached the limit)
+    if (selectedIndices.length < maxSelect) {
+      selectedIndices.push(index);
+      state.answers[key] = selectedIndices.join(',');
+    }
+  }
+
+  // Re-render to update display
+  const subQuestion = el.closest('.sub-question');
+  const questionText = subQuestion.querySelector('.sub-question-label').nextElementSibling.textContent;
+  const newAnswer = state.answers[key] || '';
+  const newSelectedIndices = newAnswer ? newAnswer.split(',').map(Number) : [];
+
+  parent.querySelectorAll('.short-menu-option').forEach((opt, oi) => {
+    opt.classList.toggle('selected', newSelectedIndices.includes(oi));
+    const checkbox = opt.querySelector('.short-menu-checkbox');
+    checkbox.textContent = newSelectedIndices.includes(oi) ? '✓' : '';
+  });
+
+  // Update counter
+  const counter = parent.querySelector('.short-menu-counter');
+  if (counter) {
+    counter.textContent = `${newSelectedIndices.length} of ${maxSelect} selected`;
+  }
+}
+
+function setScore(key, score, maxScore) {
+  state.scores[key] = score;
+  const section = document.querySelector(`#answer-${key}`).closest('.sub-question') || document.querySelector(`#answer-${key}`).parentElement;
+  section.querySelectorAll('.score-btn').forEach(b => {
+    b.classList.toggle('selected', parseInt(b.textContent) === score);
+  });
+}
+
+function revealAnswers() {
+  document.querySelectorAll('.answer-box').forEach(box => box.classList.add('visible'));
+
+  // For MCQs and short-menu, show correct/incorrect
+  const q = state.currentExam[state.currentIndex];
+  if (q.format === 'samp') {
+    q.questions.forEach((sq, i) => {
+      const key = `${state.currentIndex}-${i}`;
+      const subQ = document.querySelectorAll('.sub-question')[i];
+      if (!subQ) return;
+
+      if (sq.type === 'mcq') {
+        const options = subQ.querySelectorAll('.mcq-option');
+        options.forEach((opt, oi) => {
+          if (oi === sq.correctIndex) opt.classList.add('correct');
+          else if (state.answers[key] === String(oi)) opt.classList.add('incorrect');
+        });
+      } else if (sq.type === 'short-menu') {
+        const userAnswer = state.answers[key] || '';
+        const userIndices = userAnswer ? userAnswer.split(',').map(Number) : [];
+        const options = subQ.querySelectorAll('.short-menu-option');
+        options.forEach((opt, oi) => {
+          if (sq.correctIndices.includes(oi)) {
+            opt.classList.add('correct');
+          } else if (userIndices.includes(oi)) {
+            opt.classList.add('incorrect');
+          }
+        });
+      }
+    });
+  }
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function nextQuestion() {
+  if (state.currentIndex === state.currentExam.length - 1) {
+    finishExam();
+  } else {
+    state.currentIndex++;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  }
+}
+
+function prevQuestion() {
+  if (state.currentIndex > 0) {
+    state.currentIndex--;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  }
+}
+
+function reviewExam() {
+  state.currentIndex = 0;
+  showView('exam');
+  renderQuestion();
+  revealAnswers();
+}
+
+// ============================================================
+// TIMER
+// ============================================================
+function startTimer() {
+  const timedMode = document.getElementById('timedMode').value;
+  if (timedMode === 'untimed') {
+    document.getElementById('timer').textContent = '∞';
+    return;
+  }
+
+  const numCases = state.currentExam.length;
+  const q = state.currentExam[0];
+  let baseMinutes;
+
+  if (q.format === 'soo') {
+    baseMinutes = parseInt(state.settings.sooTime || 12);
+  } else {
+    baseMinutes = parseInt(state.settings.sampTime || 48);
+  }
+
+  const multiplier = timedMode === 'relaxed' ? 1.5 : 1;
+  state.timerSeconds = Math.floor(baseMinutes * numCases * 60 * multiplier);
+
+  updateTimerDisplay();
+  state.timerInterval = setInterval(() => {
+    state.timerSeconds--;
+    updateTimerDisplay();
+    if (state.timerSeconds <= 0) {
+      clearInterval(state.timerInterval);
+      alert('Time is up! The exam will now be scored.');
+      finishExam();
+    }
+  }, 1000);
+}
+
+function stopTimer() {
+  if (state.timerInterval) {
+    clearInterval(state.timerInterval);
+    state.timerInterval = null;
+  }
+}
+
+function updateTimerDisplay() {
+  const h = Math.floor(state.timerSeconds / 3600);
+  const m = Math.floor((state.timerSeconds % 3600) / 60);
+  const s = state.timerSeconds % 60;
+  const display = document.getElementById('timer');
+  display.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+
+  const totalOriginal = parseInt(document.getElementById('numCases').value) * 48 * 60;
+  const pct = state.timerSeconds / totalOriginal;
+  display.classList.remove('warning', 'danger');
+  if (pct < 0.1) display.classList.add('danger');
+  else if (pct < 0.25) display.classList.add('warning');
+}
+
+// ============================================================
+// FINISH EXAM
+// ============================================================
+function finishExam() {
+  stopTimer();
+
+  let totalScore = 0;
+  let totalPossible = 0;
+  let topicBreakdown = {};
+
+  state.currentExam.forEach((q, qi) => {
+    const topic = q.topic;
+    if (!topicBreakdown[topic]) topicBreakdown[topic] = { earned: 0, possible: 0 };
+
+    if (q.format === 'samp') {
+      q.questions.forEach((sq, si) => {
+        const key = `${qi}-${si}`;
+        const score = state.scores[key] || 0;
+        totalScore += score;
+        totalPossible += sq.marks;
+        topicBreakdown[topic].earned += score;
+        topicBreakdown[topic].possible += sq.marks;
+      });
+    } else {
+      q.examinerPrompts.forEach((ep, ei) => {
+        const key = `${qi}-soo-${ei}`;
+        const score = state.scores[key] || 0;
+        totalScore += score;
+        totalPossible += 5;
+        topicBreakdown[topic].earned += score;
+        topicBreakdown[topic].possible += 5;
+      });
+    }
+  });
+
+  const pct = totalPossible > 0 ? Math.round((totalScore / totalPossible) * 100) : 0;
+
+  // Save result
+  const result = {
+    date: new Date().toISOString(),
+    mode: state.mode,
+    numCases: state.currentExam.length,
+    totalScore,
+    totalPossible,
+    percentage: pct,
+    topicBreakdown,
+    topics: state.currentExam.map(q => q.topic)
+  };
+  state.examHistory.push(result);
+  localStorage.setItem('ccfpem_history', JSON.stringify(state.examHistory));
+
+  // Render results
+  const grid = document.getElementById('resultsGrid');
+  grid.innerHTML = `
+    <div class="result-card">
+      <div class="score-big">${pct}%</div>
+      <div class="label">Overall Score</div>
+    </div>
+    <div class="result-card">
+      <div class="score-big">${totalScore}/${totalPossible}</div>
+      <div class="label">Points Earned</div>
+    </div>
+    <div class="result-card">
+      <div class="score-big">${state.currentExam.length}</div>
+      <div class="label">Cases Completed</div>
+    </div>
+    <div class="result-card">
+      <div class="score-big">${pct >= 70 ? '✓' : '✗'}</div>
+      <div class="label">${pct >= 70 ? 'Likely Pass' : 'Needs Improvement'}</div>
+    </div>
+  `;
+
+  const detail = document.getElementById('resultsDetail');
+  let detailHTML = '<h3>Performance by Topic</h3>';
+  for (const [topic, data] of Object.entries(topicBreakdown)) {
+    const topicPct = Math.round((data.earned / data.possible) * 100);
+    const color = topicPct >= 70 ? 'var(--success)' : topicPct >= 50 ? 'var(--warning)' : 'var(--accent)';
+    detailHTML += `<div style="display:flex;align-items:center;gap:1rem;margin:0.5rem 0;">
+      <span style="min-width:200px;font-weight:500;">${topic}</span>
+      <div style="flex:1;background:var(--border);height:12px;border-radius:6px;overflow:hidden;">
+        <div style="width:${topicPct}%;background:${color};height:100%;border-radius:6px;"></div>
+      </div>
+      <span style="min-width:60px;text-align:right;font-weight:600;color:${color}">${topicPct}%</span>
+    </div>`;
+  }
+  detail.innerHTML = detailHTML;
+
+  showView('results');
+}
+
+// ============================================================
+// AI QUESTION GENERATION (Claude API)
+// ============================================================
+async function generateAIQuestions(count, selectedTopics) {
+  const apiKey = document.getElementById('apiKey')?.value || state.settings.apiKey;
+  if (!apiKey) {
+    alert('Please configure your Claude API key in Settings to use AI-generated questions.');
+    return [];
+  }
+
+  const model = state.settings.apiModel || 'claude-sonnet-4-6';
+  const topics = selectedTopics.length > 0 ? selectedTopics : PRIORITY_TOPICS;
+  const format = state.mode === 'soo' ? 'SOO' : 'SAMP';
+  const difficulty = document.getElementById('difficulty').value;
+
+  const questions = [];
+
+  for (let i = 0; i < count; i++) {
+    const topic = topics[Math.floor(Math.random() * topics.length)];
+
+    const systemPrompt = `You are an expert emergency medicine physician and CCFP-EM exam question writer for the College of Family Physicians of Canada. You create realistic, high-quality practice exam questions that closely mirror the actual CCFP-EM certification exam.
+
+IMPORTANT GUIDELINES:
+- Questions must be clinically accurate and evidence-based
+- Use Canadian medical practice standards, guidelines, and drug names
+- Include realistic vital signs, lab values, and clinical details
+- Questions should test clinical reasoning, not just recall
+- Difficulty: ${difficulty === 'mixed' ? 'exam-realistic mix' : difficulty}
+- Include both common and must-not-miss diagnoses`;
+
+    const keyFeaturesForTopic = KEY_FEATURES[topic] || [];
+    const keyFeaturesText = keyFeaturesForTopic.length > 0
+      ? `\n\nKEY CLINICAL COMPETENCIES FOR THIS TOPIC:\n${keyFeaturesForTopic.map((f, i) => `${i+1}. ${f}`).join('\n')}`
+      : '';
+
+    const userPrompt = format === 'SAMP'
+      ? `Generate a SAMP (Short Answer Management Problem) for the CCFP-EM exam on the topic: "${topic}".${keyFeaturesText}
+
+EXAM FORMAT — The 2026 CCFP-EM exam uses THREE question types. Mix these types in your case:
+
+1. MCQ (Multiple Choice) — "Select ONE"
+   - 5 options (A-E)
+   - Single correct answer
+   - Example: "Which of the following is the most appropriate management? Select one."
+
+2. Short-Menu (Checkbox Select) — "Select TWO/THREE/etc from list"
+   - 8-17 options
+   - Multiple correct answers (exact count specified)
+   - Example: "Which of the following examination findings are most important? Select three." with checkbox-style options
+   - Format: "selectCount": 3, "correctIndices": [1, 4, 7]
+
+3. Free-Text — "List ONE/TWO/THREE/FOUR"
+   - Short written answers with specific number of expected items
+   - Include drug names, doses, and routes when applicable
+   - Example: "What other medications should you consider? List THREE." with answers like "Acetaminophen 1000mg PO, Ibuprofen 400mg IV, Diclofenac 50mg IM"
+
+Return ONLY valid JSON in this exact format (no markdown, no explanation):
+{
+  "topic": "${topic}",
+  "difficulty": "${difficulty === 'mixed' ? ['easy','hard'][Math.random()>0.5?1:0] : difficulty}",
+  "scenario": "A detailed clinical scenario (3-5 sentences with demographics, vitals as bullet list, history, exam findings)",
+  "questions": [
+    {
+      "text": "Question text with 'Select one', 'List THREE', etc.",
+      "type": "mcq|short-menu|free-text",
+      "marks": 1-4,
+      "options": ["Option A", "Option B"] (for mcq/short-menu only),
+      "correctIndex": 0 (for mcq only),
+      "selectCount": 3 (for short-menu only),
+      "correctIndices": [0, 2, 4] (for short-menu only),
+      "listCount": 3 (for free-text only, number of expected items),
+      "answer": ["Item 1", "Item 2", "Item 3"] (for free-text only),
+      "explanation": "Why/how this is correct" (for mcq/short-menu, optional for free-text)
+    }
+  ]
+}
+
+REQUIREMENTS:
+- Include 3-5 questions per case
+- Mix all three question types (at least 1 MCQ, 1 short-menu, and 1-2 free-text)
+- Questions should progressively evolve the scenario (initial assessment → management → complications → disposition)
+- For short-menu: use 8-15 options and specify exact count (2-4 usually)
+- For free-text: include drug names with doses and routes where applicable
+- Base answers on the KEY CLINICAL COMPETENCIES for this topic
+- All answers must be clinically accurate per Canadian practice standards`
+      : `Generate a SOO (Simulated Office Oral) station for the CCFP-EM exam on the topic: "${topic}".
+
+Return ONLY valid JSON in this exact format (no markdown, no explanation):
+{
+  "topic": "${topic}",
+  "difficulty": "${difficulty === 'mixed' ? ['easy','hard'][Math.random()>0.5?1:0] : difficulty}",
+  "scenario": "A detailed clinical scenario for the examiner to read (3-5 sentences)",
+  "examinerPrompts": [
+    {
+      "prompt": "Examiner question or new clinical information",
+      "expectedResponse": ["Key point 1", "Key point 2", "Key point 3", "Key point 4"]
+    }
+  ]
+}
+
+Include 3-4 examiner prompts that progress through the case. Each prompt should build on the previous one, simulating a real SOO station.`;
+
+    try {
+      const loadingEl = document.createElement('div');
+      loadingEl.id = 'ai-loading';
+      loadingEl.innerHTML = `<div class="card" style="text-align:center;padding:2rem;">
+        <div class="spinner" style="border-color:var(--primary-light);border-top-color:var(--primary);width:40px;height:40px;margin:0 auto 1rem;"></div>
+        <p style="color:var(--text-light);">Generating AI question ${i + 1} of ${count}...<br>Topic: ${topic}</p>
+      </div>`;
+
+      const examView = document.getElementById('view-home');
+      examView.appendChild(loadingEl);
+
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true'
+        },
+        body: JSON.stringify({
+          model: model,
+          max_tokens: 4096,
+          system: systemPrompt,
+          messages: [{ role: 'user', content: userPrompt }]
+        })
+      });
+
+      loadingEl.remove();
+
+      if (!response.ok) {
+        const err = await response.json();
+        console.error('API error:', err);
+        alert(`AI generation failed: ${err.error?.message || 'Unknown error'}. Falling back to question bank.`);
+        continue;
+      }
+
+      const data = await response.json();
+      const text = data.content[0].text;
+
+      // Parse JSON from response
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        const parsed = JSON.parse(jsonMatch[0]);
+        parsed.format = format === 'SAMP' ? 'samp' : 'soo';
+        parsed.aiGenerated = true;
+        questions.push(parsed);
+      }
+    } catch (err) {
+      console.error('AI generation error:', err);
+    }
+  }
+
+  return questions;
+}
+
+async function testApiKey() {
+  const apiKey = document.getElementById('apiKey').value;
+  const status = document.getElementById('apiStatus');
+
+  if (!apiKey) {
+    status.innerHTML = '<span style="color:var(--accent)">Please enter an API key</span>';
+    return;
+  }
+
+  status.innerHTML = '<span class="spinner" style="border-color:var(--primary-light);border-top-color:var(--primary);"></span> Testing...';
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 10,
+        messages: [{ role: 'user', content: 'Hi' }]
+      })
+    });
+
+    if (response.ok) {
+      status.innerHTML = '<span style="color:var(--success)">✓ Connected successfully!</span>';
+      saveSettings();
+    } else {
+      const err = await response.json();
+      status.innerHTML = `<span style="color:var(--accent)">✗ ${err.error?.message || 'Connection failed'}</span>`;
+    }
+  } catch (err) {
+    status.innerHTML = `<span style="color:var(--accent)">✗ Network error — check your connection</span>`;
+  }
+}
+
+// ============================================================
+// SETTINGS
+// ============================================================
+function saveSettings() {
+  state.settings = {
+    apiKey: document.getElementById('apiKey')?.value || '',
+    apiModel: document.getElementById('apiModel')?.value || 'claude-sonnet-4-6',
+    sampTime: document.getElementById('sampTime')?.value || '48',
+    sooTime: document.getElementById('sooTime')?.value || '12'
+  };
+  localStorage.setItem('ccfpem_settings', JSON.stringify(state.settings));
+}
+
+function loadSettings() {
+  if (state.settings.apiKey) {
+    const el = document.getElementById('apiKey');
+    if (el) el.value = state.settings.apiKey;
+  }
+  if (state.settings.apiModel) {
+    const el = document.getElementById('apiModel');
+    if (el) el.value = state.settings.apiModel;
+  }
+  if (state.settings.sampTime) {
+    const el = document.getElementById('sampTime');
+    if (el) el.value = state.settings.sampTime;
+  }
+  if (state.settings.sooTime) {
+    const el = document.getElementById('sooTime');
+    if (el) el.value = state.settings.sooTime;
+  }
+}
+
+// ============================================================
+// STATS & HISTORY
+// ============================================================
+function updateStats() {
+  const bankSize = QUESTION_BANK.samp.length + QUESTION_BANK.soo.length;
+  document.getElementById('stat-bank').textContent = bankSize;
+  document.getElementById('stat-completed').textContent = state.examHistory.length;
+
+  if (state.examHistory.length > 0) {
+    const avg = Math.round(state.examHistory.reduce((sum, r) => sum + r.percentage, 0) / state.examHistory.length);
+    document.getElementById('stat-avg').textContent = `${avg}%`;
+  }
+}
+
+function showRecentResults() {
+  const container = document.getElementById('recentResults');
+  const list = document.getElementById('resultsList');
+
+  if (state.examHistory.length === 0) {
+    container.style.display = 'none';
+    return;
+  }
+
+  container.style.display = 'block';
+  const recent = state.examHistory.slice(-5).reverse();
+
+  list.innerHTML = recent.map(r => {
+    const date = new Date(r.date).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    const color = r.percentage >= 70 ? 'var(--success)' : r.percentage >= 50 ? 'var(--warning)' : 'var(--accent)';
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid var(--border);">
+      <div>
+        <strong>${r.mode.toUpperCase()}</strong> — ${r.numCases} cases
+        <br><span style="color:var(--text-light);font-size:0.85rem;">${date} · ${r.topics?.join(', ') || 'Mixed topics'}</span>
+      </div>
+      <div style="font-size:1.3rem;font-weight:700;color:${color}">${r.percentage}%</div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// KEY FEATURES VIEW
+// ============================================================
+function renderKeyFeatures() {
+  const container = document.getElementById('keyFeaturesContainer');
+  let html = '';
+
+  for (const [topic, features] of Object.entries(KEY_FEATURES)) {
+    const topicId = 'kf-' + topic.replace(/[^a-z0-9]/gi, '-').toLowerCase();
+    html += `<div style="margin-bottom:1.5rem; border:1px solid var(--border); border-radius:8px; overflow:hidden;">`;
+    html += `<div onclick="toggleKeyFeatureTopic('${topicId}')" style="padding:1rem; background:var(--primary); color:white; cursor:pointer; user-select:none; display:flex; justify-content:space-between; align-items:center;">
+      <strong style="font-size:1rem;">${topic}</strong>
+      <span id="${topicId}-toggle" style="font-size:1.2rem;">▶</span>
+    </div>`;
+    html += `<div id="${topicId}-content" style="display:none; padding:1rem; background:#f7fafc;">`;
+    html += `<ul style="margin:0; padding-left:1.5rem; line-height:1.8;">`;
+    features.forEach(feature => {
+      html += `<li style="margin-bottom:0.75rem;">${feature}</li>`;
+    });
+    html += `</ul></div></div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+function toggleKeyFeatureTopic(topicId) {
+  const content = document.getElementById(`${topicId}-content`);
+  const toggle = document.getElementById(`${topicId}-toggle`);
+  const isHidden = content.style.display === 'none';
+
+  if (isHidden) {
+    content.style.display = 'block';
+    toggle.textContent = '▼';
+  } else {
+    content.style.display = 'none';
+    toggle.textContent = '▶';
+  }
+}
+
+// ============================================================
+// INIT
+// ============================================================
+init();
+</script>
+</body>
+</html>
