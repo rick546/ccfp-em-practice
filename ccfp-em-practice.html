@@ -1565,6 +1565,1803 @@ ABG on 100% O2: pH 7.38, pCO2 34, pO2 412, carboxyhemoglobin (COHb) 32%.`,
           explanation: "The half-life of COHb is approximately 4-6 hours breathing room air and is reduced to 60-90 minutes on 100% oxygen via non-rebreather mask. Hyperbaric oxygen at 2.5-3.0 atm further reduces the half-life to approximately 15-23 minutes."
         }
       ]
+    },
+    // --- CARDIAC ARREST & CPR (Tintinalli Ch. 22, 24) ---
+    {
+      topic: "Cardiac Arrest Management",
+      difficulty: "hard",
+      scenario: `A 58-year-old male is witnessed to collapse in the ED waiting room. A nurse immediately checks for responsiveness — the patient is unresponsive with agonal breathing. No pulse is palpable within 10 seconds. CPR is initiated and an AED is attached, which advises a shock for ventricular fibrillation. After the first shock, CPR is resumed immediately. The patient is moved to the resuscitation bay.
+
+After 2 minutes of CPR, a rhythm check shows persistent VF. A second shock is delivered. IV access is obtained. After the third shock at 6 minutes, the rhythm converts to PEA with a narrow complex at a rate of 40. No pulse is detected.`,
+      questions: [
+        {
+          text: "What is the recommended chest compression rate and depth for adult CPR according to current AHA guidelines?",
+          type: "mcq",
+          marks: 1,
+          options: ["80-100/min, 1.5-2 inches", "100-120/min, 2-2.5 inches", "120-140/min, 2.5-3 inches", "At least 100/min, at least 3 inches"],
+          correctIndex: 1,
+          explanation: "Current AHA guidelines recommend a compression rate of 100-120 per minute and a depth of 2 to 2.5 inches (5 to 6 cm). Rates below 100 are inadequate, and depths beyond 2.5 inches may increase injury risk. Complete chest recoil between compressions is essential."
+        },
+        {
+          text: "What is 'chest compression fraction' and what minimum percentage is recommended during resuscitation?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Chest compression fraction is the proportion of total resuscitation time spent performing chest compressions",
+            "Current guidelines recommend a chest compression fraction of at least 60%",
+            "Interruptions should be minimized — continue compressions between pulse checks, while applying AED, and immediately restart after defibrillation",
+            "Compressors should be alternated every 2 minutes to prevent fatigue and maintain compression quality"
+          ]
+        },
+        {
+          text: "The rhythm has converted to PEA. List the reversible causes of PEA arrest (Hs and Ts).",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Hs: Hypovolemia, Hypoxia, Hydrogen ion (acidosis), Hypo/Hyperkalemia, Hypothermia, Hypoglycemia",
+            "Ts: Tension pneumothorax, Tamponade (cardiac), Toxins, Thrombosis (pulmonary embolism), Thrombosis (coronary/MI)",
+            "PEA with narrow complex and slow rate suggests mechanical obstruction (tamponade, PE, tension pneumo) or severe hypovolemia",
+            "Treatment is focused on identifying and correcting the underlying cause while continuing high-quality CPR and administering epinephrine every 3-5 minutes"
+          ]
+        },
+        {
+          text: "What are the indications for open chest cardiac massage?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Penetrating chest trauma",
+            "Perioperative period before or after cardiothoracic surgery",
+            "Cardiac arrest caused by hypothermia, pulmonary embolism, pericardial tamponade, or abdominal hemorrhage",
+            "Chest deformity making closed chest CPR ineffective",
+            "Penetrating abdominal trauma with deterioration and cardiac arrest",
+            "Blunt trauma with cardiac arrest",
+            "Note: opening the chest solely to perform open cardiac massage without these indications does not provide benefit over closed chest compressions"
+          ]
+        }
+      ]
+    },
+    // --- DEFIBRILLATION & ELECTRICAL CARDIOVERSION (Tintinalli Ch. 23) ---
+    {
+      topic: "Defibrillation and Cardioversion",
+      difficulty: "medium",
+      scenario: `A 72-year-old woman presents to the ED with palpitations, chest tightness, and dyspnea for 2 hours. She has a history of hypertension and type 2 diabetes. Vitals: HR 168, BP 82/50, RR 24, SpO2 93% on room air. She appears diaphoretic and confused. ECG shows an irregularly irregular wide complex tachycardia consistent with atrial fibrillation with rapid ventricular response. Chest X-ray shows mild pulmonary edema.
+
+Despite IV fluid bolus, her blood pressure remains 78/48 and she is becoming more obtunded.`,
+      questions: [
+        {
+          text: "Given the hemodynamic instability, what is the next best step in management?",
+          type: "mcq",
+          marks: 1,
+          options: ["IV amiodarone 150 mg", "IV metoprolol 5 mg", "Synchronized cardioversion", "IV diltiazem 20 mg"],
+          correctIndex: 2,
+          explanation: "Synchronized cardioversion is indicated for hemodynamically unstable tachyarrhythmias. This patient has hypotension, altered mental status, and pulmonary edema — signs of hemodynamic instability that warrant immediate electrical cardioversion rather than pharmacologic rate or rhythm control."
+        },
+        {
+          text: "Explain the difference between synchronized cardioversion and defibrillation, and why synchronization matters in this clinical scenario.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Synchronized cardioversion delivers the shock timed to the R wave of the QRS complex, avoiding the vulnerable period (T wave) of the cardiac cycle",
+            "Defibrillation delivers an unsynchronized shock at maximum energy and is used for pulseless VT/VF where there is no organized rhythm to synchronize with",
+            "Synchronization is critical in organized rhythms like atrial fibrillation because delivering energy during the relative refractory period (T wave) can induce ventricular fibrillation",
+            "If the device fails to synchronize or the patient deteriorates to pulseless VT/VF, switch to unsynchronized defibrillation immediately"
+          ]
+        },
+        {
+          text: "What is the recommended initial energy dose for synchronized cardioversion of atrial fibrillation?",
+          type: "mcq",
+          marks: 1,
+          options: ["50 J biphasic", "100 J biphasic", "120-200 J biphasic", "360 J monophasic"],
+          correctIndex: 2,
+          explanation: "For atrial fibrillation, the recommended initial energy for synchronized cardioversion is 120-200 J biphasic (or 200 J monophasic). Atrial fibrillation typically requires higher energy levels than atrial flutter (which can often be cardioverted at 50-100 J) due to the chaotic and multifocal nature of the atrial activity."
+        },
+        {
+          text: "What procedural sedation considerations are important before performing electrical cardioversion?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Procedural sedation should be administered before cardioversion whenever possible — agents include propofol, etomidate, midazolam, or ketamine",
+            "The patient should be placed on continuous monitoring (ECG, pulse oximetry, blood pressure) with resuscitation equipment immediately available",
+            "In critically unstable patients, sedation should not delay cardioversion — the urgency of the clinical situation takes priority",
+            "Ensure the defibrillator is in synchronized mode and confirm sync markers are appearing on the R waves before delivering the shock"
+          ]
+        }
+      ]
+    },
+    // --- RESUSCITATION IN PREGNANCY (Tintinalli Ch. 25) ---
+    {
+      topic: "Resuscitation in Pregnancy",
+      difficulty: "hard",
+      scenario: `A 29-year-old woman at 34 weeks gestation is brought in by EMS after a witnessed collapse at a shopping mall. Bystanders report she suddenly became unresponsive. EMS found her pulseless with CPR in progress. She was intubated in the field.
+
+On arrival to the ED, she remains in PEA arrest. Her fundal height is above the umbilicus. Two large-bore IVs are in place in the antecubital fossae. CPR has been ongoing for 4 minutes. Her husband reports she had been complaining of worsening leg swelling and dyspnea over the past week. She had no significant past medical history prior to pregnancy.`,
+      questions: [
+        {
+          text: "What is the most important positioning modification during CPR in a pregnant patient, and why?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Place the patient in left lateral tilt (15-30 degrees) using a Cardiff wedge, foam wedge, or roll under the right hip",
+            "This relieves aortocaval compression by the gravid uterus, which can reduce cardiac output by 10-30% in the supine position",
+            "Aortocaval compression decreases venous return and reduces the effectiveness of chest compressions",
+            "Foam or hard wedges maintain tilt better than pillows or manual tilting; the Cardiff wedge provides approximately 27 degrees of tilt",
+            "Avoid femoral or saphenous IV access during resuscitation at >20 weeks gestation due to compression of abdominal vasculature"
+          ]
+        },
+        {
+          text: "Given ongoing PEA arrest with a uterus palpable above the umbilicus and CPR for 4 minutes, what critical intervention should be performed?",
+          type: "mcq",
+          marks: 1,
+          options: ["Administer tPA for presumed pulmonary embolism", "Perform perimortem cesarean section", "Continue CPR for 20 more minutes before reassessing", "Obtain urgent CT pulmonary angiography"],
+          correctIndex: 1,
+          explanation: "Perimortem cesarean section should be performed early in the management of any arresting patient with a uterus at or above the level of the umbilicus. The goal is to perform delivery within 5 minutes of arrest onset. This improves both maternal hemodynamics (by relieving aortocaval compression) and fetal outcomes. It should not be delayed waiting for specialists."
+        },
+        {
+          text: "List the physiologic changes in pregnancy that affect resuscitation.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Cardiovascular: cardiac output increases 30-50%, peripheral resistance decreases 20%, blood volume increases to 100 mL/kg (6-7 L), BP decreases 10-15 mmHg systolic in first half",
+            "Respiratory: upper airway edema and friability (difficult airway), diaphragm elevation of 4 cm, increased tidal volume and minute ventilation, rapid oxygen desaturation due to increased O2 consumption and decreased FRC",
+            "GI: decreased lower esophageal tone and gastric emptying — increased aspiration risk",
+            "Hematologic: hypercoagulable state with increased fibrinogen and factors V, VII, VIII, X — increased VTE risk",
+            "Uteroplacental: 25% of blood flow directed to uteroplacental unit with no autoregulation; uterine blood flow is pressure-dependent"
+          ]
+        },
+        {
+          text: "Given the history of worsening leg swelling and dyspnea, what is the most likely cause of this patient's cardiac arrest?",
+          type: "mcq",
+          marks: 1,
+          options: ["Amniotic fluid embolism", "Massive pulmonary embolism", "Peripartum cardiomyopathy", "Eclamptic seizure"],
+          correctIndex: 1,
+          explanation: "Massive pulmonary embolism is the most likely cause given the progressive leg swelling (suggesting DVT) and worsening dyspnea in a pregnant patient. Pregnancy is a hypercoagulable state with increased risk of VTE. Thrombotic pulmonary embolism is one of the leading causes of pregnancy-related death."
+        }
+      ]
+    },
+    // --- POST-CARDIAC ARREST SYNDROME (Tintinalli Ch. 26) ---
+    {
+      topic: "Post-Cardiac Arrest Care",
+      difficulty: "hard",
+      scenario: `A 63-year-old male achieves ROSC after 18 minutes of CPR for witnessed VF cardiac arrest in the ED. He was defibrillated 3 times and received epinephrine 3 mg and amiodarone 300 mg total. He is now intubated and on a ventilator.
+
+Current vitals: HR 110 sinus tachycardia, BP 78/52, SpO2 96% on FiO2 0.8, Temp 36.8°C. His pupils are mid-dilated and sluggishly reactive. He has no purposeful movements. Initial labs show: lactate 8.2 mmol/L, pH 7.18, K+ 5.6 mmol/L, troponin 2.4 ng/mL, creatinine 1.8 mg/dL.`,
+      questions: [
+        {
+          text: "What are the four key components of post-cardiac arrest syndrome?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Post-cardiac arrest brain injury — due to impaired cerebrovascular autoregulation, cerebral edema, and neuronal death from ischemia-reperfusion",
+            "Post-cardiac arrest myocardial dysfunction — global myocardial stunning with reduced ejection fraction, typically reversible over 24-72 hours",
+            "Systemic ischemia-reperfusion response — whole-body inflammatory state similar to sepsis with reactive oxygen species, inflammatory cascades, and mitochondrial dysfunction",
+            "Persistent precipitating pathology — the underlying cause of the arrest (e.g., acute MI, PE, toxic ingestion) that must be identified and treated"
+          ]
+        },
+        {
+          text: "This patient is hypotensive with a lactate of 8.2. What is the approach to hemodynamic management in post-cardiac arrest care?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Avoid hypotension — target MAP ≥65 mmHg (some evidence supports targeting MAP 80-100 mmHg in the post-arrest period to optimize cerebral perfusion)",
+            "Initial fluid resuscitation with isotonic crystalloid for volume optimization",
+            "Vasopressors (norepinephrine is first-line) if hypotension persists after volume resuscitation — post-arrest myocardial dysfunction often requires vasopressor and/or inotropic support",
+            "Serial lactate measurements to guide adequacy of resuscitation — a downtrending lactate suggests improving tissue perfusion"
+          ]
+        },
+        {
+          text: "What target temperature and duration is recommended for targeted temperature management (TTM) in this patient?",
+          type: "mcq",
+          marks: 1,
+          options: ["32-34°C for 12 hours", "32-36°C for at least 24 hours", "34-36°C for 48 hours", "36-37.5°C for 72 hours"],
+          correctIndex: 1,
+          explanation: "Current guidelines recommend targeted temperature management at 32-36°C for at least 24 hours in comatose patients after ROSC from cardiac arrest. The TTM2 trial showed no benefit of 33°C over 36°C, but actively preventing fever remains critical. Cooling should be initiated as early as possible."
+        },
+        {
+          text: "At what point is neurologic prognostication appropriate in post-cardiac arrest patients, and what modalities are used?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Neurologic prognostication should not be performed earlier than 72 hours after ROSC (or 72 hours after rewarming if TTM was used)",
+            "No single test reliably predicts poor neurologic outcome — a multimodal approach is recommended",
+            "Modalities include: clinical examination (pupillary and corneal reflexes, motor response), electroencephalography (EEG), somatosensory evoked potentials (SSEPs), serum biomarkers (neuron-specific enolase), and brain imaging (CT/MRI)",
+            "Absent bilateral N20 response on SSEP is one of the most specific predictors of poor outcome"
+          ]
+        }
+      ]
+    },
+    // --- NONINVASIVE AIRWAY MANAGEMENT (Tintinalli Ch. 28) ---
+    {
+      topic: "Airway Management — BVM and Supraglottic Airways",
+      difficulty: "medium",
+      scenario: `A 74-year-old male with a history of COPD and obesity (BMI 38) presents with acute respiratory failure. He is obtunded with GCS 7 (E1V2M4), RR 8, SpO2 78% on 15L non-rebreather, HR 118, BP 156/92. He has copious oral secretions and sonorous respirations.
+
+The resuscitation team prepares for intubation while a resident attempts bag-valve-mask (BVM) ventilation. Despite jaw thrust, the SpO2 continues to drop and there is minimal chest rise with BVM ventilation.`,
+      questions: [
+        {
+          text: "List the techniques to optimize bag-valve-mask ventilation in a difficult-to-ventilate patient.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Two-person technique: one provider holds the mask with both hands using a thenar grip (jaw thrust) while the second provider squeezes the bag",
+            "Place an oropharyngeal airway (OPA) or nasopharyngeal airway (NPA) as an adjunct to lift the tongue off the posterior pharynx",
+            "Ensure proper head positioning — sniffing position with head extended and neck flexed (unless cervical spine injury suspected)",
+            "Use CPAP mode on the BVM if available, or apply firm mask seal; suction oropharynx to clear secretions before ventilation",
+            "In obese patients, elevate the head of bed 20-30 degrees (ramped position) to improve respiratory mechanics and functional residual capacity"
+          ]
+        },
+        {
+          text: "BVM remains ineffective. What supraglottic airway device should be placed as a bridge to definitive airway management?",
+          type: "mcq",
+          marks: 1,
+          options: ["Combitube", "i-gel or King LT", "Nasopharyngeal airway", "Cricothyrotomy"],
+          correctIndex: 1,
+          explanation: "The i-gel or King LT are modern supraglottic airway devices that can be rapidly placed without laryngoscopy. They serve as effective rescue devices when BVM ventilation fails and as bridges to definitive intubation. The i-gel has the advantage of allowing passage of an endotracheal tube through it for subsequent intubation."
+        },
+        {
+          text: "What are the predictors of difficult bag-valve-mask ventilation (MOANS mnemonic)?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "M — Mask seal difficulty (beard, facial trauma, abnormal anatomy)",
+            "O — Obesity/Obstruction (BMI >26, pregnancy, airway masses, epiglottitis, peritonsillar abscess)",
+            "A — Age >55 years (loss of tissue elasticity and upper airway tone)",
+            "N — No teeth (edentulous patients have poor mask seal due to loss of facial structure)",
+            "S — Stiff/Snoring (lung compliance issues such as COPD, asthma, pulmonary fibrosis; stiff from radiation to neck; snoring suggests upper airway obstruction)"
+          ]
+        },
+        {
+          text: "How can a supraglottic airway (i-gel) be converted to a definitive endotracheal airway?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Insert a flexible fiberoptic bronchoscope through the i-gel into the trachea, then railroad an endotracheal tube over the scope and through the i-gel",
+            "Alternatively, insert a gum elastic bougie through the i-gel or King LT into the trachea, remove the SGA over the bougie, then pass an ETT over the bougie (blind exchange technique)",
+            "Blind exchange works better with the King LT and i-gel than with the standard LMA",
+            "If conversion fails, consider direct or video laryngoscopy after removing the SGA with airway adjuncts ready"
+          ]
+        }
+      ]
+    },
+    // --- TRACHEAL INTUBATION & RAPID SEQUENCE INTUBATION (Tintinalli Ch. 29A) ---
+    {
+      topic: "Rapid Sequence Intubation",
+      difficulty: "hard",
+      scenario: `A 45-year-old male presents after a high-speed motorcycle collision. He is agitated and combative (GCS 10: E3V2M5), HR 128, BP 92/60, RR 28, SpO2 88% on non-rebreather. He has blood in his oropharynx, an unstable midface, and cervical spine precautions are in place. His neck is short and thick. A portable chest X-ray shows a left hemothorax.
+
+After suctioning and BVM ventilation brings SpO2 to 93%, the team decides to proceed with rapid sequence intubation (RSI).`,
+      questions: [
+        {
+          text: "List the seven Ps of rapid sequence intubation in order.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "1. Preparation — assemble equipment, assess airway difficulty, have backup plan",
+            "2. Preoxygenation — 3-5 minutes of 100% O2 (or 8 vital capacity breaths) to denitrogenate the FRC; apply nasal cannula at 15 L/min for apneic oxygenation",
+            "3. Pretreatment — consider agents to blunt adverse reflexes (e.g., lidocaine for elevated ICP, fentanyl for sympathetic surge)",
+            "4. Paralysis with induction — administer induction agent (e.g., ketamine, etomidate) immediately followed by neuromuscular blocker (succinylcholine or rocuronium)",
+            "5. Protection and positioning — Sellick maneuver (cricoid pressure) is controversial; position in sniffing or ramped position; maintain C-spine immobilization if indicated",
+            "6. Placement — direct or video laryngoscopy with ETT placement; confirm with end-tidal CO2",
+            "7. Post-intubation management — secure tube, set ventilator, obtain chest X-ray, continue sedation and analgesia"
+          ]
+        },
+        {
+          text: "Given this patient's hemodynamic instability (BP 92/60), which induction agent is most appropriate for RSI?",
+          type: "mcq",
+          marks: 1,
+          options: ["Propofol 2 mg/kg", "Ketamine 1.5 mg/kg", "Midazolam 0.3 mg/kg", "Thiopental 3 mg/kg"],
+          correctIndex: 1,
+          explanation: "Ketamine is the preferred induction agent in hemodynamically unstable patients because it maintains sympathetic tone and blood pressure through central catecholamine release. Propofol and thiopental both cause significant hypotension and myocardial depression. Etomidate is an alternative with hemodynamic stability but concerns about adrenal suppression exist."
+        },
+        {
+          text: "What features of this patient's presentation predict a difficult airway, and what backup plan should be in place?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Difficult airway predictors: blood in the oropharynx (contaminated airway), unstable midface fracture (distorted anatomy), short thick neck (reduced neck mobility and landmarks), cervical spine precautions (inability to optimally position), and potential airway edema from facial trauma",
+            "LEMON assessment: Look externally (facial trauma), Evaluate 3-3-2 (likely reduced mouth opening and thyromental distance), Mallampati (cannot assess in combative patient), Obstruction (blood, potential swelling), Neck mobility (restricted by C-spine collar)",
+            "Backup plan should follow the difficult airway algorithm: have video laryngoscopy as primary or backup, bougie readily available, supraglottic airway device (i-gel) as rescue, and surgical airway (cricothyrotomy) kit open and ready",
+            "A double setup with surgical airway equipment prepped at the bedside is mandatory in this anticipated difficult airway"
+          ]
+        }
+      ]
+    },
+    // --- MECHANICAL VENTILATION (Tintinalli Ch. 29B) ---
+    {
+      topic: "Mechanical Ventilation",
+      difficulty: "medium",
+      scenario: `A 52-year-old female with a history of asthma is intubated for status asthmaticus after failing BiPAP. She is now on the ventilator with the following settings: Assist-Control Volume Control mode, tidal volume 480 mL (8 mL/kg IBW), RR 18, FiO2 0.6, PEEP 5 cmH2O.
+
+Post-intubation, the ventilator alarm sounds repeatedly. Peak pressures are reading 52 cmH2O, plateau pressures are 22 cmH2O. The patient's SpO2 is 94%. Her ABG shows pH 7.22, PaCO2 58, PaO2 82, HCO3 24.`,
+      questions: [
+        {
+          text: "Interpret the discrepancy between the high peak pressure (52 cmH2O) and the normal plateau pressure (22 cmH2O). What does this indicate?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "High peak pressure with normal plateau pressure indicates increased airway resistance, not decreased lung compliance",
+            "Peak pressure reflects both airway resistance and lung compliance, while plateau pressure (measured during an inspiratory hold) reflects only lung compliance",
+            "In this asthmatic patient, the elevated peak-to-plateau gradient is caused by severe bronchospasm and mucus plugging increasing airway resistance",
+            "If both peak and plateau pressures were elevated, this would suggest decreased lung compliance (e.g., ARDS, pneumothorax, pulmonary edema)"
+          ]
+        },
+        {
+          text: "The ABG shows respiratory acidosis (pH 7.22, PaCO2 58). What ventilator strategy is appropriate for this intubated asthmatic?",
+          type: "mcq",
+          marks: 1,
+          options: ["Increase respiratory rate to 24 to blow off more CO2", "Accept permissive hypercapnia and reduce respiratory rate", "Switch to pressure control ventilation at 35 cmH2O", "Increase tidal volume to 10 mL/kg"],
+          correctIndex: 1,
+          explanation: "Permissive hypercapnia is the appropriate strategy in intubated asthmatics. The goal is to avoid air trapping and dynamic hyperinflation (auto-PEEP). Reduce the respiratory rate (to 10-12), use a low tidal volume (6-8 mL/kg IBW), and allow a prolonged expiratory time (low I:E ratio, e.g., 1:4 or 1:5). Mild acidosis (pH >7.15-7.20) is generally well tolerated."
+        },
+        {
+          text: "Explain the concept of auto-PEEP (intrinsic PEEP) and why it is dangerous in this patient.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Auto-PEEP occurs when air is trapped in the lungs because expiration is incomplete before the next breath is delivered — the expiratory flow does not reach zero before the ventilator triggers the next inspiration",
+            "In severe asthma, bronchospasm and mucus plugging dramatically increase expiratory airway resistance, prolonging the time needed for complete exhalation",
+            "Consequences of auto-PEEP include: dynamic hyperinflation leading to increased intrathoracic pressure, decreased venous return, hypotension, and potentially cardiac arrest (tension physiology similar to tension pneumothorax)",
+            "Auto-PEEP is detected by observing that expiratory flow on the ventilator waveform does not return to zero before the next breath, or by performing an expiratory hold maneuver",
+            "Treatment: reduce respiratory rate, reduce tidal volume, increase expiratory time (decrease I:E ratio), treat bronchospasm aggressively, and if hemodynamically compromised — disconnect from ventilator briefly to allow complete exhalation"
+          ]
+        }
+      ]
+    },
+    // --- SURGICAL AIRWAY / CRICOTHYROTOMY (Tintinalli Ch. 30) ---
+    {
+      topic: "Surgical Airway — Cricothyrotomy",
+      difficulty: "hard",
+      scenario: `A 38-year-old male presents after an assault with progressive facial and neck swelling from an expanding neck hematoma. He has stridor and is sitting upright with a SpO2 of 84% on 15L non-rebreather. He cannot phonate and has trismus. An attempt at orotracheal intubation with video laryngoscopy fails — the glottis cannot be visualized due to pharyngeal edema and blood.
+
+A supraglottic airway is inserted but fails to ventilate the patient. SpO2 drops to 72%. The decision is made to perform an emergency surgical cricothyrotomy.`,
+      questions: [
+        {
+          text: "Describe the anatomical landmarks and technique for surgical cricothyrotomy.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Landmark: the cricothyroid membrane is located between the inferior border of the thyroid cartilage and the superior border of the cricoid cartilage, in the midline of the anterior neck",
+            "Technique: stabilize the larynx with the non-dominant hand; make a vertical skin incision over the membrane (vertical reduces risk of vascular injury); identify the membrane by palpation",
+            "Make a horizontal stab incision through the cricothyroid membrane; insert a tracheal hook or Trousseau dilator to maintain the opening",
+            "Insert a cuffed tracheostomy tube (typically 6.0 or Shiley #4) or a cuffed endotracheal tube (6.0) through the incision into the trachea; inflate the cuff and confirm placement with ETCO2 and bilateral breath sounds",
+            "In the 'can't intubate, can't oxygenate' (CICO) scenario, surgical cricothyrotomy is the definitive rescue technique"
+          ]
+        },
+        {
+          text: "What is the most common complication of emergency cricothyrotomy?",
+          type: "mcq",
+          marks: 1,
+          options: ["Posterior tracheal wall perforation", "Subglottic stenosis", "False passage into pretracheal soft tissue", "Recurrent laryngeal nerve injury"],
+          correctIndex: 2,
+          explanation: "False passage (creating a tract into the pretracheal soft tissue rather than the tracheal lumen) is the most common complication of emergency cricothyrotomy. This occurs when the tube is not inserted through the membrane into the airway lumen. Confirmation with end-tidal CO2 is essential. Other complications include hemorrhage, posterior tracheal wall injury, and late subglottic stenosis."
+        },
+        {
+          text: "What are the contraindications to cricothyrotomy, and what is the alternative in pediatric patients?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Relative contraindications: age <10-12 years (small cricothyroid membrane), laryngeal fracture or disruption of the laryngotracheal framework, pre-existing laryngeal pathology, and tracheal transection with retraction of the distal trachea",
+            "In pediatric patients <10-12 years, needle cricothyrotomy with jet ventilation (transtracheal jet ventilation) is preferred because the cricothyroid membrane is too small for surgical cricothyrotomy",
+            "Needle cricothyrotomy uses a 12-14 gauge catheter-over-needle through the cricothyroid membrane connected to a jet ventilation system or a BVM with an adapter",
+            "Needle cricothyrotomy is a temporizing measure providing oxygenation but limited ventilation — definitive airway must still be obtained"
+          ]
+        }
+      ]
+    },
+    // --- VASCULAR ACCESS & INTRAOSSEOUS (Tintinalli Ch. 31) ---
+    {
+      topic: "Vascular Access — Central Lines and Intraosseous",
+      difficulty: "medium",
+      scenario: `A 68-year-old male in septic shock from urosepsis arrives with BP 62/38 after 2L crystalloid via peripheral IVs. The nursing team reports difficulty obtaining additional peripheral access — his arms are edematous and previous sites have infiltrated. The patient requires vasopressors and broad-spectrum antibiotics.
+
+The emergency physician decides to place a central venous catheter. The patient is coagulopathic with an INR of 2.1 and platelets of 68,000.`,
+      questions: [
+        {
+          text: "What is the preferred site for central venous access in this clinical scenario, and why?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "The internal jugular vein (IJ) is the preferred site in the emergency department, particularly with ultrasound guidance",
+            "Advantages: direct line to the superior vena cava, lower risk of pneumothorax compared to subclavian, and the site is compressible if bleeding occurs (important given this patient's coagulopathy with INR 2.1 and platelets 68,000)",
+            "The subclavian site has lower infection rates but is non-compressible and has a higher risk of pneumothorax; it is relatively contraindicated in coagulopathic patients",
+            "The femoral vein is an alternative for rapid access in emergencies but has higher infection rates with prolonged use"
+          ]
+        },
+        {
+          text: "While preparing for central line placement, what alternative rapid vascular access should be established immediately given the patient's critical hypotension?",
+          type: "mcq",
+          marks: 1,
+          options: ["Peripheral IV in the external jugular vein", "Intraosseous (IO) access", "Venous cutdown at the saphenous vein", "Arterial line for medication administration"],
+          correctIndex: 1,
+          explanation: "Intraosseous (IO) access should be established immediately in critically ill patients when peripheral IV access is inadequate. IO access can be obtained in seconds using a drill-powered device (e.g., EZ-IO) and allows administration of all resuscitation medications, fluids, and blood products. Common sites include the proximal tibia and proximal humerus. Flow rates can reach 125 mL/min under pressure."
+        },
+        {
+          text: "What are the complications of central venous catheter placement that should be monitored for?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Pneumothorax — more common with subclavian approach; obtain post-procedure chest X-ray; use ultrasound guidance to reduce risk",
+            "Arterial puncture or cannulation — can cause hemorrhage, pseudoaneurysm, or stroke (if carotid); always confirm venous placement with transduced waveform, blood gas, or ultrasound",
+            "Air embolism — occurs when air enters the central venous system through the catheter; prevented by Trendelenburg positioning and having the patient perform Valsalva during catheter insertion",
+            "Catheter-related bloodstream infection (CRBSI) — reduced by full barrier precautions, chlorhexidine skin prep, and daily assessment for catheter necessity",
+            "Arrhythmia — the guidewire can irritate the right atrium/ventricle causing PVCs or SVT; pull back the wire if arrhythmia occurs"
+          ]
+        }
+      ]
+    },
+    // --- HEMODYNAMIC MONITORING (Tintinalli Ch. 32) ---
+    {
+      topic: "Hemodynamic Monitoring and Shock Assessment",
+      difficulty: "medium",
+      scenario: `A 55-year-old female is admitted to the ED resuscitation bay with septic shock from pneumonia. She has received 30 mL/kg crystalloid (2.4L) and is started on norepinephrine. Her central venous catheter is transducing a CVP of 14 mmHg. Bedside echocardiography shows hyperdynamic LV function. Lactate is 6.4 mmol/L despite 2 hours of resuscitation.
+
+The team is debating whether to give more fluids or add a second vasopressor.`,
+      questions: [
+        {
+          text: "Why is CVP alone a poor predictor of fluid responsiveness, and what dynamic measures are more reliable?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "CVP is a static measurement that is affected by multiple variables (intrathoracic pressure, RV compliance, tricuspid valve function, ventilator settings) and does not reliably predict whether a patient will increase cardiac output in response to fluids",
+            "Dynamic measures of fluid responsiveness are more reliable and include: pulse pressure variation (PPV >13% suggests fluid responsiveness in mechanically ventilated patients), stroke volume variation (SVV), and passive leg raise (PLR) test",
+            "Passive leg raise: elevate the patient's legs to 45 degrees from supine — if cardiac output or pulse pressure increases by ≥10%, the patient is likely fluid responsive; this is essentially an auto-bolus of venous blood from the lower extremities",
+            "IVC ultrasound: IVC collapsibility >50% with spontaneous breathing or IVC distensibility >18% with mechanical ventilation suggests fluid responsiveness, though this has significant limitations"
+          ]
+        },
+        {
+          text: "The team performs a passive leg raise test and sees a 15% increase in pulse pressure. What does this indicate?",
+          type: "mcq",
+          marks: 1,
+          options: ["The patient is volume overloaded", "The patient is likely fluid responsive", "The norepinephrine dose should be increased", "An inotrope should be added"],
+          correctIndex: 1,
+          explanation: "A ≥10% increase in pulse pressure or cardiac output during passive leg raise indicates the patient is likely to benefit from additional fluid administration. This test is a reversible volume challenge that effectively tests preload responsiveness without committing to a fluid bolus."
+        },
+        {
+          text: "What is the role of lactate monitoring in guiding resuscitation in septic shock?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Lactate is a marker of tissue hypoperfusion and anaerobic metabolism — elevated lactate (>2 mmol/L) in sepsis indicates inadequate oxygen delivery relative to tissue demand",
+            "Serial lactate measurements guide resuscitation adequacy: a decrease in lactate of ≥20% over 2 hours suggests improving tissue perfusion and is associated with better outcomes",
+            "Lactate clearance can be used as a resuscitation target — persistent elevation despite treatment suggests ongoing tissue hypoxia and the need for escalation of therapy",
+            "Note: lactate elevation in sepsis can also result from impaired hepatic clearance, catecholamine-driven aerobic glycolysis, and mitochondrial dysfunction — not solely from hypoperfusion"
+          ]
+        }
+      ]
+    },
+    // --- CARDIAC PACING (Tintinalli Ch. 33) ---
+    {
+      topic: "Emergency Cardiac Pacing",
+      difficulty: "medium",
+      scenario: `A 78-year-old male with a history of aortic valve replacement on warfarin presents with syncope and pre-syncope. He is alert but lightheaded. Vitals: HR 32, BP 78/44, RR 14, SpO2 96%. ECG shows complete (third-degree) heart block with a wide-complex ventricular escape rhythm at 30 bpm. He is not responding to atropine 1 mg IV.
+
+The cardiology team has been contacted for permanent pacemaker placement but is 45 minutes away.`,
+      questions: [
+        {
+          text: "What is the next step in management of this hemodynamically unstable patient with complete heart block unresponsive to atropine?",
+          type: "mcq",
+          marks: 1,
+          options: ["Isoproterenol infusion", "Transcutaneous pacing", "Transvenous pacing", "Dopamine infusion at 10 mcg/kg/min"],
+          correctIndex: 1,
+          explanation: "Transcutaneous pacing is the next immediate intervention for hemodynamically unstable bradycardia unresponsive to atropine. It can be initiated rapidly using external pacing pads and does not require specialized procedural expertise. It serves as a bridge until transvenous pacing or a permanent pacemaker can be placed."
+        },
+        {
+          text: "Describe the technique for initiating transcutaneous pacing and confirming mechanical capture.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Electrode placement: place the anterior pad over the left precordium (V2-V3 position) and the posterior pad on the left posterior chest wall below the scapula (anterior-posterior configuration preferred)",
+            "Set the pacing rate to 60-80 bpm initially; start at the lowest current output and gradually increase until electrical capture is seen (consistent pacing spike followed by a wide QRS complex)",
+            "Typical capture threshold is 50-100 mA, though it can be higher in obese patients or those with pericardial effusion, metabolic derangements, or myocardial infarction",
+            "Confirm mechanical capture by checking for a palpable pulse that correlates with each paced beat — electrical capture on the monitor without mechanical capture (PEA) does not provide hemodynamic benefit",
+            "Provide analgesia and sedation, as transcutaneous pacing is painful — options include IV fentanyl, morphine, or procedural sedation with ketamine or midazolam"
+          ]
+        },
+        {
+          text: "Why is atropine often ineffective in complete (third-degree) heart block?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Atropine works by blocking vagal (parasympathetic) tone at the SA and AV nodes, thereby increasing the sinus rate and AV conduction",
+            "In complete heart block, the conduction system below the AV node is completely disrupted — the ventricular escape rhythm originates from infranodal tissue (His bundle or below) that is not influenced by vagal tone",
+            "Therefore, atropine may increase the atrial rate but cannot improve conduction through a completely blocked AV node or accelerate the ventricular escape rhythm"
+          ]
+        }
+      ]
+    },
+    // --- PERICARDIOCENTESIS (Tintinalli Ch. 34) ---
+    {
+      topic: "Pericardial Tamponade and Pericardiocentesis",
+      difficulty: "hard",
+      scenario: `A 48-year-old male with known metastatic lung cancer presents with progressive dyspnea, chest pressure, and near-syncope. He appears diaphoretic and in distress. Vitals: HR 124, BP 84/72 (narrow pulse pressure), RR 26, SpO2 93%. Examination reveals muffled heart sounds and jugular venous distension. There is no peripheral edema. ECG shows sinus tachycardia with low voltage and electrical alternans.
+
+Bedside cardiac ultrasound reveals a large circumferential pericardial effusion with right ventricular diastolic collapse and IVC plethora (>2.1 cm, no respiratory variation).`,
+      questions: [
+        {
+          text: "What is Beck's triad, and which components are present in this patient?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Beck's triad consists of: hypotension, jugular venous distension (JVD), and muffled (distant) heart sounds",
+            "This patient demonstrates all three: BP 84/72 (hypotension), JVD, and muffled heart sounds",
+            "Beck's triad is present in only a minority of tamponade cases — the full triad is more commonly seen with acute tamponade from trauma or cardiac rupture than with subacute effusions"
+          ]
+        },
+        {
+          text: "What bedside ultrasound findings confirm cardiac tamponade in this patient?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Large circumferential pericardial effusion — seen as an anechoic stripe surrounding the heart in multiple views",
+            "Right ventricular diastolic collapse — the RV free wall collapses inward during diastole due to intrapericardial pressure exceeding RV diastolic pressure; this is the most specific echocardiographic sign of tamponade",
+            "IVC plethora — a dilated IVC (>2.1 cm) with minimal respiratory variation (<50% collapse) indicates elevated right atrial pressure",
+            "Right atrial systolic collapse (right atrial invagination) is an early and sensitive sign of tamponade",
+            "Electrical alternans on ECG reflects the heart swinging back and forth within a large pericardial effusion"
+          ]
+        },
+        {
+          text: "This patient is hemodynamically unstable. What is the definitive emergency procedure and what is the preferred approach?",
+          type: "mcq",
+          marks: 1,
+          options: ["Thoracotomy with pericardial window", "CT-guided pericardiocentesis", "Ultrasound-guided pericardiocentesis via subxiphoid approach", "Pericardiocentesis via apical approach without imaging guidance"],
+          correctIndex: 2,
+          explanation: "Ultrasound-guided pericardiocentesis via the subxiphoid approach is the standard emergency procedure for cardiac tamponade. Ultrasound guidance improves success rates and reduces complications. The needle is advanced from the subxiphoid region toward the left shoulder at a 30-45 degree angle. Even a small volume (20-50 mL) of fluid removal can dramatically improve hemodynamics."
+        },
+        {
+          text: "While preparing for pericardiocentesis, what temporizing measures can support the patient's hemodynamics?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "IV fluid bolus (500 mL-1L isotonic crystalloid) — increasing preload helps maintain cardiac filling against the elevated intrapericardial pressure",
+            "Avoid medications that reduce preload (nitroglycerin, diuretics, morphine) or heart rate (beta-blockers) as these will worsen tamponade physiology",
+            "Avoid positive pressure ventilation (intubation and mechanical ventilation) if possible — positive intrathoracic pressure further decreases venous return and can precipitate cardiac arrest in tamponade",
+            "If intubation is absolutely necessary, prepare for potential cardiovascular collapse during induction and have pericardiocentesis equipment ready to perform simultaneously"
+          ]
+        }
+      ]
+    },
+    // === SECTION 5: ANALGESIA, ANESTHESIA, AND PROCEDURAL SEDATION ===
+    // --- ACUTE PAIN MANAGEMENT (Tintinalli Ch. 35) ---
+    {
+      topic: "Acute Pain Management in the ED",
+      difficulty: "medium",
+      scenario: `A 34-year-old male presents with severe right flank pain radiating to the groin, rated 9/10. He is writhing on the stretcher, diaphoretic, with HR 108 and BP 158/92. CT confirms a 6 mm obstructing right ureteral stone with mild hydronephrosis. He has no drug allergies and no history of substance use disorder.
+
+The nurse asks for pain management orders. The patient reports acetaminophen at home "didn't touch the pain."`,
+      questions: [
+        {
+          text: "What is the preferred first-line analgesic class for renal colic, and why?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "NSAIDs (e.g., ketorolac 15-30 mg IV) are the preferred first-line agents for renal colic",
+            "NSAIDs target the mechanistic cause of pain — they reduce prostaglandin-mediated ureteral smooth muscle spasm and decrease renal capsular pressure by reducing GFR in the affected kidney",
+            "This is a mechanistic approach to pain (targeting the cause) rather than a symptomatic approach (masking pain with opioids)",
+            "For severe renal colic, combination therapy with an NSAID plus a low-dose opioid (e.g., morphine or hydromorphone) is usually superior to either alone"
+          ]
+        },
+        {
+          text: "The patient's pain improves to 5/10 after ketorolac. He requests 'something stronger.' What principles should guide further opioid use?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Opioids should be titrated to effect based on the patient's subjective pain report — the patient's self-report, not the provider's impression, is the basis for assessment",
+            "Use a single opioid agent and titrate to the desired effect rather than using multiple different opioids",
+            "Opioid dose requirements vary by age, initial pain severity, and prior opioid exposure — but NOT by body mass or gender",
+            "Opioid receptors: mu-1 produces supraspinal analgesia; mu-2 produces euphoria, respiratory depression, and decreased GI motility; kappa produces dysphoria and dissociation",
+            "Avoid prescribing opioid-acetaminophen combinations at discharge due to risk of exceeding acetaminophen toxic dose with frequent dosing"
+          ]
+        },
+        {
+          text: "Which patient populations are at highest risk for oligoanalgesia (undertreatment of pain) in the ED?",
+          type: "mcq",
+          marks: 1,
+          options: ["Young males with orthopedic injuries", "Ethnic minorities, elderly, very young, and cognitively impaired", "Patients with chronic pain on opioid therapy", "Post-surgical patients"],
+          correctIndex: 1,
+          explanation: "Oligoanalgesia disproportionately affects ethnic minorities, the elderly, the very young, and those with diminished cognitive function. Both the ethnicity of the patient and the physician can influence pain assessment and management decisions. Language barriers and cross-cultural differences further contribute to undertreatment."
+        }
+      ]
+    },
+    // --- PROCEDURAL SEDATION AND ANALGESIA (Tintinalli Ch. 37) ---
+    {
+      topic: "Procedural Sedation and Analgesia",
+      difficulty: "medium",
+      scenario: `A 7-year-old girl presents with a displaced distal radius fracture after falling from monkey bars. She is in significant pain and the orthopedic team has requested a closed reduction in the ED. She weighs 25 kg. She had lunch approximately 2 hours ago. She has no significant medical history and no allergies.
+
+The emergency physician plans to perform procedural sedation and analgesia (PSA) for the reduction.`,
+      questions: [
+        {
+          text: "Which sedation agent is most appropriate for this painful orthopedic procedure in a pediatric patient?",
+          type: "mcq",
+          marks: 1,
+          options: ["Propofol alone", "Ketamine 1.5 mg/kg IV", "Midazolam 0.1 mg/kg IV", "Fentanyl 1 mcg/kg IV"],
+          correctIndex: 1,
+          explanation: "Ketamine is the ideal agent for pediatric procedural sedation for painful procedures. It provides both dissociative analgesia and sedation (a 'dissociative state'), maintains airway reflexes and respiratory drive, and provides excellent analgesia. The typical IV dose is 1-2 mg/kg. It is the most commonly used and best-studied agent for pediatric PSA in the ED."
+        },
+        {
+          text: "What are the contraindications and common adverse effects of ketamine for procedural sedation?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Relative contraindications: age <3 months (higher risk of airway complications), active psychosis, uncontrolled hypertension, conditions with elevated ICP where further increases would be dangerous, and known hypersensitivity",
+            "Vomiting occurs in approximately 7-26% of patients — more common with IM administration, older children, and higher doses; consider ondansetron pretreatment",
+            "Emergence reactions (dysphoria, hallucinations, agitation) occur in about 10-20% of adults but are less common in children; can be treated with midazolam 0.05 mg/kg IV",
+            "Laryngospasm is rare (<1%) but is the most serious adverse effect — treated with positive pressure ventilation or, if refractory, succinylcholine",
+            "Transient increases in heart rate, blood pressure, and intracranial pressure occur but are rarely clinically significant"
+          ]
+        },
+        {
+          text: "Should the 2-hour fasting time delay this procedure? What is the current evidence on preprocedural fasting for ED PSA?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Recent evidence and guidelines do not support routine delays for preprocedural fasting for ED procedural sedation",
+            "Multiple large studies have shown no association between recent oral intake and adverse events (vomiting, aspiration) during ED PSA",
+            "ED PSA differs from general anesthesia — agents used in the ED (particularly ketamine) maintain protective airway reflexes, unlike the deep general anesthesia used in the OR",
+            "The risk of aspiration during ED PSA is extremely low (<1 in 10,000), and delaying painful procedures prolongs suffering without meaningful safety benefit",
+            "Clinical judgment should prevail — consider the urgency of the procedure, the agent used, and patient factors rather than applying rigid fasting rules"
+          ]
+        }
+      ]
+    },
+    // --- LOCAL AND REGIONAL ANESTHESIA (Tintinalli Ch. 36) ---
+    {
+      topic: "Local Anesthetic Toxicity",
+      difficulty: "hard",
+      scenario: `A 56-year-old woman (65 kg) presents with a complex 12 cm laceration of the posterior calf. The emergency physician decides to perform a popliteal nerve block under ultrasound guidance using 0.5% bupivacaine. During injection, after approximately 15 mL has been delivered, the patient suddenly reports metallic taste, perioral numbness, and tinnitus. She then becomes confused and develops a generalized tonic-clonic seizure.
+
+Her vitals during the seizure: HR 52, BP 72/40, SpO2 88%.`,
+      questions: [
+        {
+          text: "What is the diagnosis, and what was the likely mechanism?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Local anesthetic systemic toxicity (LAST) — caused by intravascular injection or absorption of bupivacaine exceeding safe plasma levels",
+            "The prodromal symptoms (metallic taste, perioral numbness, tinnitus, confusion) represent CNS toxicity, which typically precedes cardiovascular toxicity",
+            "Bupivacaine is the most cardiotoxic local anesthetic — it binds tightly to cardiac sodium channels with slow dissociation, causing refractory cardiac depression and arrhythmias",
+            "The maximum dose of bupivacaine is 2.5 mg/kg (without epinephrine) — for a 65 kg patient, this is 162.5 mg; 15 mL of 0.5% bupivacaine = 75 mg, which is within limits but suggests intravascular injection"
+          ]
+        },
+        {
+          text: "What is the critical antidote for local anesthetic systemic toxicity?",
+          type: "mcq",
+          marks: 1,
+          options: ["Sodium bicarbonate", "20% intralipid emulsion (lipid rescue)", "Calcium gluconate", "Naloxone"],
+          correctIndex: 1,
+          explanation: "20% intralipid emulsion (ILE) is the specific antidote for LAST. The mechanism involves creation of a 'lipid sink' that sequesters the lipophilic local anesthetic from cardiac tissue. The initial bolus is 1.5 mL/kg (approximately 100 mL) over 1 minute, followed by an infusion of 0.25 mL/kg/min. ILE can be repeated if cardiovascular instability persists. It should be administered as soon as LAST is suspected."
+        },
+        {
+          text: "Describe the sequence of management for this patient with LAST.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "1. Stop the injection immediately and call for help — alert the team to LAST",
+            "2. Airway management: bag-valve-mask ventilation with 100% O2, intubate if seizure persists or airway is compromised",
+            "3. Seizure management: benzodiazepines (midazolam 2-4 mg IV) are first-line; AVOID propofol in cardiovascular compromise as it further depresses cardiac function",
+            "4. Administer 20% intralipid emulsion: 1.5 mL/kg bolus over 1 minute, then infusion at 0.25 mL/kg/min; repeat bolus if persistent cardiovascular collapse",
+            "5. Cardiovascular support: epinephrine in small doses (10-100 mcg boluses); AVOID vasopressin, calcium channel blockers, beta-blockers, and large-dose epinephrine",
+            "6. If cardiac arrest occurs: prolonged CPR is indicated as LAST can be refractory; consider cardiopulmonary bypass if available"
+          ]
+        }
+      ]
+    },
+    // === SECTION 6: WOUND MANAGEMENT ===
+    // --- WOUND EVALUATION AND CLOSURE (Tintinalli Ch. 39, 40, 41) ---
+    {
+      topic: "Wound Management — Lacerations",
+      difficulty: "medium",
+      scenario: `A 28-year-old construction worker presents 3 hours after sustaining a 6 cm jagged laceration to his right forearm from a rusty piece of sheet metal. The wound has visible soil contamination. He reports his last tetanus shot was "maybe 10 years ago." Vital signs are stable. Neurovascular examination of the hand is intact, with full range of motion of the wrist and fingers.
+
+On exploration, the wound extends through the dermis into subcutaneous fat with no visible tendon or foreign body.`,
+      questions: [
+        {
+          text: "Describe the essential steps of wound preparation before closure.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Anesthesia first — local infiltration with lidocaine (1% with epinephrine for hemostasis) or a regional nerve block before wound exploration and irrigation",
+            "Copious high-pressure irrigation — the single most important step in reducing wound infection; use at least 200-500 mL of normal saline delivered via a 30-60 mL syringe with an 18-gauge splash shield (generates 5-8 psi)",
+            "Wound exploration — inspect the full depth and extent for foreign bodies, tendon injury, joint capsule violation, bone involvement, and neurovascular structures",
+            "Debridement — remove devitalized (nonviable) tissue and any embedded contaminants; convert irregular wound edges to clean edges with sharp excision if needed",
+            "Hemostasis — achieve with direct pressure, cautery, or epinephrine-containing local anesthetic; a bloodless field is essential for proper wound assessment and closure"
+          ]
+        },
+        {
+          text: "What closure technique is most appropriate for this wound?",
+          type: "mcq",
+          marks: 1,
+          options: ["Primary closure with sutures now", "Delayed primary closure at 3-5 days", "Secondary intention (leave open)", "Tissue adhesive (skin glue)"],
+          correctIndex: 0,
+          explanation: "Primary closure with sutures is appropriate here. Despite soil contamination, most traumatic wounds can be closed primarily after thorough irrigation and debridement, even up to 6-12 hours after injury for extremity wounds (up to 24 hours for well-vascularized areas like the face). Delayed primary closure is reserved for heavily contaminated wounds, bite wounds, or wounds presenting >24 hours after injury."
+        },
+        {
+          text: "What is this patient's tetanus prophylaxis requirement?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "This is a tetanus-prone wound (contaminated with soil, caused by a rusty/dirty object, jagged wound edges)",
+            "With last tetanus vaccination approximately 10 years ago (≥5 years for a tetanus-prone wound), he needs both: Td or Tdap booster AND tetanus immune globulin (TIG) if vaccination history is uncertain or incomplete (<3 doses)",
+            "If he has completed a primary series (≥3 doses) with the last dose 5-10 years ago, give Td/Tdap booster only (TIG not needed for those with a complete primary series)",
+            "Tdap is preferred over Td if the patient has not previously received Tdap, as it also provides pertussis protection"
+          ]
+        }
+      ]
+    },
+    // --- FACE AND SCALP LACERATIONS (Tintinalli Ch. 42) ---
+    {
+      topic: "Facial Laceration Repair",
+      difficulty: "medium",
+      scenario: `A 4-year-old boy is brought in after falling against a coffee table, sustaining a 3.5 cm laceration through the vermillion border of the upper lip extending into the skin of the philtrum. The wound is clean and bleeding has been controlled with direct pressure. The child is upset but cooperative with his mother holding him.
+
+On examination, the laceration crosses the vermillion border (white line) with 2 mm of malalignment.`,
+      questions: [
+        {
+          text: "Why is precise alignment of the vermillion border critical in this repair?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "The vermillion border (white line/white roll) is the junction between the lip mucosa and the facial skin — even 1 mm of malalignment is cosmetically noticeable and creates a permanent visible step-off",
+            "The first suture placed should precisely realign the vermillion border before any other sutures are placed, as subsequent tissue edema will make alignment progressively more difficult",
+            "This is a landmark-driven repair — the vermillion border serves as the key anatomical reference point for the entire closure"
+          ]
+        },
+        {
+          text: "What are the key principles of facial laceration repair that differ from extremity wound repair?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Excellent blood supply of the face allows for delayed closure up to 24 hours and reduces infection rates compared to extremity wounds",
+            "Minimal debridement — the rich blood supply supports healing of borderline tissue; be conservative with tissue removal to preserve cosmetic outcome",
+            "Use fine suture material (5-0 or 6-0 nylon or fast-absorbing gut) for the skin, and 4-0 or 5-0 absorbable sutures for the deeper layers",
+            "Always examine for underlying structural injury — facial nerve branches, parotid duct (Stensen's duct), lacrimal apparatus, and facial fractures before closure",
+            "Sutures should be removed earlier than extremity sutures (3-5 days for the face) to minimize scarring from suture track marks"
+          ]
+        },
+        {
+          text: "The mother asks about alternatives to sutures since the child is anxious. What are the options?",
+          type: "mcq",
+          marks: 1,
+          options: ["Tissue adhesive (Dermabond) across the entire wound including the vermillion border", "Staples for rapid closure", "Tissue adhesive for the skin portion only, with sutures to align the vermillion border", "Steri-strips alone"],
+          correctIndex: 2,
+          explanation: "A combination approach is best: precise suture alignment of the vermillion border (the critical landmark), then tissue adhesive for the remainder of the skin laceration. Tissue adhesive should not be used on mucosal surfaces (it dissolves) or across the vermillion border alone (inadequate precision). Staples are not appropriate for facial wounds due to poor cosmetic outcome."
+        }
+      ]
+    },
+    // --- PUNCTURE WOUNDS AND BITE MANAGEMENT (Tintinalli Ch. 46) ---
+    {
+      topic: "Animal and Human Bite Wounds",
+      difficulty: "medium",
+      scenario: `A 38-year-old woman presents 4 hours after being bitten on the dorsum of her right hand by her neighbor's cat. She has two deep puncture wounds over the third MCP joint with surrounding erythema and mild swelling already developing. She reports increasing pain and stiffness in the finger. She has no allergies and is up to date on tetanus vaccination.
+
+On examination, there is tenderness along the flexor tendon sheath with pain on passive extension of the third finger.`,
+      questions: [
+        {
+          text: "Why are cat bite wounds to the hand particularly high risk for serious infection?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Cat teeth are long and thin, creating deep puncture wounds that inoculate bacteria directly into tendon sheaths, joint capsules, and periosteum — structures with limited blood supply",
+            "Pasteurella multocida is the predominant organism in cat bites (present in 50-80% of infected cat bite wounds) and causes rapid-onset cellulitis, typically within 12-24 hours",
+            "The hand has numerous closed compartments (tendon sheaths, joints, web spaces) that provide an ideal environment for infection — once established, infection spreads rapidly along tissue planes",
+            "Cat bite infection rates are significantly higher than dog bites (30-50% for cat bites vs. 5-10% for dog bites), largely due to the puncture wound mechanism"
+          ]
+        },
+        {
+          text: "The findings of tendon sheath tenderness and pain on passive extension suggest what diagnosis, and what management is required?",
+          type: "mcq",
+          marks: 1,
+          options: ["Simple cellulitis — oral antibiotics and follow-up", "Flexor tenosynovitis — IV antibiotics and urgent surgical consultation", "Septic arthritis of the MCP joint — joint aspiration", "Osteomyelitis — long-term IV antibiotics"],
+          correctIndex: 1,
+          explanation: "The findings suggest early flexor tenosynovitis (Kanavel signs: fusiform swelling, tenderness along the tendon sheath, pain on passive extension, and flexed posture of the digit). This is a surgical emergency requiring IV antibiotics and urgent hand surgery consultation for possible operative irrigation and drainage. Delay in treatment can result in tendon necrosis and permanent loss of function."
+        },
+        {
+          text: "What is the appropriate antibiotic choice for infected cat bite wounds, and should puncture wounds from bites be closed primarily?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Amoxicillin-clavulanate (Augmentin) is the first-line oral antibiotic — provides coverage for Pasteurella multocida, streptococci, staphylococci, and anaerobes",
+            "For IV therapy: ampicillin-sulbactam (Unasyn) or piperacillin-tazobactam (Zosyn); alternatives for penicillin-allergic patients include fluoroquinolone plus metronidazole, or a carbapenem",
+            "Puncture wounds from bites should NOT be closed primarily — closure traps bacteria in a deep closed space and dramatically increases infection rates",
+            "All bite wounds to the hands should receive prophylactic antibiotics regardless of whether they appear infected at presentation",
+            "Human bite wounds ('fight bites') over the MCP joint are similarly high-risk and require the same aggressive approach"
+          ]
+        }
+      ]
+    },
+    // === SECTION 7: CARDIOVASCULAR DISEASE ===
+    // --- ACUTE CORONARY SYNDROMES — STEMI (Tintinalli Ch. 49) ---
+    {
+      topic: "ST-Elevation Myocardial Infarction (STEMI)",
+      difficulty: "hard",
+      scenario: `A 62-year-old male with a history of hypertension and smoking presents with crushing substernal chest pain for 45 minutes, radiating to his left arm, with diaphoresis and nausea. Vitals: HR 92, BP 148/88, RR 20, SpO2 96%.
+
+ECG shows 3 mm ST elevation in leads II, III, aVF with reciprocal ST depression in I and aVL. He receives aspirin 325 mg, sublingual nitroglycerin, and morphine 4 mg IV. His pain improves to 4/10. The nearest PCI-capable center is 90 minutes away by ambulance.`,
+      questions: [
+        {
+          text: "What is the diagnosis and the culprit coronary artery?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Acute inferior STEMI — ST elevation in leads II, III, aVF with reciprocal changes in I and aVL",
+            "The culprit vessel is most likely the right coronary artery (RCA), which supplies the inferior wall of the heart in approximately 85% of patients (right-dominant circulation)",
+            "In 15% of patients with left-dominant circulation, the left circumflex artery supplies the inferior wall"
+          ]
+        },
+        {
+          text: "With the nearest PCI center 90 minutes away, what is the preferred reperfusion strategy?",
+          type: "mcq",
+          marks: 1,
+          options: ["Wait for transfer to PCI center", "Administer fibrinolytic therapy now", "Fibrinolytic therapy now with transfer for PCI", "Medical management only — pain is improving"],
+          correctIndex: 2,
+          explanation: "When first medical contact-to-balloon time will exceed 120 minutes, fibrinolytic therapy should be administered immediately (ideally within 30 minutes of presentation), followed by transfer to a PCI-capable facility. This is the pharmacoinvasive strategy. PCI remains the gold standard reperfusion strategy when it can be performed within 90 minutes of first medical contact."
+        },
+        {
+          text: "What additional ECG leads should be obtained in an inferior STEMI, and why?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Right-sided leads (V4R is most important) — to evaluate for right ventricular infarction, which occurs in up to 30-50% of inferior STEMIs and changes management significantly",
+            "RV infarction causes: preload-dependent hemodynamics (these patients require aggressive IV fluids rather than nitroglycerin/diuretics which can cause profound hypotension), and higher mortality",
+            "Posterior leads (V7-V9) — to evaluate for posterior wall extension of the infarct, which may not be apparent on the standard 12-lead ECG",
+            "ST depression in V1-V3 on a standard ECG may represent reciprocal changes from a posterior STEMI — posterior leads will show ST elevation if the posterior wall is involved"
+          ]
+        },
+        {
+          text: "List the adjunctive medications that should be administered in STEMI management.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Aspirin 162-325 mg (chewed, non-enteric-coated) — immediate antiplatelet effect",
+            "P2Y12 inhibitor — clopidogrel 300-600 mg loading dose, ticagrelor 180 mg, or prasugrel 60 mg (depending on PCI vs. fibrinolytic strategy)",
+            "Anticoagulation — unfractionated heparin (60 U/kg bolus, max 4000 U) for PCI strategy; enoxaparin or UFH for fibrinolytic strategy",
+            "Nitroglycerin — for ongoing chest pain (contraindicated in RV infarction, hypotension, recent PDE5 inhibitor use, or severe aortic stenosis)",
+            "High-intensity statin (atorvastatin 80 mg) — early initiation reduces recurrent events",
+            "Beta-blocker — within 24 hours if no contraindications (heart failure, hypotension, bradycardia, heart block); avoid in cocaine or methamphetamine-related ACS"
+          ]
+        }
+      ]
+    },
+    // --- NSTEMI / UNSTABLE ANGINA (Tintinalli Ch. 49) ---
+    {
+      topic: "NSTEMI and Unstable Angina",
+      difficulty: "medium",
+      scenario: `A 71-year-old woman with diabetes, hypertension, and hyperlipidemia presents with 6 hours of intermittent substernal chest pressure associated with dyspnea and nausea. She describes the pain as "heaviness" rated 6/10 that initially occurred with exertion but has now occurred at rest twice today. Her baseline exercise tolerance is 2 blocks.
+
+ECG shows sinus rhythm with 1.5 mm ST depression in V4-V6 and T-wave inversions in the lateral leads. First troponin returns at 0.42 ng/mL (normal <0.04).`,
+      questions: [
+        {
+          text: "What is the diagnosis, and how does it differ from unstable angina?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Diagnosis: NSTEMI (non-ST-elevation myocardial infarction) — confirmed by the combination of ischemic symptoms, ECG changes (ST depression and T-wave inversions), and elevated troponin",
+            "Unstable angina presents with the same symptoms and may have ECG changes, but troponin remains normal — indicating ischemia without myocardial necrosis",
+            "NSTEMI results from partial (non-total) coronary occlusion or total occlusion with collateral flow — subendocardial ischemia causes ST depression rather than ST elevation",
+            "Both NSTEMI and unstable angina are classified as non-ST-elevation acute coronary syndromes (NSTE-ACS) and are managed similarly, though NSTEMI carries higher risk"
+          ]
+        },
+        {
+          text: "What risk stratification tools are used for NSTE-ACS, and what determines the urgency of cardiac catheterization?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "TIMI risk score (7 variables): age ≥65, ≥3 CAD risk factors, known CAD with ≥50% stenosis, aspirin use in past 7 days, ≥2 anginal episodes in 24 hours, ST deviation ≥0.5 mm, elevated cardiac markers — each scores 1 point",
+            "HEART score (increasingly used in ED): History, ECG, Age, Risk factors, Troponin — each scored 0-2, total 0-10; score ≥7 indicates high risk",
+            "Urgent/emergent catheterization (within 2 hours) is indicated for: refractory ischemia, hemodynamic instability, heart failure, new mitral regurgitation, sustained VT",
+            "Early invasive strategy (within 24 hours) for high-risk features: elevated troponin, dynamic ST changes, TIMI score ≥5, HEART score ≥7, diabetes with recurrent ischemia"
+          ]
+        },
+        {
+          text: "Deep symmetric T-wave inversions in leads V1-V4 are noted. What pattern does this suggest?",
+          type: "mcq",
+          marks: 1,
+          options: ["Right ventricular strain from PE", "Wellens' syndrome — critical LAD stenosis", "Hypertrophic cardiomyopathy", "Digitalis effect"],
+          correctIndex: 1,
+          explanation: "Deep symmetric T-wave inversions in the anterior leads (V1-V4) suggest Wellens' syndrome, which indicates a critical stenosis (typically >90%) of the proximal left anterior descending artery. This pattern is seen in a pain-free interval and carries a very high risk of extensive anterior MI. These patients require urgent cardiac catheterization and should NOT undergo stress testing, as it may precipitate a massive infarct."
+        }
+      ]
+    },
+    // --- SYNCOPE (Tintinalli Ch. 52) ---
+    {
+      topic: "Syncope",
+      difficulty: "medium",
+      scenario: `A 76-year-old male is brought in by his daughter after witnessing him collapse while walking to the mailbox. He reports sudden onset of lightheadedness followed by loss of consciousness for approximately 30 seconds. He denies any prodrome, chest pain, palpitations, or seizure activity. His daughter confirms he was "out" and then woke up confused for about 1 minute.
+
+PMH: atrial fibrillation, hypertension, type 2 diabetes. Medications: apixaban, metoprolol, lisinopril, metformin. Vitals: HR 54, BP 108/62, RR 16, SpO2 97%. ECG shows sinus bradycardia at 52 bpm with a PR interval of 280 ms (first-degree AV block).`,
+      questions: [
+        {
+          text: "What features of this presentation raise concern for a cardiac cause of syncope?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Exertional or minimal-exertion syncope (occurred while walking) without a typical vasovagal prodrome (no nausea, warmth, tunnel vision)",
+            "Age >60 with structural heart disease risk factors (atrial fibrillation, hypertension)",
+            "Abnormal ECG findings: sinus bradycardia with prolonged PR interval suggesting conduction system disease",
+            "Sudden onset without warning (abrupt syncope without prodrome is concerning for arrhythmic cause)",
+            "Cardiac syncope carries significantly higher mortality than vasovagal syncope and requires more aggressive workup"
+          ]
+        },
+        {
+          text: "Which of the following findings would indicate this patient needs admission rather than outpatient workup?",
+          type: "mcq",
+          marks: 1,
+          options: ["Single episode of syncope with normal ECG in a 30-year-old", "Clear vasovagal prodrome with complete recovery in a young patient", "ECG showing sinus bradycardia with first-degree AV block in a 76-year-old on beta-blockers", "Syncope during prolonged standing with blood in the toilet"],
+          correctIndex: 2,
+          explanation: "This elderly patient with conduction system abnormalities (bradycardia + first-degree AV block) on a rate-controlling medication requires admission or extended monitoring. The San Francisco Syncope Rule and Canadian Syncope Risk Score both identify abnormal ECG and advanced age as high-risk features. The concern is progression to higher-degree AV block."
+        },
+        {
+          text: "Differentiate syncope from seizure based on history and clinical features.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Syncope: brief LOC (<1-2 minutes), rapid return to baseline, pallor during event, may have brief myoclonic jerks (convulsive syncope — NOT a seizure), triggered by postural change/exertion/emotion",
+            "Seizure: longer LOC, prolonged postictal confusion (>5 minutes), tongue biting (lateral tongue is specific for seizure), urinary incontinence (nonspecific), rhythmic tonic-clonic movements, may have aura",
+            "Key distinguishing features: postictal confusion lasting >5 minutes strongly favors seizure; lateral tongue biting is highly specific for generalized seizure; rapid return to full orientation favors syncope",
+            "Brief (<10 seconds) myoclonic jerks can occur in syncope due to cerebral hypoperfusion and should not be misdiagnosed as seizure"
+          ]
+        }
+      ]
+    },
+    // --- ACUTE HEART FAILURE (Tintinalli Ch. 53) ---
+    {
+      topic: "Acute Decompensated Heart Failure",
+      difficulty: "hard",
+      scenario: `A 68-year-old male with a history of ischemic cardiomyopathy (EF 25%), chronic heart failure on guideline-directed medical therapy, and CKD stage 3 presents with progressive dyspnea over 5 days. He now has orthopnea and paroxysmal nocturnal dyspnea. He admits to dietary indiscretion (high-sodium meals) and missed two doses of furosemide.
+
+Vitals: HR 108, BP 178/96, RR 28, SpO2 88% on room air. Examination reveals JVD, bilateral rales to the mid-lung fields, S3 gallop, and 3+ pitting edema to the knees. BNP is 1840 pg/mL. CXR shows bilateral pulmonary edema with cardiomegaly.`,
+      questions: [
+        {
+          text: "What is the initial management approach for this patient with acute decompensated heart failure with pulmonary edema?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Positioning: sit the patient upright to reduce preload and improve respiratory mechanics",
+            "Oxygen and respiratory support: start with high-flow nasal cannula or non-invasive positive pressure ventilation (BiPAP) — BiPAP at 10/5 cmH2O reduces work of breathing, improves oxygenation, and decreases preload; intubation if failing NIPPV",
+            "IV nitroglycerin: the most important vasodilator — reduces both preload and afterload; start at 20-40 mcg/min and titrate to BP and symptoms; sublingual nitroglycerin 0.4 mg can be given immediately while IV is being prepared",
+            "IV loop diuretic: furosemide 40-80 mg IV (or 1-2.5x the home oral dose); produces rapid venodilation before diuretic effect begins",
+            "Avoid excessive fluid removal or aggressive diuresis in patients with concomitant CKD — monitor renal function closely"
+          ]
+        },
+        {
+          text: "This patient's blood pressure is 178/96. Why is this actually a favorable prognostic feature in acute heart failure?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Hypertensive acute heart failure (sometimes called 'vascular failure') is predominantly a problem of fluid redistribution due to afterload mismatch, rather than volume overload alone",
+            "These patients respond dramatically to vasodilators (nitroglycerin, nitroprusside) because reducing afterload allows the failing ventricle to eject more effectively",
+            "Patients presenting with acute heart failure and hypertension have significantly better short-term prognosis than those presenting with normotension or hypotension",
+            "Hypotension in acute heart failure indicates severely reduced cardiac output (cardiogenic shock) and carries much higher mortality"
+          ]
+        },
+        {
+          text: "The patient is placed on BiPAP and given IV nitroglycerin and furosemide. After 30 minutes, SpO2 improves to 94% but he remains tachypneic. What are the indications for intubation in acute heart failure?",
+          type: "mcq",
+          marks: 1,
+          options: ["SpO2 <95% despite supplemental oxygen", "Persistent tachypnea despite initial treatment", "Failure to improve on NIPPV with worsening respiratory distress, fatigue, hypoxia, or altered mental status", "BNP >1000 pg/mL"],
+          correctIndex: 2,
+          explanation: "Intubation is indicated when the patient fails to improve or deteriorates despite NIPPV — specifically worsening hypoxia, respiratory fatigue (rising PaCO2), hemodynamic instability, or altered mental status. NIPPV avoids intubation in the majority of acute heart failure patients. Persistent tachypnea alone, while concerning, is not an absolute indication if the patient is otherwise improving."
+        }
+      ]
+    },
+    // --- VENOUS THROMBOEMBOLISM / PULMONARY EMBOLISM (Tintinalli Ch. 56) ---
+    {
+      topic: "Pulmonary Embolism",
+      difficulty: "hard",
+      scenario: `A 44-year-old woman presents with sudden-onset pleuritic chest pain and dyspnea that began 2 hours ago while at her desk. She returned from a 14-hour international flight 5 days ago. She takes oral contraceptive pills and her BMI is 34. She has no prior cardiopulmonary history.
+
+Vitals: HR 118, BP 102/68, RR 24, SpO2 91% on room air. She is anxious and diaphoretic. ECG shows sinus tachycardia with S1Q3T3 pattern and T-wave inversions in V1-V4. Chest X-ray is unremarkable.`,
+      questions: [
+        {
+          text: "What is the clinical probability of pulmonary embolism, and is a D-dimer appropriate in this patient?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "This patient has HIGH clinical probability for PE based on the Wells score: clinical signs of DVT (+3), PE is the most likely diagnosis (+3), heart rate >100 (+1.5), recent immobilization/travel (+1.5), malignancy (none, +0) = 9 points (high probability)",
+            "Risk factors present: recent prolonged immobility (long-haul flight), oral contraceptive use, obesity",
+            "D-dimer is NOT appropriate in this patient — with high clinical probability (Wells >6), D-dimer has insufficient negative predictive value to safely exclude PE; proceed directly to CT pulmonary angiography (CTPA)",
+            "D-dimer is only useful to rule out PE in LOW-to-MODERATE probability patients (Wells ≤6)"
+          ]
+        },
+        {
+          text: "CTPA confirms bilateral pulmonary emboli with RV/LV ratio of 1.3. Troponin is 0.18 ng/mL and BNP is 420 pg/mL. What risk category is this PE?",
+          type: "mcq",
+          marks: 1,
+          options: ["Low-risk PE", "Submassive (intermediate-risk) PE", "Massive PE", "Cannot determine without echocardiography"],
+          correctIndex: 1,
+          explanation: "This is a submassive (intermediate-risk) PE — defined by RV dysfunction (RV/LV ratio >0.9 on CT) AND elevated biomarkers (troponin and BNP) in a hemodynamically stable patient (BP >90 systolic). Massive PE requires hemodynamic instability (sustained hypotension or cardiac arrest). Submassive PE carries higher mortality than low-risk PE and may benefit from escalated therapies."
+        },
+        {
+          text: "What is the initial treatment for this patient, and under what circumstances would systemic thrombolysis be indicated?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Immediate anticoagulation: unfractionated heparin (UFH) 80 U/kg bolus then 18 U/kg/hr infusion — preferred in submassive/massive PE because of short half-life and ability to titrate; can also use enoxaparin if hemodynamically stable",
+            "Supplemental oxygen to maintain SpO2 >94%; careful fluid resuscitation (250-500 mL bolus) — excessive fluids can worsen RV dilation and worsen hemodynamics",
+            "Systemic thrombolysis (alteplase 100 mg IV over 2 hours) is indicated for massive PE with hemodynamic instability (systolic BP <90 for >15 minutes or requiring vasopressors)",
+            "For submassive PE (like this patient): thrombolysis is not routinely recommended but should be considered if there are signs of clinical deterioration (worsening hypotension, increasing tachycardia, declining oxygenation) despite anticoagulation",
+            "Alternatives to systemic thrombolysis include catheter-directed therapy and surgical embolectomy in refractory cases"
+          ]
+        }
+      ]
+    },
+    // --- HYPERTENSIVE EMERGENCIES (Tintinalli Ch. 57) ---
+    {
+      topic: "Hypertensive Emergency",
+      difficulty: "hard",
+      scenario: `A 52-year-old male with poorly controlled hypertension (medication noncompliance) presents with severe headache, blurred vision, and confusion that developed over several hours. His wife reports he ran out of his amlodipine and lisinopril 2 weeks ago.
+
+Vitals: HR 102, BP 238/142, RR 22, SpO2 96%. Examination reveals papilledema bilaterally, retinal hemorrhages and exudates on fundoscopy, S4 gallop, and bilateral crackles at the lung bases. Labs show creatinine 3.2 mg/dL (baseline 1.4), urinalysis with 3+ protein and RBC casts, LDH 580 U/L, and schistocytes on peripheral smear. CT head shows no hemorrhage but bilateral cerebral edema.`,
+      questions: [
+        {
+          text: "What is the diagnosis, and what differentiates a hypertensive emergency from hypertensive urgency?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Diagnosis: hypertensive emergency (specifically hypertensive encephalopathy with acute target organ damage to brain, kidneys, eyes, and heart)",
+            "Hypertensive emergency: severely elevated BP (typically >180/120) WITH acute target organ damage — brain (encephalopathy, stroke), heart (ACS, aortic dissection, acute heart failure), kidneys (acute kidney injury), eyes (papilledema, retinal hemorrhages), and hematologic (microangiopathic hemolytic anemia with schistocytes)",
+            "Hypertensive urgency: severely elevated BP WITHOUT evidence of acute target organ damage — can be managed with oral medications and outpatient follow-up",
+            "The presence of end-organ damage, not the absolute BP number, is what defines a hypertensive emergency"
+          ]
+        },
+        {
+          text: "What is the target blood pressure reduction and the appropriate IV agent?",
+          type: "mcq",
+          marks: 1,
+          options: ["Reduce to <140/90 within 1 hour with IV hydralazine", "Reduce MAP by no more than 25% in the first hour with IV nicardipine or clevidipine", "Reduce to <120/80 within 6 hours with IV nitroprusside", "Reduce systolic to <160 within 30 minutes with sublingual nifedipine"],
+          correctIndex: 1,
+          explanation: "The target is to reduce MAP by no more than 25% in the first hour, then gradually to 160/100-110 over the next 2-6 hours. Overly rapid BP reduction can cause watershed ischemia due to impaired cerebral autoregulation. IV nicardipine (calcium channel blocker) or clevidipine are preferred for their predictable titration. Sublingual nifedipine is contraindicated due to unpredictable, precipitous BP drops."
+        },
+        {
+          text: "Explain why this patient has schistocytes on the peripheral smear and what this finding indicates.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Schistocytes indicate microangiopathic hemolytic anemia (MAHA) — red blood cells are mechanically sheared as they pass through damaged small blood vessels",
+            "Severe hypertension causes fibrinoid necrosis of arteriolar walls, creating intravascular fibrin strands that fragment passing red blood cells into schistocytes",
+            "Associated lab findings include: elevated LDH (from RBC destruction), elevated indirect bilirubin, low haptoglobin, elevated reticulocyte count, and thrombocytopenia",
+            "The presence of MAHA in the setting of hypertensive emergency is sometimes called 'malignant hypertension' and indicates severe vascular endothelial damage requiring aggressive but controlled BP reduction"
+          ]
+        }
+      ]
+    },
+    // --- AORTIC DISSECTION (Tintinalli Ch. 59) ---
+    {
+      topic: "Aortic Dissection",
+      difficulty: "hard",
+      scenario: `A 66-year-old male with a 30-year history of hypertension presents with sudden-onset severe "tearing" chest pain radiating to his back between the scapulae. The pain was maximal at onset. He appears diaphoretic and in severe distress. Vitals: HR 108, right arm BP 188/102, left arm BP 142/78, RR 24, SpO2 94%.
+
+Examination reveals a new diastolic murmur at the right sternal border. CXR shows a widened mediastinum. His ECG shows sinus tachycardia with LVH and nonspecific ST-T changes.`,
+      questions: [
+        {
+          text: "What clinical features in this presentation are classic for acute aortic dissection?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Sudden onset of severe chest/back pain that was maximal at onset ('worst pain ever' — tearing/ripping quality) — 85% describe abrupt onset, most describe it as severe",
+            "Blood pressure differential >20 mmHg between arms (right 188/102 vs. left 142/78) — indicates involvement of the subclavian or brachiocephalic artery by the dissection flap",
+            "New diastolic murmur — suggests aortic regurgitation from the dissection disrupting the aortic valve, a complication of Stanford Type A dissection",
+            "Widened mediastinum on CXR — though only present in 60-70% of cases and should not be used to rule out dissection"
+          ]
+        },
+        {
+          text: "What is the Stanford classification, and how does the type determine management?",
+          type: "mcq",
+          marks: 1,
+          options: ["Type A involves descending aorta only — medical management; Type B involves ascending aorta — surgical", "Type A involves the ascending aorta — emergent surgical repair; Type B involves descending aorta only — medical management", "Type A is acute (<14 days) — surgery; Type B is chronic (>14 days) — medical", "Type A is communicating — surgery; Type B is non-communicating — medical"],
+          correctIndex: 1,
+          explanation: "Stanford Type A involves the ascending aorta (regardless of where the intimal tear originates) and requires emergent surgical repair due to risk of coronary artery involvement (MI), aortic rupture, cardiac tamponade, and aortic valve disruption. Type B involves only the descending aorta (distal to the left subclavian) and is typically managed medically unless complicated by malperfusion or rupture."
+        },
+        {
+          text: "What is the critical initial medical management while awaiting definitive diagnosis and surgical consultation?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Anti-impulse therapy (rate AND blood pressure control) is the priority — the goal is to reduce aortic wall shear stress by lowering both heart rate and blood pressure",
+            "IV esmolol (beta-blocker) is first-line: target HR <60 bpm first, THEN reduce SBP to 100-120 mmHg — rate control must precede vasodilator therapy to prevent reflex tachycardia",
+            "If BP remains elevated after beta-blockade, add IV nicardipine or nitroprusside — NEVER give vasodilators alone without prior beta-blockade as reflex tachycardia increases aortic shear stress",
+            "Adequate IV opioid analgesia (morphine or fentanyl) — pain drives sympathetic activation which increases heart rate and blood pressure",
+            "Stat CTA of chest/abdomen/pelvis with arterial phase contrast is the definitive imaging study — high sensitivity and specificity, rapidly obtained, and defines extent of dissection",
+            "Avoid antiplatelet agents and anticoagulation until aortic dissection is excluded (especially important as the ECG may mimic ACS)"
+          ]
+        }
+      ]
+    },
+    // --- ABDOMINAL AORTIC ANEURYSM (Tintinalli Ch. 60) ---
+    {
+      topic: "Ruptured Abdominal Aortic Aneurysm",
+      difficulty: "hard",
+      scenario: `A 72-year-old male with a known 5.8 cm infrarenal abdominal aortic aneurysm (AAA) presents with sudden onset of severe low back and left flank pain. He describes a "tearing" sensation in his abdomen. He had a syncopal episode at home.
+
+Vitals: HR 118, BP 82/54, RR 26, SpO2 95%. He is pale, diaphoretic, and in obvious distress. Abdomen is distended with a pulsatile periumbilical mass. FAST exam shows free fluid in the abdomen.`,
+      questions: [
+        {
+          text: "What is the likely diagnosis and what is the immediate management priority?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Ruptured abdominal aortic aneurysm (rAAA) — classic triad: sudden abdominal/back pain, hypotension, and pulsatile abdominal mass (though all three are present in only 25-50% of cases)",
+            "Immediate management: activate massive transfusion protocol, establish large-bore IV access, send type and crossmatch, and emergent vascular surgery consultation",
+            "Permissive hypotension — target systolic BP 80-90 mmHg; aggressive fluid resuscitation may worsen hemorrhage by disrupting any tamponading clot",
+            "This patient should go directly to the operating room — bedside ultrasound confirming AAA in a hemodynamically unstable patient with classic presentation does NOT require CT confirmation"
+          ]
+        },
+        {
+          text: "Which patients with known AAA are at highest risk for rupture?",
+          type: "mcq",
+          marks: 1,
+          options: ["AAA <4 cm diameter", "AAA 4-5 cm with stable size on serial imaging", "AAA >5.5 cm, rapid expansion >0.5 cm in 6 months, or symptomatic", "Any AAA regardless of size"],
+          correctIndex: 2,
+          explanation: "Annual rupture risk increases dramatically with size: <4 cm (<0.5%/year), 4-5 cm (0.5-5%/year), 5-6 cm (3-15%/year), >6 cm (20-40%/year). Elective repair is generally recommended when AAA exceeds 5.5 cm (5.0 cm in women), grows >0.5 cm in 6 months, or becomes symptomatic. This patient's 5.8 cm AAA was at significant rupture risk."
+        },
+        {
+          text: "The vascular surgery team asks if this patient is a candidate for endovascular aneurysm repair (EVAR) versus open surgical repair. What determines candidacy?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "EVAR requires favorable aortic anatomy: adequate proximal neck length (>10-15 mm below the renal arteries), suitable neck diameter, adequate iliac access vessels, and absence of severe iliac tortuosity or calcification",
+            "EVAR has lower perioperative mortality and shorter ICU/hospital stay compared to open repair for ruptured AAA in suitable candidates",
+            "Open surgical repair is required when anatomy is unsuitable for EVAR, or when the rupture is suprarenal, or when juxta-renal involvement is present",
+            "In hemodynamically unstable patients, the decision depends on surgeon expertise and OR/equipment availability — both approaches are acceptable in experienced hands"
+          ]
+        }
+      ]
+    },
+    // --- ACUTE LIMB ISCHEMIA (Tintinalli Ch. 61) ---
+    {
+      topic: "Acute Arterial Occlusion — Limb Ischemia",
+      difficulty: "medium",
+      scenario: `A 74-year-old woman with a history of atrial fibrillation (on warfarin, subtherapeutic INR 1.3) and peripheral arterial disease presents with sudden onset of severe right leg pain, numbness, and weakness beginning 3 hours ago. She was watching television when the symptoms started.
+
+Examination reveals a cool, pale right leg from the mid-thigh distally. No popliteal or pedal pulses are palpable on the right. She has diminished sensation below the knee and is unable to dorsiflex her right foot. Left leg pulses and examination are normal.`,
+      questions: [
+        {
+          text: "Describe the classic presentation of acute limb ischemia using the 6 Ps.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Pain — sudden onset, severe, often disproportionate to examination findings initially",
+            "Pallor — pale or mottled appearance of the affected limb",
+            "Pulselessness — absent distal pulses compared to the contralateral limb",
+            "Poikilothermia — cool extremity (takes on ambient temperature)",
+            "Paresthesia — numbness and tingling indicating nerve ischemia",
+            "Paralysis — motor weakness or inability to move; this is a late and ominous finding indicating severe ischemia and limb-threatening emergency"
+          ]
+        },
+        {
+          text: "What is the most likely cause of this patient's acute limb ischemia?",
+          type: "mcq",
+          marks: 1,
+          options: ["Atherosclerotic plaque rupture with in-situ thrombosis", "Cardioembolism from atrial fibrillation", "Aortic dissection with malperfusion", "Popliteal artery aneurysm thrombosis"],
+          correctIndex: 1,
+          explanation: "Cardioembolism from atrial fibrillation is the most likely cause. Key clues: sudden onset at rest (embolic events are typically abrupt), known atrial fibrillation with subtherapeutic anticoagulation (INR 1.3), normal contralateral limb (suggesting no systemic vascular disease as the primary cause), and no prior claudication symptoms. Embolism accounts for approximately 80% of acute limb ischemia."
+        },
+        {
+          text: "This patient has motor deficit (unable to dorsiflex) and sensory loss. What is the Rutherford classification and what treatment is required?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Rutherford IIb (immediately threatened) — characterized by sensory loss beyond just the toes AND muscle weakness/paralysis; limb is salvageable with immediate revascularization",
+            "Rutherford III (irreversible ischemia) is characterized by profound paralysis, anesthesia, and mottled/non-blanching skin — amputation is likely necessary",
+            "Treatment: immediate systemic anticoagulation with IV heparin bolus (to prevent clot propagation), emergent vascular surgery consultation for revascularization (surgical embolectomy or catheter-directed thrombolysis)",
+            "Time is critical — ischemia beyond 6 hours dramatically increases the risk of irreversible tissue damage, compartment syndrome, and limb loss",
+            "After revascularization, monitor for reperfusion injury and compartment syndrome — consider prophylactic fasciotomy in severe cases"
+          ]
+        }
+      ]
+    },
+    // === SECTION 8: PULMONARY DISORDERS ===
+    // --- COMMUNITY-ACQUIRED PNEUMONIA (Tintinalli Ch. 65) ---
+    {
+      topic: "Community-Acquired Pneumonia",
+      difficulty: "medium",
+      scenario: `A 72-year-old male nursing home resident presents with 3 days of productive cough with rust-colored sputum, fever to 38.9°C, and pleuritic right-sided chest pain. PMH: COPD, type 2 diabetes, 40-pack-year smoking history. Vitals: HR 108, BP 100/62, RR 26, SpO2 89% on room air, Temp 39.2°C.
+
+Examination reveals decreased breath sounds and dullness to percussion at the right base with bronchial breath sounds. CXR shows right lower lobe consolidation with an associated parapneumonic effusion. Labs: WBC 18,200 with left shift, BUN 32, Cr 1.6, glucose 248.`,
+      questions: [
+        {
+          text: "Using the CURB-65 score, assess this patient's severity and determine the appropriate disposition.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "CURB-65 criteria: Confusion, Urea/BUN >19 mg/dL (7 mmol/L), Respiratory rate ≥30, Blood pressure (systolic <90 or diastolic ≤60), Age ≥65",
+            "This patient scores: Confusion (not explicitly present, 0), BUN 32 (+1), RR 26 (0, but borderline), BP 100/62 (diastolic ≥60, borderline 0), Age 72 (+1) = at least 2 points",
+            "CURB-65 score ≥2 suggests hospital admission; score ≥3-4 warrants ICU consideration",
+            "Additional factors favoring admission: hypoxia (SpO2 89%), nursing home residence, diabetes, COPD, and parapneumonic effusion"
+          ]
+        },
+        {
+          text: "What are the most likely causative organisms, and what empiric antibiotic regimen is appropriate for this patient?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Most common organisms in CAP: Streptococcus pneumoniae (most common bacterial cause), Haemophilus influenzae, Mycoplasma pneumoniae, Chlamydophila pneumoniae, respiratory viruses (influenza, RSV)",
+            "Nursing home residents are also at risk for: gram-negative enterics, Staphylococcus aureus (including MRSA), and anaerobes (aspiration)",
+            "Inpatient non-ICU empiric therapy: respiratory fluoroquinolone monotherapy (levofloxacin 750 mg IV) OR beta-lactam (ceftriaxone 1-2 g IV) PLUS a macrolide (azithromycin 500 mg IV)",
+            "If ICU admission: beta-lactam (ceftriaxone or ampicillin-sulbactam) PLUS either azithromycin or fluoroquinolone; add vancomycin or linezolid if MRSA risk factors present"
+          ]
+        },
+        {
+          text: "The parapneumonic effusion is noted on CXR. What features would indicate the need for thoracentesis or chest tube drainage?",
+          type: "mcq",
+          marks: 1,
+          options: ["Any visible effusion on CXR requires drainage", "Only effusions >10 mm on lateral decubitus film need consideration for drainage", "Loculated effusion, positive Gram stain/culture, pH <7.2, or glucose <60 mg/dL on pleural fluid analysis", "Effusions that resolve with antibiotics alone within 48 hours"],
+          correctIndex: 2,
+          explanation: "A complicated parapneumonic effusion or empyema requires drainage. Indications include: loculated effusion, positive Gram stain or culture of pleural fluid, pH <7.2, glucose <60 mg/dL, or frank pus (empyema). Simple parapneumonic effusions may resolve with antibiotics alone, but effusions >10 mm on lateral decubitus film should undergo diagnostic thoracentesis."
+        }
+      ]
+    },
+    // --- PNEUMOTHORAX (Tintinalli Ch. 68) ---
+    {
+      topic: "Pneumothorax",
+      difficulty: "hard",
+      scenario: `A 22-year-old tall, thin male (height 193 cm, weight 68 kg) presents with sudden-onset right-sided pleuritic chest pain and dyspnea that began 2 hours ago while at rest. He has no significant medical history and does not smoke. Vitals: HR 98, BP 122/78, RR 20, SpO2 95%.
+
+Examination reveals decreased breath sounds on the right with hyperresonance to percussion. CXR shows a 35% right-sided pneumothorax with no mediastinal shift.
+
+Thirty minutes later, while awaiting the procedure, the nurse calls urgently — the patient is now acutely dyspneic, diaphoretic, HR 132, BP 74/40, SpO2 82%, with tracheal deviation to the left and absent breath sounds on the right.`,
+      questions: [
+        {
+          text: "What was the initial diagnosis, and what has it now progressed to?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Initial diagnosis: primary spontaneous pneumothorax — occurs when a subpleural bleb ruptures, most common in tall, thin young males",
+            "Progression to tension pneumothorax — characterized by hemodynamic instability (hypotension, tachycardia), tracheal deviation away from the affected side, absent breath sounds, and JVD",
+            "Tension pneumothorax occurs when a one-way valve mechanism allows air to enter the pleural space but not escape, causing progressively increasing intrathoracic pressure that compresses the mediastinum and impairs venous return"
+          ]
+        },
+        {
+          text: "What is the immediate life-saving intervention for the current presentation?",
+          type: "mcq",
+          marks: 1,
+          options: ["Stat portable CXR to confirm tension pneumothorax", "Needle decompression followed by chest tube", "Immediate CT chest", "Intubation and mechanical ventilation"],
+          correctIndex: 1,
+          explanation: "Tension pneumothorax is a clinical diagnosis — do NOT delay treatment for imaging. Immediate needle decompression (14-gauge needle in the 2nd intercostal space midclavicular line or 4th-5th ICS anterior axillary line) converts the tension pneumothorax to a simple pneumothorax. This must be followed by definitive tube thoracostomy (chest tube placement)."
+        },
+        {
+          text: "Describe the technique for tube thoracostomy (chest tube) placement.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Site: 4th or 5th intercostal space in the anterior or mid-axillary line (the 'safe triangle' bounded by the anterior border of latissimus dorsi, lateral border of pectoralis major, and superior to a line at the level of the nipple)",
+            "Technique: local anesthesia with lidocaine (skin to pleura); 3-4 cm skin incision; blunt dissection through intercostal muscles ABOVE the rib (to avoid the neurovascular bundle running along the inferior rib border)",
+            "Enter the pleural space with a finger sweep to confirm position and ensure no adhesions; insert the tube (24-28 Fr for pneumothorax, 32-40 Fr for hemothorax) directed superiorly and posteriorly",
+            "Connect to an underwater seal drainage system (e.g., Pleur-Evac) with -20 cmH2O suction; confirm with chest X-ray showing tube in position with lung re-expansion",
+            "Monitor for complications: bleeding from intercostal vessels, injury to intrathoracic structures, tube malposition, re-expansion pulmonary edema (rare)"
+          ]
+        }
+      ]
+    },
+    // --- ASTHMA EXACERBATION (Tintinalli Ch. 69) ---
+    {
+      topic: "Acute Asthma and Status Asthmaticus",
+      difficulty: "hard",
+      scenario: `A 19-year-old female with a history of poorly controlled asthma (2 ED visits and 1 ICU admission in the past year) presents with severe dyspnea, inability to speak in full sentences, and wheeze audible without a stethoscope. She has been using her salbutamol inhaler every 30 minutes for the past 4 hours without relief.
+
+Vitals: HR 128, BP 140/82, RR 36, SpO2 88% on room air, Temp 37.1°C. She is sitting upright using accessory muscles. Peak flow is 90 L/min (predicted 420 L/min = 21% predicted). Initial ABG: pH 7.34, PaCO2 42, PaO2 58.`,
+      questions: [
+        {
+          text: "Why is a 'normal' PaCO2 of 42 mmHg concerning in this clinical context?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "In an acute asthma exacerbation, tachypnea and hyperventilation normally produce a respiratory alkalosis with LOW PaCO2 (typically 28-35 mmHg)",
+            "A 'normal' PaCO2 of 42 in the setting of severe asthma with tachypnea (RR 36) indicates the patient is tiring and can no longer maintain the expected hyperventilation — this is an ominous sign of impending respiratory failure",
+            "A rising PaCO2 (respiratory acidosis) in an acute asthmatic is a pre-arrest finding requiring immediate aggressive intervention and preparation for intubation",
+            "Combined with severe accessory muscle use, inability to speak, peak flow <25% predicted, and prior ICU admission, this patient has life-threatening (near-fatal) asthma"
+          ]
+        },
+        {
+          text: "What is the stepwise management of status asthmaticus?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Continuous nebulized salbutamol (albuterol) 10-15 mg/hour — NOT intermittent dosing for severe exacerbations; simultaneous ipratropium bromide 0.5 mg nebulized every 20 min x 3 doses",
+            "Systemic corticosteroids: methylprednisolone 125 mg IV or prednisone 60 mg PO — early administration reduces admission rates; onset of action is 4-6 hours, so give immediately",
+            "IV magnesium sulfate 2 g over 20 minutes — smooth muscle relaxant that acts as a bronchodilator, most effective in severe exacerbations (peak flow <25% predicted)",
+            "If failing above: consider IV epinephrine (for near-arrest patients), IV ketamine (bronchodilator properties), and heliox (helium-oxygen mixture to reduce airway resistance)",
+            "Non-invasive positive pressure ventilation (BiPAP) may be trialed before intubation in alert, cooperative patients who are not in extremis"
+          ]
+        },
+        {
+          text: "Despite maximal medical therapy, the patient becomes obtunded with PaCO2 rising to 60 mmHg. What are the specific considerations for intubating and ventilating an asthmatic?",
+          type: "mcq",
+          marks: 1,
+          options: ["Standard RSI with propofol and succinylcholine; ventilate with high rate and high tidal volumes", "RSI with ketamine as induction agent; permissive hypercapnia strategy with low rate, low tidal volume, prolonged expiratory time", "Awake fiberoptic intubation; pressure control ventilation at 30 cmH2O", "Avoid intubation entirely — only use BiPAP"],
+          correctIndex: 1,
+          explanation: "Ketamine is the preferred induction agent due to its bronchodilatory properties and hemodynamic stability. Post-intubation ventilation must use a permissive hypercapnia strategy: low respiratory rate (8-12), low tidal volume (6-8 mL/kg), prolonged expiratory time (I:E ratio 1:4-1:5) to prevent dynamic hyperinflation (auto-PEEP). Auto-PEEP from air trapping can cause hypotension and cardiac arrest in ventilated asthmatics."
+        }
+      ]
+    },
+    // --- COPD EXACERBATION (Tintinalli Ch. 70) ---
+    {
+      topic: "COPD Exacerbation",
+      difficulty: "medium",
+      scenario: `A 67-year-old male with severe COPD (FEV1 35% predicted, home oxygen 2L NC) presents with worsening dyspnea, increased sputum production with purulent sputum, and increased sputum volume over 3 days. He ran out of his prednisone 2 days ago. He has had 2 exacerbations requiring hospitalization in the past year.
+
+Vitals: HR 102, BP 148/88, RR 24, SpO2 84% on his home 2L O2, Temp 37.8°C. He is using pursed-lip breathing and accessory muscles. Chest exam reveals diffuse expiratory wheezing with prolonged expiratory phase. CXR shows hyperinflated lungs without infiltrate.`,
+      questions: [
+        {
+          text: "What are the Anthonisen criteria for classifying an acute exacerbation of COPD, and how does this patient meet them?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Anthonisen criteria define AECOPD by three cardinal symptoms: (1) increased dyspnea, (2) increased sputum volume, (3) increased sputum purulence",
+            "Type I (severe): all three cardinal symptoms present — this patient has all three (increased dyspnea, increased sputum volume, purulent sputum)",
+            "Type II (moderate): two of three cardinal symptoms; Type III (mild): one cardinal symptom plus at least one minor finding (URI symptoms in past 5 days, fever without other cause, increased wheezing/cough, or increase in HR or RR by ≥20%)",
+            "Antibiotics are recommended for Type I exacerbations and for Type II if purulent sputum is one of the two criteria"
+          ]
+        },
+        {
+          text: "What is the initial ED management for this patient?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Controlled oxygen therapy: target SpO2 88-92% — excessive oxygen in COPD can worsen hypercapnia via the Haldane effect and V/Q mismatch; titrate O2 carefully",
+            "Short-acting bronchodilators: nebulized salbutamol 2.5-5 mg plus ipratropium 0.5 mg — combination bronchodilator therapy is superior to either agent alone",
+            "Systemic corticosteroids: prednisone 40-60 mg PO or methylprednisolone IV — reduces treatment failure, shortens recovery time, and improves FEV1; 5-day course is equivalent to 14-day course",
+            "Antibiotics: indicated for this Type I exacerbation — amoxicillin-clavulanate, doxycycline, azithromycin, or respiratory fluoroquinolone; target common pathogens (H. influenzae, S. pneumoniae, M. catarrhalis)",
+            "Non-invasive ventilation (BiPAP): strongly consider for patients with respiratory acidosis (pH <7.35), persistent hypoxia despite O2, or severe dyspnea with accessory muscle use — reduces intubation rates and mortality"
+          ]
+        },
+        {
+          text: "ABG shows pH 7.28, PaCO2 68, PaO2 54. What ventilatory support is indicated?",
+          type: "mcq",
+          marks: 1,
+          options: ["Continue oxygen alone — the PaCO2 is chronically elevated in COPD", "Non-invasive positive pressure ventilation (BiPAP)", "Immediate intubation and mechanical ventilation", "High-flow nasal cannula at 60 L/min"],
+          correctIndex: 1,
+          explanation: "BiPAP (e.g., IPAP 12-15, EPAP 5-8 cmH2O) is first-line for AECOPD with acute respiratory acidosis (pH <7.35). Multiple RCTs show BiPAP reduces intubation rates by 65% and mortality by 50% in AECOPD. Intubation is reserved for those who fail BiPAP, are unable to protect their airway, or are in respiratory arrest. The pH of 7.28 (not <7.15) makes BiPAP appropriate."
+        }
+      ]
+    },
+    // === SECTION 9: GASTROINTESTINAL DISORDERS ===
+    // --- ACUTE ABDOMINAL PAIN (Tintinalli Ch. 71) ---
+    {
+      topic: "Acute Abdominal Pain — Approach",
+      difficulty: "medium",
+      scenario: `A 54-year-old female presents with 12 hours of progressively worsening diffuse abdominal pain that began periumbilically and has now localized to the right lower quadrant. She has had nausea with one episode of vomiting and anorexia. She reports mild fever at home. PMH: hypertension, remote appendectomy at age 14. Vitals: HR 94, BP 132/78, RR 18, SpO2 98%, Temp 38.3°C.
+
+Examination reveals RLQ tenderness with guarding, positive Rovsing's sign, and rebound tenderness. However, her surgical history includes a prior appendectomy.`,
+      questions: [
+        {
+          text: "Given the prior appendectomy, what are the important differential diagnoses for this patient's RLQ pain with peritoneal signs?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Acute diverticulitis — right-sided diverticulitis can mimic appendicitis; more common in Asian populations but occurs in Western patients, particularly the elderly",
+            "Crohn's disease (terminal ileitis) — can present with RLQ pain, fever, and peritoneal signs, especially in young to middle-aged adults",
+            "Mesenteric lymphadenitis or mesenteric ischemia — particularly in older patients with vascular risk factors",
+            "Gynecologic pathology: ruptured ovarian cyst, ovarian torsion, or tubo-ovarian abscess in females with RLQ pain",
+            "Stump appendicitis — rare but reported complication where the residual appendiceal stump (from incomplete appendectomy) becomes inflamed; always consider in a patient with prior appendectomy presenting with classic appendicitis symptoms",
+            "Other: cecal pathology (cancer, volvulus), epiploic appendagitis, or Meckel's diverticulitis"
+          ]
+        },
+        {
+          text: "Differentiate between visceral, somatic, and referred abdominal pain.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Visceral pain: poorly localized, midline, crampy/colicky; caused by stretching, distension, or spasm of hollow viscera; transmitted via slow C fibers to the spinal cord; embryologic origin determines the location (foregut = epigastric, midgut = periumbilical, hindgut = suprapubic)",
+            "Somatic (parietal) pain: sharp, well-localized, worsened by movement/coughing; caused by irritation of the parietal peritoneum; transmitted via faster A-delta fibers; localizes to the area of peritoneal irritation",
+            "Referred pain: felt at a site distant from the pathology due to shared segmental spinal cord innervation (e.g., diaphragmatic irritation causing shoulder pain via C3-C5; ureteral colic causing ipsilateral testicular pain)"
+          ]
+        },
+        {
+          text: "What is the most appropriate next step in this patient's evaluation?",
+          type: "mcq",
+          marks: 1,
+          options: ["Empiric antibiotics for presumed diverticulitis", "CT abdomen/pelvis with IV contrast", "Surgical consultation for exploratory laparotomy", "Observation with serial abdominal exams"],
+          correctIndex: 1,
+          explanation: "CT abdomen/pelvis with IV contrast is the appropriate next step. Given the prior appendectomy making appendicitis unlikely but peritoneal signs on exam, imaging is essential to identify the cause (diverticulitis, Crohn's, ovarian pathology, stump appendicitis, mesenteric ischemia, etc.). CT has high sensitivity for the common causes of RLQ pain and will guide definitive management."
+        }
+      ]
+    },
+    // --- ACUTE PANCREATITIS (Tintinalli Ch. 79) ---
+    {
+      topic: "Acute Pancreatitis",
+      difficulty: "medium",
+      scenario: `A 48-year-old male with a history of heavy alcohol use presents with severe epigastric pain radiating straight through to his back, constant for 8 hours, associated with persistent nausea and vomiting. He reports drinking heavily over the past week. Vitals: HR 112, BP 106/68, RR 22, SpO2 96%, Temp 38.1°C.
+
+Examination reveals epigastric tenderness with guarding but no rigidity. Bowel sounds are hypoactive. Labs: lipase 1,840 U/L (normal <60), WBC 14,200, glucose 248 mg/dL, LDH 380 U/L, AST 124 U/L, calcium 7.8 mg/dL.`,
+      questions: [
+        {
+          text: "What are the two most common causes of acute pancreatitis, and what criteria confirm the diagnosis?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Two most common causes: gallstones (40%) and alcohol (40%) — together account for approximately 80% of all cases",
+            "Diagnosis requires 2 of 3 criteria: (1) characteristic abdominal pain (epigastric, radiating to back, constant), (2) serum lipase (or amylase) ≥3 times the upper limit of normal, (3) characteristic findings on cross-sectional imaging (CT, MRI, or US)",
+            "Lipase is preferred over amylase — it is more sensitive and specific, remains elevated longer, and is not elevated by other conditions as frequently as amylase",
+            "This patient meets criteria with characteristic pain + lipase 1,840 (>3x normal) — imaging is not required to make the diagnosis"
+          ]
+        },
+        {
+          text: "Calculate this patient's Ranson criteria on admission and assess the predicted severity.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Ranson criteria at admission (for alcoholic pancreatitis): Age >55 (no, 0), WBC >16,000 (no, 0), Glucose >200 (yes, +1), LDH >350 (yes, +1), AST >250 (no, 0) = 2 points at admission",
+            "Additional criteria assessed at 48 hours include: hematocrit drop >10%, BUN rise >5, calcium <8, PaO2 <60, base deficit >4, fluid sequestration >6L",
+            "Ranson score ≥3 predicts severe pancreatitis; this patient already has 2 at admission with concerning calcium of 7.8 (hypocalcemia is a marker of severity)",
+            "BISAP score is another severity tool: BUN >25, Impaired mental status, SIRS, Age >60, Pleural effusion — quick bedside assessment of prognosis"
+          ]
+        },
+        {
+          text: "What are the key components of ED management for acute pancreatitis?",
+          type: "mcq",
+          marks: 1,
+          options: ["NPO, IV fluids at 50 mL/hr, morphine for pain, prophylactic antibiotics", "Aggressive IV fluid resuscitation (250-500 mL/hr LR), multimodal analgesia, antiemetics, early oral feeding when tolerated", "Emergent ERCP for all patients, IV fluids, and NPO for 7 days", "Conservative IV fluids, NSAIDs only for pain, and immediate discharge if lipase normalizes"],
+          correctIndex: 1,
+          explanation: "Aggressive IV fluid resuscitation with lactated Ringer's (250-500 mL/hr initially, goal-directed to urine output and hemodynamic markers) is the cornerstone of treatment. Multimodal analgesia (NSAIDs, acetaminophen, opioids as needed) should be used — there is no evidence that morphine worsens pancreatitis via sphincter of Oddi spasm. Early oral feeding (within 24 hours) when tolerated improves outcomes. Prophylactic antibiotics are NOT recommended."
+        }
+      ]
+    },
+    // --- UPPER GI BLEEDING (Tintinalli Ch. 75) ---
+    {
+      topic: "Upper Gastrointestinal Bleeding",
+      difficulty: "hard",
+      scenario: `A 58-year-old male with a history of cirrhosis secondary to hepatitis C presents with large-volume hematemesis (bright red blood, approximately 500 mL). He has passed several melanotic stools over the past 24 hours. He takes propranolol and has a history of prior variceal banding. Vitals: HR 126, BP 84/52, RR 24, SpO2 94%.
+
+He is pale, diaphoretic, and confused. Examination reveals spider angiomata, jaundice, ascites, and splenomegaly. Labs: Hgb 6.8 g/dL, platelets 62,000, INR 1.8, BUN 42, Cr 1.4.`,
+      questions: [
+        {
+          text: "What is the most likely source of bleeding, and what initial resuscitation steps are critical?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Most likely source: esophageal variceal hemorrhage — the patient has known cirrhosis with portal hypertension (spider angiomata, ascites, splenomegaly, thrombocytopenia) and a history of prior variceal banding",
+            "Activate massive transfusion protocol — this patient is in hemorrhagic shock (tachycardia, hypotension, altered mental status)",
+            "Establish two large-bore (14-16 gauge) peripheral IVs; type and crossmatch for packed RBCs; transfuse with restrictive threshold (target Hgb 7-8 g/dL — overtransfusion in variceal bleeding can worsen portal hypertension and increase rebleeding)",
+            "Protect the airway — this patient is confused with massive hematemesis and is at high risk for aspiration; consider early intubation before endoscopy",
+            "Correct coagulopathy: fresh frozen plasma and/or 4-factor PCC for INR >1.5; platelet transfusion if <50,000 with active bleeding"
+          ]
+        },
+        {
+          text: "What specific pharmacotherapy should be initiated immediately for suspected variceal bleeding?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Octreotide (somatostatin analogue): 50 mcg IV bolus followed by 50 mcg/hr infusion — reduces portal venous pressure by splanchnic vasoconstriction, decreasing variceal blood flow",
+            "IV proton pump inhibitor: pantoprazole 80 mg IV bolus followed by 8 mg/hr infusion — though more effective for non-variceal bleeding, often started empirically until endoscopic diagnosis is confirmed",
+            "IV antibiotics (ceftriaxone 1 g IV): prophylactic antibiotics reduce mortality, bacterial infections, and rebleeding in cirrhotic patients with GI bleeding — give within the first 12 hours",
+            "Avoid aggressive crystalloid resuscitation — balanced blood product resuscitation is preferred in cirrhotic patients"
+          ]
+        },
+        {
+          text: "Endoscopy confirms active variceal bleeding that cannot be controlled with banding. What rescue intervention is available?",
+          type: "mcq",
+          marks: 1,
+          options: ["IV vasopressin infusion", "Balloon tamponade (Sengstaken-Blakemore or Minnesota tube)", "Emergent liver transplant", "Angiographic embolization"],
+          correctIndex: 1,
+          explanation: "Balloon tamponade (Sengstaken-Blakemore or Minnesota tube) is the temporizing rescue intervention for variceal bleeding refractory to endoscopic therapy. The gastric balloon is inflated first (250-300 mL) and placed on traction. The esophageal balloon is inflated only if gastric balloon tamponade fails. This is a bridge to TIPS (transjugular intrahepatic portosystemic shunt), which is the definitive treatment for refractory variceal hemorrhage."
+        }
+      ]
+    },
+    // --- BOWEL OBSTRUCTION (Tintinalli Ch. 83) ---
+    {
+      topic: "Small Bowel Obstruction",
+      difficulty: "medium",
+      scenario: `A 65-year-old female with a history of prior hysterectomy and two subsequent laparotomies presents with 2 days of progressive crampy periumbilical pain, bilious vomiting, abdominal distension, and inability to pass flatus or stool.
+
+Vitals: HR 102, BP 118/72, RR 20, SpO2 97%, Temp 37.4°C. Examination reveals a distended, tympanitic abdomen with high-pitched bowel sounds and a well-healed midline laparotomy scar. No hernia is palpable. Labs: WBC 11,200, BUN 28, Cr 1.3, lactate 1.8 mmol/L.`,
+      questions: [
+        {
+          text: "What is the most likely cause of small bowel obstruction in this patient, and what imaging should be obtained?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Adhesive small bowel obstruction — adhesions from prior abdominal surgery are the most common cause of SBO (accounting for 60-70% of cases), and this patient has had multiple laparotomies",
+            "The second most common cause is incarcerated hernia — careful examination of all hernia orifices (inguinal, femoral, umbilical, incisional) is essential",
+            "CT abdomen/pelvis with IV contrast is the imaging of choice — it identifies the presence, location, severity, and often the cause of obstruction; it also detects complications such as closed-loop obstruction, bowel ischemia, or perforation",
+            "Plain abdominal radiographs have limited utility — may show dilated small bowel loops with air-fluid levels, but CT is far more sensitive and specific"
+          ]
+        },
+        {
+          text: "CT shows dilated small bowel loops with a discrete transition point in the pelvis and decompressed distal bowel. No signs of ischemia. What is the management approach?",
+          type: "mcq",
+          marks: 1,
+          options: ["Immediate surgical exploration", "NPO, NG tube decompression, IV fluids, and serial abdominal exams", "Oral contrast challenge and discharge if contrast passes in 8 hours", "Colonoscopy for decompression"],
+          correctIndex: 1,
+          explanation: "Many patients with adhesive SBO can be managed non-operatively: NPO, nasogastric tube for decompression (reduces distension and vomiting), aggressive IV fluid resuscitation (patients are often significantly volume depleted), and serial abdominal exams to monitor for signs of strangulation. Surgery is indicated for complete obstruction with signs of ischemia, closed-loop obstruction, or failure of conservative management within 48-72 hours."
+        },
+        {
+          text: "What clinical findings would indicate strangulation or bowel ischemia requiring emergent surgical intervention?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Continuous severe pain (rather than intermittent colicky pain) — suggests bowel wall ischemia rather than simple mechanical obstruction",
+            "Peritoneal signs: localized or rebound tenderness, involuntary guarding, rigidity — suggest bowel necrosis or perforation",
+            "Systemic toxicity: fever, tachycardia, leukocytosis >20,000 (or extreme leukocytosis >40,000 suggesting mesenteric vascular occlusion), elevated lactate, metabolic acidosis",
+            "CT findings: bowel wall thickening or enhancement changes, mesenteric fat stranding, pneumatosis intestinalis (air in bowel wall), portal venous gas, free fluid, or closed-loop configuration",
+            "Failure to improve with conservative management within 48-72 hours despite adequate decompression and resuscitation"
+          ]
+        }
+      ]
+    },
+    // --- ACUTE APPENDICITIS (Tintinalli Ch. 81) ---
+    {
+      topic: "Acute Appendicitis",
+      difficulty: "medium",
+      scenario: `A 24-year-old male presents with 18 hours of abdominal pain that began periumbilically and has now migrated to the right lower quadrant. He has had anorexia, one episode of vomiting, and low-grade fever. He denies diarrhea or urinary symptoms.
+
+Vitals: HR 92, BP 128/74, RR 16, SpO2 99%, Temp 38.1°C. Examination reveals RLQ tenderness at McBurney's point with involuntary guarding. Rovsing's sign is positive (palpation of the LLQ causes RLQ pain). Psoas sign is positive. Labs: WBC 13,800 with 82% neutrophils.`,
+      questions: [
+        {
+          text: "Describe the classic pathophysiology of appendicitis and the migration of pain.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Appendicitis begins with luminal obstruction (fecalith, lymphoid hyperplasia, or rarely tumor) → increased intraluminal pressure → venous congestion → bacterial overgrowth → transmural inflammation",
+            "Initial pain is periumbilical (visceral pain from midgut distension transmitted via T10 afferents) — poorly localized because visceral pain is transmitted by slow C fibers",
+            "As inflammation extends transmurally to involve the parietal peritoneum overlying the appendix, the pain localizes to the RLQ (somatic pain transmitted by faster A-delta fibers) — this migration of pain from periumbilical to RLQ is the most reliable clinical feature of appendicitis",
+            "Sudden improvement in pain may indicate perforation (release of intraluminal pressure), followed by worsening diffuse pain as peritonitis develops"
+          ]
+        },
+        {
+          text: "What clinical scoring system can help risk-stratify patients with suspected appendicitis?",
+          type: "mcq",
+          marks: 1,
+          options: ["CURB-65 score", "Wells score", "Alvarado (MANTRELS) score", "HEART score"],
+          correctIndex: 2,
+          explanation: "The Alvarado score (MANTRELS: Migration of pain, Anorexia, Nausea/vomiting, Tenderness in RLQ, Rebound pain, Elevated temperature, Leukocytosis, Shift to the left) helps risk-stratify appendicitis. Score 1-4: appendicitis unlikely; 5-6: possible — consider CT; 7-8: probable — surgical consultation; 9-10: very probable appendicitis. This patient scores high: migration (+1), anorexia (+1), nausea (+1), RLQ tenderness (+2), rebound (+1), fever (+1), leukocytosis (+2), left shift (+1) = 10."
+        },
+        {
+          text: "What imaging is recommended, and are there populations where imaging may be deferred?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "CT abdomen/pelvis with IV contrast is the gold standard imaging — sensitivity 94-98%, specificity 95-97% for appendicitis",
+            "In young males with high clinical probability (Alvarado ≥7-8) and classic presentation, surgical consultation without CT may be appropriate — especially when CT availability is limited",
+            "Ultrasound is first-line in children and pregnant women (no radiation); if US is equivocal, MRI is second-line in pregnancy; CT if US is non-diagnostic in children",
+            "CT findings of appendicitis: dilated appendix >6 mm, appendiceal wall thickening and enhancement, periappendiceal fat stranding, appendicolith, and free fluid"
+          ]
+        }
+      ]
+    },
+    // === SECTION 10: RENAL AND GENITOURINARY DISORDERS ===
+    // --- ACUTE KIDNEY INJURY (Tintinalli Ch. 88) ---
+    {
+      topic: "Acute Kidney Injury",
+      difficulty: "hard",
+      scenario: `A 71-year-old female with hypertension and type 2 diabetes presents with decreased urine output for 2 days, malaise, and nausea. She was recently started on ibuprofen for knee osteoarthritis and takes lisinopril and metformin. She had a CT scan with IV contrast 3 days ago for an unrelated workup.
+
+Labs: Cr 4.2 mg/dL (baseline 1.1), BUN 68, K+ 6.1 mmol/L, bicarbonate 16 mmol/L, urine output 150 mL in the last 12 hours. Urinalysis shows muddy brown granular casts.`,
+      questions: [
+        {
+          text: "Classify this patient's AKI as prerenal, intrinsic renal, or postrenal, and identify the likely contributing factors.",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "This is most likely intrinsic renal AKI (acute tubular necrosis/ATN) — evidenced by muddy brown granular casts on urinalysis, which are pathognomonic for ATN",
+            "Contributing factors: (1) NSAIDs (ibuprofen) — reduce prostaglandin-mediated afferent arteriolar vasodilation, decreasing renal perfusion; (2) ACE inhibitor (lisinopril) — reduces efferent arteriolar tone, further decreasing GFR; (3) recent IV contrast — contrast-induced nephropathy (risk factors: CKD, diabetes, volume depletion)",
+            "The combination of NSAID + ACE inhibitor is sometimes called the 'triple whammy' (with a diuretic being the third agent) and is a well-known cause of AKI",
+            "Prerenal AKI would show bland urinalysis with FeNa <1% and hyaline casts; postrenal would show hydronephrosis on imaging",
+            "Distinguish using: FeNa (<1% in prerenal, >2% in intrinsic), urine sodium (<20 in prerenal, >40 in intrinsic), urine osmolality (>500 in prerenal, ~300 in intrinsic)"
+          ]
+        },
+        {
+          text: "The K+ is 6.1 with ECG showing peaked T waves. What is the stepwise management of hyperkalemia?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "1. Cardiac membrane stabilization: calcium gluconate 10% 10 mL IV over 2-3 minutes (or calcium chloride via central line) — does NOT lower K+ but protects the myocardium from arrhythmia; onset within minutes",
+            "2. Intracellular potassium shift: insulin (10 units regular IV) with dextrose (25 g D50W) — drives K+ into cells, onset 15-30 minutes, lowers K+ by 0.5-1.2 mmol/L; also consider nebulized salbutamol 10-20 mg (additive effect)",
+            "3. Sodium bicarbonate 50-100 mEq IV if metabolic acidosis present — shifts K+ intracellularly; less effective as monotherapy but useful as adjunct",
+            "4. Potassium elimination: sodium polystyrene sulfonate (Kayexalate) 30-60 g PO or patiromer/sodium zirconium cyclosilicate for GI removal; loop diuretics if not anuric; hemodialysis if severe or refractory",
+            "5. Discontinue offending agents: stop ibuprofen, hold lisinopril, hold metformin (risk of lactic acidosis in AKI)"
+          ]
+        },
+        {
+          text: "What are the indications for emergent hemodialysis in AKI?",
+          type: "mcq",
+          marks: 1,
+          options: ["Creatinine >4.0 mg/dL regardless of symptoms", "Hyperkalemia refractory to medical management, refractory pulmonary edema, severe metabolic acidosis, or uremic symptoms (encephalopathy, pericarditis, bleeding)", "Any oliguric AKI lasting >12 hours", "BUN >60 mg/dL"],
+          correctIndex: 1,
+          explanation: "Emergent hemodialysis indications (AEIOU): Acidosis (severe, refractory pH <7.1), Electrolytes (refractory hyperkalemia), Ingestion (dialyzable toxins like methanol, ethylene glycol, lithium, salicylates), Overload (refractory pulmonary edema), Uremia (encephalopathy, pericarditis, bleeding diathesis). Absolute creatinine or BUN values alone are not indications — clinical context and symptoms drive the decision."
+        }
+      ]
+    },
+    // --- TESTICULAR TORSION (Tintinalli Ch. 93) ---
+    {
+      topic: "Testicular Torsion",
+      difficulty: "hard",
+      scenario: `A 16-year-old male presents with sudden-onset severe left scrotal pain that began 3 hours ago while playing soccer. He has had one episode of vomiting. He denies dysuria, urethral discharge, or prior similar episodes. He is not sexually active.
+
+Vitals: HR 104, BP 132/78, RR 18, Temp 37.2°C. Examination reveals an exquisitely tender, high-riding left testicle with a horizontal lie. The cremasteric reflex is absent on the left. The right testicle is normal. There is no scrotal erythema or urethral discharge.`,
+      questions: [
+        {
+          text: "What is the diagnosis, and what is the critical time-dependent management?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Diagnosis: testicular torsion — the sudden onset of severe unilateral scrotal pain in an adolescent with a high-riding testicle, horizontal lie, and absent cremasteric reflex is testicular torsion until proven otherwise",
+            "This is a urologic emergency — testicular salvage rate is >90% if detorsion occurs within 6 hours, drops to ~50% at 12 hours, and is <10% after 24 hours",
+            "Immediate urology consultation for emergent surgical exploration and orchiopexy — do NOT delay surgery for imaging if clinical suspicion is high",
+            "If urology is unavailable or delayed, attempt manual detorsion at the bedside: the 'open book' maneuver — rotate the affected testicle medially to laterally (as if opening a book), which relieves torsion in most cases; relief of pain confirms successful detorsion"
+          ]
+        },
+        {
+          text: "Should a Doppler ultrasound be obtained before calling urology in this patient?",
+          type: "mcq",
+          marks: 1,
+          options: ["Yes — ultrasound must confirm absent blood flow before surgery", "No — classic clinical presentation is sufficient; imaging should not delay surgery", "Yes — but only if symptoms are <6 hours old", "Only if the cremasteric reflex is present"],
+          correctIndex: 1,
+          explanation: "In a patient with classic presentation (sudden onset, high-riding testicle, horizontal lie, absent cremasteric reflex in an adolescent), ultrasound should NOT delay surgical exploration. The sensitivity of ultrasound for torsion is 86-100%, meaning false negatives occur. A negative ultrasound does not rule out torsion if clinical suspicion is high. Imaging is most useful when the diagnosis is uncertain (equivocal exam, subacute presentation, possible epididymitis)."
+        },
+        {
+          text: "What are the key clinical features that differentiate testicular torsion from acute epididymitis?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Testicular torsion: sudden onset, typically in adolescence (peak 12-18 years), no urinary symptoms, absent cremasteric reflex, high-riding testicle with horizontal lie, negative Prehn's sign (elevation does not relieve pain)",
+            "Acute epididymitis: gradual onset, typically in sexually active young adults or older males, often with dysuria/urethral discharge, cremasteric reflex present, testicle in normal position, positive Prehn's sign (elevation relieves pain), may have pyuria on UA",
+            "Epididymitis in <35 years: usually sexually transmitted (Chlamydia trachomatis, Neisseria gonorrhoeae); in >35 years: usually from urinary pathogens (E. coli, Pseudomonas)",
+            "Absent cremasteric reflex is the single most sensitive clinical finding for torsion (sensitivity ~99%)"
+          ]
+        }
+      ]
+    },
+    // --- URINARY TRACT INFECTIONS (Tintinalli Ch. 91) ---
+    {
+      topic: "Urinary Tract Infections and Pyelonephritis",
+      difficulty: "medium",
+      scenario: `A 32-year-old otherwise healthy woman presents with 2 days of dysuria, urinary frequency, urgency, and suprapubic discomfort. She is sexually active with a new partner. She has no fever, flank pain, or vaginal discharge. Vitals are normal. Urine dipstick shows positive leukocyte esterase and nitrites.
+
+Three days later, she returns with fever 39.1°C, rigors, severe right flank pain, nausea, and vomiting. She completed only 1 day of the prescribed antibiotics. Vitals: HR 108, BP 98/62, RR 20. She has right CVA tenderness.`,
+      questions: [
+        {
+          text: "What was the initial diagnosis, and what has it progressed to?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Initial visit: uncomplicated lower UTI (cystitis) — dysuria, frequency, urgency, suprapubic pain without systemic symptoms in a young, non-pregnant woman",
+            "Return visit: acute pyelonephritis — fever, flank pain, CVA tenderness, systemic symptoms (rigors, nausea/vomiting), now with signs of sepsis (tachycardia, borderline hypotension)",
+            "The progression was likely due to incomplete antibiotic course and ascending infection from the bladder to the kidney"
+          ]
+        },
+        {
+          text: "What are the first-line empiric antibiotics for uncomplicated cystitis, and what should be avoided?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "First-line agents: nitrofurantoin 100 mg BID x 5 days, trimethoprim-sulfamethoxazole (TMP-SMX) DS BID x 3 days (if local E. coli resistance <20%), or fosfomycin 3 g single dose",
+            "Second-line: fluoroquinolones (ciprofloxacin, levofloxacin) — should be reserved for complicated UTIs or pyelonephritis; avoiding fluoroquinolones for uncomplicated cystitis is important due to resistance patterns and side effect profile",
+            "Avoid: amoxicillin or ampicillin alone (high resistance rates >30%); also avoid nitrofurantoin for pyelonephritis (inadequate tissue penetration — only achieves therapeutic concentrations in the urine, not renal parenchyma)"
+          ]
+        },
+        {
+          text: "The patient now has pyelonephritis with early sepsis. What is the appropriate management?",
+          type: "mcq",
+          marks: 1,
+          options: ["Oral TMP-SMX and outpatient follow-up in 48 hours", "IV ceftriaxone 1 g, IV fluids, admission for IV antibiotics", "Oral ciprofloxacin 500 mg BID and discharge with urology follow-up", "Renal ultrasound before any antibiotics"],
+          correctIndex: 1,
+          explanation: "This patient has complicated pyelonephritis with early sepsis (fever, tachycardia, hypotension) and should be admitted for IV antibiotics (ceftriaxone 1-2 g IV daily or fluoroquinolone IV) and aggressive IV fluid resuscitation. Blood and urine cultures should be obtained before antibiotics. Renal imaging (CT or US) should be obtained to rule out abscess or obstructing stone, but should not delay antibiotic administration."
+        }
+      ]
+    },
+    // === SECTION 11: GYNECOLOGY AND OBSTETRICS ===
+    // --- ECTOPIC PREGNANCY (Tintinalli Ch. 98) ---
+    {
+      topic: "Ectopic Pregnancy",
+      difficulty: "hard",
+      scenario: `A 28-year-old woman presents with 6 hours of sharp left lower quadrant pain and vaginal spotting. Her last menstrual period was 7 weeks ago. She has a history of Chlamydia infection and a prior left tubal surgery. She appears pale and diaphoretic. Vitals: HR 118, BP 88/54, RR 22, SpO2 98%.
+
+Pelvic exam reveals left adnexal tenderness with cervical motion tenderness. Urine pregnancy test is positive. Quantitative β-hCG is 4,200 mIU/mL. Transvaginal ultrasound shows no intrauterine pregnancy, a small amount of free fluid in the cul-de-sac, and a complex left adnexal mass.`,
+      questions: [
+        {
+          text: "What is the diagnosis, and what risk factors does this patient have?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Diagnosis: ruptured ectopic pregnancy — positive pregnancy test, no intrauterine pregnancy on US, left adnexal mass, free fluid (hemoperitoneum), and hemodynamic instability",
+            "Risk factors present: prior tubal surgery (strongest risk factor), history of chlamydial infection/PID (causes tubal scarring), and the ectopic is on the same side as prior surgery",
+            "Other risk factors include: prior ectopic pregnancy, IUD use, assisted reproductive technology, smoking, age >35, and endometriosis",
+            "The 'discriminatory zone' — the β-hCG level above which a normal IUP should be visible on transvaginal US — is typically 1,500-3,000 mIU/mL. At β-hCG 4,200 with no IUP, ectopic pregnancy is highly likely"
+          ]
+        },
+        {
+          text: "Given the hemodynamic instability, what is the immediate management?",
+          type: "mcq",
+          marks: 1,
+          options: ["Methotrexate 50 mg/m² IM and close follow-up", "Expectant management with serial β-hCG monitoring", "Emergency surgical intervention (laparoscopy or laparotomy)", "Repeat ultrasound in 48 hours with serial β-hCG"],
+          correctIndex: 2,
+          explanation: "A hemodynamically unstable patient with suspected ruptured ectopic pregnancy requires immediate surgical intervention. Methotrexate is contraindicated in ruptured ectopic, hemodynamic instability, β-hCG >5,000 (relative), or if the patient is unreliable for follow-up. This patient needs emergent laparoscopy (or laparotomy if unable to maintain hemodynamics) for salpingectomy or salpingostomy."
+        },
+        {
+          text: "In a stable patient with a confirmed ectopic pregnancy, what are the criteria for methotrexate treatment versus surgery?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Methotrexate criteria (all must be met): hemodynamically stable, unruptured ectopic, β-hCG ideally <5,000 mIU/mL (some guidelines allow up to 10,000), no fetal cardiac activity on US, no contraindications to methotrexate (liver/renal disease, immunodeficiency, blood dyscrasias, active pulmonary disease), and reliable for follow-up",
+            "Surgical indications: hemodynamic instability, ruptured ectopic, β-hCG >5,000 (relative), fetal cardiac activity, contraindications to methotrexate, failed methotrexate therapy, or patient preference",
+            "Methotrexate protocol: 50 mg/m² IM single dose; monitor with serial β-hCG at days 4 and 7 (expect ≥15% decline between days 4-7); if inadequate decline, repeat dose or proceed to surgery",
+            "Counsel patient on methotrexate precautions: avoid alcohol, folate supplements, NSAIDs, sun exposure, and sexual intercourse until β-hCG is undetectable"
+          ]
+        }
+      ]
+    },
+    // --- EMERGENCY DELIVERY & COMPLICATIONS (Tintinalli Ch. 101) ---
+    {
+      topic: "Emergency Delivery",
+      difficulty: "hard",
+      scenario: `A 31-year-old G3P2 at 38 weeks gestation arrives via EMS in active labor. She reports her "water broke" at home 1 hour ago and she has an urge to push. She has had no prenatal care. Vitals: HR 96, BP 128/82, RR 18.
+
+On exam, the cervix is fully dilated and effaced with the fetal vertex visible at the introitus during contractions. During the next contraction, the head delivers spontaneously but does not rotate, and the anterior shoulder appears impacted behind the pubic symphysis despite gentle downward traction. The fetal head retracts against the perineum ("turtle sign").`,
+      questions: [
+        {
+          text: "What obstetric emergency is occurring, and what is the immediate management?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "Shoulder dystocia — the anterior shoulder is impacted behind the maternal pubic symphysis after delivery of the fetal head; the 'turtle sign' (retraction of the head against the perineum) is the classic presentation",
+            "Call for help immediately — shoulder dystocia requires a coordinated team approach; note the time for documentation",
+            "McRoberts maneuver FIRST: hyperflexion of the maternal hips (knees to chest/ears) — this flattens the sacral promontory and increases the AP diameter of the pelvic outlet; success rate 40-90% alone",
+            "Suprapubic pressure: an assistant applies firm downward pressure just above the pubic symphysis to push the anterior shoulder under the pubic bone — used in combination with McRoberts",
+            "Do NOT apply fundal pressure — this further impacts the shoulder and can cause uterine rupture",
+            "Do NOT apply excessive traction to the fetal head — risk of brachial plexus injury (Erb's palsy)"
+          ]
+        },
+        {
+          text: "McRoberts maneuver and suprapubic pressure have failed. What additional maneuvers can be attempted?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Rubin maneuver: reach into the vagina and apply pressure to the posterior aspect of the anterior shoulder to rotate it into an oblique diameter (adduction of the shoulder)",
+            "Woods screw maneuver: simultaneously apply pressure to the anterior aspect of the posterior shoulder to rotate the fetus 180 degrees, freeing the impacted anterior shoulder",
+            "Delivery of the posterior arm: reach into the vagina, grasp the posterior arm/hand and sweep it across the fetal chest to deliver it — reduces the bisacromial diameter by the width of the arm",
+            "Gaskin maneuver (all-fours position): place the mother on her hands and knees, which changes the pelvic dimensions and uses gravity to help disimpact the shoulder",
+            "Last resort: Zavanelli maneuver (cephalic replacement and emergency C-section) or intentional clavicle fracture — only if all other methods fail"
+          ]
+        },
+        {
+          text: "What is the most common complication of shoulder dystocia for the neonate?",
+          type: "mcq",
+          marks: 1,
+          options: ["Fractured clavicle", "Brachial plexus injury (Erb's palsy)", "Hypoxic-ischemic encephalopathy", "Pneumothorax"],
+          correctIndex: 1,
+          explanation: "Brachial plexus injury (Erb's palsy — affecting C5-C6 nerve roots) is the most common significant neonatal complication, occurring in approximately 10-20% of shoulder dystocia cases. It presents as a limp arm with 'waiter's tip' positioning. Most cases resolve within the first year, but 10% may have permanent deficit. Clavicle and humeral fractures also occur but usually heal without complication."
+        }
+      ]
+    },
+    // --- HEPATIC DISORDERS / CIRRHOSIS COMPLICATIONS (Tintinalli Ch. 80) ---
+    {
+      topic: "Cirrhosis Complications — SBP and Hepatic Encephalopathy",
+      difficulty: "hard",
+      scenario: `A 56-year-old male with known alcoholic cirrhosis (Child-Pugh C) and large-volume ascites presents with confusion, fever to 38.4°C, and diffuse abdominal tenderness for 1 day. He is disoriented and has asterixis. His wife reports progressive mental decline over the past week with increased somnolence and irritability. He continues to drink alcohol.
+
+Vitals: HR 108, BP 92/58, RR 22, SpO2 95%. Examination reveals jaundice, tense ascites, diffuse abdominal tenderness without rebound, and grade 3 hepatic encephalopathy (somnolent but arousable, confused, asterixis present).`,
+      questions: [
+        {
+          text: "What two complications of cirrhosis are most likely occurring simultaneously in this patient?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Spontaneous bacterial peritonitis (SBP) — fever, abdominal tenderness, and confusion in a cirrhotic patient with ascites; occurs in 10-30% of hospitalized cirrhotics with ascites",
+            "Hepatic encephalopathy (HE) — progressive confusion, somnolence, asterixis; graded I-IV (this patient is grade 3: somnolent but arousable, marked confusion, asterixis); SBP is a common precipitant of HE",
+            "SBP occurs due to bacterial translocation from the gut into ascitic fluid in the setting of impaired immune function and portal hypertension — most commonly caused by E. coli, Klebsiella, and Streptococcus pneumoniae"
+          ]
+        },
+        {
+          text: "What diagnostic procedure must be performed, and what results confirm the diagnosis of SBP?",
+          type: "mcq",
+          marks: 1,
+          options: ["CT abdomen with contrast to look for peritoneal enhancement", "Diagnostic paracentesis — ascitic fluid PMN count ≥250 cells/mm³", "Blood cultures alone are sufficient for diagnosis", "Abdominal ultrasound showing complex ascites"],
+          correctIndex: 1,
+          explanation: "Diagnostic paracentesis is mandatory in any cirrhotic patient with ascites who presents with fever, abdominal pain, altered mental status, or clinical deterioration. SBP is confirmed by ascitic fluid PMN (polymorphonuclear neutrophil) count ≥250 cells/mm³. Empiric antibiotics should be started immediately — do NOT wait for culture results. Send fluid for cell count, Gram stain, culture (inoculate blood culture bottles at bedside), albumin, and total protein."
+        },
+        {
+          text: "What is the treatment for SBP and for hepatic encephalopathy in this patient?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "SBP treatment: IV ceftriaxone 2 g daily (or cefotaxime 2 g q8h) as empiric first-line; IV albumin 1.5 g/kg on day 1 and 1 g/kg on day 3 — IV albumin significantly reduces the incidence of hepatorenal syndrome and mortality in SBP",
+            "Hepatic encephalopathy treatment: lactulose 30-45 mL PO/NG every 1-2 hours until bowel movement, then titrate to 2-3 soft stools per day — works by acidifying colonic contents to convert ammonia (NH3) to ammonium (NH4+) which cannot be absorbed",
+            "Rifaximin 550 mg BID as adjunct to lactulose — a non-absorbable antibiotic that reduces ammonia-producing gut bacteria; particularly useful for preventing recurrent episodes",
+            "Identify and treat precipitants: SBP (being treated), GI bleeding, constipation, dehydration, electrolyte abnormalities, medications (benzodiazepines, opioids), continued alcohol use",
+            "IV fluid resuscitation for hypotension, but carefully — avoid excess free water which can worsen hyponatremia common in cirrhosis"
+          ]
+        }
+      ]
     }
   ]
 };
