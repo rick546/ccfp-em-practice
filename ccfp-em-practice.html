@@ -3362,7 +3362,1230 @@ Vitals: HR 108, BP 92/58, RR 22, SpO2 95%. Examination reveals jaundice, tense a
           ]
         }
       ]
+    },
+    // Section 12: Pediatrics (Ch.106-150)
+    {
+      title: "SAMP 53 — Neonatal Resuscitation",
+      scenario: `You are called to attend a delivery of a 38-week gestational age infant. The mother had prolonged rupture of membranes (>18 hours). The baby is born limp, cyanotic, and not crying. Heart rate is assessed at 70 beats per minute. The infant has poor muscle tone and minimal respiratory effort.`,
+      topic: "Neonatal Resuscitation",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "What are the initial steps of neonatal resuscitation that should be performed immediately?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Provide warmth — place infant under radiant warmer, dry thoroughly with warm towels to prevent hypothermia (preterm and low birth weight neonates are especially susceptible)",
+            "Position airway — place in sniffing position with slight neck extension, suction mouth then nose only if secretions are visible and obstructing the airway",
+            "Stimulate — dry vigorously, flick soles of feet or rub back; if no response within 30 seconds, initiate positive pressure ventilation (PPV) at 40-60 breaths/min with 21% O2 for term infants"
+          ]
+        },
+        {
+          text: "After 30 seconds of effective PPV, the heart rate remains at 55 bpm. What is the next step?",
+          type: "mcq",
+          marks: 1,
+          options: ["Administer epinephrine IV immediately", "Begin chest compressions coordinated with PPV using 3:1 ratio", "Intubate and begin mechanical ventilation", "Administer IV normal saline bolus 10 mL/kg"],
+          correctIndex: 1,
+          explanation: "If heart rate remains <60 bpm despite 30 seconds of effective PPV, begin chest compressions. Neonatal CPR uses a 3:1 compression-to-ventilation ratio (90 compressions and 30 ventilations per minute). The two-thumb encircling technique is preferred. Compressions should be delivered on the lower third of the sternum to a depth of one-third of the AP diameter of the chest."
+        },
+        {
+          text: "After 60 seconds of coordinated chest compressions and PPV, the heart rate is still <60 bpm. What medication should be administered, and by what route?",
+          type: "short-menu",
+          marks: 2,
+          options: ["Atropine 0.02 mg/kg IV", "Epinephrine 0.01-0.03 mg/kg (1:10,000) via UV catheter", "Sodium bicarbonate 1-2 mEq/kg IV", "Naloxone 0.1 mg/kg IM"],
+          correctIndex: 1,
+          explanation: "Epinephrine 0.01-0.03 mg/kg of 1:10,000 solution (0.1-0.3 mL/kg) is given via the umbilical venous (UV) catheter, which is the preferred emergency vascular access route in neonates. If IV access is not available, epinephrine may be given endotracheally at a higher dose of 0.05-0.1 mg/kg. Volume expansion with 10 mL/kg normal saline may be considered if blood loss or hypovolemia is suspected."
+        }
+      ]
+    },
+    {
+      title: "SAMP 54 — Pediatric Resuscitation / Cardiac Arrest",
+      scenario: `A 4-year-old child (approximately 16 kg) is brought to the ED by EMS after being found unresponsive in a swimming pool. The child was estimated to be submerged for approximately 5 minutes. On arrival, the child is apneic, pulseless, and cyanotic. CPR is in progress.`,
+      topic: "Pediatric Cardiac Arrest",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "What is the most common cause of cardiac arrest in children compared to adults, and what initial rhythm would you most likely expect?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "In children, cardiac arrest most commonly results from respiratory failure and/or shock (hypoxemia, hypercapnia, acidosis) progressing to bradycardia then asystole — unlike adults where primary cardiac arrhythmias (VF/VT) are most common",
+            "The most likely initial rhythm in a pediatric drowning arrest is asystole or PEA (non-shockable rhythms), reflecting the hypoxic etiology; VF/pVT accounts for only 5-15% of pediatric arrests"
+          ]
+        },
+        {
+          text: "What are the correct pediatric CPR parameters for this child?",
+          type: "mcq",
+          marks: 1,
+          options: ["Compression rate 80/min, depth 1 inch, 15:2 ratio", "Compression rate 100-120/min, depth at least one-third AP diameter (~5 cm), 15:2 ratio with two rescuers", "Compression rate 100-120/min, depth 2.4 inches, 30:2 ratio only", "Compression rate 60/min, depth 1.5 inches, 3:1 ratio"],
+          correctIndex: 1,
+          explanation: "Pediatric CPR (ages 1 year to puberty): compression rate 100-120/min, depth at least one-third AP diameter of chest (approximately 5 cm or 2 inches in children). Two-rescuer ratio is 15:2. Single rescuer uses 30:2. The 3:1 ratio is specific to neonatal resuscitation only. High-quality CPR with minimal interruptions and complete chest recoil is essential."
+        },
+        {
+          text: "List the appropriate weight-based doses for epinephrine and defibrillation energy for this 16 kg child.",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Epinephrine: 0.01 mg/kg IV/IO = 0.16 mg (use 1:10,000 solution = 1.6 mL), given every 3-5 minutes; do NOT use high-dose epinephrine in pediatrics",
+            "Defibrillation (if shockable rhythm): first shock 2 J/kg = 32 J; subsequent shocks 4 J/kg = 64 J; maximum 10 J/kg or adult dose; amiodarone 5 mg/kg IV/IO for refractory VF/pVT"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 55 — Pediatric Trauma",
+      scenario: `A 7-year-old boy (25 kg) is brought to the ED after being struck by a car while crossing the street at approximately 40 km/h. He was thrown several meters. On arrival: GCS 12 (E3V4M5), HR 140, BP 85/50, RR 32, SpO2 94% on room air. He has a large forehead laceration with swelling, abdominal tenderness diffusely, and bruising across his lower abdomen from a seat belt pattern.`,
+      topic: "Pediatric Trauma",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "What anatomic and physiologic differences in children make them more susceptible to multisystem injuries in blunt trauma?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Larger head-to-body ratio — head more likely to be injured in polytrauma; thinner cranium transmits energy easily and predisposes to skull fractures; open sutures in young children can accommodate ICP increases, delaying recognition of serious intracranial injuries",
+            "More compliant chest wall — serious pulmonary contusions and intrathoracic injuries can occur with minimal chest wall injury; heart is more anterior with mobile mediastinum",
+            "Relatively larger abdominal organs with less protective abdominal fat and muscle — predisposes to solid organ injuries (liver, spleen); thick organ capsules may limit hemoperitoneum and decrease US (FAST) sensitivity in children"
+          ]
+        },
+        {
+          text: "This child's blood pressure is 85/50 with HR 140. What is the significance of these vital signs in a pediatric trauma patient?",
+          type: "mcq",
+          marks: 1,
+          options: ["These are normal vital signs for a 7-year-old", "The child is in compensated shock — children maintain normal BP until losing up to 40% blood volume", "The child is in decompensated hemorrhagic shock requiring immediate massive transfusion", "Tachycardia alone is not concerning in a frightened child"],
+          correctIndex: 1,
+          explanation: "Children maintain normal blood pressure until very late in hemorrhagic shock due to robust compensatory mechanisms (increased heart rate, increased SVR). Tachycardia is the earliest and most sensitive sign of shock in children. A systolic BP <80 mmHg in a 7-year-old (expected lower limit = 70 + 2 × age = 84 mmHg) with persistent tachycardia indicates decompensated shock with >30-40% blood volume loss. Fluid resuscitation with 20 mL/kg isotonic crystalloid boluses should begin immediately, followed by blood products if no response."
+        },
+        {
+          text: "What specific injury pattern should you suspect given the seat belt sign across the lower abdomen, and what workup is indicated?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Seat belt sign (bruising across lower abdomen) is associated with hollow viscus injury (small bowel perforation, mesenteric injury) and Chance fracture (flexion-distraction fracture of lumbar spine) — this triad must be specifically evaluated",
+            "Workup: CT abdomen/pelvis with IV contrast is the study of choice for evaluating intra-abdominal injuries; FAST ultrasound has decreased sensitivity in children due to thick organ capsules limiting hemoperitoneum; obtain AP and lateral spine films or CT of the thoracolumbar spine to evaluate for Chance fracture"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 56 — Febrile Infant / Serious Bacterial Illness",
+      scenario: `A 21-day-old full-term infant is brought to the ED by his parents for fever. Rectal temperature is 38.5°C. The baby has been feeding less than usual for the past 12 hours. He appears slightly lethargic but has no rash, bulging fontanelle, or other focal findings. There is no history of ill contacts, and he has not received any immunizations yet.`,
+      topic: "Pediatric Fever / Serious Bacterial Illness",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "What is the appropriate workup for this febrile neonate?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Full sepsis workup is mandatory for any febrile infant ≤28 days old: CBC with differential, blood culture, urinalysis and urine culture (via catheterization or suprapubic aspiration — bag specimens lack specificity in infants)",
+            "Lumbar puncture for CSF analysis: cell count, protein, glucose, Gram stain, culture, and consideration of HSV PCR — neonatal herpes can present with fever and nonspecific symptoms",
+            "Chest X-ray if any respiratory symptoms; consider inflammatory markers (CRP, procalcitonin) to help risk-stratify — procalcitonin is emerging as a useful test for differentiating serious bacterial illness in young febrile infants"
+          ]
+        },
+        {
+          text: "What is the empiric antibiotic regimen for this neonate, and what organisms must be covered?",
+          type: "mcq",
+          marks: 1,
+          options: ["Ceftriaxone alone covers all likely organisms", "Ampicillin plus gentamicin (or cefotaxime); add acyclovir if HSV is suspected", "Vancomycin plus meropenem for broad coverage", "Oral amoxicillin if the infant appears well"],
+          correctIndex: 1,
+          explanation: "Empiric antibiotics for febrile neonates (0-28 days): ampicillin (for Listeria monocytogenes and Enterococcus coverage) plus gentamicin or cefotaxime (for GBS, E. coli, and other Gram-negative coverage). Ceftriaxone is avoided in neonates because it displaces bilirubin from albumin and can cause biliary sludging. Add IV acyclovir (20 mg/kg q8h) if there is any concern for neonatal HSV (skin vesicles, seizures, liver dysfunction, maternal history). ALL febrile neonates ≤28 days require admission and IV antibiotics regardless of appearance."
+        },
+        {
+          text: "How does the management approach differ for a well-appearing febrile infant aged 29-60 days compared to this neonate?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Infants 29-60 days: clinical decision tools (Rochester, Philadelphia, Step-by-Step protocol) can help identify low-risk infants — criteria include well appearance, no focal infection, WBC 5,000-15,000, band count <1500, normal urinalysis, and if done, CSF with <8-10 WBC/mm³",
+            "Low-risk infants 29-60 days may be managed with empiric IM ceftriaxone (50 mg/kg) and close outpatient follow-up in 24 hours IF reliable parents and follow-up are ensured; however, many centers still recommend admission for infants <60 days with fever — lumbar puncture is recommended before antibiotics if possible"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 57 — Pediatric Meningitis",
+      scenario: `A 2-year-old girl is brought to the ED with a 1-day history of fever (39.8°C), vomiting, irritability, and decreased oral intake. She is toxic-appearing, lethargic, and has a bulging anterior fontanelle. She has a non-blanching petechial rash on her trunk and extremities. Her neck is stiff on examination.`,
+      topic: "Pediatric Meningitis",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "What is the most likely diagnosis, and what are the most common causative organisms for bacterial meningitis in this age group?",
+          type: "short-menu",
+          marks: 2,
+          options: ["Viral meningitis — enterovirus is most common", "Bacterial meningitis — S. pneumoniae and N. meningitidis are the most common causes in children >1 month", "Tuberculous meningitis with hydrocephalus", "Fungal meningitis — Cryptococcus in immunocompromised"],
+          correctIndex: 1,
+          explanation: "The presentation (toxic appearance, bulging fontanelle, petechial rash, neck stiffness, high fever) is classic for bacterial meningitis. After the neonatal period, Streptococcus pneumoniae and Neisseria meningitidis are the most common causes. The petechial/purpuric rash is characteristic of meningococcal disease. Note: meningismus is present in <15% of infants with bacterial meningitis — its absence does not rule out the diagnosis in younger children."
+        },
+        {
+          text: "What is the empiric antibiotic regimen for suspected bacterial meningitis in this child?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Empiric antibiotics for children >1 month: vancomycin (15 mg/kg IV q6h) PLUS ceftriaxone (100 mg/kg/day divided q12h, max 4 g/day) or cefotaxime — vancomycin provides coverage for penicillin-resistant pneumococcus",
+            "Dexamethasone 0.15 mg/kg IV should be given with or ideally just before the first dose of antibiotics — it reduces hearing loss and neurologic sequelae in Haemophilus influenzae meningitis and possibly in pneumococcal meningitis; do NOT delay antibiotics to obtain LP if the patient is unstable"
+          ]
+        },
+        {
+          text: "What CSF findings would you expect in bacterial versus viral meningitis?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Bacterial meningitis: elevated WBC (typically >1000/mm³ with >80% neutrophils), elevated protein (>100 mg/dL), low glucose (<40 mg/dL or CSF:serum glucose ratio <0.4), Gram stain positive in 60-90% of cases",
+            "Viral meningitis: WBC typically 50-500/mm³ with lymphocytic predominance (though may be neutrophilic early), normal to mildly elevated protein, normal glucose (>40 mg/dL), negative Gram stain"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 58 — Bronchiolitis and Pediatric Wheezing",
+      scenario: `A 6-month-old previously healthy infant is brought to the ED in January with 3 days of rhinorrhea and cough, followed by progressive wheezing and respiratory distress. The infant is feeding poorly, taking only half of usual volumes. Vital signs: T 38.2°C, HR 160, RR 60, SpO2 90% on room air. Examination reveals nasal flaring, subcostal and intercostal retractions, and diffuse bilateral wheezing with prolonged expiratory phase.`,
+      topic: "Bronchiolitis / Pediatric Wheezing",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "What is the most likely diagnosis, and what is the most common causative agent?",
+          type: "mcq",
+          marks: 1,
+          options: ["Pneumonia — Streptococcus pneumoniae", "Bronchiolitis — respiratory syncytial virus (RSV)", "Croup — parainfluenza virus", "Foreign body aspiration"],
+          correctIndex: 1,
+          explanation: "This presentation (infant <12 months, winter season, URI prodrome progressing to wheezing and respiratory distress) is classic for bronchiolitis. RSV is the most common cause, accounting for 50-80% of cases. Other causes include rhinovirus, human metapneumovirus, parainfluenza, and adenovirus. Peak incidence is in winter months."
+        },
+        {
+          text: "What is the evidence-based management of bronchiolitis?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Supportive care is the mainstay: supplemental oxygen to maintain SpO2 >90%, nasal suctioning to clear secretions (infants are obligate nose breathers), and ensure adequate hydration (oral or IV/NG if feeding poorly)",
+            "Bronchodilators (salbutamol/albuterol) are NOT routinely recommended — evidence shows no benefit in bronchiolitis; a one-time trial may be considered in infants with a family history of atopy, but should be discontinued if no clinical improvement",
+            "Corticosteroids are NOT recommended in bronchiolitis. Nebulized hypertonic saline (3%) may be considered for admitted patients to reduce length of stay. Antibiotics are not indicated unless bacterial superinfection is suspected. Chest X-ray is not routinely needed and may lead to unnecessary antibiotic use."
+          ]
+        },
+        {
+          text: "What are the admission criteria for this infant?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "This infant requires admission based on: age <12 months with moderate-severe distress, hypoxia (SpO2 90% on room air), tachypnea (RR 60), poor feeding (<50% of usual intake), and signs of increased work of breathing (nasal flaring, retractions)",
+            "Additional high-risk features warranting admission: prematurity (<37 weeks), age <6 weeks, underlying cardiopulmonary disease, immunodeficiency, toxic appearance, apnea episodes, dehydration, inability to maintain hydration orally, unreliable follow-up or caregiver concerns"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 59 — Pediatric Gastroenteritis and Dehydration",
+      scenario: `An 18-month-old boy presents to the ED with 2 days of vomiting (6-8 episodes/day) and watery diarrhea (10 episodes/day). He has had decreased urine output for the past 12 hours. On exam: T 37.8°C, HR 160, RR 28, BP 80/50, weight 11 kg (previous weight 12 kg at well-child visit 1 week ago). He has sunken eyes, dry mucous membranes, decreased skin turgor with tenting, and is irritable but consolable.`,
+      topic: "Pediatric Gastroenteritis / Dehydration",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "What is the degree of dehydration in this child, and what clinical features support your assessment?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Moderate (5-10%) dehydration based on: weight loss of ~8% (12 kg to 11 kg = 1 kg loss), sunken eyes, dry mucous membranes, decreased skin turgor with tenting, tachycardia (HR 160), decreased urine output, irritable but consolable",
+            "Clinical Dehydration Scale features: mild (3-5%) — slightly dry mucous membranes, slightly decreased urine, normal exam; moderate (5-10%) — sunken eyes, dry membranes, tenting, tachycardia, oliguria; severe (>10%) — markedly sunken eyes/fontanelle, very dry membranes, cool mottled skin, absent urine, lethargy, hypotension, weak pulses"
+          ]
+        },
+        {
+          text: "What is the most appropriate rehydration strategy for this child?",
+          type: "mcq",
+          marks: 1,
+          options: ["IV normal saline bolus 20 mL/kg, then replace deficit over 24 hours", "Oral rehydration therapy (ORT) with ondansetron pre-treatment is first-line for moderate dehydration", "D5 half-normal saline at 1.5x maintenance rate", "IV Ringer's lactate bolus 40 mL/kg immediately"],
+          correctIndex: 1,
+          explanation: "Oral rehydration therapy (ORT) is the first-line treatment for mild-moderate dehydration. Ondansetron (0.15 mg/kg IV/PO, max 4 mg) given prior to ORT significantly reduces vomiting and improves ORT success. ORT dose for moderate dehydration: 50-100 mL/kg over 3-4 hours via frequent small sips. If ORT fails (persistent vomiting, worsening dehydration), then IV rehydration with 20 mL/kg NS bolus followed by deficit replacement. The WHO and AAP recommend ORT as first-line over IV for moderate dehydration."
+        },
+        {
+          text: "What are the indications for IV fluid resuscitation instead of oral rehydration?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "IV fluids are indicated when: severe dehydration (>10%), hemodynamic instability (hypotension, poor perfusion), failure of ORT despite ondansetron, altered mental status or inability to protect airway, persistent vomiting despite antiemetics, ileus or abdominal distension",
+            "IV protocol: 20 mL/kg isotonic NS bolus, may repeat up to 60 mL/kg in first hour if signs of shock persist; after stabilization, replace remaining deficit over 24 hours with isotonic fluid; monitor electrolytes — hyponatremia and hypokalemia are common complications of pediatric gastroenteritis"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 60 — Pediatric Seizures / Febrile Seizures",
+      scenario: `A 14-month-old girl is brought to the ED by ambulance after a generalized tonic-clonic seizure that began 20 minutes ago and is still ongoing despite rectal diazepam given by paramedics 5 minutes ago. The mother reports the child had a fever of 39°C earlier today with URI symptoms. There is no history of prior seizures, trauma, or ingestion.`,
+      topic: "Pediatric Seizures",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "This child is in status epilepticus. What is the definition, and what is the initial ED management?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Status epilepticus is defined as continuous seizure activity lasting >5 minutes, or two or more seizures without return to baseline consciousness between events — this is a medical emergency requiring immediate intervention",
+            "Initial management: ABCs — ensure airway patency (position, suction), provide high-flow oxygen, obtain IV/IO access, check point-of-care glucose (hypoglycemia is a common treatable cause); place on cardiac monitor and pulse oximetry",
+            "First-line anticonvulsant: benzodiazepine — IV lorazepam 0.1 mg/kg (max 4 mg) or IV midazolam 0.2 mg/kg; if no IV access, IM midazolam 0.2 mg/kg (max 10 mg) or intranasal midazolam; may repeat benzodiazepine once in 5 minutes if seizure continues"
+          ]
+        },
+        {
+          text: "The seizure persists despite two doses of benzodiazepines. What second-line agent should be given?",
+          type: "short-menu",
+          marks: 1,
+          options: ["Phenobarbital 20 mg/kg IV", "Fosphenytoin 20 mg PE/kg IV", "Propofol 1 mg/kg IV bolus", "Levetiracetam 60 mg/kg IV"],
+          correctIndex: 1,
+          explanation: "If seizures persist after two doses of benzodiazepines, second-line agents include fosphenytoin 20 mg PE/kg IV (preferred over phenytoin in children due to less risk of tissue necrosis with extravasation and faster administration), or levetiracetam 40-60 mg/kg IV, or phenobarbital 20 mg/kg IV. If seizures continue despite second-line therapy, this is refractory status epilepticus requiring continuous infusion of midazolam, pentobarbital, or propofol in an ICU setting."
+        },
+        {
+          text: "After the seizure is controlled, the child is afebrile and back to baseline. Differentiate simple febrile seizures from complex febrile seizures and their management.",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Simple febrile seizure: generalized tonic-clonic, duration <15 minutes, single episode within 24 hours, age 6 months to 5 years, no focal features, child returns to baseline quickly — these are benign, no further workup required in well-appearing children >12 months, no anticonvulsant prophylaxis needed",
+            "Complex febrile seizure: focal onset, duration >15 minutes, recurrent within 24 hours, or with prolonged postictal period — this child's seizure lasting >20 minutes qualifies as complex/febrile status epilepticus, warranting further investigation including LP (to rule out meningitis, especially if <12 months or not fully immunized), electrolytes, glucose, and consideration of neuroimaging"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 61 — Pediatric DKA",
+      scenario: `A 10-year-old girl presents to the ED with a 2-week history of polyuria, polydipsia, and weight loss (5 kg). Today she developed abdominal pain, vomiting, and progressive lethargy. Vital signs: HR 130, BP 90/55, RR 36 (deep, Kussmaul breathing), T 37.0°C. She is lethargic but responds to voice. Blood glucose is 28 mmol/L (504 mg/dL). Venous blood gas: pH 7.12, pCO2 18, HCO3 6.`,
+      topic: "Pediatric DKA",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "Classify the severity of this child's DKA.",
+          type: "mcq",
+          marks: 1,
+          options: ["Mild DKA: pH 7.2-7.3, HCO3 10-15", "Moderate DKA: pH 7.1-7.2, HCO3 5-10", "Severe DKA: pH <7.1, HCO3 <5", "This is HHS, not DKA"],
+          correctIndex: 2,
+          explanation: "This child has severe DKA: pH 7.12 (<7.1 threshold) and HCO3 6 (though close to <5, the overall clinical picture with Kussmaul breathing and altered mental status confirms severe DKA). DKA classification: mild (pH 7.2-7.3, HCO3 10-15), moderate (pH 7.1-7.2, HCO3 5-10), severe (pH <7.1, HCO3 <5). This child's new-onset diabetes presenting with severe DKA is a classic presentation."
+        },
+        {
+          text: "Describe the initial fluid management for pediatric DKA. Why does it differ from adult management?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Initial bolus: 10-20 mL/kg of 0.9% NS over the first 1-2 hours for hemodynamic stabilization — avoid aggressive fluid resuscitation; unlike adults, children are at significantly higher risk of cerebral edema",
+            "After initial bolus: replace remaining deficit over 24-48 hours using 0.9% NS or 0.45% NS; do NOT exceed 1.5-2x maintenance rate; total fluid in the first 4 hours should not exceed 40-50 mL/kg",
+            "Cerebral edema risk: occurs in 0.5-1% of pediatric DKA episodes, mortality 20-25%; risk factors include new-onset diabetes, younger age, severe acidosis, high initial BUN, and failure of corrected sodium to rise with treatment; treated with mannitol 0.5-1 g/kg IV or hypertonic saline 3% 2.5-5 mL/kg over 10-15 minutes"
+          ]
+        },
+        {
+          text: "When should insulin be started, and at what dose? What is the target rate of glucose decline?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Start IV regular insulin infusion at 0.05-0.1 units/kg/hr AFTER the initial fluid bolus (at least 1 hour into resuscitation) — do NOT give an insulin bolus in pediatric DKA as this increases cerebral edema risk; insulin should not be started until potassium is ≥3.5 mEq/L",
+            "Target glucose decline: 3-5 mmol/L/hour (54-90 mg/dL/hour); when glucose reaches 14-17 mmol/L (250-300 mg/dL), add dextrose (D5 or D10) to IV fluids to prevent hypoglycemia while continuing insulin to clear ketoacidosis; transition to subcutaneous insulin once DKA resolved (pH >7.3, HCO3 >15, AG normalized, tolerating oral intake)"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 62 — Kawasaki Disease",
+      scenario: `A 3-year-old boy presents to the ED with 6 days of persistent high fever (39.5-40°C) despite acetaminophen and ibuprofen. His parents note red eyes, cracked lips, a rash, and swollen hands. On exam: bilateral non-exudative conjunctival injection, erythematous cracked lips with strawberry tongue, polymorphous maculopapular rash on the trunk, erythema and edema of the hands and feet, and a single enlarged non-fluctuant anterior cervical lymph node (2 cm). He is extremely irritable.`,
+      topic: "Kawasaki Disease",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "Does this child meet diagnostic criteria for Kawasaki disease? List the criteria.",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Yes — Classic Kawasaki disease requires fever ≥5 days PLUS at least 4 of 5 clinical criteria: (1) bilateral bulbar conjunctival injection without exudate, (2) oral mucosal changes (erythema/cracking of lips, strawberry tongue, oropharyngeal erythema), (3) polymorphous rash, (4) extremity changes (erythema/edema of hands and feet acutely, periungual desquamation in subacute phase), (5) cervical lymphadenopathy (>1.5 cm, usually unilateral)",
+            "This child has fever for 6 days plus all 5 criteria — classic/complete Kawasaki disease; note that incomplete Kawasaki (fever ≥5 days + 2-3 criteria with elevated CRP ≥3 mg/L or ESR ≥40 mm/h plus supportive labs/echo) should also be considered, especially in infants <6 months"
+          ]
+        },
+        {
+          text: "What is the most serious complication of Kawasaki disease, and what is the treatment?",
+          type: "mcq",
+          marks: 1,
+          options: ["Renal failure — treated with dialysis", "Coronary artery aneurysms — treated with IVIG and aspirin", "Hepatic failure — treated with N-acetylcysteine", "Pulmonary hypertension — treated with sildenafil"],
+          correctIndex: 1,
+          explanation: "Coronary artery aneurysms or ectasia occur in 15-25% of untreated children and can lead to myocardial infarction, sudden death, or ischemic heart disease. Treatment: IVIG 2 g/kg as a single infusion over 10-12 hours (should be given within the first 10 days of illness, ideally within 7 days) PLUS high-dose aspirin (80-100 mg/kg/day divided q6h during the acute febrile phase, then low-dose 3-5 mg/kg/day for 6-8 weeks or until inflammatory markers normalize and echocardiogram is normal)."
+        },
+        {
+          text: "What additional workup should be ordered, and what findings would you expect?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Labs: CBC (expect leukocytosis with left shift, thrombocytosis typically >450,000 after day 7, anemia), ESR and CRP (markedly elevated), liver function tests (may show elevated ALT), albumin (often low <3 g/dL), urinalysis (sterile pyuria from urethritis)",
+            "Echocardiogram: essential baseline study to evaluate for coronary artery aneurysms, left ventricular dysfunction, pericardial effusion, and valvular dysfunction — should be obtained at diagnosis, repeated at 2 weeks and 6-8 weeks; this child should be admitted to a center with pediatric cardiology"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 63 — Congenital Heart Disease in Infants",
+      scenario: `A 12-day-old male infant is brought to the ED with poor feeding, increased sleepiness, and rapid breathing for the past 2 days. He was born at term via uncomplicated vaginal delivery and appeared well at birth. Vital signs: HR 180, RR 65, SpO2 75% on room air, T 36.8°C. Examination reveals grey/mottled skin, weak peripheral pulses, a gallop rhythm, hepatomegaly, and poor capillary refill (>4 seconds). No murmur is appreciated.`,
+      topic: "Congenital Heart Disease",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "What is the most likely pathophysiology, and which congenital heart lesions should be considered?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "This presentation (shock and cyanosis at 1-2 weeks of life) is classic for a ductal-dependent congenital heart lesion presenting as the ductus arteriosus closes — critical left-sided obstructive lesions include coarctation of the aorta, interrupted aortic arch, hypoplastic left heart syndrome, and critical aortic stenosis",
+            "These lesions depend on the patent ductus arteriosus (PDA) to maintain systemic blood flow; as the PDA closes in the first 1-3 weeks of life, systemic perfusion fails leading to cardiogenic shock with metabolic acidosis — the absence of a murmur does not exclude congenital heart disease"
+          ]
+        },
+        {
+          text: "What is the critical first-line medication for this infant, and what is the dose?",
+          type: "short-menu",
+          marks: 2,
+          options: ["Milrinone 0.5 mcg/kg/min IV infusion", "Prostaglandin E1 (alprostadil) 0.05-0.1 mcg/kg/min IV infusion", "Epinephrine 0.1 mcg/kg/min IV infusion", "Furosemide 1 mg/kg IV"],
+          correctIndex: 1,
+          explanation: "Prostaglandin E1 (PGE1/alprostadil) at 0.05-0.1 mcg/kg/min IV is the critical life-saving intervention — it reopens or maintains patency of the ductus arteriosus, restoring systemic perfusion. Key side effects to anticipate: apnea (occurs in 10-12% of neonates, have intubation equipment ready), fever, hypotension, and flushing. Once stabilized, the infant needs emergent echocardiography and transfer to a pediatric cardiac center."
+        },
+        {
+          text: "What additional resuscitative measures should be performed simultaneously?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Airway/breathing: provide supplemental oxygen cautiously (excess O2 can worsen ductal closure in some lesions); prepare for intubation as PGE1 may cause apnea; mechanical ventilation if needed",
+            "Circulation: IV/IO access, correct metabolic acidosis, IV fluid bolus 10 mL/kg NS (cautious — may worsen CHF), inotropic support (dopamine 5-10 mcg/kg/min or epinephrine), correct hypoglycemia (D10W 2-5 mL/kg — neonates are prone to hypoglycemia in shock), correct hypothermia; obtain blood gas, lactate, electrolytes, CBC; emergent pediatric cardiology consultation"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 64 — Croup (Laryngotracheobronchitis)",
+      scenario: `A 2-year-old boy is brought to the ED at 2 AM with a barking cough, hoarse voice, and noisy breathing that started suddenly tonight. He had mild URI symptoms for 2 days prior. Vital signs: T 38.3°C, HR 130, RR 32, SpO2 95%. He has inspiratory stridor at rest, mild suprasternal retractions, and is interactive but distressed when examined.`,
+      topic: "Croup / Upper Airway Emergencies",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "What is the diagnosis, most common causative agent, and how is severity assessed?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Croup (laryngotracheobronchitis) — most commonly caused by parainfluenza virus (types 1 and 3 account for ~75% of cases); other causes include influenza, RSV, adenovirus, and human metapneumovirus; peak incidence ages 6 months to 3 years, more common in fall/winter",
+            "Severity assessment (Westley Croup Score): this child has moderate croup — stridor at rest (score 2), mild retractions (score 1), no cyanosis; mild = barking cough with no stridor at rest; moderate = stridor at rest with retractions; severe = significant stridor, marked retractions, decreased air entry, agitation or lethargy"
+          ]
+        },
+        {
+          text: "What is the appropriate treatment for this child's moderate croup?",
+          type: "mcq",
+          marks: 1,
+          options: ["Oral dexamethasone 0.6 mg/kg plus nebulized epinephrine", "Antibiotics and chest X-ray", "Nebulized salbutamol and oral prednisolone", "Cool mist therapy alone with observation"],
+          correctIndex: 0,
+          explanation: "Moderate croup (stridor at rest): oral dexamethasone 0.6 mg/kg (single dose, max 10 mg) is the cornerstone of treatment — it reduces airway edema and has been shown to reduce ED revisits, hospitalizations, and need for additional interventions. Nebulized racemic epinephrine (0.5 mL of 2.25% in 3 mL NS) or L-epinephrine (0.5 mL/kg of 1:1000, max 5 mL) provides rapid relief of stridor within minutes. Patients receiving nebulized epinephrine should be observed for at least 2-4 hours for rebound stridor."
+        },
+        {
+          text: "What is the most important diagnosis to exclude, and what features help differentiate it from croup?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Epiglottitis — though now rare due to Hib vaccination, must be excluded; differentiating features: epiglottitis has rapid onset, high fever (>39°C), toxic appearance, drooling, tripod position, muffled (not hoarse) voice, and dysphagia; croup has a more gradual onset with barking cough and hoarse voice",
+            "Other differential: bacterial tracheitis (toxic-appearing child with croup-like symptoms not responding to standard treatment, purulent secretions), foreign body aspiration (sudden onset without preceding URI, unilateral wheezing), peritonsillar/retropharyngeal abscess (trismus, neck swelling, unilateral findings)"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 65 — Pediatric Sickle Cell Crisis",
+      scenario: `A 6-year-old boy with known sickle cell disease (HbSS) presents to the ED with severe bilateral leg and back pain for the past 8 hours, rated 9/10. His mother has been giving oral ibuprofen and acetaminophen without relief. Vital signs: T 38.8°C, HR 120, RR 22, BP 100/65, SpO2 93% on room air. He appears in significant distress, with tenderness over bilateral femurs and the lumbar spine.`,
+      topic: "Sickle Cell Disease",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "What are the priorities in managing this child's vaso-occlusive crisis in the ED?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Aggressive pain management is the priority: IV opioids (morphine 0.1-0.15 mg/kg IV q15-20min until pain controlled, or hydromorphone, or ketamine 0.1-0.3 mg/kg IV as adjunct); continue scheduled NSAID (ibuprofen or ketorolac 0.5 mg/kg IV, max 30 mg) for synergistic analgesia",
+            "IV fluid hydration with isotonic NS at 1-1.5x maintenance — dehydration worsens sickling; avoid over-hydration which can precipitate acute chest syndrome",
+            "Investigate for fever: with T 38.8°C in a sickle cell patient, this is a medical emergency — obtain blood cultures, CBC with reticulocyte count, CMP, type and screen; administer empiric IV antibiotics (ceftriaxone 50 mg/kg) promptly as sickle cell patients are functionally asplenic and at high risk for overwhelming sepsis from encapsulated organisms (S. pneumoniae, H. influenzae, Salmonella)"
+          ]
+        },
+        {
+          text: "The child's SpO2 is 93% on room air. What complication should you evaluate for, and what workup is needed?",
+          type: "mcq",
+          marks: 1,
+          options: ["Asthma exacerbation — nebulized salbutamol and peak flow", "Acute chest syndrome — chest X-ray, CBC, reticulocyte count, type and crossmatch", "Pneumonia only — chest X-ray and sputum culture", "Normal SpO2 for a sickle cell patient — no further workup needed"],
+          correctIndex: 1,
+          explanation: "Acute chest syndrome (ACS) is the leading cause of death in sickle cell disease and must be evaluated when a sickle cell patient has hypoxia, chest pain, cough, or fever. Defined as: new pulmonary infiltrate on CXR plus at least one of fever, respiratory symptoms, or chest pain. Causes include vaso-occlusion of pulmonary vasculature, fat embolism from bone marrow infarction, and infection. Treatment: supplemental oxygen, IV antibiotics (ceftriaxone + macrolide), incentive spirometry, simple or exchange transfusion if severe (SpO2 <90%, progressive infiltrates, respiratory failure)."
+        },
+        {
+          text: "What is the baseline hemoglobin you would expect in this HbSS patient, and when is transfusion indicated in sickle cell disease?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Baseline hemoglobin in HbSS is typically 60-90 g/L (6-9 g/dL) — always compare to the patient's known baseline; experienced families often know their child's baseline values; the reticulocyte count helps assess marrow response",
+            "Transfusion indications: acute chest syndrome (target Hb 100 g/L), aplastic crisis (parvovirus B19 causing reticulocyte count drop and acute severe anemia), splenic sequestration crisis (rapidly enlarging spleen with acute Hb drop ≥20 g/L below baseline), symptomatic anemia, stroke (exchange transfusion to reduce HbS <30%), and pre-operative preparation"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 66 — Child Abuse / Non-Accidental Injury",
+      scenario: `A 4-month-old infant is brought to the ED by a babysitter for 'not moving his left arm.' The babysitter states the infant 'rolled off the couch.' On exam: the infant is irritable, has a swollen left upper arm with crepitus, retinal hemorrhages bilaterally on fundoscopy, and you notice healing bruises of different ages on the trunk and ears. The anterior fontanelle is full.`,
+      topic: "Child Abuse",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "What features of this presentation raise concern for non-accidental trauma (child abuse)?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "History inconsistent with developmental stage: a 4-month-old infant cannot roll purposefully enough to sustain a significant fracture — the stated mechanism (rolling off couch) does not explain the injuries",
+            "Sentinel injuries: bruises on a pre-mobile infant (especially on the trunk, ears, neck, or frenulum) are highly suspicious — 'those who don't cruise rarely bruise'; bruises of different ages suggest repeated trauma",
+            "Bilateral retinal hemorrhages with bulging fontanelle in an infant suggest abusive head trauma (shaken baby syndrome) — this constellation plus subdural hemorrhage (likely given the full fontanelle) is highly specific for inflicted injury"
+          ]
+        },
+        {
+          text: "What is the appropriate skeletal imaging for this infant?",
+          type: "mcq",
+          marks: 1,
+          options: ["X-ray of the left arm only since that is the area of concern", "Full skeletal survey (AP and lateral of all long bones, skull, spine, ribs, pelvis, hands, feet)", "CT of the head only", "MRI of the whole body"],
+          correctIndex: 1,
+          explanation: "A full skeletal survey is mandatory for all children <2 years old with suspected abuse. This includes AP views of all long bones, AP and lateral skull, lateral spine, AP chest (for rib fractures), and AP pelvis. Highly specific fractures for abuse include: classic metaphyseal lesions (corner/bucket-handle fractures), posterior rib fractures, scapular fractures, spinous process fractures, and sternal fractures. In addition, a CT head (non-contrast) should be obtained given the retinal hemorrhages and full fontanelle to evaluate for subdural hemorrhage."
+        },
+        {
+          text: "What are your legal obligations, and what disposition is appropriate?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Mandatory reporting: physicians are legally mandated to report suspected child abuse to child protective services (CPS) — this is based on reasonable suspicion, NOT certainty of abuse; failure to report is a legal offense; document all findings thoroughly with photographs if possible",
+            "Disposition: admit the infant for full workup (skeletal survey, CT head, ophthalmology consult for dilated fundoscopic exam, liver enzymes and lipase to screen for abdominal injury, coagulation studies to rule out bleeding disorder), ensure safety of the child (do NOT discharge to the suspected abuser), involve hospital child abuse team/social work, and notify CPS and law enforcement"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 67 — Neonatal Emergencies (Neonatal Jaundice and Sepsis)",
+      scenario: `A 5-day-old full-term breastfed male infant is brought to the ED for progressive yellowing of the skin noticed over the past 2 days. He has been feeding poorly and is increasingly sleepy. Vital signs: T 36.2°C, HR 170, RR 50, SpO2 99%. He is visibly jaundiced to the feet, lethargic, and has a high-pitched cry. Serum total bilirubin is 425 µmol/L (24.8 mg/dL).`,
+      topic: "Neonatal Emergencies",
+      difficulty: "hard",
+      questions: [
+        {
+          text: "Why is this level of jaundice dangerous in a neonate, and what is the major complication you are trying to prevent?",
+          type: "mcq",
+          marks: 1,
+          options: ["Hepatic failure from bilirubin overload", "Kernicterus (bilirubin encephalopathy) — irreversible brain damage from unconjugated bilirubin crossing the blood-brain barrier", "Hemolytic anemia requiring immediate transfusion", "Renal failure from bilirubin nephrotoxicity"],
+          correctIndex: 1,
+          explanation: "Kernicterus (chronic bilirubin encephalopathy) occurs when unconjugated bilirubin crosses the blood-brain barrier and deposits in the basal ganglia, brainstem, and cerebellum, causing irreversible neuronal damage. Early signs include lethargy, poor feeding, high-pitched cry, and hypotonia (all present in this infant), progressing to opisthotonus, seizures, and death. A total bilirubin of 425 µmol/L (24.8 mg/dL) at 5 days of life is in the high-risk zone requiring emergent treatment."
+        },
+        {
+          text: "What is the immediate treatment for this level of hyperbilirubinemia?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Intensive phototherapy: initiate immediately with maximum surface area exposure using multiple phototherapy units (overhead + fiber optic blanket); phototherapy converts unconjugated bilirubin to water-soluble photoisomers that can be excreted without hepatic conjugation",
+            "Evaluate for exchange transfusion threshold: at this bilirubin level (425 µmol/L / 24.8 mg/dL) in a 5-day-old, this likely meets or approaches the exchange transfusion threshold — a double-volume exchange transfusion (160-180 mL/kg) is indicated if bilirubin is at or above the exchange threshold on the Bhutani nomogram or if signs of acute bilirubin encephalopathy are present (this infant has lethargy, poor feeding, high-pitched cry)",
+            "Supportive care: IV fluids to ensure adequate hydration (breastfeeding jaundice exacerbated by dehydration/poor caloric intake), supplement breastfeeding; obtain workup: blood type (ABO/Rh incompatibility), direct Coombs test, CBC with smear (spherocytes, reticulocyte count), G6PD level, conjugated bilirubin to rule out biliary atresia"
+          ]
+        },
+        {
+          text: "Given this infant's hypothermia (36.2°C), tachycardia, and lethargy, what additional diagnosis must be considered alongside hyperbilirubinemia?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Neonatal sepsis must be considered — hypothermia (or fever), tachycardia, lethargy, and poor feeding are classic presentations of neonatal sepsis; jaundice can be a presenting sign of urinary tract infection or bacteremia in neonates",
+            "Obtain blood culture, urinalysis/urine culture (catheterized), and consider LP; start empiric antibiotics (ampicillin + gentamicin) pending cultures — do NOT delay antibiotics while awaiting workup results; sepsis and severe jaundice can coexist and each worsens the other"
+          ]
+        }
+      ]
+    },
+    // Section 15: Toxicology (Ch.176-203)
+    {
+      title: "SAMP 68 — Acetaminophen Overdose",
+      topic: "Acetaminophen Toxicity",
+      difficulty: "hard",
+      scenario: `A 22-year-old woman is brought to the ED by her roommate 4 hours after intentionally ingesting approximately 30 tablets of extra-strength acetaminophen (500 mg each, estimated 15 grams total) in a suicide attempt. She is currently asymptomatic with mild nausea. Vital signs: HR 82, BP 118/72, RR 16, T 37.0°C, SpO2 99%. Physical exam is unremarkable. Psychiatry has been consulted.`,
+      questions: [
+        {
+          text: "What is the mechanism of hepatotoxicity in acetaminophen overdose, and at what dose is toxicity expected?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "At therapeutic doses, acetaminophen is metabolized via glucuronidation and sulfation (90%); a small fraction (~5%) is oxidized by CYP2E1 to the toxic metabolite NAPQI (N-acetyl-p-benzoquinone imine), which is detoxified by conjugation with glutathione",
+            "In overdose (>150 mg/kg or >7.5 grams in adults), glucuronidation and sulfation pathways become saturated, increasing NAPQI production; glutathione stores are depleted, and free NAPQI causes centrilobular hepatic necrosis — this patient ingested ~250 mg/kg (15g/~60kg), well above the toxic threshold"
+          ]
+        },
+        {
+          text: "The 4-hour serum acetaminophen level returns at 225 mcg/mL (1490 µmol/L). Using the Rumack-Matthew nomogram, what treatment is indicated?",
+          type: "mcq",
+          marks: 1,
+          options: ["Activated charcoal alone is sufficient at this level", "N-acetylcysteine (NAC) — the level is above the treatment line on the nomogram", "Hemodialysis is first-line treatment for this level", "Observe only — the level is below the toxic threshold"],
+          correctIndex: 1,
+          explanation: "The Rumack-Matthew nomogram plots serum acetaminophen concentration against time post-ingestion (valid for acute single ingestions at 4-24 hours). The treatment line starts at 150 mcg/mL at 4 hours (in the US; some countries use 100 mcg/mL). At 225 mcg/mL at 4 hours, this is clearly above the treatment line. N-acetylcysteine (NAC) is indicated and should be started as soon as possible. NAC works by replenishing glutathione stores and acting as a glutathione substitute to detoxify NAPQI. It is most effective when given within 8 hours of ingestion."
+        },
+        {
+          text: "Describe the NAC dosing protocol and the stages of acetaminophen toxicity.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "IV NAC (21-hour protocol): loading dose 150 mg/kg in 200 mL D5W over 60 minutes, then 50 mg/kg in 500 mL D5W over 4 hours, then 100 mg/kg in 1000 mL D5W over 16 hours. Oral NAC: 140 mg/kg loading dose, then 70 mg/kg every 4 hours for 17 additional doses. Anaphylactoid reactions (flushing, urticaria, bronchospasm) can occur with IV NAC — slow or pause infusion, treat with antihistamines",
+            "Stage 1 (0-24h): nausea, vomiting, malaise, diaphoresis — patient may appear well (this patient is in Stage 1). Stage 2 (24-72h): transaminases rise, RUQ pain, hepatomegaly; may appear clinically improved. Stage 3 (72-96h): peak hepatotoxicity — AST/ALT may exceed 10,000 IU/L, jaundice, coagulopathy (INR >2), encephalopathy, renal failure, metabolic acidosis; fulminant hepatic failure and death may occur",
+            "Stage 4 (4-14 days): recovery phase in survivors — hepatic regeneration occurs. Activated charcoal (1 g/kg, max 50g) should be given if patient presents within 1-2 hours of ingestion and airway is intact. King's College Criteria for liver transplant referral: pH <7.3 after resuscitation, OR all three of: INR >6.5, creatinine >3.4 mg/dL, grade III/IV encephalopathy"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 69 — Tricyclic Antidepressant Overdose",
+      topic: "Tricyclic Antidepressant Toxicity",
+      difficulty: "hard",
+      scenario: `A 35-year-old man with a history of depression is brought to the ED by ambulance after being found obtunded at home with an empty bottle of amitriptyline nearby. On arrival: GCS 8 (E2V2M4), HR 130, BP 85/50, RR 10, T 37.2°C. ECG shows sinus tachycardia with a QRS duration of 160 ms and a terminal R wave in aVR of 5 mm. He has dilated pupils, dry skin, and decreased bowel sounds.`,
+      questions: [
+        {
+          text: "What is the mechanism of toxicity in TCA overdose, and what do the ECG findings indicate?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "TCAs have multiple mechanisms of toxicity: (1) sodium channel blockade — slows cardiac conduction causing QRS widening, the hallmark of severe TCA cardiotoxicity; (2) anticholinergic effects — tachycardia, mydriasis, dry skin, urinary retention, decreased bowel sounds, hyperthermia; (3) alpha-1 adrenergic blockade — causes vasodilation and hypotension; (4) norepinephrine/serotonin reuptake inhibition; (5) GABA-A receptor antagonism — lowers seizure threshold",
+            "ECG findings indicating severe toxicity: QRS >100 ms predicts seizures; QRS >160 ms (as in this patient) predicts ventricular dysrhythmias. Terminal R wave in aVR >3 mm is highly specific for sodium channel blockade and is the most sensitive ECG marker of TCA toxicity",
+            "Right axis deviation of the terminal 40ms of the QRS is characteristic of TCA sodium channel blockade — this produces the R wave in aVR and S wave in leads I and aVL"
+          ]
+        },
+        {
+          text: "What is the first-line treatment for the cardiac toxicity in this patient?",
+          type: "mcq",
+          marks: 1,
+          options: ["Amiodarone 150 mg IV for the wide QRS", "Sodium bicarbonate 1-2 mEq/kg IV bolus", "Procainamide for the wide complex tachycardia", "Lidocaine 1 mg/kg IV bolus"],
+          correctIndex: 1,
+          explanation: "Sodium bicarbonate 1-2 mEq/kg IV bolus is the first-line treatment for TCA-induced cardiac toxicity (QRS >100 ms). It works by two mechanisms: (1) sodium loading overcomes the sodium channel blockade, and (2) alkalinization decreases the fraction of unbound (active) TCA. Target arterial pH of 7.45-7.55 with repeated boluses or bicarbonate infusion. Procainamide and other Class IA/IC antidysrhythmics are CONTRAINDICATED as they worsen sodium channel blockade. If hypotension persists despite bicarbonate, treat with norepinephrine (alpha agonist). Consider intralipid (20% lipid emulsion) for refractory cardiovascular collapse."
+        },
+        {
+          text: "The patient has a generalized seizure. How should it be managed, and what interventions are contraindicated?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Treat with IV benzodiazepines: lorazepam 2-4 mg IV or diazepam 5-10 mg IV, repeat as needed. Benzodiazepines are first-line for TCA-induced seizures. If refractory, use propofol or barbiturates (phenobarbital 15-20 mg/kg IV)",
+            "Phenytoin is CONTRAINDICATED — it has no proven efficacy for toxin-induced seizures and may worsen TCA cardiotoxicity by further blocking sodium channels. Give additional sodium bicarbonate bolus after seizure as seizure-induced acidosis will worsen TCA cardiac toxicity. GI decontamination with activated charcoal (1 g/kg) can be considered via NG tube if airway is protected (intubated)"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 70 — Opioid Overdose",
+      topic: "Opioid Toxicity",
+      difficulty: "hard",
+      scenario: `Paramedics bring a 28-year-old man found unresponsive in a public restroom with drug paraphernalia nearby. On arrival: GCS 3, RR 4, shallow respirations, SpO2 72% on room air, HR 55, BP 90/60. Pupils are 1 mm bilaterally (pinpoint). He is cyanotic with cool extremities. A needle puncture mark is visible on his left antecubital fossa.`,
+      questions: [
+        {
+          text: "What is the classic toxidrome presentation, and what is the immediate management priority?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Classic opioid toxidrome: CNS depression (decreased level of consciousness), respiratory depression (hypoventilation, apnea), miosis (pinpoint pupils) — this triad is characteristic. Additional features include hypotension, bradycardia, hypothermia, and decreased bowel sounds",
+            "Immediate priority is airway management and ventilation: BVM ventilation with high-flow O2 immediately, followed by naloxone administration. Do NOT wait for naloxone before providing ventilatory support — hypoxia kills faster than the opioid itself. Prepare for intubation if patient does not respond to naloxone"
+          ]
+        },
+        {
+          text: "What is the appropriate naloxone dosing strategy?",
+          type: "mcq",
+          marks: 1,
+          options: ["Naloxone 2 mg IV bolus as standard dose for all patients", "Titrated naloxone starting at 0.04-0.4 mg IV, repeat every 2-3 minutes as needed to restore adequate respirations", "Naloxone 10 mg IV bolus for suspected fentanyl", "Naloxone is only effective IM, not IV"],
+          correctIndex: 1,
+          explanation: "Naloxone should be titrated to restore adequate ventilation (RR >12), not necessarily full consciousness. Start with 0.04-0.4 mg IV and titrate upward every 2-3 minutes. The goal is to reverse respiratory depression while avoiding full reversal, which can precipitate acute opioid withdrawal (agitation, vomiting, hypertension, tachycardia, pulmonary edema). Larger initial doses (2 mg) may be needed for synthetic opioids (fentanyl analogues). Duration of naloxone (30-90 min) is often shorter than the ingested opioid — patients require monitoring for re-sedation and may need repeat dosing or a naloxone infusion (two-thirds of the effective bolus dose per hour)."
+        },
+        {
+          text: "What complications must be anticipated in this patient, and what is the minimum observation period after naloxone?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Complications: aspiration pneumonia/pneumonitis (from loss of airway protective reflexes), non-cardiogenic pulmonary edema (opioid-associated or post-naloxone), rhabdomyolysis (from prolonged immobilization), compartment syndrome, hypoxic brain injury, and infectious complications from IV drug use (endocarditis, HIV, hepatitis, skin/soft tissue infections)",
+            "Observation: minimum 4-6 hours after the last dose of naloxone if patient is asymptomatic and alert. Longer observation (12-24 hours) is required for long-acting opioids (methadone, extended-release formulations) where re-sedation risk is high. If naloxone infusion was required, continue monitoring for at least 2 hours after discontinuation. Patients should be offered harm reduction resources (naloxone kits, safe injection sites, addiction services)"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 71 — Toxic Alcohol Ingestion (Methanol)",
+      topic: "Toxic Alcohols",
+      difficulty: "hard",
+      scenario: `A 45-year-old homeless man presents to the ED with blurred vision, abdominal pain, and confusion. His friends report he drank from a container of windshield washer fluid approximately 12 hours ago. Vital signs: HR 110, BP 100/65, RR 28 (Kussmaul pattern), T 36.5°C. Labs: pH 7.10, HCO3 8, lactate 3.5, Na 140, Cl 100, serum osmolality 320 mOsm/kg, calculated osmolality 290, glucose 5.5 mmol/L. On fundoscopy, there is optic disc hyperemia.`,
+      questions: [
+        {
+          text: "Calculate the osmolar gap and anion gap, and explain their significance in this case.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Osmolar gap = measured osmolality - calculated osmolality = 320 - 290 = 30 mOsm/kg (normal <10). Elevated osmolar gap indicates presence of an unmeasured osmotically active substance — in this context, methanol (or ethylene glycol, isopropanol, or ethanol)",
+            "Anion gap = Na - (Cl + HCO3) = 140 - (100 + 8) = 32 (normal 8-12). Elevated anion gap indicates accumulation of organic acid metabolites — in methanol poisoning, formic acid is the toxic metabolite that causes the metabolic acidosis",
+            "Key point: early in toxic alcohol ingestion, the osmolar gap is elevated but the anion gap may be normal (parent compound present, not yet metabolized). As the alcohol is metabolized to toxic organic acids, the osmolar gap decreases and the anion gap increases. This patient at 12 hours has BOTH elevated — indicating ongoing metabolism with residual parent compound"
+          ]
+        },
+        {
+          text: "What is the specific treatment for this patient's methanol poisoning?",
+          type: "mcq",
+          marks: 1,
+          options: ["Activated charcoal and whole bowel irrigation", "Fomepizole (4-methylpyrazole) to inhibit alcohol dehydrogenase, plus emergent hemodialysis", "N-acetylcysteine infusion for 21 hours", "Thiamine and folate supplementation alone"],
+          correctIndex: 1,
+          explanation: "Fomepizole 15 mg/kg IV loading dose (then 10 mg/kg q12h) is the antidote — it competitively inhibits alcohol dehydrogenase, preventing conversion of methanol to the toxic metabolite formaldehyde/formic acid. If fomepizole is unavailable, ethanol infusion (targeting blood alcohol 100-150 mg/dL) is an alternative. Hemodialysis is indicated for: pH <7.25, visual disturbances, renal failure, methanol level >50 mg/dL, deteriorating despite treatment, or electrolyte abnormalities refractory to therapy. Administer folinic acid (leucovorin) 50 mg IV q6h or folic acid 50 mg IV q6h to enhance formic acid metabolism."
+        },
+        {
+          text: "Why does this patient have visual symptoms, and what is the prognosis for vision?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Formic acid (the toxic metabolite of methanol) is selectively toxic to the retina and optic nerve — it inhibits mitochondrial cytochrome c oxidase in retinal cells, causing optic disc hyperemia, papilledema, and retinal edema; visual complaints range from blurred vision, scotomata, and 'snowfield vision' to complete blindness",
+            "Visual impairment may be irreversible if treatment is delayed — early administration of fomepizole and hemodialysis (to remove both methanol and formate) provides the best chance of visual recovery. Visual abnormalities may not resolve immediately after dialysis and their persistence alone is not an indication to continue dialysis once other parameters have normalized"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 72 — Salicylate Toxicity",
+      topic: "Salicylate Toxicity",
+      difficulty: "hard",
+      scenario: `A 68-year-old woman with chronic pain is brought to the ED confused and tachypneic. Her family reports she has been taking increasing doses of aspirin over the past week for worsening arthritis pain. Vital signs: HR 115, BP 130/80, RR 32 (deep), T 38.5°C, SpO2 97%. She is diaphoretic, has tinnitus, and is disoriented. Labs: pH 7.38, pCO2 18, HCO3 10, K 3.2, salicylate level 65 mg/dL. ABG shows a mixed respiratory alkalosis and metabolic acidosis.`,
+      questions: [
+        {
+          text: "Explain the acid-base disturbance in salicylate toxicity and why it is particularly dangerous.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Salicylates produce a characteristic mixed acid-base disorder: (1) respiratory alkalosis from direct stimulation of the medullary respiratory center causing hyperventilation — this occurs early and may be the sole finding initially; (2) anion gap metabolic acidosis from uncoupling of oxidative phosphorylation, inhibition of Krebs cycle enzymes, and accumulation of organic acids including lactate and ketoacids",
+            "This patient's pH 7.38 appears 'normal' but is deceptively dangerous — the compensating respiratory alkalosis (pCO2 18) is masking a severe metabolic acidosis (HCO3 10). The anion gap is 140 - (100 + 10) = 30, markedly elevated",
+            "Critical danger: acidemia increases the proportion of non-ionized (lipid-soluble) salicylate that crosses the blood-brain barrier into the CNS — even a small drop in blood pH dramatically increases CNS toxicity. Therefore, intubation is extremely dangerous because loss of the compensatory hyperventilation during RSI will cause acute acidemia and cardiovascular collapse. If intubation is required, maintain the high minute ventilation immediately"
+          ]
+        },
+        {
+          text: "What is the primary treatment for significant salicylate toxicity?",
+          type: "mcq",
+          marks: 1,
+          options: ["N-acetylcysteine infusion", "Sodium bicarbonate infusion to alkalinize urine to pH 7.5-8.0", "Activated charcoal alone with observation", "Immediate intubation and mechanical ventilation"],
+          correctIndex: 1,
+          explanation: "Urinary alkalinization with sodium bicarbonate (150 mEq in 1L D5W at 1.5-2x maintenance) is the primary treatment. The goal is urine pH 7.5-8.0 (check urine pH hourly). Alkalinization ion-traps salicylate in the renal tubules, dramatically increasing renal clearance. It also maintains blood pH >7.4 to minimize CNS penetration. Add potassium to IV fluids — hypokalemia must be corrected as it prevents urine alkalinization (the kidney reabsorbs K+ in exchange for H+ when K+ is low). Activated charcoal (1 g/kg) is beneficial as salicylates are well-adsorbed; multi-dose charcoal may be considered for sustained-release preparations."
+        },
+        {
+          text: "What are the indications for hemodialysis in salicylate toxicity?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Hemodialysis indications: salicylate level >100 mg/dL (acute) or >60 mg/dL (chronic — this patient's level of 65 mg/dL with chronic use meets this threshold), altered mental status/confusion, seizures, cerebral or pulmonary edema, renal insufficiency preventing urinary alkalinization, pH <7.2 despite treatment, or clinical deterioration despite aggressive supportive care",
+            "Chronic salicylate toxicity (as in this patient) is more dangerous than acute ingestion at the same serum level because tissue distribution has already occurred; older patients are at higher risk. This patient with altered mental status and level 65 mg/dL in the setting of chronic use requires hemodialysis"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 73 — Serotonin Syndrome",
+      topic: "Serotonin Syndrome",
+      difficulty: "hard",
+      scenario: `A 30-year-old woman on sertraline 100 mg daily presents to the ED 6 hours after starting tramadol prescribed by a walk-in clinic for back pain. She is agitated, diaphoretic, and tremulous. Vital signs: HR 120, BP 160/95, RR 22, T 39.5°C. Examination reveals bilateral clonus (greater in lower extremities than upper), hyperreflexia, ocular clonus (slow continuous horizontal eye movements), mydriasis, and increased bowel sounds. She has no rigidity.`,
+      questions: [
+        {
+          text: "What is the diagnosis, and how do you differentiate it from neuroleptic malignant syndrome (NMS)?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Serotonin syndrome — caused by excess serotonergic activity, typically from drug interactions (SSRI + tramadol, SSRI + MAOI, SSRI + linezolid, SSRI + dextromethorphan). Hunter Criteria (most sensitive/specific): requires serotonergic agent exposure PLUS any of: spontaneous clonus, inducible clonus + agitation/diaphoresis, ocular clonus + agitation/diaphoresis, tremor + hyperreflexia, hypertonia + temperature >38°C + ocular or inducible clonus",
+            "This patient meets Hunter Criteria: serotonergic agents (sertraline + tramadol) + ocular clonus + agitation + diaphoresis",
+            "Differentiation from NMS: Serotonin syndrome — rapid onset (hours), CLONUS is the hallmark (lower > upper), hyperreflexia, mydriasis, increased bowel sounds, tremor, diaphoresis. NMS — gradual onset (days-weeks), RIGIDITY is the hallmark (lead-pipe), hyporeflexia, normal or small pupils, decreased bowel sounds, bradykinesia, associated with dopamine antagonists (antipsychotics). Both cause hyperthermia and altered mental status"
+          ]
+        },
+        {
+          text: "What is the treatment for serotonin syndrome?",
+          type: "mcq",
+          marks: 1,
+          options: ["Dantrolene and bromocriptine", "Discontinue serotonergic agents, benzodiazepines for agitation, and cyproheptadine as specific antidote", "Naloxone and flumazenil", "Phenytoin for the clonus and acetaminophen for fever"],
+          correctIndex: 1,
+          explanation: "Treatment: (1) Discontinue ALL serotonergic agents immediately. (2) Benzodiazepines (diazepam, lorazepam) for agitation, muscle hyperactivity, and seizure prevention. (3) Cyproheptadine (serotonin antagonist): 12 mg PO/NG initially, then 2 mg q2h until improvement (max 32 mg/day in adults). (4) Active cooling for hyperthermia >41°C — avoid antipyretics as they are ineffective (hyperthermia is from muscular hyperactivity, not hypothalamic resetting). (5) IV fluids for hydration and rhabdomyolysis prevention. Severe cases may require intubation, paralysis (to stop muscle hyperactivity generating heat), and ICU admission. Most cases resolve within 24-72 hours after drug discontinuation."
+        },
+        {
+          text: "What common drug combinations cause serotonin syndrome?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "High-risk combinations: SSRI/SNRI + MAOI (most dangerous — do NOT combine; requires 2-week washout, 5 weeks for fluoxetine), SSRI + tramadol or meperidine (opioids with serotonergic activity), SSRI + linezolid (antibiotic with MAOI activity), SSRI + methylene blue (MAOI activity), SSRI + St. John's wort",
+            "Other serotonergic agents to be aware of: triptans (sumatriptan), dextromethorphan, lithium, fentanyl (mild serotonergic), MDMA/ecstasy, cocaine, amphetamines. Even single-agent overdose of an SSRI can cause serotonin syndrome. The most dangerous combination is MAOI + any serotonergic agent"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 74 — Beta-Blocker and Calcium Channel Blocker Overdose",
+      topic: "Beta-Blocker / CCB Toxicity",
+      difficulty: "hard",
+      scenario: `A 55-year-old man with hypertension presents to the ED 2 hours after intentionally ingesting an unknown quantity of his sustained-release verapamil tablets. Vital signs: HR 38, BP 70/40, RR 14, T 36.0°C. He is drowsy but responsive. ECG shows sinus bradycardia with first-degree AV block. Point-of-care glucose is 18 mmol/L (324 mg/dL). He has warm, well-perfused extremities despite hypotension.`,
+      questions: [
+        {
+          text: "How do you differentiate CCB from beta-blocker overdose, and what does the hyperglycemia indicate?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "CCB overdose: hyperglycemia is characteristic — calcium channel blockade in pancreatic beta cells inhibits insulin release; warm, well-perfused extremities despite hypotension (vasodilation). Beta-blocker overdose: typically hypoglycemia (beta-2 blockade impairs glycogenolysis and gluconeogenesis), cool/poorly perfused extremities, bronchospasm possible",
+            "Both cause bradycardia and hypotension, but the hyperglycemia (18 mmol/L) and warm peripheries strongly suggest CCB (verapamil) as the primary toxicity. Verapamil and diltiazem (non-dihydropyridine CCBs) have the most significant cardiac effects; dihydropyridines (amlodipine, nifedipine) cause more vasodilation with reflex tachycardia — but in massive overdose, all CCBs can cause bradycardia and shock"
+          ]
+        },
+        {
+          text: "What is the treatment algorithm for this patient's CCB overdose?",
+          type: "free-text",
+          marks: 4,
+          answer: [
+            "IV calcium: calcium chloride 10% 20 mL (or calcium gluconate 10% 60 mL) IV over 5-10 minutes, may repeat every 15-20 minutes for 3-4 doses; calcium overcomes the competitive channel blockade. Can start calcium chloride infusion 0.2-0.4 mL/kg/hr",
+            "High-dose insulin euglycemia therapy (HIET): regular insulin 1 U/kg IV bolus, then 0.5-1 U/kg/hr infusion — this is now considered the most effective treatment for severe CCB poisoning; insulin acts as an inotrope by promoting myocardial glucose uptake; co-administer dextrose (D50W bolus then D10-D25 infusion) to maintain glucose 10-14 mmol/L; monitor potassium closely and supplement as needed",
+            "IV fluids: crystalloid bolus 10-20 mL/kg cautiously (most patients are vasodilated, not volume depleted). Vasopressors: norepinephrine for refractory hypotension. Atropine 0.5-1 mg IV for bradycardia (often ineffective in severe CCB toxicity). Glucagon 3-5 mg IV bolus (bypasses receptor and activates adenylyl cyclase directly — more useful in beta-blocker OD but may help in CCB)",
+            "Whole bowel irrigation with PEG solution for sustained-release preparations. Intralipid (20% lipid emulsion) 1.5 mL/kg IV bolus for cardiac arrest or refractory cardiovascular collapse. Consider extracorporeal membrane oxygenation (ECMO) or cardiopulmonary bypass for refractory shock. Decontamination: activated charcoal if within 1-2 hours and airway protected"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 75 — Toxic Ingestion in a Toddler (Iron Poisoning)",
+      topic: "Iron Toxicity",
+      difficulty: "hard",
+      scenario: `A 2-year-old boy (12 kg) is brought to the ED by his mother 2 hours after she found him with an open bottle of her prenatal iron supplements (325 mg ferrous sulfate tablets, 65 mg elemental iron each). She estimates 10-15 tablets are missing. The child has vomited three times with brownish emesis. Vital signs: HR 140, BP 85/50, RR 30, T 37.5°C. He is irritable, with diffuse abdominal tenderness. An abdominal X-ray shows multiple radiopaque tablets in the stomach.`,
+      questions: [
+        {
+          text: "What is the estimated ingested dose of elemental iron, and at what dose is toxicity expected?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Estimated dose: 10-15 tablets × 65 mg elemental iron = 650-975 mg elemental iron / 12 kg = 54-81 mg/kg elemental iron. Important: calculate toxicity based on ELEMENTAL iron content, not the weight of the salt (ferrous sulfate 325 mg contains ~65 mg elemental iron, ferrous gluconate 325 mg contains ~38 mg, ferrous fumarate 325 mg contains ~108 mg)",
+            "Toxicity thresholds: <20 mg/kg — nontoxic; 20-60 mg/kg — mild to moderate toxicity (GI symptoms); >60 mg/kg — severe, potentially lethal toxicity (this patient at 54-81 mg/kg is at risk for severe toxicity with systemic effects including shock, metabolic acidosis, hepatic failure, and coagulopathy)"
+          ]
+        },
+        {
+          text: "What is the specific antidote, and when is it indicated?",
+          type: "mcq",
+          marks: 1,
+          options: ["N-acetylcysteine 150 mg/kg IV loading dose", "Deferoxamine (desferrioxamine) IV infusion", "Calcium disodium EDTA chelation", "Dimercaprol (BAL) IM injection"],
+          correctIndex: 1,
+          explanation: "Deferoxamine is the specific iron chelator — it binds free iron in the plasma to form ferrioxamine, which is renally excreted (gives urine a 'vin rosé' or orange-pink color). Indications for deferoxamine: serum iron >500 mcg/dL, severe symptoms (shock, altered mental status, metabolic acidosis), or significant clinical toxicity. Dose: 15 mg/kg/hr IV continuous infusion (max 6-8 g/day). Deferoxamine should not be given for more than 24 hours due to risk of ARDS. Whole bowel irrigation (PEG solution) is indicated for tablets visible on X-ray that have not passed the pylorus. Activated charcoal does NOT adsorb iron and is NOT useful."
+        },
+        {
+          text: "Describe the five stages of iron toxicity.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Stage 1 (0-6h): GI phase — vomiting, diarrhea (often bloody/hemorrhagic), abdominal pain from direct corrosive effect on GI mucosa; may cause GI hemorrhage and fluid losses leading to hypovolemia",
+            "Stage 2 (6-24h): apparent recovery/latent period — GI symptoms may improve, creating false sense of recovery; this is deceptive as intracellular iron toxicity is ongoing. Stage 3 (12-48h): systemic toxicity — recurrence of GI symptoms plus metabolic acidosis (iron uncouples oxidative phosphorylation and converts to ferric form releasing H+ ions), shock, hepatic necrosis (elevated transaminases, coagulopathy), renal failure, and potentially death",
+            "Stage 4 (2-5 days): hepatic failure — fulminant hepatotoxicity with coagulopathy, hypoglycemia, encephalopathy; peak mortality occurs in this phase. Stage 5 (2-6 weeks): GI scarring — pyloric or intestinal strictures from corrosive injury during the acute phase, presenting with gastric outlet obstruction"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 76 — Organophosphate Poisoning",
+      topic: "Pesticide / Organophosphate Toxicity",
+      difficulty: "hard",
+      scenario: `A 50-year-old farmer is brought to the ED after being found collapsed in his field. His coworkers report he was spraying insecticide without protective equipment. On arrival: GCS 10, HR 45, BP 90/55, RR 28 with audible secretions and wheezing, SpO2 85%. He has copious oral secretions, lacrimation, diaphoresis, miotic (pinpoint) pupils, urinary incontinence, fasciculations of the extremities, and diffuse wheezing bilaterally.`,
+      questions: [
+        {
+          text: "Identify the toxidrome and describe the pathophysiology using the classic mnemonics.",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Cholinergic toxidrome from organophosphate poisoning — organophosphates irreversibly inhibit acetylcholinesterase, causing accumulation of acetylcholine at muscarinic and nicotinic receptors and in the CNS",
+            "Muscarinic effects (DUMBELS): Diarrhea, Urination, Miosis, Bronchospasm/Bronchorrhea, Emesis, Lacrimation, Salivation. Also: bradycardia, hypotension, wheezing. Alternative mnemonic SLUDGE: Salivation, Lacrimation, Urination, Defecation, GI distress, Emesis",
+            "Nicotinic effects: fasciculations, muscle weakness, paralysis (including respiratory muscles), tachycardia, hypertension, mydriasis (can sometimes oppose muscarinic miosis). CNS effects: anxiety, restlessness, seizures, coma. Death typically results from respiratory failure (bronchorrhea + bronchospasm + respiratory muscle paralysis)"
+          ]
+        },
+        {
+          text: "What is the antidote regimen for organophosphate poisoning?",
+          type: "free-text",
+          marks: 3,
+          answer: [
+            "Atropine is the primary antidote — competitively blocks acetylcholine at muscarinic receptors. Initial dose: 2-5 mg IV (adults), repeat every 5-10 minutes and DOUBLE the dose each time until secretions dry (may require massive cumulative doses — 100+ mg in severe cases). Endpoint is drying of pulmonary secretions and resolution of bronchospasm — NOT pupil size or heart rate",
+            "Pralidoxime (2-PAM): 1-2 grams IV over 15-30 minutes, then 500 mg/hr infusion. Pralidoxime reactivates acetylcholinesterase by cleaving the organophosphate-enzyme bond BEFORE it undergoes 'aging' (permanent binding). Most effective if given within 24-48 hours. Treats nicotinic symptoms (fasciculations, weakness) that atropine does not address",
+            "Supportive: aggressive suctioning of secretions, early intubation for respiratory failure, benzodiazepines for seizures (diazepam 5-10 mg IV). Decontamination: remove clothing, wash skin with soap and water (wear protective equipment — secondary contamination risk to healthcare workers). Avoid succinylcholine for RSI (metabolized by cholinesterase, will have prolonged paralysis). Do NOT use morphine, aminophylline, or phenothiazines"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 77 — Caustic Ingestion",
+      topic: "Caustic Ingestion",
+      difficulty: "hard",
+      scenario: `A 3-year-old girl is brought to the ED 30 minutes after her mother found her playing with an open bottle of liquid drain cleaner (concentrated sodium hydroxide/lye). The child is drooling, refusing to swallow, and crying. On examination: erythema and white patches on the lips and tongue, stridor, hoarse voice. Vital signs: HR 140, RR 30, SpO2 94%, T 37.1°C.`,
+      questions: [
+        {
+          text: "What is the difference between alkali and acid caustic ingestions in terms of injury pattern?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Alkali (bases such as NaOH — this patient): cause liquefactive necrosis — the alkali penetrates deeply through tissues, producing progressive full-thickness injury to the esophagus (most commonly affected) and stomach; injury may continue to progress for hours after exposure due to deep tissue penetration; higher risk of esophageal perforation and long-term esophageal stricture formation",
+            "Acids: cause coagulative necrosis — the acid produces a firm eschar/coagulum on the mucosal surface that somewhat limits tissue penetration (though concentrated acids can still cause severe injury); acids preferentially injure the stomach (particularly the antrum/pylorus) because the esophageal squamous epithelium is more resistant to acid injury than gastric mucosa"
+          ]
+        },
+        {
+          text: "What is the appropriate ED management? What interventions are contraindicated?",
+          type: "mcq",
+          marks: 1,
+          options: ["Immediately induce vomiting and give activated charcoal", "Airway assessment/protection, IV access, NPO, urgent endoscopy within 12-24 hours; do NOT induce emesis or neutralize", "Immediate neutralization with a dilute acid to counteract the base", "Blind NG tube passage to assess esophageal injury"],
+          correctIndex: 1,
+          explanation: "Management: (1) Assess and secure airway — this child has stridor suggesting airway involvement; prepare for intubation by direct visualization (not blind). (2) IV access, NPO. (3) Urgent endoscopy (EGD) within 12-24 hours to grade the injury (grade 1: superficial mucosal edema/erythema; grade 2: circumferential ulceration/blistering; grade 3: transmural necrosis/perforation). CONTRAINDICATED: emesis induction (re-exposes esophagus to caustic), activated charcoal (obscures endoscopy, does not adsorb caustics, aspiration risk), neutralization (exothermic reaction causes thermal injury), blind NG tube insertion (perforation risk), dilution if >30 minutes post-ingestion."
+        },
+        {
+          text: "What are the potential complications of caustic ingestion?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Acute: esophageal or gastric perforation with mediastinitis or peritonitis, airway compromise (laryngeal edema requiring intubation or surgical airway), aspiration pneumonitis, hemorrhage, metabolic acidosis in severe injury",
+            "Chronic: esophageal stricture formation (develops in 70-100% of grade 2b and grade 3 injuries, typically 3-8 weeks after ingestion), increased lifetime risk of esophageal squamous cell carcinoma (1000-fold increase, develops 15-40 years post-ingestion); patients with significant esophageal injury require long-term endoscopic surveillance"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 78 — Cocaine Toxicity with Chest Pain",
+      topic: "Cocaine / Sympathomimetic Toxicity",
+      difficulty: "hard",
+      scenario: `A 32-year-old man presents to the ED with severe substernal chest pain and palpitations 1 hour after using intranasal cocaine. Vital signs: HR 125, BP 195/110, RR 20, T 37.8°C. He is agitated and diaphoretic. ECG shows sinus tachycardia at 125 bpm with 2 mm ST elevation in leads II, III, and aVF. Pupils are dilated bilaterally.`,
+      questions: [
+        {
+          text: "What is the mechanism by which cocaine causes acute coronary syndrome?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Cocaine causes ACS through multiple mechanisms: (1) coronary artery vasoconstriction (alpha-adrenergic stimulation), (2) increased myocardial oxygen demand from tachycardia and hypertension (sympathomimetic effects), (3) enhanced platelet aggregation and thrombus formation, (4) accelerated atherosclerosis with chronic use",
+            "Cocaine also blocks fast sodium channels (local anesthetic effect) causing QRS prolongation and predisposition to ventricular dysrhythmias, and blocks potassium channels causing QT prolongation. Cocaine-associated MI can occur in patients with normal coronary arteries (vasospasm) or with underlying CAD"
+          ]
+        },
+        {
+          text: "What medication is CONTRAINDICATED in cocaine-associated chest pain, and why?",
+          type: "mcq",
+          marks: 1,
+          options: ["Aspirin", "Benzodiazepines", "Non-selective beta-blockers (e.g., propranolol)", "Nitroglycerin"],
+          correctIndex: 2,
+          explanation: "Non-selective beta-blockers are CONTRAINDICATED in acute cocaine toxicity because blocking beta-2 vasodilatory receptors leaves alpha-adrenergic vasoconstriction unopposed, worsening coronary vasospasm and hypertension (potentially causing paradoxical worsening of ischemia and hypertensive emergency). This applies to propranolol, metoprolol, and labetalol in the acute setting. Treatment for cocaine-associated chest pain/ACS: benzodiazepines (first-line — reduce sympathetic drive), nitroglycerin (coronary vasodilation), aspirin, and calcium channel blockers (verapamil or diltiazem for refractory vasospasm). If STEMI confirmed, PCI is preferred over thrombolytics."
+        },
+        {
+          text: "How should cocaine-induced hypertension and agitation be managed?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Benzodiazepines are first-line for both agitation AND hypertension in cocaine toxicity — diazepam 5-10 mg IV or lorazepam 2-4 mg IV; reducing sympathetic drive often resolves the tachycardia and hypertension. Repeat benzodiazepines liberally until adequately sedated",
+            "If hypertension persists despite benzodiazepines: IV phentolamine (alpha-blocker, 5 mg IV) or nitroglycerin infusion or nitroprusside. For hyperthermia >40°C: aggressive active cooling (ice bath), benzodiazepines for agitation/muscle activity; for seizures: benzodiazepines first-line. For wide QRS/ventricular dysrhythmias: sodium bicarbonate 1-2 mEq/kg (treats sodium channel blockade). Avoid all beta-blockers in the acute setting"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 79 — Anticholinergic Toxidrome",
+      topic: "Anticholinergic Toxicity",
+      difficulty: "hard",
+      scenario: `A 78-year-old woman with dementia is brought from her nursing home for confusion and agitation. Medications include donepezil, quetiapine, and diphenhydramine (recently added for insomnia). Vital signs: HR 115, BP 150/85, RR 18, T 38.5°C. She is agitated, picking at the air (carphologia), and mumbling incoherently. Pupils are dilated (7 mm bilaterally), skin is flushed and dry, mucous membranes are dry, abdomen is distended with absent bowel sounds, and a bladder scan shows 600 mL urinary retention.`,
+      questions: [
+        {
+          text: "Identify the toxidrome using the classic mnemonic and describe the mechanism.",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Anticholinergic toxidrome — classic mnemonic: 'Hot as a hare (hyperthermia), Blind as a bat (mydriasis, cycloplegia), Dry as a bone (anhidrosis, dry mucous membranes), Red as a beet (flushed skin from cutaneous vasodilation), Mad as a hatter (agitation, delirium, hallucinations), Full as a flask (urinary retention), the bowel loses its tone (ileus/decreased bowel sounds), and the heart runs alone (tachycardia)'",
+            "Mechanism: competitive antagonism of acetylcholine at muscarinic receptors in the CNS and peripherally. Common causes: antihistamines (diphenhydramine — likely culprit here), anticholinergic medications, TCAs, antipsychotics (quetiapine has anticholinergic properties), atropine, scopolamine, jimsonweed, deadly nightshade"
+          ]
+        },
+        {
+          text: "What is the specific antidote and when is it indicated?",
+          type: "short-menu",
+          marks: 2,
+          options: ["Naloxone 0.4-2 mg IV — opioid receptor antagonist", "Physostigmine 1-2 mg IV slow push — reversible acetylcholinesterase inhibitor", "Flumazenil 0.2 mg IV — benzodiazepine antagonist", "Cyproheptadine 12 mg PO — serotonin antagonist"],
+          correctIndex: 1,
+          explanation: "Physostigmine is a reversible acetylcholinesterase inhibitor that crosses the blood-brain barrier, reversing both peripheral and central anticholinergic effects. Dose: 1-2 mg IV slow push over 5 minutes (adults), may repeat after 10-15 minutes if needed. Indications: severe agitation/delirium unresponsive to benzodiazepines, seizures, tachydysrhythmias with hemodynamic compromise. Contraindications: TCA poisoning (risk of asystole), QRS prolongation, heart block, reactive airways disease. Monitor for cholinergic effects (bradycardia, bronchospasm, seizures). Supportive care with benzodiazepines for agitation is the mainstay for most patients."
+        },
+        {
+          text: "What other conditions are in the differential for this elderly patient's presentation?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Important differential diagnoses to consider: (1) sepsis/infection (UTI, pneumonia — especially with urinary retention and fever), (2) delirium from other causes (metabolic derangements, stroke, subdural hematoma), (3) serotonin syndrome (quetiapine interaction — but would have clonus, hyperreflexia, diaphoresis rather than dry skin), (4) NMS (quetiapine — but would have rigidity and diaphoresis)",
+            "Key differentiator: the DRY, FLUSHED skin with urinary retention and absent bowel sounds is classic for anticholinergic toxicity and distinguishes it from sympathomimetic toxidrome (which has diaphoresis/sweating). Sympathomimetic toxidrome shares tachycardia, hypertension, mydriasis, and agitation but patients are diaphoretic with normal or increased bowel sounds"
+          ]
+        }
+      ]
+    },
+    {
+      title: "SAMP 80 — Digoxin Toxicity",
+      topic: "Digoxin Toxicity",
+      difficulty: "hard",
+      scenario: `A 75-year-old woman with atrial fibrillation and heart failure (on digoxin 0.25 mg daily, furosemide, and lisinopril) presents with nausea, vomiting, visual disturbances (seeing yellow halos around lights), and palpitations for 2 days. She reports poor oral intake due to a recent GI illness. Vital signs: HR 45 (irregular), BP 95/60. ECG shows atrial fibrillation with slow ventricular response, occasional PVCs, and ST changes with a 'scooped' or 'Salvador Dalí mustache' appearance. Serum digoxin level is 4.2 ng/mL (therapeutic 0.5-2.0). K+ is 5.8 mEq/L, Cr is 2.1 mg/dL.`,
+      questions: [
+        {
+          text: "What factors precipitated digoxin toxicity in this patient?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Renal insufficiency (Cr 2.1): digoxin is primarily renally eliminated — decreased GFR leads to drug accumulation; dehydration from GI illness further decreases renal clearance",
+            "Hypokalemia (from furosemide) paradoxically increases digoxin toxicity even before frank hyperkalemia develops — digoxin and potassium compete for the same binding site on the Na+/K+-ATPase pump; low potassium enhances digoxin binding and toxicity. The current hyperkalemia (K+ 5.8) is a result of severe digoxin toxicity (digoxin inhibits Na+/K+-ATPase, impairing potassium uptake into cells) and is a marker of severity"
+          ]
+        },
+        {
+          text: "What is the specific antidote, and what are the indications for its use?",
+          type: "mcq",
+          marks: 1,
+          options: ["Calcium gluconate IV for the hyperkalemia", "Digoxin-specific antibody fragments (Digoxin Fab/DigiFab)", "Atropine alone is sufficient for the bradycardia", "Hemodialysis to remove digoxin"],
+          correctIndex: 1,
+          explanation: "Digoxin-specific antibody fragments (Fab) are the definitive treatment. Indications: hemodynamically significant bradycardia or heart block, life-threatening ventricular dysrhythmias, hyperkalemia (K+ >5.0 in setting of acute toxicity, or K+ >5.5 in chronic toxicity as with this patient), acute ingestion >10 mg (adults), serum digoxin >10 ng/mL at steady state, or serum digoxin >15 ng/mL at any time post-acute ingestion. IMPORTANT: IV calcium is traditionally considered CONTRAINDICATED in digoxin-associated hyperkalemia (may worsen cardiac toxicity/'stone heart' — though this is debated); treat hyperkalemia with insulin/dextrose, sodium bicarbonate, kayexalate, and Fab fragments. Hemodialysis is NOT effective for digoxin removal (large volume of distribution)."
+        },
+        {
+          text: "What cardiac dysrhythmias are characteristic of digoxin toxicity?",
+          type: "free-text",
+          marks: 2,
+          answer: [
+            "Digoxin can cause almost ANY dysrhythmia, but the hallmark is enhanced automaticity with impaired conduction. Classic rhythms: atrial tachycardia with AV block (PAT with block — most characteristic), accelerated junctional rhythm, bidirectional ventricular tachycardia (alternating QRS axis — nearly pathognomonic for digoxin toxicity), frequent PVCs (especially bigeminy)",
+            "Other rhythms: sinus bradycardia, second/third-degree AV block, junctional bradycardia, atrial fibrillation with slow/regularized ventricular rate (regularization of AF suggests complete heart block with junctional escape), VF. The 'scooped' ST depression (reverse check mark or Salvador Dalí mustache pattern) is a digoxin effect, NOT necessarily toxicity"
+          ]
+        }
+      ]
     }
+  ]
+};
+
+// ============================================================
+// TINTINALLI TEXTBOOK REFERENCE (Sections 3-11)
+// Condensed clinical facts for AI question generation
+// ============================================================
+const TINTINALLI_REFERENCE = {
+  "Cardiac Arrest": [
+    "Ch.11 Sudden Cardiac Death: Most common cause of out-of-hospital cardiac arrest is coronary artery disease. VF is most common initial rhythm in public-location arrests. HCM is most common cardiovascular cause of sudden death in young athletes — systolic murmur increases with Valsalva. ICD indications: prior cardiac arrest/VF, sustained VT, family hx sudden death, LV wall thickness ≥30mm, unexplained syncope, abnormal BP response to exercise.",
+    "Ch.22 Basic CPR: C-A-B sequence. Compression rate 100-120/min, depth 2-2.5 inches (5-6cm). Complete chest recoil between compressions. Chest compression fraction ≥60%. Alternate compressors every 2 minutes. 30:2 compression-to-ventilation ratio for single rescuer. Carotid pulse check <10 seconds.",
+    "Ch.24 Cardiac Resuscitation: ACLS algorithms for VF/pVT: defibrillation, then epinephrine 1mg IV q3-5min, amiodarone 300mg then 150mg. PEA/Asystole: epinephrine 1mg q3-5min, identify reversible causes (Hs and Ts). Hs: Hypovolemia, Hypoxia, Hydrogen ion, Hypo/Hyperkalemia, Hypothermia, Hypoglycemia. Ts: Tension pneumothorax, Tamponade, Toxins, Thrombosis (PE), Thrombosis (MI). Open chest cardiac massage indications: penetrating chest trauma, perioperative cardiothoracic, hypothermia/PE/tamponade/abdominal hemorrhage arrests."
+  ],
+  "Shock": [
+    "Ch.12 Nontraumatic Shock: Classification — distributive (septic, anaphylactic, neurogenic), cardiogenic, hypovolemic, obstructive. Septic shock: vasodilation, capillary leak, tissue hypoperfusion despite adequate volume. Cardiogenic: pump failure, elevated filling pressures. Beta-blocker toxicity: glucagon 3-5mg IV bolus, high-dose insulin euglycemia therapy (1 U/kg bolus + 0.5-1 U/kg/hr), calcium, vasopressors.",
+    "Ch.13 Traumatic Shock: Hemorrhagic shock classification by blood loss (Class I-IV). Lethal triad: hypothermia, acidosis, coagulopathy. Damage control resuscitation: permissive hypotension (target SBP 80-90), 1:1:1 ratio pRBC:FFP:platelets, minimize crystalloid, early TXA (1g IV within 3 hours). Massive transfusion protocol activation criteria.",
+    "Ch.50 Cardiogenic Shock: Results from decreased cardiac output with inadequate tissue perfusion despite adequate circulating volume. Occurs in 4-8% of STEMI. In-hospital mortality 27-51%. Treatment: vasopressors (norepinephrine first-line), inotropes (dobutamine, milrinone), mechanical support (IABP, Impella), emergent PCI for MI-related cardiogenic shock."
+  ],
+  "Allergic Reaction / Anaphylaxis": [
+    "Ch.14 Anaphylaxis: IgE-mediated type I hypersensitivity. Diagnostic criteria: acute onset involving skin/mucosal tissue PLUS respiratory compromise or hypotension; OR two or more of: skin/mucosal, respiratory, cardiovascular, persistent GI symptoms after allergen exposure. Biphasic reactions occur in 1-20%, typically within 8-10 hours.",
+    "Treatment: Epinephrine IM 0.3-0.5mg (1:1000) anterolateral thigh — FIRST-LINE, repeat q5-15min. IV epinephrine 0.1mg (1:10,000) for refractory hypotension. Adjuncts: IV fluids 1-2L bolus, H1-blocker (diphenhydramine 50mg IV), H2-blocker (ranitidine 50mg IV), corticosteroids (methylprednisolone 125mg IV — for biphasic prevention), nebulized salbutamol for bronchospasm. Glucagon for patients on beta-blockers (1-5mg IV). Observe 4-6 hours minimum, longer if biphasic risk factors."
+  ],
+  "Metabolic Emergencies": [
+    "Ch.15 Acid-Base Disorders: Systematic approach — pH determines primary disorder, then assess compensation. Winters formula for metabolic acidosis: expected PaCO2 = 1.5×[HCO3] + 8 ±2. Anion gap = Na - (Cl + HCO3), normal 8-12. Elevated AG: MUDPILES (Methanol, Uremia, DKA, Propylene glycol, Isoniazid/Iron, Lactic acidosis, Ethylene glycol, Salicylates). Delta-delta ratio to detect mixed disorders.",
+    "Ch.16 Blood Gases: Pulse oximetry limitations — unreliable in CO poisoning (reads COHb as OxyHb), methemoglobinemia (reads ~85%), severe anemia, poor perfusion, nail polish. Capnography: ETCO2 normal 35-45mmHg, useful for CPR quality (target >20mmHg), ETT confirmation, and monitoring ventilation."
+  ],
+  "Electrolyte Abnormalities": [
+    "Ch.17 Fluids and Electrolytes: Hyperkalemia — ECG progression: peaked T waves → prolonged PR → widened QRS → sine wave → cardiac arrest. Treatment: calcium gluconate 10% 10mL IV (membrane stabilization), insulin 10U + D50W 25g (intracellular shift), nebulized salbutamol 10-20mg, sodium bicarbonate if acidotic, kayexalate/patiromer for elimination, dialysis if refractory. Hyponatremia: acute symptomatic (seizures, AMS) — hypertonic saline 3% 100mL bolus over 10min, target 4-6 mEq/L rise in first 6 hours, max 8 mEq/L in 24 hours to avoid osmotic demyelination."
+  ],
+  "Environmental Emergencies": [
+    "Ch.21 Hyperbaric Oxygen/CO Poisoning: CO binds hemoglobin 200-250x greater affinity than O2. Pulse oximetry reads COHb as OxyHb — unreliable. Symptoms: headache, nausea, confusion → seizures, coma, death. COHb half-life: room air 4-6 hours, 100% O2 NRB 60-90 min, HBO 15-23 min. HBO indications: COHb >25%, loss of consciousness, neurologic symptoms, pregnancy with COHb >15%, cardiac ischemia."
+  ],
+  "Resuscitation in Pregnancy": [
+    "Ch.25: Cardiac arrest in pregnancy 1:12,000 admissions. Physiologic changes: CO increases 30-50%, blood volume 100mL/kg (6-7L), decreased peripheral resistance 20%, upper airway edema (difficult airway), decreased FRC with increased O2 consumption (rapid desaturation), hypercoagulable state (increased VTE risk), decreased LES tone (aspiration risk).",
+    "Aortocaval compression after 20 weeks — left lateral tilt 15-30 degrees using Cardiff wedge. IV access above diaphragm. Perimortem cesarean section within 5 minutes of arrest onset if uterus at/above umbilicus. Leading causes of maternal death: cardiovascular disease, cardiomyopathy, hemorrhage, infection/sepsis, hypertensive disorders, thrombotic PE."
+  ],
+  "Post-Cardiac Arrest Care": [
+    "Ch.26: Four components — post-arrest brain injury, myocardial dysfunction (reversible stunning over 24-72h), systemic ischemia-reperfusion response, persistent precipitating pathology. TTM: target 32-36°C for ≥24 hours. Avoid hypotension (MAP ≥65mmHg). Neuroprognostication not before 72 hours post-ROSC (or 72h post-rewarming). Multimodal approach: clinical exam, EEG, SSEPs (absent bilateral N20 most specific), NSE biomarkers, brain imaging."
+  ],
+  "Airway Management": [
+    "Ch.28 Noninvasive/Supraglottic: BVM optimization — two-person technique, OPA/NPA adjuncts, sniffing position, CPAP mode. MOANS (difficult BVM): Mask seal, Obesity/Obstruction, Age >55, No teeth, Stiff/Snoring. Supraglottic devices: i-gel, King LT — rescue for failed BVM, bridge to intubation. SGA-to-ETT conversion via fiberoptic through i-gel or bougie exchange.",
+    "Ch.29A RSI: Seven Ps — Preparation, Preoxygenation (3-5min 100% O2 + apneic oxygenation via NC 15L), Pretreatment, Paralysis with induction, Protection/Positioning, Placement, Post-intubation management. Induction agents: ketamine 1.5mg/kg (hemodynamic stability, bronchodilation), etomidate 0.3mg/kg (hemodynamically neutral but adrenal suppression), propofol 1.5-2mg/kg (causes hypotension). LEMON airway assessment: Look, Evaluate 3-3-2, Mallampati, Obstruction, Neck mobility.",
+    "Ch.30 Surgical Airways: Cricothyrotomy for CICO (can't intubate, can't oxygenate). Cricothyroid membrane between thyroid and cricoid cartilage. Vertical skin incision, horizontal membrane stab, dilate, insert 6.0 cuffed tube. Contraindicated in children <10-12 (use needle cricothyrotomy with jet ventilation instead). Most common complication: false passage into pretracheal tissue."
+  ],
+  "Defibrillation and Cardioversion": [
+    "Ch.23: Defibrillation — unsynchronized shock for pulseless VT/VF, maximum energy. Synchronized cardioversion — shock timed to R wave, for organized rhythms (AFib, Aflutter, SVT with hemodynamic instability). Sync prevents energy delivery during T wave (vulnerable period) which could induce VF. Energy: AFib 120-200J biphasic, Aflutter/SVT 50-100J. Procedural sedation before cardioversion when possible."
+  ],
+  "Mechanical Ventilation": [
+    "Ch.29B: Volume control mode — set TV, rate, FiO2, PEEP. Peak pressure = airway resistance + compliance. Plateau pressure = compliance only (measured during inspiratory hold). High peak with normal plateau = airway resistance (bronchospasm, mucus). Both elevated = poor compliance (ARDS, pneumothorax, edema). ARDS: TV 6mL/kg IBW, plateau <30cmH2O. Auto-PEEP in asthma/COPD: air trapping, dynamic hyperinflation, decreased venous return → hypotension/arrest. Treatment: reduce RR, reduce TV, increase expiratory time (I:E 1:4-1:5), disconnect ventilator if hemodynamically compromised."
+  ],
+  "Vascular Access": [
+    "Ch.31: Peripheral IV — flow rate depends on catheter radius (larger = faster) and length (shorter = faster). IO access: proximal tibia or humerus, drill-powered (EZ-IO), flow rates up to 125mL/min under pressure, all resuscitation meds/fluids/blood products. Central venous access: IJ preferred in ED (compressible, US-guided, low pneumothorax risk), subclavian (lower infection but non-compressible, contraindicated in coagulopathy), femoral (rapid access but higher infection). Complications: pneumothorax, arterial puncture, air embolism, CRBSI, arrhythmia from guidewire."
+  ],
+  "Hemodynamic Monitoring": [
+    "Ch.32: CVP alone is a poor predictor of fluid responsiveness. Dynamic measures: pulse pressure variation >13% (mechanically ventilated), passive leg raise (≥10% increase in CO or pulse pressure = fluid responsive), IVC US (collapsibility >50% spontaneous breathing or distensibility >18% mechanical ventilation). Lactate: marker of tissue hypoperfusion, target ≥20% clearance over 2 hours. ScvO2: low always abnormal; high in sepsis suggests impaired O2 extraction."
+  ],
+  "Emergency Cardiac Pacing": [
+    "Ch.33: Transcutaneous pacing for hemodynamically unstable bradycardia unresponsive to atropine. Anterior-posterior pad placement. Set rate 60-80, increase current until capture (50-100mA typical). Confirm mechanical capture with palpable pulse. Provide analgesia/sedation (painful). Atropine often ineffective in complete heart block — works on SA/AV nodes via vagal blockade, cannot improve infranodal conduction."
+  ],
+  "Pericardial Tamponade": [
+    "Ch.34: Beck's triad: hypotension, JVD, muffled heart sounds (present in minority). US findings: pericardial effusion, RV diastolic collapse (most specific), RA systolic collapse (most sensitive), IVC plethora. ECG: low voltage, electrical alternans. Pericardiocentesis: US-guided subxiphoid approach, needle toward left shoulder at 30-45°. Even 20-50mL removal dramatically improves hemodynamics. Temporize with IV fluids (increase preload). AVOID nitroglycerin/diuretics/morphine (decrease preload) and positive pressure ventilation (decreases venous return)."
+  ],
+  "Acute Pain Management": [
+    "Ch.35: Pain is most common ED complaint (70-80%). Oligoanalgesia risks: ethnic minorities, elderly, very young, cognitively impaired. Mechanistic approach preferred over symptomatic: NSAIDs for renal/biliary colic (reduce prostaglandin-mediated smooth muscle spasm). Opioid receptors: mu-1 (analgesia), mu-2 (euphoria, respiratory depression, decreased GI motility), kappa (dysphoria). Titrate single opioid to effect. Codeine unreliable (30% Asians deficient in CYP2D6). Meperidine removed from WHO essential meds — serotonin syndrome risk, normeperidine toxicity (seizures). Avoid prescribing opioid-acetaminophen combinations at discharge."
+  ],
+  "Procedural Sedation": [
+    "Ch.37: PSA definition — anxiolytic/sedative/analgesic/dissociative agents to attenuate anxiety, pain, motion. Ketamine: dissociative state, maintains airway reflexes, 1-2mg/kg IV. Adverse effects: vomiting 7-26%, emergence reactions 10-20% adults (less in children, treat with midazolam), laryngospasm <1% (most serious). Propofol: 1mg/kg IV, rapid onset/recovery, causes hypotension/apnea — no analgesia. Preprocedural fasting: no evidence supports routine delays for ED PSA — aspiration risk extremely low (<1:10,000)."
+  ],
+  "Local Anesthetic Toxicity": [
+    "Ch.36: LAST (local anesthetic systemic toxicity). CNS toxicity first: metallic taste, perioral numbness, tinnitus, confusion, seizures → cardiovascular collapse. Bupivacaine most cardiotoxic (tight sodium channel binding). Max doses: lidocaine 4.5mg/kg (7mg/kg with epi), bupivacaine 2.5mg/kg. Treatment: stop injection, airway/ventilation, benzodiazepines for seizures (avoid propofol if CV compromise), 20% intralipid emulsion 1.5mL/kg bolus + 0.25mL/kg/min infusion ('lipid sink'). Avoid vasopressin, calcium channel blockers, beta-blockers. Prolonged CPR indicated."
+  ],
+  "Wound Management": [
+    "Ch.39-41: Wound evaluation: mechanism, contamination, foreign body sensation, time since injury. High-pressure irrigation most important step to prevent infection (NS via 30-60mL syringe + 18G). Tetanus prophylaxis: Td/Tdap booster if ≥5 years for tetanus-prone wounds; add TIG if incomplete primary series. Primary closure up to 6-12h extremity, 24h face. Tissue adhesive (Dermabond): rapid, painless, not on mucosa/high-tension areas/across landmarks like vermillion border.",
+    "Ch.42 Facial Lacerations: Rich blood supply allows delayed closure up to 24h, lower infection rates. Minimal debridement. Fine suture (5-0/6-0). Vermillion border: first suture must precisely align this landmark — even 1mm malalignment is noticeable. Remove facial sutures 3-5 days. Always check for facial nerve, parotid duct, lacrimal apparatus injury.",
+    "Ch.46 Bites: Cat bites — deep puncture, Pasteurella multocida (50-80%), infection rate 30-50%. Dog bites — crush mechanism, infection rate 5-10%. Human bites over MCP ('fight bites') — surgical emergency risk. Amoxicillin-clavulanate first-line. Do NOT close puncture wounds or bite wounds primarily (especially hand). Kanavel signs of flexor tenosynovitis: fusiform swelling, tenderness along sheath, pain on passive extension, flexed posture — urgent surgical consultation."
+  ],
+  "ST-Elevation Myocardial Infarction (STEMI)": [
+    "Ch.49: Inferior STEMI: ST elevation II, III, aVF — RCA (85%) or LCx (15%). Always get right-sided leads (V4R) for RV infarction (up to 30-50% of inferior STEMI) — preload dependent, avoid nitroglycerin/diuretics. Posterior leads V7-V9 for posterior extension. Reperfusion: PCI within 90min of first medical contact (gold standard). If PCI not available within 120min, fibrinolytic therapy within 30min (pharmacoinvasive strategy).",
+    "Adjunctive therapy: ASA 162-325mg chewed, P2Y12 inhibitor (clopidogrel 300-600mg, ticagrelor 180mg, prasugrel 60mg), anticoagulation (UFH 60U/kg bolus), nitroglycerin (not in RV infarct/hypotension/PDE5 inhibitor use), high-intensity statin, beta-blocker within 24h if no contraindications. AVOID beta-blockers in cocaine/methamphetamine ACS."
+  ],
+  "NSTEMI and Unstable Angina": [
+    "Ch.49: NSTEMI — ischemic symptoms + ECG changes (ST depression, T-wave inversions) + elevated troponin. Unstable angina — same but troponin normal. TIMI risk score (7 variables, each 1 point). HEART score (0-10). Wellens' syndrome: deep symmetric T-wave inversions V1-V4 in pain-free interval = critical proximal LAD stenosis — urgent cath, NO stress testing. Concordant ST elevation in LBBB (Sgarbossa criteria) strongly suggests AMI."
+  ],
+  "Syncope": [
+    "Ch.52: Brief LOC with inability to maintain postural tone, spontaneous recovery. 1-2% of ED visits. Cardiac syncope: no prodrome, exertional, abnormal ECG, structural heart disease — higher mortality. Vasovagal: prodrome (nausea, warmth, tunnel vision), positional trigger, young patients — benign. Convulsive syncope: brief myoclonic jerks from cerebral hypoperfusion, NOT seizure. Seizure vs syncope: lateral tongue biting specific for seizure, postictal confusion >5min favors seizure, rapid return to baseline favors syncope. San Francisco Syncope Rule, Canadian Syncope Risk Score for risk stratification."
+  ],
+  "Acute Heart Failure": [
+    "Ch.53: Spectrum from gradual edema to flash pulmonary edema. Treatment: sit upright, BiPAP (10/5 cmH2O — reduces preload, improves oxygenation, avoids intubation), IV nitroglycerin (most important vasodilator — start 20-40mcg/min, titrate to BP), IV furosemide 40-80mg (or 1-2.5x home dose). Hypertensive acute HF ('vascular failure'): responds dramatically to vasodilators, better prognosis than normotensive/hypotensive HF. BNP >100pg/mL supports diagnosis. Intubation if failing NIPPV with worsening distress, fatigue, hypoxia, or altered mental status."
+  ],
+  "Pulmonary Embolism": [
+    "Ch.56: Wells score: clinical DVT signs (+3), PE most likely diagnosis (+3), HR>100 (+1.5), immobilization/surgery (+1.5), prior DVT/PE (+1.5), hemoptysis (+1), malignancy (+1). D-dimer only useful if Wells ≤6 (low-moderate probability). High probability → direct CTPA. Submassive PE: RV dysfunction (RV/LV >0.9 on CT) + elevated biomarkers + hemodynamically stable. Massive PE: hemodynamic instability. Treatment: UFH 80U/kg bolus then 18U/kg/hr. Thrombolysis (alteplase 100mg over 2h) for massive PE. Careful fluids (250-500mL — excess worsens RV dilation). S1Q3T3 pattern, T-wave inversions V1-V4 on ECG."
+  ],
+  "Hypertensive Emergency": [
+    "Ch.57: Hypertension affects 40% US population. Emergency = severely elevated BP WITH acute target organ damage (brain, heart, kidneys, eyes, hematologic). Urgency = elevated BP WITHOUT damage. Target: reduce MAP by ≤25% in first hour, then 160/100-110 over next 2-6h. IV nicardipine or clevidipine preferred for predictable titration. NEVER sublingual nifedipine (unpredictable precipitous drops). Malignant hypertension with MAHA: schistocytes from fibrinoid necrosis of arterioles, elevated LDH, low haptoglobin."
+  ],
+  "Aortic Dissection": [
+    "Ch.59: Acute aortic syndromes — dissection, penetrating atherosclerotic ulcer, intramural hematoma. Stanford Type A (ascending aorta) = emergent surgery. Type B (descending only) = medical management unless complicated. Classic: sudden severe chest/back pain maximal at onset, 'tearing' quality. BP differential >20mmHg between arms. New AI murmur = aortic regurgitation (Type A). Anti-impulse therapy: esmolol (HR<60 FIRST) then nicardipine for BP 100-120 systolic. NEVER vasodilators without prior beta-blockade. CTA chest/abdomen/pelvis for definitive diagnosis. Avoid antiplatelet/anticoagulation until dissection excluded."
+  ],
+  "Ruptured Abdominal Aortic Aneurysm": [
+    "Ch.60: Classic triad: sudden abdominal/back pain, hypotension, pulsatile mass (all three present only 25-50%). Annual rupture risk by size: <4cm (<0.5%), 5-6cm (3-15%), >6cm (20-40%). Repair threshold: >5.5cm (5.0cm women), rapid expansion >0.5cm/6mo, or symptomatic. Management: permissive hypotension (SBP 80-90), massive transfusion, emergent vascular surgery — unstable patient with AAA on US does NOT need CT. EVAR vs open repair depends on anatomy."
+  ],
+  "Acute Arterial Occlusion": [
+    "Ch.61: 6 Ps: Pain, Pallor, Pulselessness, Poikilothermia, Paresthesia, Paralysis (late/ominous). Embolism (80%) vs thrombosis. Embolism: sudden onset at rest, AFib common source, normal contralateral limb. Rutherford classification: I (viable), IIa (marginally threatened), IIb (immediately threatened — sensory loss + motor deficit), III (irreversible). Treatment: IV heparin immediately, emergent revascularization (embolectomy or catheter-directed thrombolysis). 6-hour window critical. Monitor for reperfusion injury and compartment syndrome."
+  ],
+  "Community-Acquired Pneumonia": [
+    "Ch.65: Most common pathogens: S. pneumoniae, H. influenzae, M. pneumoniae, C. pneumoniae, respiratory viruses. CURB-65: Confusion, Urea>19, RR≥30, BP (SBP<90 or DBP≤60), Age≥65. Score ≥2 = admission; ≥3 = ICU consideration. Inpatient non-ICU: respiratory fluoroquinolone (levofloxacin 750mg) OR beta-lactam (ceftriaxone) + macrolide (azithromycin). ICU: beta-lactam + azithromycin or fluoroquinolone; add vancomycin/linezolid if MRSA risk. Parapneumonic effusion drainage: loculated, positive Gram stain/culture, pH<7.2, glucose<60, or frank pus (empyema)."
+  ],
+  "Pneumothorax": [
+    "Ch.68: Primary spontaneous — subpleural bleb rupture, tall thin young males. Secondary — underlying lung disease. Tension pneumothorax: one-way valve mechanism → progressive intrathoracic pressure → mediastinal shift, decreased venous return, hypotension. Clinical diagnosis — do NOT delay for imaging. Needle decompression: 14G needle 2nd ICS MCL or 4th-5th ICS AAL → converts to simple pneumothorax. Definitive: tube thoracostomy — 4th-5th ICS mid-axillary line ('safe triangle'), insert ABOVE rib to avoid neurovascular bundle, 24-28Fr for PTX, 32-40Fr for hemothorax."
+  ],
+  "Asthma": [
+    "Ch.69: Chronic inflammatory disorder with airway hyperresponsiveness. Acute triggers: viral URI (most common, 40-80%), exercise, allergens, pollutants. Severe/life-threatening features: inability to speak, PEF <25% predicted, 'normal' PaCO2 (impending respiratory failure — should be low from hyperventilation), accessory muscle use.",
+    "Stepwise treatment: continuous nebulized salbutamol 10-15mg/hr + ipratropium 0.5mg q20min×3, IV methylprednisolone 125mg (onset 4-6h, give immediately), IV magnesium sulfate 2g over 20min (for PEF<25%), consider IV epinephrine (near-arrest), ketamine, heliox, BiPAP. Intubation: ketamine induction, permissive hypercapnia (low RR 8-12, low TV 6-8mL/kg, I:E 1:4-1:5 to prevent auto-PEEP). Auto-PEEP causes dynamic hyperinflation → hypotension → arrest."
+  ],
+  "COPD": [
+    "Ch.70: Persistent airflow limitation from airway/alveolar abnormalities from noxious exposures (smoking). Anthonisen criteria: Type I (all 3 — increased dyspnea, sputum volume, sputum purulence), Type II (2/3), Type III (1 + minor finding). Antibiotics for Type I and Type II with purulent sputum. Target SpO2 88-92% (excessive O2 worsens hypercapnia via Haldane effect). Treatment: nebulized salbutamol + ipratropium, systemic corticosteroids (prednisone 40-60mg × 5 days), antibiotics (amoxicillin-clavulanate, doxycycline, azithromycin, or fluoroquinolone). BiPAP for pH<7.35 — reduces intubation 65% and mortality 50%."
+  ],
+  "Acute Abdominal Pain": [
+    "Ch.71: Most common adult ED complaint. Visceral pain: poorly localized, midline, crampy — from organ distension/spasm via C fibers. Foregut=epigastric, midgut=periumbilical, hindgut=suprapubic. Somatic (parietal) pain: sharp, well-localized — from parietal peritoneum irritation via A-delta fibers. Referred pain: distant from pathology via shared spinal innervation (diaphragm→shoulder C3-5, ureter→testis). CT abdomen/pelvis with IV contrast is preferred imaging for most acute surgical abdomen."
+  ],
+  "Acute Pancreatitis": [
+    "Ch.79: Causes: gallstones 40%, alcohol 40%. Diagnosis requires 2/3: characteristic pain (epigastric radiating to back), lipase ≥3x ULN, imaging findings. Lipase preferred over amylase (more sensitive/specific). Ranson criteria at admission (alcoholic): Age>55, WBC>16K, Glucose>200, LDH>350, AST>250; at 48h: Hct drop >10%, BUN rise >5, Ca<8, PaO2<60, base deficit >4, fluid sequestration >6L. Score ≥3 = severe. Treatment: aggressive IV LR 250-500mL/hr, multimodal analgesia (morphine does NOT worsen pancreatitis), early oral feeding when tolerated. NO prophylactic antibiotics."
+  ],
+  "Upper Gastrointestinal Bleeding": [
+    "Ch.75: Proximal to ligament of Treitz. Most common causes: peptic ulcer (most common), esophageal/gastric varices, Mallory-Weiss tears, erosive gastritis. Variceal bleeding: restrictive transfusion (Hgb target 7-8 — overtransfusion worsens portal HTN), octreotide 50mcg bolus + 50mcg/hr, PPI 80mg IV bolus + 8mg/hr, prophylactic antibiotics (ceftriaxone 1g IV — reduces mortality), early endoscopy. Rescue for refractory variceal bleeding: balloon tamponade (Sengstaken-Blakemore tube) as bridge to TIPS."
+  ],
+  "Small Bowel Obstruction": [
+    "Ch.83: SBO most commonly from adhesions (60-70%) after prior surgery. Second most common: incarcerated hernia. Clinical: crampy periumbilical pain, bilious vomiting, distension, inability to pass flatus/stool. CT with IV contrast is imaging of choice. High-pitched bowel sounds, tympanic to percussion. Non-operative management: NPO, NG tube, IV fluids, serial exams. Surgical indications: closed-loop obstruction, strangulation (continuous pain, peritoneal signs, WBC>20K, elevated lactate, CT signs of ischemia), failure of conservative management 48-72h."
+  ],
+  "Acute Appendicitis": [
+    "Ch.81: 250-300K appendectomies/year in US. Pathophysiology: luminal obstruction → distension → venous congestion → bacterial overgrowth → transmural inflammation. Classic pain migration: periumbilical (visceral T10) → RLQ (somatic from parietal peritoneum). McBurney's point, Rovsing's sign, psoas sign, obturator sign. Alvarado (MANTRELS) score: Migration+1, Anorexia+1, Nausea+1, RLQ Tenderness+2, Rebound+1, Elevated temp+1, Leukocytosis+2, Left shift+1. CT sensitivity 94-98%. US first-line in children and pregnant women (MRI if US equivocal in pregnancy). Sudden pain improvement may indicate perforation."
+  ],
+  "Acute Kidney Injury": [
+    "Ch.88: Prerenal (decreased perfusion), Intrinsic (tubular/glomerular damage), Postrenal (obstruction). Prerenal: FeNa<1%, urine Na<20, urine osmolality>500, bland UA with hyaline casts. Intrinsic (ATN): FeNa>2%, urine Na>40, urine osmolality~300, muddy brown granular casts. NSAID + ACE inhibitor = 'triple whammy' (with diuretic) for AKI. Contrast-induced nephropathy risk factors: CKD, diabetes, volume depletion. Emergent dialysis (AEIOU): Acidosis (refractory pH<7.1), Electrolytes (refractory hyperK), Ingestion (dialyzable toxins), Overload (refractory pulmonary edema), Uremia (encephalopathy, pericarditis, bleeding)."
+  ],
+  "Testicular Torsion": [
+    "Ch.93: Five GU emergencies: testicular torsion, Fournier's gangrene, paraphimosis, priapism, GU trauma. Torsion: peak 12-18 years, sudden onset severe scrotal pain, high-riding testicle with horizontal lie, absent cremasteric reflex (sensitivity ~99%), negative Prehn's sign. Salvage: >90% at <6h, ~50% at 12h, <10% at >24h. Do NOT delay surgery for imaging if clinical suspicion high. Manual detorsion: 'open book' medial-to-lateral rotation. Epididymitis: gradual onset, sexually active, positive cremasteric reflex, UA may show pyuria. In <35yr: Chlamydia/GC; >35yr: E. coli."
+  ],
+  "Urinary Tract Infections": [
+    "Ch.91: 7th most common ED diagnosis in women >15. Uncomplicated cystitis first-line: nitrofurantoin 100mg BID×5d, TMP-SMX DS BID×3d (if resistance<20%), fosfomycin 3g single dose. Reserve fluoroquinolones for complicated UTI/pyelonephritis. Avoid amoxicillin/ampicillin alone (>30% resistance). Pyelonephritis: fever, flank pain, CVA tenderness + systemic symptoms. Admit for IV antibiotics (ceftriaxone 1-2g daily) if: sepsis, unable to tolerate PO, pregnancy, obstruction, immunocompromised. Nitrofurantoin inadequate for pyelonephritis (no tissue penetration)."
+  ],
+  "Ectopic Pregnancy": [
+    "Ch.98: Risk factors: prior tubal surgery (strongest), prior ectopic, PID/STI history, IUD, ART, smoking. Discriminatory zone: β-hCG 1500-3000 — IUP should be visible on TVUS above this level. Empty uterus + β-hCG above discriminatory zone = ectopic until proven otherwise. Ruptured ectopic: hemodynamic instability = emergent surgery (salpingectomy). Methotrexate criteria: stable, unruptured, β-hCG ideally<5000, no fetal cardiac activity, reliable follow-up, no contraindications. Dose 50mg/m² IM, serial β-hCG days 4 and 7 (expect ≥15% decline)."
+  ],
+  "Emergency Delivery": [
+    "Ch.101: Shoulder dystocia: anterior shoulder impacted behind pubic symphysis after head delivers. 'Turtle sign' — head retracts against perineum. NEVER apply fundal pressure or excessive traction. McRoberts maneuver FIRST: hyperflexion of maternal hips (knees to ears) — success 40-90%. Suprapubic pressure simultaneously. If fails: Rubin maneuver (rotate anterior shoulder), Woods screw (rotate posterior shoulder 180°), deliver posterior arm (reduces bisacromial diameter), Gaskin maneuver (all-fours). Last resort: Zavanelli maneuver or intentional clavicle fracture. Most common neonatal complication: brachial plexus injury (Erb's palsy C5-C6, 'waiter's tip')."
+  ],
+  "Hepatic Disorders": [
+    "Ch.80: SBP: fever + abdominal pain/tenderness + altered mental status in cirrhotic with ascites. Diagnostic paracentesis mandatory — PMN ≥250 cells/mm³ confirms SBP. Most common organisms: E. coli, Klebsiella, S. pneumoniae. Treatment: IV ceftriaxone 2g daily + IV albumin 1.5g/kg day 1 then 1g/kg day 3 (reduces hepatorenal syndrome and mortality). Hepatic encephalopathy grading I-IV. Treatment: lactulose 30-45mL q1-2h until BM then titrate to 2-3 soft stools/day (acidifies colon, converts NH3→NH4+), rifaximin 550mg BID as adjunct. Precipitants: GI bleeding, infection/SBP, constipation, meds (benzos/opioids), dehydration, electrolyte abnormalities."
+  ],
+  "Trauma (Multi-system)": [
+    "Ch.13: Primary survey ABCDE. Hemorrhagic shock classification: Class I (<15% blood loss, normal vitals), Class II (15-30%, tachycardia, narrowed pulse pressure), Class III (30-40%, hypotension, tachycardia, altered mental status), Class IV (>40%, severe hypotension, obtunded). Massive transfusion: 1:1:1 pRBC:FFP:platelets. TXA within 3 hours. Damage control surgery for lethal triad. FAST exam: free fluid in Morison's pouch, splenorenal recess, pelvis, pericardium."
+  ],
+  "Surgical Airway": [
+    "Ch.30: CICO scenario — failed intubation AND failed supraglottic airway. Cricothyrotomy: locate cricothyroid membrane (between thyroid and cricoid cartilage), vertical skin incision, horizontal membrane stab, dilate with Trousseau or tracheal hook, insert 6.0 cuffed tube. Confirm with ETCO2. Most common complication: false passage. Contraindicated <10-12 years — use needle cricothyrotomy (12-14G catheter) with jet ventilation. Needle cric is temporizing only — limited ventilation."
+  ],
+  "Neonatal Resuscitation": [
+    "Ch.108: Required in ~10% of births, extensive resuscitation in ~1%. Initial steps: warmth (radiant warmer, dry), airway positioning (sniffing), stimulation (dry, flick soles). If apneic or HR <100 after 30s: PPV at 40-60 breaths/min, 21% O2 for term (21-30% for preterm). If HR <60 after 30s effective PPV: chest compressions 3:1 ratio (90 compressions:30 ventilations/min), two-thumb encircling technique, lower third of sternum, depth one-third AP diameter.",
+    "If HR <60 despite compressions + PPV: epinephrine 0.01-0.03 mg/kg (1:10,000) via umbilical venous catheter (preferred) or 0.05-0.1 mg/kg ET. Volume expansion: 10 mL/kg NS or O-negative blood for suspected hypovolemia. Meconium-stained fluid: routine intubation/suctioning no longer recommended for vigorous infants. Withhold/discontinue resuscitation: gestational age <22 weeks, birth weight <400g, anencephaly, confirmed trisomy 13/18."
+  ],
+  "Pediatric Cardiac Arrest": [
+    "Ch.109: Most pediatric arrests result from respiratory failure/shock (hypoxia → bradycardia → asystole), NOT primary cardiac arrhythmia. Most common initial rhythm: asystole/PEA (non-shockable). Pediatric CPR: rate 100-120/min, depth one-third AP diameter (~5cm children, ~4cm infants), 15:2 ratio (two rescuers), 30:2 (single rescuer). Epinephrine 0.01 mg/kg IV/IO (1:10,000) q3-5min. Defibrillation: 2 J/kg first, 4 J/kg subsequent, max 10 J/kg.",
+    "Amiodarone 5 mg/kg IV/IO for refractory VF/pVT. Foreign body airway obstruction: <1 year — 5 back blows + 5 chest thrusts (NO Heimlich); >1 year — abdominal thrusts. Drowning arrest: prioritize oxygenation/ventilation (A-B-C approach). Weight estimation: 12mo = 10kg; 1-12y = 10 + 2×age(years). Broselow tape for equipment sizing and drug dosing."
+  ],
+  "Pediatric Trauma": [
+    "Ch.110: Leading cause of death in children. Anatomic differences: larger head (more TBI, higher C-spine injuries), thinner cranium, compliant chest wall (pulmonary contusion without rib fractures), larger relative abdominal organs with less fat (more solid organ injury), thick capsules limiting FAST sensitivity. Children maintain normal BP until 30-40% blood volume loss — tachycardia is earliest sign of shock.",
+    "Estimated SBP lower limit: 70 + 2×age(years). Fluid resuscitation: 20 mL/kg NS bolus ×3, then blood products. RSI prep '3:2:1 rule': fentanyl 3 mcg/kg, ketamine 2 mg/kg, rocuronium 1 mg/kg. Seat belt sign: evaluate for hollow viscus injury + Chance fracture of lumbar spine. SCIWORA: spinal cord injury without radiographic abnormality — unique to pediatric C-spine due to ligamentous laxity."
+  ],
+  "Pediatric Fever / Serious Bacterial Illness": [
+    "Ch.119: Fever accounts for ~30% of pediatric ED visits. Neonates ≤28 days with fever ≥38°C: full sepsis workup mandatory (blood culture, UA/urine culture via cath, LP, CBC) + admission + IV ampicillin + gentamicin/cefotaxime. Add acyclovir if HSV concern (vesicles, seizures, liver dysfunction). Ceftriaxone contraindicated in neonates (displaces bilirubin, biliary sludging).",
+    "Infants 29-60 days: use clinical decision tools (Rochester, Step-by-Step) to identify low-risk; low-risk may receive IM ceftriaxone + close follow-up. Infants 60-90 days: if well-appearing with normal UA and inflammatory markers, may be managed outpatient with close follow-up. Procalcitonin emerging as useful for risk stratification. UTI is the most common occult bacterial infection in febrile infants."
+  ],
+  "Pediatric Meningitis": [
+    "Ch.120: Untreated bacterial meningitis mortality ~100%. After neonatal period, most common organisms: S. pneumoniae, N. meningitidis. Meningismus present in <15% of infants with bacterial meningitis. CSF bacterial: WBC >1000 (neutrophilic), protein >100, glucose <40 or ratio <0.4, positive Gram stain 60-90%. CSF viral: WBC 50-500 (lymphocytic), normal-mild protein elevation, normal glucose.",
+    "Treatment >1 month: vancomycin 15 mg/kg q6h + ceftriaxone 100 mg/kg/day (for resistant pneumococcus). Dexamethasone 0.15 mg/kg with or before first antibiotic dose — reduces hearing loss/neurologic sequelae. LP contraindications: hemodynamic instability, signs of herniation, coagulopathy — do NOT delay antibiotics for LP. Neonatal meningitis: ampicillin + cefotaxime (or gentamicin)."
+  ],
+  "Bronchiolitis / Pediatric Wheezing": [
+    "Ch.127: Wheezing differentiated from stridor — wheeze is expiratory (lower airway), stridor is inspiratory (upper airway). Bronchiolitis: most common lower respiratory infection in infants <12 months, RSV most common cause (50-80%), peak in winter. Treatment is supportive: O2 to maintain SpO2 >90%, nasal suctioning, hydration. Bronchodilators NOT routinely recommended (no proven benefit). Corticosteroids NOT recommended.",
+    "Nebulized hypertonic saline 3% may reduce hospital length of stay. Chest X-ray not routinely indicated (leads to unnecessary antibiotics). Admission criteria: age <6 weeks, prematurity, SpO2 <90%, moderate-severe distress, poor feeding (<50% intake), apnea episodes, underlying cardiopulmonary disease. Pediatric asthma (>2 years): inhaled SABA (salbutamol), oral corticosteroids (dexamethasone 0.6 mg/kg or prednisolone 1-2 mg/kg), ipratropium bromide for moderate-severe, IV magnesium sulfate 25-75 mg/kg for impending respiratory failure."
+  ],
+  "Pediatric Gastroenteritis / Dehydration": [
+    "Ch.131: Acute viral gastroenteritis is most common cause — >500,000 deaths globally/year in children <5. Dehydration assessment: mild 3-5% (slightly dry mucous membranes), moderate 5-10% (sunken eyes, tenting, tachycardia, oliguria), severe >10% (mottled, absent tears, lethargy, hypotension). Weight change is most accurate measure of dehydration.",
+    "ORT is first-line for mild-moderate dehydration: 50-100 mL/kg over 3-4 hours. Ondansetron 0.15 mg/kg (max 4mg) pre-treatment significantly improves ORT success. IV fluids if ORT fails or severe dehydration: 20 mL/kg NS bolus, may repeat up to 60 mL/kg. Replace deficit over 24h. Monitor electrolytes — hypo/hypernatremia common. Antibiotic indications: bloody diarrhea with fever (Shigella, Salmonella), cholera, C. difficile. Zinc supplementation recommended by WHO for children in developing countries."
+  ],
+  "Pediatric Seizures": [
+    "Ch.138: Status epilepticus: continuous seizure >5 min or ≥2 seizures without return to baseline. First-line: benzodiazepine — IV lorazepam 0.1 mg/kg (max 4mg), or IV/IM midazolam 0.2 mg/kg (max 10mg IM). May repeat once in 5 min. Second-line: fosphenytoin 20 mg PE/kg IV (preferred over phenytoin in children), or levetiracetam 40-60 mg/kg, or phenobarbital 20 mg/kg. Refractory: continuous midazolam/pentobarbital/propofol infusion in ICU.",
+    "Febrile seizures: age 6mo-5y. Simple: generalized, <15min, single in 24h, return to baseline quickly — benign, no workup needed in well-appearing child >12mo. Complex: focal, >15min, recurrent in 24h — warrants further workup including LP (especially <12mo or unimmunized). No anticonvulsant prophylaxis for simple febrile seizures. Febrile status epilepticus (>30min) occurs in 5% of febrile seizures."
+  ],
+  "Pediatric DKA": [
+    "Ch.147: DKA classification: mild (pH 7.2-7.3, HCO3 10-15), moderate (pH 7.1-7.2, HCO3 5-10), severe (pH <7.1, HCO3 <5). Presentation: polyuria, polydipsia, weight loss, Kussmaul breathing, abdominal pain, vomiting, altered mental status. Initial fluid: 10-20 mL/kg NS over 1-2h (NOT aggressive), then replace deficit over 24-48h at ≤1.5-2× maintenance. Do NOT exceed 40-50 mL/kg in first 4 hours.",
+    "Insulin: 0.05-0.1 U/kg/hr IV infusion started AFTER initial fluid bolus (≥1h into resuscitation). NO insulin bolus in pediatric DKA. Do NOT start insulin until K+ ≥3.5. Target glucose decline 3-5 mmol/L/hr. Add dextrose when glucose reaches 14-17 mmol/L. CEREBRAL EDEMA: 0.5-1% of pediatric DKA, mortality 20-25%; risk factors: new-onset DM, younger age, severe acidosis, failure of corrected Na to rise; treat with mannitol 0.5-1 g/kg or 3% saline 2.5-5 mL/kg. Transition to SC insulin when pH >7.3, HCO3 >15, AG normalized, tolerating PO."
+  ],
+  "Kawasaki Disease": [
+    "Ch.129: Systemic vasculitis of unknown cause, leading cause of acquired heart disease in children in North America/Japan. Affects mostly <5 years, M:F 1.5:1. Classic diagnosis: fever ≥5 days + ≥4 of 5 criteria: (1) bilateral non-exudative conjunctivitis, (2) oral changes (cracked lips, strawberry tongue), (3) polymorphous rash, (4) extremity changes (edema/erythema acutely, desquamation subacutely), (5) cervical lymphadenopathy >1.5cm unilateral.",
+    "Incomplete KD: fever ≥5d + 2-3 criteria + CRP ≥3 or ESR ≥40 + supportive labs/echo. Infants <6mo with ≥7d fever should be evaluated even without clinical criteria. Cardiac complications: coronary artery aneurysms in 15-25% untreated. Treatment: IVIG 2g/kg single infusion + high-dose aspirin 80-100 mg/kg/day until afebrile, then low-dose 3-5 mg/kg/day for 6-8 weeks. Echocardiogram at diagnosis, 2 weeks, and 6-8 weeks."
+  ],
+  "Congenital Heart Disease": [
+    "Ch.129: Ductal-dependent lesions present at 1-3 weeks as PDA closes. Left-sided obstructive (coarctation, hypoplastic left heart, critical AS, interrupted arch): present with shock — grey, mottled, weak pulses, metabolic acidosis. Right-sided obstructive (critical PS, pulmonary atresia, tricuspid atresia): present with cyanosis. Mixing lesions (TGA, truncus, TAPVR): cyanosis ± heart failure.",
+    "Critical intervention: prostaglandin E1 (PGE1/alprostadil) 0.05-0.1 mcg/kg/min IV to reopen/maintain PDA — life-saving. Side effects: apnea (10-12%, have intubation ready), fever, hypotension. Cyanotic spells (tet spells in TOF): knee-chest position, morphine, IV fluids, phenylephrine if refractory. Four-extremity BP and pre/post-ductal SpO2 for coarctation screening. Hyperoxia test: failure to raise PaO2 >150 on 100% O2 suggests cardiac (not pulmonary) cause of cyanosis."
+  ],
+  "Croup / Upper Airway Emergencies": [
+    "Ch.122-123: Croup (laryngotracheobronchitis): most common cause of stridor in children 6mo-3y, parainfluenza virus types 1 and 3 most common (~75%). Steeple sign on AP neck X-ray (subglottic narrowing). Mild: barking cough, no stridor at rest — dexamethasone 0.6 mg/kg PO single dose. Moderate: stridor at rest, retractions — dexamethasone + nebulized epinephrine (racemic 0.5mL of 2.25% or L-epi 0.5 mL/kg of 1:1000, max 5mL). Observe 2-4h post-epinephrine for rebound.",
+    "Severe: significant stridor, marked retractions, decreased air entry, agitation/lethargy — dexamethasone + repeated nebulized epinephrine + consider heliox, prepare for intubation. Epiglottitis (rare post-Hib vaccine): rapid onset, toxic, drooling, tripod, muffled voice (NOT hoarse), dysphagia — do NOT examine throat, secure airway in OR. Bacterial tracheitis: toxic child with croup-like symptoms not responding to standard Rx, purulent secretions, requires IV antibiotics + possible intubation."
+  ],
+  "Sickle Cell Disease": [
+    "Ch.143: HbSS baseline Hb typically 60-90 g/L. Vaso-occlusive crisis (most common): severe pain in extremities, back, chest, abdomen — treat with aggressive IV opioids (morphine 0.1-0.15 mg/kg q15-20min), NSAIDs (ketorolac), IV hydration 1-1.5× maintenance. Fever in SCD: medical emergency — functional asplenia → risk of overwhelming sepsis from encapsulated organisms (S. pneumoniae, H. influenzae, Salmonella). Obtain cultures + empiric IV ceftriaxone 50 mg/kg.",
+    "Acute chest syndrome: new pulmonary infiltrate + fever/respiratory symptoms/chest pain; leading cause of death in SCD; treatment: O2, antibiotics (ceftriaxone + macrolide), incentive spirometry, simple/exchange transfusion if severe. Aplastic crisis: parvovirus B19 → reticulocyte count drops, severe anemia. Splenic sequestration: rapidly enlarging spleen + acute Hb drop ≥20 g/L → may need urgent transfusion. Stroke: 11% of SCD children by age 20; treat with exchange transfusion to reduce HbS <30%."
+  ],
+  "Child Abuse": [
+    "Ch.150: Suspect when: history inconsistent with injury pattern or developmental stage, changing history, delay in seeking care, injuries in pre-mobile infants ('those who don't cruise rarely bruise'). High-specificity fractures: classic metaphyseal lesions (corner/bucket-handle), posterior rib fractures, scapular fractures, spinous process fractures, sternal fractures. Bruising on ears, trunk, neck in non-mobile infants is highly suspicious.",
+    "Abusive head trauma (shaken baby): subdural hemorrhages (especially interhemispheric), bilateral retinal hemorrhages (highly specific), diffuse brain injury. Workup <2 years: full skeletal survey (AP all long bones, skull, spine, chest, pelvis), CT head, ophthalmology for dilated fundoscopy, liver enzymes/lipase (screen abdominal injury), coagulation studies. Mandatory reporting to CPS based on reasonable suspicion — document thoroughly with photographs."
+  ],
+  "Neonatal Emergencies": [
+    "Ch.116: Neonates (≤1 month) present with vague, nonspecific symptoms. Neonatal jaundice: physiologic peaks day 3-5, pathologic if <24h, rapidly rising, or exceeding phototherapy threshold on Bhutani nomogram. Severe hyperbilirubinemia risks kernicterus (basal ganglia damage). Treatment: intensive phototherapy, exchange transfusion if at threshold or signs of acute bilirubin encephalopathy (lethargy, high-pitched cry, opisthotonus). Avoid ceftriaxone (displaces bilirubin). Workup: blood type, Coombs, CBC/retic, G6PD, conjugated bilirubin.",
+    "Neonatal sepsis: hypothermia or fever, lethargy, poor feeding, tachycardia/bradycardia, apnea, jaundice. Early-onset (<7 days): GBS, E. coli — vertical transmission. Late-onset (7-28 days): GBS, E. coli, Listeria, S. aureus, coagulase-negative staph. Empiric: ampicillin + gentamicin (or cefotaxime). Congenital heart disease screening: four-extremity pulse oximetry. Pyloric stenosis: 2-8 week male, projectile non-bilious vomiting, hypochloremic hypokalemic metabolic alkalosis, olive-shaped mass RUQ, US confirms. Intestinal malrotation with volvulus: bilious vomiting in neonate = surgical emergency until proven otherwise."
+  ],
+  "Acetaminophen Toxicity": [
+    "Ch.190: Most common toxic exposure reported to poison centers. Toxic dose >150 mg/kg (7.5g adults). Metabolism: 90% glucuronidation/sulfation, ~5% CYP2E1 → NAPQI (toxic metabolite), detoxified by glutathione. In overdose: pathways saturate → excess NAPQI → glutathione depletion → centrilobular hepatic necrosis. Rumack-Matthew nomogram: plot 4-24h level vs time; treatment line starts at 150 mcg/mL at 4h.",
+    "NAC (N-acetylcysteine): replenishes glutathione; most effective <8h post-ingestion. IV 21h protocol: 150 mg/kg over 60min, then 50 mg/kg over 4h, then 100 mg/kg over 16h. Oral: 140 mg/kg load, then 70 mg/kg q4h ×17 doses. Anaphylactoid reactions with IV NAC (slow infusion, antihistamines). Stages: 1 (0-24h) GI symptoms; 2 (24-72h) apparent recovery, rising AST/ALT; 3 (72-96h) peak hepatotoxicity, coagulopathy, encephalopathy; 4 (4-14d) recovery. King's College Criteria for transplant: pH <7.3 OR (INR >6.5 + Cr >3.4 + Grade III/IV encephalopathy). Activated charcoal within 1-2h."
+  ],
+  "Tricyclic Antidepressant Toxicity": [
+    "Ch.177: Multiple toxicity mechanisms: (1) sodium channel blockade → QRS widening (hallmark), (2) anticholinergic → tachycardia, mydriasis, dry skin, urinary retention, hyperthermia, (3) alpha-1 blockade → hypotension, (4) norepinephrine/serotonin reuptake inhibition, (5) GABA-A antagonism → seizures. QRS >100ms predicts seizures; QRS >160ms predicts ventricular dysrhythmias. Terminal R wave in aVR >3mm — most sensitive ECG marker.",
+    "Treatment: sodium bicarbonate 1-2 mEq/kg IV bolus for QRS >100ms; target pH 7.45-7.55. Mechanism: sodium loading + alkalinization reduces free TCA. Consider 3% hypertonic saline for refractory cardiotoxicity. Benzodiazepines for seizures — phenytoin CONTRAINDICATED. Procainamide/Class IA/IC CONTRAINDICATED. Norepinephrine for hypotension. Intralipid 20% for cardiac arrest. Activated charcoal if within 1-2h with protected airway."
+  ],
+  "Opioid Toxicity": [
+    "Ch.186: Toxidrome: CNS depression, respiratory depression, miosis (pinpoint pupils). Additional: hypotension, bradycardia, hypothermia, decreased bowel sounds. Priority: ventilation first, then naloxone. Naloxone: titrate 0.04-0.4mg IV q2-3min to restore adequate ventilation (RR >12), NOT full consciousness. Larger doses for synthetic opioids (fentanyl). Duration 30-90min — shorter than most opioids → re-sedation risk.",
+    "Naloxone infusion: two-thirds of effective bolus dose per hour. Precipitated withdrawal: agitation, vomiting, hypertension, tachycardia, pulmonary edema. Complications: aspiration, ARDS/non-cardiogenic pulmonary edema, rhabdomyolysis, compartment syndrome. Observation: 4-6h minimum post-naloxone; 12-24h for long-acting opioids (methadone, ER formulations). Body packers: whole bowel irrigation, surgical consultation if obstruction or packet rupture."
+  ],
+  "Toxic Alcohols": [
+    "Ch.185: Methanol: windshield washer fluid, moonshine. Metabolized by alcohol dehydrogenase → formaldehyde → formic acid (toxic). Formic acid: retinal/optic nerve toxicity (blurred vision, blindness), severe AG metabolic acidosis. Ethylene glycol: antifreeze. Metabolized → glycolic acid → oxalic acid (calcium oxalate crystals → renal failure). Isopropanol: rubbing alcohol → acetone (ketosis without acidosis).",
+    "Osmolar gap = measured - calculated osmolality (normal <10). Early: elevated OG, normal AG. Late: falling OG, rising AG. Fomepizole 15 mg/kg IV loading (inhibits alcohol dehydrogenase) — preferred antidote. Alternative: ethanol infusion (target 100-150 mg/dL). Hemodialysis indications: pH <7.25, visual abnormalities (methanol), renal failure, level >50 mg/dL, deterioration despite treatment. Folate 50mg IV q6h for methanol (enhances formate metabolism). Thiamine + pyridoxine for ethylene glycol."
+  ],
+  "Salicylate Toxicity": [
+    "Ch.189: Pathophysiology: stimulates medullary respiratory center (respiratory alkalosis) + uncouples oxidative phosphorylation (AG metabolic acidosis) → mixed disorder. Chronic toxicity more dangerous than acute at same level (tissue distribution). Tinnitus at levels >30 mg/dL. Acidemia increases CNS penetration of non-ionized salicylate — intubation extremely dangerous (loss of compensatory hyperventilation → acute acidemia → cardiovascular collapse).",
+    "Treatment: urinary alkalinization with NaHCO3 (150mEq in 1L D5W), target urine pH 7.5-8.0. Correct hypokalemia first (prevents urine alkalinization). Activated charcoal effective. Hemodialysis: level >100 mg/dL (acute) or >60 mg/dL (chronic), AMS, seizures, pulmonary/cerebral edema, renal failure, pH <7.2 despite treatment. If must intubate: match pre-intubation minute ventilation immediately."
+  ],
+  "Serotonin Syndrome": [
+    "Ch.178: Excess serotonergic activity from drug interactions. Hunter Criteria: serotonergic agent + spontaneous clonus, OR inducible clonus + agitation/diaphoresis, OR ocular clonus + agitation/diaphoresis, OR tremor + hyperreflexia, OR hypertonia + temp >38°C + clonus. Key features: CLONUS (lower > upper), hyperreflexia, mydriasis, diaphoresis, increased bowel sounds, agitation.",
+    "Differentiation from NMS: SS = rapid onset (hours), clonus, hyperreflexia, diaphoresis. NMS = slow onset (days), rigidity (lead-pipe), hyporeflexia, bradykinesia. Treatment: stop serotonergic agents, benzodiazepines, cyproheptadine 12mg PO then 2mg q2h (max 32mg/day). Active cooling for hyperthermia >41°C. High-risk combos: SSRI+MAOI (most dangerous, 2-week washout), SSRI+tramadol, SSRI+linezolid, SSRI+methylene blue."
+  ],
+  "Beta-Blocker / CCB Toxicity": [
+    "Ch.194-195: CCB vs BB differentiation: CCB → hyperglycemia (blocks pancreatic insulin release), warm extremities. BB → hypoglycemia, cool extremities, bronchospasm. Both → bradycardia + hypotension. Verapamil/diltiazem (non-DHP) → more cardiac effects; DHP (amlodipine) → more vasodilation with reflex tachycardia (but all cause bradycardia in massive OD).",
+    "CCB treatment: IV calcium (CaCl 20mL or CaGluc 60mL, repeat x3-4), high-dose insulin euglycemia (HIET: 1 U/kg bolus then 0.5-1 U/kg/hr + dextrose to maintain glucose 10-14 mmol/L — most effective treatment), glucagon 3-5mg IV, norepinephrine, intralipid 20% for arrest. WBI for SR preparations. BB treatment: glucagon 3-5mg IV bolus (first-line, bypasses beta-receptor), HIET, calcium, phosphodiesterase inhibitors, ECMO for refractory."
+  ],
+  "Iron Toxicity": [
+    "Ch.198: Calculate elemental iron dose (ferrous sulfate 325mg = 65mg elemental, fumarate 325mg = 108mg, gluconate 325mg = 38mg). Toxicity: <20 mg/kg nontoxic, 20-60 mild-moderate, >60 severe/lethal. Abdominal XR shows radiopaque tablets. Activated charcoal does NOT adsorb iron.",
+    "Stages: 1 (0-6h) GI — vomiting, bloody diarrhea, abdominal pain; 2 (6-24h) apparent recovery; 3 (12-48h) systemic — shock, AG metabolic acidosis, hepatic necrosis, coagulopathy; 4 (2-5d) hepatic failure, peak mortality; 5 (2-6wk) GI scarring/strictures. Deferoxamine: 15 mg/kg/hr IV (max 6-8g/day, <24h due to ARDS risk); indicated when level >500 mcg/dL or severe symptoms. WBI for visible tablets on XR."
+  ],
+  "Pesticide / Organophosphate Toxicity": [
+    "Ch.201: Irreversible acetylcholinesterase inhibition → ACh accumulation. Muscarinic (DUMBELS): Diarrhea, Urination, Miosis, Bronchospasm/Bronchorrhea, Emesis, Lacrimation, Salivation + bradycardia, hypotension. Nicotinic: fasciculations, weakness, paralysis, tachycardia. CNS: seizures, coma. Death from respiratory failure (bronchorrhea + bronchospasm + respiratory muscle paralysis).",
+    "Atropine: 2-5mg IV, repeat q5-10min, DOUBLE dose each time until secretions dry (may need 100+mg). Endpoint: dry pulmonary secretions (NOT pupil size). Pralidoxime (2-PAM): 1-2g IV over 15-30min then 500mg/hr — reactivates AChE before aging (give within 24-48h). Treats nicotinic symptoms atropine cannot. Benzodiazepines for seizures. Decontaminate (PPE for staff). Avoid succinylcholine (prolonged paralysis)."
+  ],
+  "Caustic Ingestion": [
+    "Ch.200: Alkali (NaOH, KOH, bleach): liquefactive necrosis — deep penetration, primarily esophageal injury, progressive injury, high stricture risk. Acid: coagulative necrosis — eschar limits depth, primarily gastric injury (antrum/pylorus). Concentrated acids can still cause severe full-thickness injury.",
+    "Management: airway assessment/protection (stridor = airway involvement), IV access, NPO, urgent EGD within 12-24h (grade injury). CONTRAINDICATED: emesis induction, activated charcoal (obscures endoscopy), neutralization (exothermic), blind NG/OG insertion, dilution >30min post-ingestion. Complications: perforation (mediastinitis/peritonitis), airway compromise, stricture (70-100% of grade 2b/3), esophageal SCC (1000× risk, 15-40 years later)."
+  ],
+  "Cocaine / Sympathomimetic Toxicity": [
+    "Ch.187: Mechanism: blocks NE/dopamine/serotonin reuptake (sympathomimetic), blocks Na channels (local anesthetic), blocks K channels (QT prolongation). ACS from: coronary vasospasm, increased O2 demand, enhanced platelet aggregation, accelerated atherosclerosis. Sympathomimetic toxidrome: mydriasis, tachycardia, hypertension, diaphoresis, agitation, hyperthermia.",
+    "Chest pain: benzodiazepines first-line, NTG, aspirin, CCBs for vasospasm. Beta-blockers CONTRAINDICATED (unopposed alpha → worsened vasospasm/HTN). PCI preferred for STEMI. Hypertension: benzodiazepines first, then phentolamine or NTG if refractory. Seizures: benzodiazepines. Wide QRS: NaHCO3. Hyperthermia >40°C: active cooling + benzodiazepines. Body packers: WBI, surgery if obstruction/rupture."
+  ],
+  "Anticholinergic Toxicity": [
+    "Ch.202: Mnemonic: Hot as a hare, Blind as a bat, Dry as a bone, Red as a beet, Mad as a hatter, Full as a flask. Mechanism: muscarinic receptor antagonism. Causes: antihistamines (diphenhydramine most common), TCAs, antipsychotics, atropine, scopolamine, jimsonweed, deadly nightshade. Distinguishes from sympathomimetic by DRY skin (sympathomimetic → diaphoresis).",
+    "Treatment: benzodiazepines for agitation (mainstay). Physostigmine (reversible AChE inhibitor): 1-2mg IV slow push, crosses BBB → reverses central + peripheral effects. Indications: severe agitation unresponsive to benzodiazepines, seizures, hemodynamically significant tachydysrhythmias. CONTRAINDICATED with TCA (risk of asystole), QRS prolongation, heart block. Monitor for cholinergic rebound."
+  ],
+  "Digoxin Toxicity": [
+    "Ch.193: Inhibits Na+/K+-ATPase → increased intracellular Ca2+. Chronic toxicity (elderly on diuretics with renal insufficiency) more common than acute. Precipitants: renal failure, hypokalemia (K+ and digoxin compete for same binding site), hypomagnesemia, hypothyroidism, drug interactions (amiodarone, verapamil, clarithromycin). Symptoms: GI (nausea, vomiting), visual (yellow halos, chromatopsia), cardiac (any dysrhythmia).",
+    "Classic ECG: scooped ST depression (Dalí mustache — digoxin effect, not toxicity), PAT with block (most characteristic), bidirectional VT (pathognomonic), accelerated junctional rhythm, regularized AF (complete heart block + junctional escape). Digoxin Fab: indications — hemodynamic instability, life-threatening dysrhythmia, K+ >5.0 (acute) or >5.5 (chronic), level >10 ng/mL, acute ingestion >10mg. IV calcium CONTROVERSIAL in digoxin + hyperkalemia. Dialysis NOT effective (large Vd)."
   ]
 };
 
@@ -3944,15 +5167,25 @@ async function generateAIQuestions(count, selectedTopics) {
   for (let i = 0; i < count; i++) {
     const topic = topics[Math.floor(Math.random() * topics.length)];
 
+    // Build Tintinalli reference for the selected topic
+    const tintRef = TINTINALLI_REFERENCE[topic] || Object.values(TINTINALLI_REFERENCE)[Math.floor(Math.random() * Object.keys(TINTINALLI_REFERENCE).length)];
+    const tintRefText = Array.isArray(tintRef) ? tintRef.join('\n') : tintRef;
+
     const systemPrompt = `You are an expert emergency medicine physician and CCFP-EM exam question writer for the College of Family Physicians of Canada. You create realistic, high-quality practice exam questions that closely mirror the actual CCFP-EM certification exam.
 
+CRITICAL INSTRUCTION — SOURCE RESTRICTION:
+- You MUST base ALL clinical content, answers, and explanations EXCLUSIVELY on the TINTINALLI TEXTBOOK REFERENCE provided below.
+- Do NOT use any information outside the provided reference material.
+- Every answer, explanation, drug dose, management step, and clinical fact must be directly traceable to the reference content.
+- If the reference does not cover a specific detail, do not include it in the question.
+
 IMPORTANT GUIDELINES:
-- Questions must be clinically accurate and evidence-based
-- Use Canadian medical practice standards, guidelines, and drug names
-- Include realistic vital signs, lab values, and clinical details
+- Questions must be clinically accurate per the Tintinalli reference provided
+- Use Canadian medical practice standards where applicable
+- Include realistic vital signs, lab values, and clinical details from the reference
 - Questions should test clinical reasoning, not just recall
 - Difficulty: ${difficulty === 'mixed' ? 'exam-realistic mix' : difficulty}
-- Include both common and must-not-miss diagnoses`;
+- Include both common and must-not-miss diagnoses from the reference`;
 
     const keyFeaturesForTopic = KEY_FEATURES[topic] || [];
     const keyFeaturesText = keyFeaturesForTopic.length > 0
@@ -3961,6 +5194,9 @@ IMPORTANT GUIDELINES:
 
     const userPrompt = format === 'SAMP'
       ? `Generate a SAMP (Short Answer Management Problem) for the CCFP-EM exam on the topic: "${topic}".${keyFeaturesText}
+
+TINTINALLI TEXTBOOK REFERENCE (Sections 3-11) — USE ONLY THIS CONTENT:
+${tintRefText}
 
 EXAM FORMAT — The 2026 CCFP-EM exam uses THREE question types. Mix these types in your case:
 
